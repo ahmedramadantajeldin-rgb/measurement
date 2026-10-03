@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fundamentals of Errors in Measurements</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=Cairo:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&family=Amiri&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+<style>
+:root{--navy:#0B2447;--royal:#1B4F8A;--sky:#2E86C1;--azure:#5DADE2;--mist:#D6EAF8;--pearl:#EBF5FB;--white:#FFFFFF;--ink:#1A1A2E;--graphite:#2C3E50;--slate:#5D6D7E;--gold:#D4AC0D;--amber:#F0B429;--mint:#1ABC9C;--mint-light:#D5F5E3;--coral:#E74C3C;--coral-light:#FADBD8;--shadow:0 4px 20px rgba(11,36,71,0.10);--shadow-lg:0 8px 40px rgba(11,36,71,0.16);--radius:14px;--radius-sm:8px}
+*{box-sizing:border-box;max-width:100%}
+html,body{overflow-x:hidden;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:linear-gradient(160deg,#f0f6ff 0%,#e8f1fb 50%,#f5f9ff 100%);font-family:'Cairo','Source Serif 4',serif;font-size:17px;line-height:1.85;color:var(--ink);padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.en,.m{direction:ltr;unicode-bidi:isolate;font-family:'JetBrains Mono',monospace;font-size:.92em}
+.ltr{direction:ltr;text-align:left;font-family:'Source Serif 4',serif}
+header{background:linear-gradient(135deg,var(--navy) 0%,var(--royal) 60%,var(--sky) 100%);color:#fff;text-align:center;padding:60px 40px 50px;position:relative;overflow:hidden}
+header::before{content:"";position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M0 30h60M30 0v60M0 0l60 60M60 0L0 60' stroke='white' stroke-opacity='.04' fill='none'/%3E%3C/svg%3E")}
+header>*{position:relative}
+.badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);padding:4px 16px;border-radius:50px;font-size:.78rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:18px;direction:ltr}
+h1{font-family:'Playfair Display',serif;font-weight:800;font-size:clamp(2rem,5vw,3.2rem);line-height:1.25;margin:0 0 14px;text-shadow:0 2px 10px rgba(0,0,0,.25)}
+h1 span{display:block;font-size:.65em;opacity:.85;font-family:'Cairo',sans-serif;font-weight:700}
+.sub{font-family:'Source Serif 4',serif;font-size:1.1rem;opacity:.85;direction:ltr;max-width:650px;margin:0 auto 22px}
+.pills{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.pills span{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:50px;padding:4px 16px;font-size:.88rem}
+.dua-wrap{max-width:960px;margin:28px auto 0;padding:0 24px}
+.dua-card{background:#fff;border:1.5px solid #e8b84b;border-radius:14px;box-shadow:0 2px 12px rgba(168,120,42,0.10);overflow:hidden}
+.dua-btn{width:100%;background:linear-gradient(135deg,#7a5800,#b8860b);color:#fff;border:0;font-family:'Cairo',sans-serif;font-size:1.05rem;font-weight:700;padding:12px 20px;text-align:right;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.dua-btn .ar{display:inline-block;transition:transform .3s}
+.dua-btn[aria-expanded="true"] .ar{transform:rotate(180deg)}
+.dua-body{display:none;background:linear-gradient(135deg,#fffbea,#fff9f0);padding:18px 22px}
+.dua-body p{font-family:'Amiri',serif;font-size:17px;line-height:2.1;color:#5a3e00;border-right:3px solid #e8b84b;padding-right:14px;margin:8px 0}
+.toc-wrap{max-width:900px;margin:34px auto;padding:0 24px}
+.toc-card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+.toc-h{background:linear-gradient(90deg,var(--royal),var(--sky));color:#fff;font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;padding:14px 24px;direction:ltr}
+.toc-b{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:16px}
+.toc-b a{display:flex;align-items:center;gap:12px;padding:8px 12px;border-radius:var(--radius-sm);color:var(--graphite);text-decoration:none;font-weight:600}
+.toc-b a:hover{background:var(--pearl)}
+.toc-b b{flex:0 0 26px;width:26px;height:26px;border-radius:50%;background:var(--royal);color:#fff;font:500 .78rem 'JetBrains Mono',monospace;display:flex;align-items:center;justify-content:center}
+.wrap{max-width:960px;margin:0 auto;padding:0 24px}
+.sec-h{display:flex;align-items:center;gap:16px;border-bottom:3px solid var(--mist);padding-bottom:14px;margin-bottom:22px}
+.ico{flex:0 0 52px;width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,var(--royal),var(--sky));display:flex;align-items:center;justify-content:center;font-size:1.6rem}
+.sec-h h2{font-family:'Playfair Display',serif;font-size:1.75rem;color:var(--navy);margin:0;line-height:1.3}
+.sec-h small{display:block;font:400 .8rem 'JetBrains Mono',monospace;color:var(--slate);direction:ltr;text-align:right}
+.section-divider{height:2px;border:0;margin:50px 0;background:linear-gradient(90deg,transparent,var(--sky),transparent)}
+.def-box{background:linear-gradient(135deg,var(--mist),var(--pearl));border-right:5px solid var(--sky);border-radius:var(--radius);padding:16px 22px;margin:18px 0;box-shadow:var(--shadow)}
+.def-box .t,.note-box .t{font-weight:700;color:var(--royal);margin-bottom:4px}
+.note-box{background:#fffbea;border-right:5px solid var(--amber);border-radius:var(--radius);padding:16px 22px;margin:18px 0;box-shadow:var(--shadow)}
+.note-box .t{color:#8a6200}
+.formula-box{background:var(--navy);color:#fff;border-radius:var(--radius);padding:18px 22px;margin:18px 0;box-shadow:var(--shadow-lg);overflow-x:auto;direction:ltr;text-align:center}
+.formula-box .cap{font:400 .85rem 'JetBrains Mono',monospace;opacity:.75;margin-bottom:4px}
+.vars{margin:10px 0 18px;padding:0;list-style:none}
+.vars li{padding:4px 0;border-bottom:1px dashed var(--mist)}
+.scroll{overflow-x:auto;margin:18px 0;border-radius:var(--radius);box-shadow:var(--shadow);background:#fff}
+.hint{display:none;text-align:center;font-size:.78rem;color:var(--slate)}
+table{border-collapse:collapse;width:100%;min-width:560px}
+th{background:var(--royal);color:#fff;padding:10px 14px;font-family:'Cairo',sans-serif}
+td{padding:10px 14px;text-align:right;color:var(--navy);border-bottom:1px solid var(--mist)}
+tr:nth-child(even) td{background:var(--pearl)}
+td.m{text-align:center}
+.example-card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin:20px 0}
+.ex-h{background:linear-gradient(90deg,var(--sky),var(--azure));color:#fff;padding:10px 22px;font-weight:700}
+.ex-q{background:var(--pearl);margin:16px;padding:12px 18px;border-radius:var(--radius-sm);direction:ltr;text-align:left;font-family:'Source Serif 4',serif}
+.step{display:flex;gap:12px;align-items:flex-start;padding:6px 20px}
+.step i{flex:0 0 28px;width:28px;height:28px;border-radius:50%;background:var(--royal);color:#fff;font:500 .8rem 'JetBrains Mono',monospace;display:flex;align-items:center;justify-content:center;font-style:normal;margin-top:4px}
+.ans{background:var(--mint-light);color:#0b6b57;font-weight:700;border-radius:var(--radius-sm);margin:12px 20px 18px;padding:8px 16px;direction:ltr;text-align:center}
+.warn{background:var(--coral-light);border-right:5px solid var(--coral);border-radius:var(--radius);padding:16px 22px;margin:18px 0}
+.warn .t{font-weight:700;color:var(--coral)}
+.q-section{border:2px solid var(--royal);border-radius:var(--radius);padding:18px 22px;margin:20px 0;background:#fff}
+.q-section h3{margin:0 0 10px;font-family:'Playfair Display',serif;color:var(--navy)}
+.q-item{margin:12px 0}
+.q-item .qt{font-weight:600;direction:ltr;text-align:left}
+.tog{font-family:'Cairo',sans-serif;background:var(--royal);color:#fff;border:0;border-radius:var(--radius-sm);padding:6px 16px;cursor:pointer;font-weight:600;margin-top:8px}
+.sol{display:none;background:var(--pearl);border-radius:var(--radius-sm);padding:12px 18px;margin-top:10px}
+.diag{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:10px}
+figure{margin:0}figcaption{font-size:.88rem;color:var(--slate);text-align:center}
+.im{display:block;margin:0 auto;height:auto;width:100%;max-width:420px}.cf{margin:10px 0 0}.cf img{display:block;margin:6px auto 0;height:auto;width:100%;max-width:230px;border-radius:8px;background:#fff}.cf figcaption{font-size:.8rem;color:var(--slate);text-align:center}
+footer{background:var(--navy);color:#fff;text-align:center;border-radius:14px;padding:34px 24px;margin:40px auto 0;max-width:960px}
+footer h4{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;margin:0 0 8px}
+footer p{opacity:.7;margin:0 0 14px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.tags span{background:rgba(255,255,255,.1);border-radius:50px;padding:3px 14px;font-size:.85rem;direction:ltr}
+.closing{max-width:960px;margin:24px auto 40px;padding:28px 24px;background:linear-gradient(135deg,#0B2447,#1B4F8A);border-top:4px solid #D4AC0D;border-radius:14px;box-shadow:0 8px 32px rgba(11,36,71,0.18);font-family:'Amiri',serif;font-size:19px;line-height:2.2;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.3);text-align:center}
+@media(max-width:768px){body{font-size:16px}header{padding:48px 28px 40px}.sec-h h2{font-size:1.5rem}}
+@media(max-width:650px){.wrap,.dua-wrap,.toc-wrap{padding:0 16px}.example-card .step{padding:6px 14px}}
+@media(max-width:600px){.toc-b{grid-template-columns:1fr}.hint{display:block}header{padding:40px 18px 34px}.ico{flex-basis:44px;width:44px;height:44px;font-size:1.3rem}.sec-h h2{font-size:1.3rem}.def-box,.note-box,.warn,.q-section{padding:14px 16px}}
+@media(max-width:380px){body{font-size:15px}h1{font-size:1.7rem}.sec-h{gap:10px}.closing{font-size:17px;padding:22px 16px}}
+.home{position:absolute!important;top:14px;right:20px;font:600 .85rem Cairo,sans-serif;direction:ltr;color:#fff;text-decoration:none;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:30px;padding:3px 14px}.home:hover{background:rgba(255,255,255,.28)}
+</style>
+</head>
+<body>
+<header><a class="home" href="index.html">‹ Method Measurements</a>
+<div class="badge">Lecture 3 · Errors</div>
+<h1>Fundamentals of Errors in Measurements<span>أساسيات الـ Errors في القياس</span></h1>
+<p class="sub">Mechanical Measurements &amp; Instrumentation</p>
+<div class="pills"><span>📏 Uncertainty</span><span>🎲 Random vs Systematic</span><span>📐 Standard Deviation</span><span>🎯 Accuracy &amp; Precision</span></div>
+</header>
+
+<div class="dua-wrap"><div class="dua-card">
+<button class="dua-btn" id="duaBtn" aria-expanded="false" aria-controls="duaBody"><span>📖 دعاء</span><span class="ar">▼</span></button>
+<div class="dua-body" id="duaBody">
+<p>اللَّهُمَّ لا سَهْلَ إِلاَّ ما جَعَلْتَهُ سَهْلاً، وأنْتَ تَجْعَلُ الحَزْنَ إِذَا شِئْتَ سَهْلاً.</p>
+<p>رَبِّ اشْرَحْ لِي صَدْرِي * وَيَسِّرْ لِي أَمْرِي * وَاحْلُلْ عُقْدَةً مِنْ لِسَانِي * يَفْقَهُوا قَوْلِي.</p>
+<p>اللَّهُمَّ انْفَعْنِي بِمَا عَلَّمْتَنِي، وَعَلِّمْنِي مَا يَنْفَعُنِي، وَزِدْنِي عِلْمًا.</p>
+<p>اللهم إني أسألك فهم النبيين، وحفظ المرسلين والملائكة المقربين، اللهم اجعل ألسنتنا عامرة بذكرك، وقلوبنا بخشيتك، وأسرارنا بطاعتك، إنك على كل شيء قدير.</p>
+<p>يا حي يا قيوم برحمتك أستغيث، أصلح لي شأني كله ولا تكلني إلى نفسي طرفة عين.</p>
+<p>اللهم يا جامع الناس ليوم لا ريب فيه، اجمع علي ضالتي.</p>
+<p>اللهم إني استودعتك ما قرأت وما حفظت وما تعلمت، فرده عند حاجتي إليه، إنك على كل شيء قدير، وحسبنا الله ونعم الوكيل.</p>
+<p>أستغفر الله، أستغفر الله، أستغفر الله.</p>
+</div></div></div>
+
+<div class="toc-wrap"><div class="toc-card"><div class="toc-h">Contents</div><div class="toc-b">
+<a href="#s1"><b>1</b>Terminology &amp; Uncertainty</a>
+<a href="#s2"><b>2</b>Error Types</a>
+<a href="#s3"><b>3</b>Random Errors</a>
+<a href="#s4"><b>4</b>Accuracy vs Precision</a>
+<a href="#s5"><b>5</b>Systematic Errors</a>
+<a href="#s6"><b>6</b>Systematic Uncertainty</a>
+<a href="#s7"><b>7</b>Overall Error</a>
+<a href="#s8"><b>8</b>Human Error</a>
+<a href="#s9"><b>9</b>Random vs Systematic &amp; Questions</a>
+</div></div></div>
+
+<div class="wrap">
+
+<section id="s1">
+<div class="sec-h"><div class="ico">📏</div><div><h2>Terminology of Errors</h2><small>Error · Uncertainty · Confidence</small></div></div>
+<div class="def-box ltr"><div class="t">Terminology</div>
+<b>Error:</b> difference between the measured and true values — a theoretical concept.<br>
+<b>Uncertainty:</b> an error estimate — a more practical concept.<br>
+<b>Accuracy:</b> how close the reading is to the true value.<br>
+<b>Precision:</b> how close repeated readings are to one another.</div>
+<p>أي <span class="en">Measurement</span> بنعمله مش بيطلع رقمًا مؤكدًا 100%. لأن فيه دايمًا <span class="en">margin of doubt</span>، فلازم نسأل: <i>المارجن ده كبير قد إيه؟</i> وعشان كده محتاجين رقمين لتحديد الـ <span class="en">Uncertainty</span>: <b>عرض الـ interval</b>، و<b>الـ Confidence Level</b> (قد إيه إحنا متأكدين إن الـ true value جوه المارجن ده).</p>
+<div class="example-card"><div class="ex-h">Example — Length of a wire</div>
+<div class="ex-q">A wire length is measured; we are 95% sure the true value lies between 19 and 21 cm.</div>
+<div class="step"><i>1</i><div>الـ interval: من 19 إلى 21، يعني المركز 20 والـ margin ‎±1‎.</div></div>
+<div class="step"><i>2</i><div>الـ 95% معناها إن حوالي 95% من الحالات تقع داخل المجال.</div></div>
+<div class="ans">Length = 20 ± 1 cm at a level of confidence 95%</div></div>
+</section>
+<hr class="section-divider">
+
+<section id="s2">
+<div class="sec-h"><div class="ico">🗂️</div><div><h2>Error Types</h2><small>Random · Systematic · Human</small></div></div>
+<div class="scroll"><table><tr><th>Error Type</th><th>Affects</th><th>الفكرة</th></tr>
+<tr><td><span class="en">Random Errors</span></td><td class="m">Precision</td><td>مرة موجب ومرة سالب، بدون اتجاه ثابت.</td></tr>
+<tr><td><span class="en">Systematic (Bias) Errors</span></td><td class="m">Accuracy</td><td>انحراف ثابت الاتجاه سببه مشكلة في الـ system.</td></tr>
+<tr><td><span class="en">Human Errors</span></td><td class="m">—</td><td>أخطاء الشخص نفسه (Mistakes)، مش بتتعالج بالـ averaging.</td></tr></table></div>
+<div class="hint">← اسحب لرؤية المزيد →</div>
+<div class="note-box"><div class="t">Random vs Systematic — مثال</div>مثال توضيحي: لو القيمة الحقيقية <span class="m">50</span> فالـ random بيدي مثلًا <span class="m">50 → 51 → 49 → 50</span>، أما الـ systematic فبيدي <span class="m">51 → 51 → 51 → 51</span> تقريبًا في كل مرة — يعني <span class="en">Bias</span> في اتجاه واحد.</div>
+</section>
+<hr class="section-divider">
+
+<section id="s3">
+<div class="sec-h"><div class="ico">🎲</div><div><h2>1. Random Errors</h2><small>Sources · Cancellation · Standard Deviation</small></div></div>
+<div class="def-box ltr"><div class="t">Definition</div>Random errors are caused by random unpredictable variations in the experimental conditions. Thus, they can be evaluated through statistical techniques.</div>
+<p><b>Sources of Random Error:</b></p>
+<div class="scroll"><table><tr><th>Cause</th><th>الشرح</th></tr>
+<tr><td><span class="en">Parallax Error</span></td><td>الماسورة المدرجة (<span class="m">0–100 cm³</span>) وفيها ثلاث عيون؛ العين رقم 2 أفقية مع سطح السائل (القراءة الصحيحة)، والعينان 1 و3 بتقرأوا قيمة أعلى أو أقل. زاوية النظر بتتغير كل مرة، فالخطأ بيبقى عشوائي.<figure class="cf"><img src="images/parallax.png" alt="Parallax error on a graduated cylinder"><figcaption>Parallax: العين 2 مستوى القراءة الصحيح، والعينان 1 و3 تقرأ أعلى أو أقل.</figcaption></figure></td></tr>
+<tr><td><span class="en">Atmospheric pressure, temperature</span></td><td>تغيرات عشوائية في الظروف المحيطة بتخلي القراءة أعلى أو أقل قليلًا.</td></tr>
+<tr><td><span class="en">Vibration while measuring</span></td><td>اهتزاز الجهاز أو الـ setup بيأثر على القراءة (صورة: شخص بيقيس بمتر شريط).</td></tr>
+<tr><td><span class="en">Definition of the measurand</span></td><td>الـ measurand هو الكمية المراد قياسها؛ لو مش محددة بدقة (موضع أو طريقة القياس) هتختلف القياسات.</td></tr>
+<tr><td><span class="en">Loose electric connections</span></td><td>التوصيل المفكوك بيعمل transients في الإشارة: الرسم بيوضح <span class="en">V vs t</span> موجة جيبية عليها spike حاد ثم اضطراب (<span class="en">Transients</span>).<figure class="cf"><img src="images/transients.png" alt="Voltage versus time with transients"><figcaption>Transients على الموجة الجيبية.</figcaption></figure></td></tr>
+<tr><td><span class="en">Excitation voltage of a Wheatstone bridge</span></td><td>الدائرة فيها <span class="m">R1–R4</span> وجهد التغذية <span class="m">V<sub>EX</sub></span> والخرج <span class="m">V<sub>0</sub></span>؛ أي تغير عشوائي في <span class="m">V<sub>EX</sub></span> بيظهر في الخرج.<figure class="cf"><img src="images/wheatstone-bridge.png" alt="Wheatstone bridge circuit"><figcaption>Wheatstone bridge.</figcaption></figure></td></tr>
+<tr><td><span class="en">Noise from electric fields</span></td><td>Noise / interference بيخلي الإشارة تتغير قليلًا من قراءة لأخرى.</td></tr></table></div>
+<div class="hint">← اسحب لرؤية المزيد →</div>
+
+<h3 class="en" style="color:var(--royal)">Cancellation</h3>
+<p>تخيل إن الجهاز المفروض يقرأ <span class="m">50</span> لو مفيش random error. عينة القراءات: <span class="m">47 – 49 – 50 – 51 – 53</span>. الزيادات والنقصانات بتميل إنها <b>تلغي بعضها</b> عند أخذ الـ average، وكل ما زاد عدد القياسات قل تأثير الـ random error على المتوسط.</p>
+<p>الرسم: <span class="en">Probability density</span> مقابل <span class="en">Value</span>. ارتفاع المنحنى عند قيمة = تكرار القياسات حولها. العرض (<span class="en">Precision</span>) بيوضح تباعد القراءات.</p>
+
+<h3 class="en" style="color:var(--royal)">Uncertainty with Random Errors</h3>
+<div class="formula-box"><div class="cap">Standard Deviation</div>\[ s=\sqrt{\frac{\sum_{i=1}^{N}\left(x_i-\bar{x}\right)^2}{\nu}},\qquad \nu=N-1 \]</div>
+<ul class="vars"><li><span class="m">s</span>: <span class="en">Standard Deviation</span>. The smaller the standard deviation the more precise the data.</li>
+<li><span class="m">x<sub>i</sub></span>: كل قراءة، و<span class="m">x̄</span>: الـ average، <span class="m">N</span>: عدد القراءات، <span class="m">ν</span>: الـ degrees of freedom.</li></ul>
+<div class="def-box"><div class="t">خطوات حساب الـ Standard Deviation</div>
+١) اجمع القراءات واحسب <span class="m">x̄</span> (مثلًا لـ 20 قراءة اجمعهم واقسم على 20). ٢) احسب <span class="m">x<sub>i</sub> − x̄</span> لكل قراءة. ٣) <b>ربّع</b> الفرق (عشان الموجب والسالب ما يلغوش بعض). ٤) اجمع المربعات. ٥) اقسم على <span class="m">ν</span> وخد الجذر. الرسم بيقارن منحنيين: الضيق ← <span class="en">s</span> صغير (precision عالية)، والعريض ← <span class="en">s</span> كبير (القراءات متفرقة).</div>
+<div class="formula-box"><div class="cap">Random Uncertainty (95% confidence)</div>\[ U_r = t_{\nu,95}\,\frac{s}{\sqrt{N}} \]</div>
+<ul class="vars"><li><span class="m">t<sub>ν,95</sub></span>: <span class="en">Coefficient of Student's t</span> من الجدول، بدلالة <span class="en">Degrees of Freedom</span> <span class="m">ν</span> وعمود <span class="en">Confidence Level</span> = 95%.</li></ul>
+<div class="note-box"><div class="t">جدول الـ t</div>الجدول فيه أعمدة <span class="m">50% · 80% · 90% · 95% · 98% · 99% · 99.9%</span>. في التطبيقات الهندسية بنختار <b>95%</b>، وننزل للصف المناسب لـ <span class="m">ν</span> (في المثال: صف 19، يعني <span class="m">N = 20</span>).<br><b>ملاحظة:</b> قيمة المعامل بتتقرأ مباشرة من جدول الـ t عند <span class="m">ν = 19</span> وعمود 95%، ومش بنثبّت رقمًا من غير الجدول.</div>
+</section>
+<hr class="section-divider">
+
+<section id="s4">
+<div class="sec-h"><div class="ico">🎯</div><div><h2>Accuracy vs Precision</h2><small>Trueness · Spread</small></div></div>
+<div class="diag"><figure><svg viewBox="0 0 520 190" width="100%" role="img" aria-label="Probability density curve with reference value, trueness and precision">
+<line x1="30" y1="160" x2="500" y2="160" stroke="#1B4F8A" stroke-width="2"/><line x1="30" y1="160" x2="30" y2="15" stroke="#1B4F8A" stroke-width="2"/>
+<line x1="170" y1="30" x2="170" y2="160" stroke="#2C3E50"/><line x1="330" y1="30" x2="330" y2="160" stroke="#2C3E50" stroke-dasharray="4"/>
+<path d="M250 160 C290 160 300 50 330 50 C360 50 370 160 410 160" fill="none" stroke="#2E86C1" stroke-width="3"/>
+<line x1="172" y1="70" x2="328" y2="70" stroke="#E74C3C" stroke-width="2"/>
+<text x="250" y="62" text-anchor="middle" font-family="JetBrains Mono" font-size="12" fill="#E74C3C">Trueness (bias)</text>
+<line x1="270" y1="178" x2="390" y2="178" stroke="#1ABC9C" stroke-width="2"/><text x="330" y="174" text-anchor="middle" font-family="JetBrains Mono" font-size="12" fill="#1ABC9C">Precision</text>
+<text x="170" y="24" text-anchor="middle" font-family="JetBrains Mono" font-size="12" fill="#2C3E50">Reference value</text>
+<text x="500" y="154" text-anchor="end" font-family="JetBrains Mono" font-size="12" fill="#1B4F8A">Value</text>
+<text x="38" y="26" font-family="JetBrains Mono" font-size="12" fill="#1B4F8A">Probability density</text></svg>
+<figcaption>رسم توضيحي: المسافة بين الـ Reference value ومركز المنحنى = Trueness، وعرض المنحنى = Precision.</figcaption></figure></div>
+<p><b>Accuracy</b> = قرب القراءات من الـ <span class="en">true value</span>. <b>Precision</b> = قرب القراءات من بعضها. شكل التوزيع يقول لك الـ precision، ومكانه بالنسبة للـ true value يقول لك الـ accuracy. صورة الهدف: نقاط متجمعة جدًا بعيد عن المركز = <span class="en">Low accuracy, High precision</span> (وده بيحصل بسبب <span class="en">Systematic Error / Bias</span>).</p>
+<div class="diag"><figure><img class="im" src="images/target-accuracy-precision.png" alt="Target: low accuracy, high precision"><figcaption>Low accuracy / High precision: القراءات متجمعة لكن بعيدة عن المركز (الـ true value).</figcaption></figure></div>
+<div class="scroll"><table><tr><th>الحالة</th><th>القراءات</th></tr>
+<tr><td><span class="en">High Accuracy + High Precision</span></td><td>قريبة من بعضها ومن الـ true value.</td></tr>
+<tr><td><span class="en">High Precision + Low Accuracy</span></td><td>قريبة من بعضها لكن بعيدة عن الـ true value.</td></tr>
+<tr><td><span class="en">Low Precision + High Accuracy</span></td><td>منتشرة لكن مركزها قريب من الـ true value.</td></tr>
+<tr><td><span class="en">Low Precision + Low Accuracy</span></td><td>منتشرة ومركزها بعيد.</td></tr></table></div>
+<div class="hint">← اسحب لرؤية المزيد →</div>
+</section>
+<hr class="section-divider">
+
+<section id="s5">
+<div class="sec-h"><div class="ico">⚙️</div><div><h2>2. Systematic Errors</h2><small>Bias · Drift · Hysteresis · Zero Error</small></div></div>
+<div class="def-box ltr"><div class="t">Definition</div>Systematic errors cause the measured values to fall consistently above or below actual values, i.e., reduce the accuracy of the results. They have a definite source that usually can be identified by skilled experimentalists. Therefore, this error can be recovered.</div>
+<div class="diag"><figure><img class="im" src="images/trueness-precision.png" alt="Trueness and precision on a probability density curve"><figcaption>Trueness = المسافة بين الـ Reference value ومركز التوزيع (bias)، و Precision = عرض التوزيع.</figcaption></figure></div>
+<p><b>Examples:</b> <span class="en">Non Linearity · Hysteresis · Sensitivity · Drift · Zero Error · Use an instrument which is improperly calibrated</span>. وأشهرها <span class="en">Drift, Hysteresis, Zero Error</span>.</p>
+<div class="scroll"><table><tr><th>Figure (data sheet)</th><th>ما يوضحه الرسم</th></tr>
+<tr><td><span class="en">(a) Hysteresis error</span></td><td>منحنيان <span class="en">upscale</span> و<span class="en">downscale</span> بين <span class="en">Input value</span> و<span class="en">Output value</span> حتى <span class="en">FSO</span>؛ الفرق عند نفس الـ input بين <span class="m">Y<sub>down</sub></span> و<span class="m">Y<sub>up</sub></span> هو الـ hysteresis.</td></tr>
+<tr><td><span class="en">(b) Linearity error</span></td><td>الفرق بين <span class="m">Y<sub>L</sub></span> (Best linear curve fit) و<span class="m">Y</span> (Actual data trend).</td></tr>
+<tr><td><span class="en">(c) Sensitivity error</span></td><td>خطوط <span class="m">Y<sub>max</sub></span> و<span class="m">Y<sub>nom</sub></span> (Nominal curve) والحد الأدنى للجهاز النموذجي؛ ميل الخط <span class="m">K</span> بيختلف.</td></tr>
+<tr><td><span class="en">(d) Zero shift (null) error</span></td><td>الخط الاسمي (Nominal) ينزاح لأعلى أو لأسفل (Typical shift high/low) بشكل موازٍ، فتظهر قراءة عند الصفر.</td></tr></table></div>
+<div class="hint">← اسحب لرؤية المزيد →</div>
+<div class="warn"><div class="t">Warning</div>تكرار القياس 100 مرة <b>لا يحل</b> الـ Systematic Error: القراءات هتبقى متقاربة جدًا لكن كلها غلط في نفس الاتجاه، فتزيد ثقتك في قيمة خاطئة (مثلًا الحقيقي 50 والجهاز بيقرأ 52 دايمًا).</div>
+<p><b>إزاي نحدد/نقلل الـ Systematic Error:</b></p>
+<ul><li><span class="en">Calibrate the used device</span> (والمقارنة بـ Standard / Reference Instrument).</li><li><span class="en">Identify all the available information about the used instrument</span> (مثلًا مواصفات الـ Manufacturer).</li><li><span class="en">Use a different instrument.</span></li><li><span class="en">Change the experimental procedure.</span></li></ul>
+</section>
+<hr class="section-divider">
+
+<section id="s6">
+<div class="sec-h"><div class="ico">🧮</div><div><h2>Uncertainty with Systematic Errors</h2><small>U<sub>I</sub> · U<sub>o</sub> · U<sub>s</sub></small></div></div>
+<p><b>a) Instrument Uncertainty (U<sub>I</sub>)</b></p>
+<div class="formula-box">\[ U_I=\sqrt{\sum_{i=1}^{N}e_i^{\,2}} \]</div>
+<div class="note-box"><div class="t">ملاحظة</div>الرمز <span class="m">e<sub>i</sub></span> بيمثل مكونات خطأ الجهاز الفردية (غالبًا زي اللي بتتحدد في الـ data sheet: hysteresis, linearity, …) وبتتجمع بالـ root sum square.</div>
+<p><b>b) Zero-Order Uncertainty (U<sub>o</sub>)</b> — بتنتج من الـ <span class="en">Resolution</span>: أصغر تغير يقدر الجهاز يميزه/يعرضه (مثال الـ pressure gauge: 0–100 psi). دي <b>limitation في الجهاز</b> مش غلطة المستخدم.</p>
+<div class="formula-box">\[ U_o=\frac{\text{Resolution}}{2} \]</div>
+<p>مثال على شاشة Digital بتعرض <span class="m">1, 2, 3…</span>: <span class="m">Resolution = 1</span> فـ <span class="m">U<sub>o</sub> = 0.5</span>.</p>
+<p><b>Systematic Uncertainty (U<sub>s</sub>) — Design Stage Uncertainty</b></p>
+<div class="formula-box">\[ U_s=\sqrt{U_o^{2}+U_I^{2}} \]</div>
+<p>الـ uncertainties بتتجمع بطريقة <span class="en">Root Sum Square</span> (تربيع ← جمع ← جذر) وليس جمعًا عاديًا.</p>
+</section>
+<hr class="section-divider">
+
+<section id="s7">
+<div class="sec-h"><div class="ico">🔗</div><div><h2>3. Overall Error</h2><small>Combining in quadrature</small></div></div>
+<div class="def-box ltr"><div class="t">Definition</div>Once systematic and random errors are evaluated, the overall uncertainty can be determined by combining the two components in quadrature.</div>
+<div class="formula-box"><div class="cap">At 95% Level of Confidence</div>\[ U_t=\sqrt{U_s^{2}+U_r^{2}} \]</div>
+<div class="example-card"><div class="ex-h">Example — Absolute uncertainty</div>
+<div class="ex-q">T = 155 °C ± 3 °C</div>
+<div class="step"><i>1</i><div>الـ Average = 155 والـ Absolute uncertainty = ‎±3‎.</div></div>
+<div class="step"><i>2</i><div>الحد الأدنى <span class="m">155 − 3 = 152</span>، والأعلى <span class="m">155 + 3 = 158</span>.</div></div>
+<div class="step"><i>3</i><div>لو قسنا 100 مرة: حوالي 95 قراءة داخل المجال، وحوالي 2.5% أعلى من 158، وحوالي 2.5% أقل من 152.</div></div>
+<div class="ans">152 ≤ T ≤ 158 with 95% confidence</div></div>
+<div class="def-box"><div class="t">الصيغة النهائية</div><span class="en">Measurement Result = Measured Value ± Overall Uncertainty</span> — يعني قراءة ومعاها مقدار الـ Uncertainty، مش رقم منفرد.</div>
+</section>
+<hr class="section-divider">
+
+<section id="s8">
+<div class="sec-h"><div class="ico">🧑‍🔬</div><div><h2>4. Human Error (Mistakes)</h2><small>Mistakes</small></div></div>
+<p>أخطاء من الشخص نفسه، المفروض يتأكد منها ويصححها — مش random بنتعامل معاه بالـ averaging:</p>
+<ul class="en" style="text-align:left"><li>Incorrect calculations</li><li>Using wrong data</li><li>Incorrect units</li><li>Incorrect calibration</li><li>Incorrect wire connections</li><li>Incorrect experimental setup</li></ul>
+</section>
+<hr class="section-divider">
+
+<section id="s9">
+<div class="sec-h"><div class="ico">⚖️</div><div><h2>Random Vs. Systematic Errors</h2><small>Summary &amp; lecture questions</small></div></div>
+<div class="scroll"><table><tr><th></th><th>Random</th><th>Systematic</th></tr>
+<tr><td>Affects</td><td class="m">Precision</td><td class="m">Accuracy</td></tr>
+<tr><td>Reduced by</td><td>More experimental trials</td><td>Calibration, manufacturer data, reference instrument, different instrument/procedure</td></tr>
+<tr><td>Uncertainty</td><td class="m">U<sub>r</sub> (statistics)</td><td class="m">U<sub>s</sub> = √(U<sub>o</sub>² + U<sub>I</sub>²)</td></tr></table></div>
+<div class="hint">← اسحب لرؤية المزيد →</div>
+<div class="note-box ltr"><div class="t">Summary</div>Only skilled experimenters can detect the systematic errors and prevent or correct them. Random errors are much easier to deal with. Low systematic uncertainty ⇒ accurate. Low random uncertainty ⇒ precise.</div>
+<div class="q-section"><h3>أسئلة المحاضرة</h3>
+<div class="q-item"><div class="qt">Do you think doing more experimental trials should reduce random error?</div><button class="tog" onclick="tg(this)">عرض الحل الكامل ▼</button><div class="sol">نعم. الأخطاء الموجبة والسالبة بتلغي بعضها عند الـ average، فتأثير الـ random error على النتيجة بيقل.</div></div>
+<div class="q-item"><div class="qt">Do you think doing more experimental trials should reduce systematic error?</div><button class="tog" onclick="tg(this)">عرض الحل الكامل ▼</button><div class="sol">لا. الخطأ ثابت الاتجاه (bias)، فالتكرار بيزود ثقتك في رقم منحاز بس. العلاج بالـ calibration أو الـ reference instrument أو مواصفات الـ manufacturer.</div></div></div>
+<div class="note-box"><div class="t">Time Constant</div>مصطلح <span class="en">Time Constant</span> مطلوب تبحث عن معناه، وهيظهر في موضوعات الـ course الجاية (<span class="en">Dynamic Response</span>).</div>
+</section>
+</div>
+
+<footer>
+<h4>Fundamentals of Errors in Measurements</h4>
+<p>Mechanical Measurements &amp; Instrumentation</p>
+<div class="tags"><span>Uncertainty</span><span>Random Error</span><span>Systematic Error</span><span>Standard Deviation</span><span>Student's t</span><span>Accuracy &amp; Precision</span><span>Overall Uncertainty</span></div>
+</footer>
+<div class="closing">🤲 ولا تنسوا الصلاة على النبي صلى الله عليه وسلم، والدعاء لإخوانكم في فلسطين وغزة وفي جميع بقاع الأرض، وأن ينصر الله المسلمين المستضعفين. 🤲</div>
+
+<script>
+var b=document.getElementById('duaBtn'),d=document.getElementById('duaBody');
+b.addEventListener('click',function(){var o=b.getAttribute('aria-expanded')==='true';b.setAttribute('aria-expanded',String(!o));d.style.display=o?'none':'block'});
+function tg(x){var s=x.nextElementSibling,o=s.style.display==='block';s.style.display=o?'none':'block';x.textContent=o?'عرض الحل الكامل ▼':'إخفاء الحل ▲'}
+document.querySelectorAll('.toc-b a').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'})})});
+</script>
+</body>
+</html>
