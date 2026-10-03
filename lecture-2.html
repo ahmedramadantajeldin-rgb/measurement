@@ -89,8 +89,117 @@ footer p{opacity:.7;margin:0 0 14px}
 .m.wrap{white-space:normal;display:inline-block}
 .home{position:absolute!important;top:14px;right:20px;font:600 .85rem Cairo,sans-serif;direction:ltr;color:#fff;text-decoration:none;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:30px;padding:3px 14px}.home:hover{background:rgba(255,255,255,.28)}
 </style>
+<!-- ===== EYE PROTECTION MODE (optional viewing layer — original design untouched when OFF) ===== -->
+<script>
+/* Restore the saved choice before first paint so there is no flash. Default = OFF (original design). */
+try{ if(localStorage.getItem('eyeProtection')==='on'){ document.documentElement.setAttribute('data-eye','on'); } }catch(e){}
+</script>
+<style id="eye-protection-css">
+/* ---- Control (fixed, top-left; the existing "home" pill stays top-right) ---- */
+.eye-toggle{
+  position:fixed; top:14px; left:14px; z-index:10000; direction:ltr;
+  display:inline-flex; align-items:center; gap:8px; padding:6px 14px 6px 12px;
+  border-radius:999px; cursor:pointer; margin:0;
+  font-family:'Cairo',sans-serif; font-weight:600; font-size:0.82rem; line-height:1.4;
+  background:rgba(255,255,255,0.93); color:#0B2447; border:1px solid rgba(11,36,71,0.28);
+  box-shadow:0 2px 10px rgba(11,36,71,0.18);
+  -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px);
+  transition:background .2s, border-color .2s, color .2s;
+}
+.eye-toggle:hover:not([aria-pressed="true"]){background:#fff;}
+.eye-toggle:focus-visible{outline:2px solid #F0B429; outline-offset:2px;}
+.eye-ico{font-size:1rem; line-height:1;}
+.eye-sw{position:relative; flex:0 0 30px; width:30px; height:16px; border-radius:999px; background:#A9B4C0; transition:background .2s;}
+.eye-sw::after{
+  content:""; position:absolute; top:2px; left:2px; width:12px; height:12px; border-radius:50%;
+  background:#fff; box-shadow:0 1px 2px rgba(0,0,0,.3); transition:transform .2s;
+}
+.eye-st{min-width:2.3em; text-align:left; font-family:'JetBrains Mono',monospace; font-size:0.76rem; font-weight:500;}
+.eye-toggle[aria-pressed="true"]{background:#F8EFD6; border-color:#C9A25A; color:#5A3E00;}
+.eye-toggle[aria-pressed="true"] .eye-sw{background:#C8902E;}
+.eye-toggle[aria-pressed="true"] .eye-sw::after{transform:translateX(14px);}
+@media (max-width:420px){
+  .eye-toggle{padding:5px 10px 5px 9px; gap:6px; font-size:0.74rem;}
+  .eye-lbl{display:none;}
+}
+
+/* Warm tint layer: hidden unless the mode is ON */
+.eye-overlay{display:none;}
+
+/* ---- Eye Protection ON (screen only; printing is never affected) ---- */
+@media screen{
+  html[data-eye="on"]{
+    /* Slightly softer, less saturated palette. Same hues, so the design stays recognizable. */
+    --pearl:#EAF1F5; --mist:#D5E4EE; --white:#F8F8F5;
+    --sky:#3A84B3; --azure:#69A8CF; --amber:#E2AD3C; --gold:#C8A21C;
+    --mint:#27AD93; --mint-light:#D6EADC; --coral:#D9544A; --coral-light:#F0DCD6;
+    --slate:#556576;                       /* a touch darker so small captions keep their contrast */
+    --shadow:0 4px 20px rgba(50,44,32,0.10); --shadow-lg:0 8px 40px rgba(50,44,32,0.14);
+    --eye-paper:#F8F8F5;                   /* replaces pure white surfaces */
+  }
+
+  /* Page background: soft neutral (the warm tint layer below turns it into warm ivory) */
+  html[data-eye="on"] body{background:linear-gradient(160deg,#F0F1F0 0%,#ECEDEC 50%,#F1F2F1 100%);}
+
+  /* Pure-white surfaces -> soft off-white */
+  html[data-eye="on"] .dua-inner,
+  html[data-eye="on"] .toc-card,
+  html[data-eye="on"] .proof-body,
+  html[data-eye="on"] .svg-diagram,
+  html[data-eye="on"] table.lec-table{background:var(--eye-paper);}
+  html[data-eye="on"] figure.lec-figure img{background:var(--eye-paper);}
+  html[data-eye="on"] .doctor-box{background:linear-gradient(135deg,var(--eye-paper),var(--pearl));}
+  html[data-eye="on"] .meaning-block{background:linear-gradient(135deg,var(--pearl),var(--eye-paper));}
+  html[data-eye="on"] .svg-diagram svg [fill="#EBF5FB"]{fill:#E0EDF8;}
+
+  /* Bright cream / grey callouts -> calmer tones */
+  html[data-eye="on"] .note-box{background:#F6F0DF;}
+  html[data-eye="on"] .dua-content{background:linear-gradient(135deg,#F6F1E0,#F7F2E6);}
+  html[data-eye="on"] .uncertain-box{background:#EEEEEC;}
+
+  /* Equations on dark boxes: pure white -> very light neutral (still > 14:1 contrast) */
+  html[data-eye="on"] .formula-box mjx-container{color:#F4F4F2 !important;}
+
+  /* Diagrams / photos: only a whisper of softening */
+  html[data-eye="on"] img{filter:brightness(0.97) saturate(0.96);}
+
+  /* Warm tint layer: multiplies every pixel, cutting the blue channel ~8% and green ~3%.
+     Dark text stays dark, so contrast and equation clarity are preserved. */
+  @supports (mix-blend-mode:multiply){
+    html[data-eye="on"] .eye-overlay{
+      display:block; position:fixed; inset:0; z-index:9990; pointer-events:none;
+      background:rgba(255,225,170,0.22); mix-blend-mode:multiply;
+    }
+  }
+}
+@media print{ .eye-toggle,.eye-overlay{display:none !important;} }
+</style>
+<style id="eye-extra">
+@media screen{
+html[data-eye="on"] .dua-card{background:var(--eye-paper);}
+html[data-eye="on"] .toc-card{background:var(--eye-paper);}
+html[data-eye="on"] .prof-box{background:var(--eye-paper);}
+html[data-eye="on"] .ex-card{background:var(--eye-paper);}
+html[data-eye="on"] .fig{background:var(--eye-paper);}
+html[data-eye="on"] .tbl{background:var(--eye-paper);}
+html[data-eye="on"] .grid3 span{background:var(--eye-paper);}
+html[data-eye="on"] .q-section{background:var(--eye-paper);}
+html[data-eye="on"] .dua-body{background:linear-gradient(135deg,#F6F1E0,#F7F2E6);}
+html[data-eye="on"] .formula-box mjx-container{color:#F4F4F2 !important;}
+}
+</style>
 </head>
 <body>
+<!-- Eye Protection control + warm tint layer -->
+<button type="button" class="eye-toggle" id="eyeToggle" aria-pressed="false" title="Eye Protection: softer brightness and less blue light for long study sessions">
+  <span class="eye-ico" aria-hidden="true">👁</span>
+  <span class="eye-lbl">Eye Protection</span>
+  <span class="eye-sw" aria-hidden="true"></span>
+  <span class="eye-st">OFF</span>
+</button>
+<div class="eye-overlay" aria-hidden="true"></div>
+
+
 <header><a class="home" href="index.html">‹ Method Measurements</a>
 <div class="badge">Lecture 2 · Mechanical Measurements &amp; Instrumentation</div>
 <h1>Static Characteristics of Transducers<small>الخصائص الاستاتيكية للمحولات</small></h1>
@@ -124,6 +233,22 @@ var b=document.getElementById('duaBtn'),d=document.getElementById('duaBody');
 b.addEventListener('click',function(){var o=b.getAttribute('aria-expanded')==='true';b.setAttribute('aria-expanded',o?'false':'true');d.style.display=o?'none':'block';});
 function tg(x){var s=x.nextElementSibling,o=s.style.display==='block';s.style.display=o?'none':'block';x.textContent=o?'عرض الحل الكامل ▼':'إخفاء الحل ▲';}
 document.querySelectorAll('.toc-item').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth'});});});
+</script>
+<script>
+/* Eye Protection toggle */
+(function(){
+  var KEY='eyeProtection', root=document.documentElement, btn=document.getElementById('eyeToggle');
+  if(!btn) return;
+  var st=btn.querySelector('.eye-st');
+  function render(on){ btn.setAttribute('aria-pressed', on?'true':'false'); st.textContent = on?'ON':'OFF'; }
+  render(root.getAttribute('data-eye')==='on');
+  btn.addEventListener('click', function(){
+    var on = root.getAttribute('data-eye') !== 'on';
+    if(on){ root.setAttribute('data-eye','on'); } else { root.removeAttribute('data-eye'); }
+    render(on);
+    try{ localStorage.setItem(KEY, on?'on':'off'); }catch(e){}
+  });
+})();
 </script>
 </body>
 </html>
