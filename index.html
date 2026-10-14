@@ -4,99 +4,136 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Method Measurements — Lectures</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=Cairo:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&family=Amiri&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Cairo:wght@400;600;700&family=JetBrains+Mono:wght@400;500&family=Amiri&display=swap" rel="stylesheet">
 <style>
-:root{--navy:#0B2447;--royal:#1B4F8A;--sky:#2E86C1;--azure:#5DADE2;--mist:#D6EAF8;--pearl:#EBF5FB;--white:#FFFFFF;--ink:#1A1A2E;--graphite:#2C3E50;--slate:#5D6D7E;--gold:#D4AC0D;--amber:#F0B429;--mint:#1ABC9C;--shadow:0 4px 20px rgba(11,36,71,0.10);--shadow-lg:0 8px 40px rgba(11,36,71,0.16);--radius:14px;--radius-sm:8px}
+:root{--navy:#0B2447;--royal:#1B4F8A;--sky:#2E86C1;--azure:#5DADE2;--mist:#D6EAF8;--pearl:#EBF5FB;--ink:#1A1A2E;--graphite:#2C3E50;--slate:#5D6D7E;--gold:#D4AC0D;--shadow:0 2px 12px rgba(11,36,71,.08);--shadow-lg:0 10px 30px rgba(11,36,71,.16);--radius:14px}
 *{box-sizing:border-box;max-width:100%}
 html,body{margin:0;overflow-x:hidden}
-body{background:linear-gradient(160deg,#f0f6ff 0%,#e8f1fb 50%,#f5f9ff 100%);font-family:'Cairo','Source Serif 4',serif;font-size:17px;line-height:1.85;color:var(--ink);padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{background:linear-gradient(180deg,#eef5fc 0%,#f6faff 100%);font-family:'Cairo',sans-serif;font-size:16px;line-height:1.8;color:var(--ink)}
 .en{direction:ltr;unicode-bidi:isolate}
-header{background:linear-gradient(135deg,var(--navy) 0%,var(--royal) 60%,var(--sky) 100%);color:#fff;text-align:center;padding:64px 40px 78px;position:relative;overflow:hidden}
-header::before{content:"";position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M0 30h60M30 0v60' stroke='white' stroke-opacity='.04'/%3E%3C/svg%3E")}
-header::after{content:"";position:absolute;left:0;right:0;bottom:0;height:34px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.75) 0 2px,transparent 2px 100px) bottom/100% 34px no-repeat,repeating-linear-gradient(90deg,rgba(255,255,255,.55) 0 1px,transparent 1px 20px) bottom/100% 18px no-repeat,repeating-linear-gradient(90deg,rgba(255,255,255,.35) 0 1px,transparent 1px 10px) bottom/100% 9px no-repeat}
+
+/* ───── Hero ───── */
+header{position:relative;overflow:hidden;color:#fff;text-align:center;background:linear-gradient(135deg,var(--navy) 0%,var(--royal) 62%,var(--sky) 100%);padding:calc(28px + env(safe-area-inset-top,0px)) 24px 84px}
+header::before{content:"";position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M0 30h60M30 0v60' stroke='white' stroke-opacity='.045'/%3E%3C/svg%3E")}
+header::after{content:"";position:absolute;left:0;right:0;bottom:0;height:34px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.8) 0 2px,transparent 2px 100px) bottom/100% 34px no-repeat,repeating-linear-gradient(90deg,rgba(255,255,255,.55) 0 1px,transparent 1px 20px) bottom/100% 18px no-repeat,repeating-linear-gradient(90deg,rgba(255,255,255,.35) 0 1px,transparent 1px 10px) bottom/100% 9px no-repeat}
 header>*{position:relative;z-index:1}
-.badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:30px;padding:4px 18px;font-size:.8rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:20px;direction:ltr}
-h1{font-family:'Playfair Display',serif;font-weight:800;font-size:clamp(2.3rem,6vw,4rem);line-height:1.15;margin:0 0 12px;text-shadow:0 2px 10px rgba(0,0,0,.28);direction:ltr}
-h1 small{display:block;font:700 .38em 'Cairo',sans-serif;opacity:.88;margin-top:12px;direction:rtl}
-.subtitle{font-family:'Source Serif 4',serif;font-size:1.1rem;opacity:.88;direction:ltr;max-width:650px;margin:0 auto 24px}
-.pills{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
-.pills span{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);border-radius:30px;padding:4px 16px;font-size:.88rem}
-main{max-width:900px;margin:0 auto;padding:46px 24px 10px}
-.lead{margin:0 0 30px;color:var(--graphite)}
-.lead b{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--navy);display:block;direction:ltr;text-align:right}
-.scale{position:relative}
-.scale::before{content:"";position:absolute;right:35px;top:20px;bottom:20px;width:3px;border-radius:3px;background:repeating-linear-gradient(180deg,var(--sky) 0 14px,var(--mist) 14px 20px)}
-.lec{display:grid;grid-template-columns:72px 1fr;gap:18px;margin-bottom:26px;position:relative}
-.dial{width:72px;display:flex;justify-content:center;padding-top:14px}
-.dial span{width:60px;height:60px;border-radius:50%;background:#fff;border:3px solid var(--sky);box-shadow:var(--shadow);display:flex;flex-direction:column;align-items:center;justify-content:center;font:500 1.25rem/1 'JetBrains Mono',monospace;color:var(--navy);direction:ltr;position:relative;z-index:1}
-.dial span i{font:400 .56rem 'JetBrains Mono',monospace;color:var(--slate);font-style:normal;letter-spacing:1px;margin-bottom:3px}
-a.card,div.card{display:block;background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 26px;text-decoration:none;color:inherit;border-right:6px solid var(--royal);transition:box-shadow .25s,transform .25s}
-a.card:hover,a.card:focus-visible{box-shadow:var(--shadow-lg);transform:translateY(-3px);outline:none}
-a.card:focus-visible{outline:3px solid var(--azure)}
-.card h2{font-family:'Playfair Display',serif;font-size:1.55rem;line-height:1.3;color:var(--navy);margin:0;direction:ltr;text-align:right}
-.card .ar{font-weight:700;color:var(--royal);margin:2px 0 8px}
-.card p{margin:0 0 12px;color:var(--graphite);font-size:.97rem;line-height:1.8}
-.chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px;direction:ltr;justify-content:flex-end}
-.chips span{background:var(--pearl);color:var(--royal);border-radius:30px;padding:1px 12px;font:500 .78rem 'JetBrains Mono',monospace}
-.open{display:inline-block;background:linear-gradient(90deg,var(--royal),var(--sky));color:#fff;border-radius:var(--radius-sm);padding:5px 20px;font-weight:700;font-size:.95rem}
-div.card.soon{border-right-color:var(--azure);background:rgba(255,255,255,.55);box-shadow:none;border:2px dashed var(--azure);border-right-width:2px}
-.soon h2{color:var(--slate)}
-.soon .dial span{border-style:dashed;color:var(--slate);box-shadow:none}
-.tag-soon{display:inline-block;background:var(--mist);color:var(--royal);border-radius:30px;padding:1px 16px;font:500 .8rem 'JetBrains Mono',monospace;direction:ltr}
-footer{background:var(--navy);color:#fff;text-align:center;border-radius:14px;padding:32px 24px;margin:40px auto 0;max-width:900px}
-footer h4{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;margin:0 0 8px}
-footer p{opacity:.7;margin:0 0 14px;direction:ltr}
-.tags{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;direction:ltr}
-.tags span{background:rgba(255,255,255,.1);border-radius:30px;padding:3px 14px;font-size:.85rem}
-.closing{max-width:900px;margin:24px auto 40px;padding:28px 24px;background:linear-gradient(135deg,#0B2447,#1B4F8A);border-top:4px solid #D4AC0D;border-radius:14px;box-shadow:0 8px 32px rgba(11,36,71,0.18);font-family:'Amiri',serif;font-size:19px;line-height:2.2;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.3);text-align:center}
-@media(max-width:768px){body{font-size:16px}header{padding:52px 28px 70px}.card h2{font-size:1.35rem}}
-@media(max-width:650px){main{padding:36px 16px 6px}.lec{grid-template-columns:56px 1fr;gap:12px}.dial{width:56px}.dial span{width:48px;height:48px;font-size:1.05rem}.scale::before{right:27px}}
-@media(max-width:600px){header{padding:44px 18px 64px}.card{padding:18px 18px}.closing{margin:20px 16px 36px}footer{margin:36px 16px 0}}
-.hub-nav{margin-bottom:20px;display:flex;justify-content:center}
-.hub-link{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.32);border-radius:30px;padding:6px 18px;font-size:.85rem;font-weight:600;color:#fff;text-decoration:none;direction:ltr;backdrop-filter:blur(4px);transition:all .2s ease}
-.hub-link:hover,.hub-link:focus-visible{background:rgba(255,255,255,.28);border-color:#fff;transform:translateY(-1px);box-shadow:0 4px 14px rgba(0,0,0,.15);outline:none}
-.hub-link svg{width:14px;height:14px;transition:transform .2s ease}
+.gauge{position:absolute!important;z-index:0!important;width:min(520px,95vw);aspect-ratio:1;left:50%;top:50%;transform:translate(-50%,-46%);opacity:.2;pointer-events:none}
+.gauge svg{width:100%;height:100%;display:block;overflow:visible}
+.g-ring{transform-origin:200px 200px;animation:spin 90s linear infinite}
+.g-needle{transform-origin:200px 200px;transform:rotate(18deg);animation:sweep 2.4s cubic-bezier(.2,.9,.25,1.15) both,idle 7s ease-in-out 2.4s infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes sweep{from{transform:rotate(-110deg)}to{transform:rotate(18deg)}}
+@keyframes idle{0%,100%{transform:rotate(18deg)}50%{transform:rotate(23deg)}}
+
+.hub-nav{display:flex;justify-content:center;margin-bottom:34px}
+.hub-link{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.32);border-radius:30px;padding:6px 18px;font-size:.85rem;font-weight:600;color:#fff;text-decoration:none;direction:ltr;backdrop-filter:blur(4px);transition:background .2s,border-color .2s}
+.hub-link:hover,.hub-link:focus-visible{background:rgba(255,255,255,.28);border-color:#fff;outline:none}
+.hub-link:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.hub-link svg{width:14px;height:14px;transition:transform .2s}
 .hub-link:hover svg{transform:translateX(-3px)}
+.badge{display:inline-block;border:1px solid rgba(255,255,255,.35);border-radius:30px;padding:3px 16px;font-size:.78rem;letter-spacing:1.5px;margin-bottom:16px;direction:ltr}
+h1{font-family:'Playfair Display',serif;font-weight:800;font-size:clamp(2.4rem,7vw,4.2rem);line-height:1.12;margin:0;text-shadow:0 2px 12px rgba(0,0,0,.28);direction:ltr}
+h1 small{display:block;font:700 .36em 'Cairo',sans-serif;opacity:.9;margin-top:12px;direction:rtl}
+.hero-in{animation:fade .9s ease both}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* ───── Main ───── */
+main{max-width:900px;margin:0 auto;padding:38px 20px 8px}
+.desc{margin:0 0 22px;text-align:center;color:var(--graphite);font-size:1rem}
+.label{display:flex;align-items:center;gap:12px;margin:0 0 16px;font:700 1.15rem 'Playfair Display',serif;color:var(--navy);direction:ltr}
+.label::after{content:"";flex:1;height:1px;background:repeating-linear-gradient(90deg,var(--azure) 0 2px,transparent 2px 8px)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;direction:rtl}
+
+.lec{position:relative;display:flex;align-items:center;gap:14px;padding:16px 18px;min-height:84px;background:#fff;border:1px solid rgba(27,79,138,.12);border-radius:var(--radius);box-shadow:var(--shadow);color:inherit;text-decoration:none;overflow:hidden;opacity:0;animation:fade .55s ease forwards;animation-delay:calc(.5s + var(--i)*.1s);transition:box-shadow .25s,transform .25s,border-color .25s}
+.lec::before{content:"";position:absolute;inset-block:0;right:0;width:4px;background:var(--royal);transition:width .25s}
+.num{flex:none;width:44px;height:44px;border-radius:50%;border:2px solid var(--sky);background:var(--pearl);display:flex;align-items:center;justify-content:center;font:500 1rem 'JetBrains Mono',monospace;color:var(--navy);direction:ltr}
+.txt{flex:1;min-width:0}
+.txt h2{margin:0;font:700 1.02rem/1.35 'Playfair Display',serif;color:var(--navy);direction:ltr;text-align:right}
+.txt .ar{margin-top:2px;font-weight:700;font-size:.9rem;color:var(--royal)}
+.go{flex:none;width:18px;height:18px;color:var(--sky);transition:transform .25s}
+a.lec:hover,a.lec:focus-visible{border-color:var(--azure)}
+a.lec:focus-visible{outline:3px solid var(--azure);outline-offset:2px}
+a.lec:active{transform:scale(.985)}
+@media(hover:hover){a.lec:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}a.lec:hover::before{width:7px}a.lec:hover .go{transform:translateX(-4px)}}
+
+div.lec.soon{background:rgba(255,255,255,.55);border:2px dashed var(--azure);box-shadow:none}
+.soon::before{display:none}
+.soon .num{border-style:dashed;color:var(--slate);background:transparent}
+.soon h2{color:var(--slate)}
+.tag-soon{flex:none;background:var(--mist);color:var(--royal);border-radius:30px;padding:0 12px;font:500 .72rem 'JetBrains Mono',monospace;direction:ltr}
+
+/* ───── Footer & closing ───── */
+footer{text-align:center;color:var(--slate);font-size:.88rem;margin:34px 0 0;direction:ltr}
+.closing{max-width:900px;margin:20px auto calc(32px + env(safe-area-inset-bottom,0px));padding:22px 24px;background:linear-gradient(135deg,var(--navy),var(--royal));border-top:3px solid var(--gold);border-radius:var(--radius);font:19px/2.1 'Amiri',serif;color:#fff;text-align:center;box-shadow:0 8px 28px rgba(11,36,71,.16)}
+
+@media(max-width:600px){
+  header{padding-bottom:70px}
+  .hub-nav{margin-bottom:26px}
+  main{padding:28px 16px 4px}
+  .grid{grid-template-columns:1fr;gap:10px}
+  .lec{padding:12px 14px;min-height:72px}
+  .num{width:40px;height:40px;font-size:.92rem}
+  .closing{margin-inline:16px;font-size:17px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .lec,.hero-in{opacity:1!important;transform:none!important}
+  .g-needle{transform:rotate(18deg)}
+}
 </style>
 </head>
 <body>
 <header>
-<div class="hub-nav">
-  <a href="https://ahmedramadantajeldin-rgb.github.io/MechLibrary/" class="hub-link" title="العودة إلى MechHub">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-    <span>Back to MechHub &nbsp;·&nbsp; العودة إلى MechHub</span>
-  </a>
-</div>
-<div class="badge">Course Notes</div>
-<h1>Method Measurements<small>فهرس المحاضرات</small></h1>
-<p class="subtitle">Structured lecture notes on measurement: from errors and uncertainty to the static characteristics of transducers.</p>
-<div class="pills"><span>📏 Errors</span><span>📐 Uncertainty</span><span>⚖️ Calibration</span><span>📈 Sensitivity</span></div>
+  <div class="gauge" aria-hidden="true">
+    <svg viewBox="0 0 400 400" fill="none" stroke="#fff">
+      <g class="g-ring">
+        <circle cx="200" cy="200" r="190" stroke-width="1.2"/>
+        <circle cx="200" cy="200" r="176" stroke-width="10" stroke-dasharray="1.5 16.2" pathLength="360"/>
+        <circle cx="200" cy="200" r="150" stroke-width="1"/>
+      </g>
+      <g class="g-needle" stroke-linecap="round">
+        <line x1="200" y1="200" x2="200" y2="50" stroke-width="3"/>
+        <circle cx="200" cy="200" r="9" fill="#fff" stroke="none"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="hub-nav hero-in">
+    <a href="https://ahmedramadantajeldin-rgb.github.io/MechLibrary/" class="hub-link" title="العودة إلى MechHub">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      <span>Back to MechHub &nbsp;·&nbsp; العودة إلى MechHub</span>
+    </a>
+  </div>
+  <div class="badge hero-in">Course Notes</div>
+  <h1 class="hero-in">Method Measurements<small>فهرس المحاضرات</small></h1>
 </header>
 
 <main>
-<p class="lead"><b>Lectures</b>اختار المحاضرة اللي عايز تذاكرها. كل محاضرة صفحة مستقلة فيها الشرح والمعادلات والأمثلة.</p>
-<div class="scale">
+  <p class="desc">ملف يجمع الشرح والمعادلات والأمثلة الخاصة بالمادة.</p>
+  <div class="label">Lectures</div>
 
-<div class="lec"><div class="dial"><span><i>LEC</i>01</span></div>
-<div class="card soon" aria-disabled="true"><h2>Lecture 1</h2><div class="ar">هتتضاف قريبًا</div><p>مكان المحاضرة الأولى محجوز، وهتظهر هنا أول ما تتجهز.</p><span class="tag-soon">Coming soon</span></div></div>
+  <div class="grid">
+    <div class="lec soon" style="--i:0" aria-disabled="true">
+      <span class="num">01</span>
+      <div class="txt"><h2>Lecture 1</h2><div class="ar">هتتضاف قريبًا</div></div>
+      <span class="tag-soon">Coming soon</span>
+    </div>
 
-<div class="lec"><div class="dial"><span><i>LEC</i>02</span></div>
-<a class="card" href="lecture-2.html"><h2>Static Characteristics of Transducers</h2><div class="ar">الخصائص الاستاتيكية للمحولات</div>
-<p>الـ Calibration ومعايير اختيار الـ transducer، وشرح الـ 13 static characteristic زي Sensitivity وHysteresis وDead Band وDrift وLoading Effect.</p>
-<div class="chips"><span>Calibration</span><span>Range &amp; Span</span><span>Sensitivity</span><span>Hysteresis</span><span>Dead Band</span><span>Drift</span></div>
-<span class="open">افتح المحاضرة</span></a></div>
+    <a class="lec" style="--i:1" href="lecture-2.html">
+      <span class="num">02</span>
+      <div class="txt"><h2>Static Characteristics of Transducers</h2><div class="ar">الخصائص الاستاتيكية للمحولات</div></div>
+      <svg class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+    </a>
 
-<div class="lec"><div class="dial"><span><i>LEC</i>03</span></div>
-<a class="card" href="lecture-3.html"><h2>Fundamentals of Errors in Measurements</h2><div class="ar">أساسيات الـ Errors في القياس</div>
-<p>الفرق بين الـ Error والـ Uncertainty، وأنواع الـ Errors (Random وSystematic وHuman)، وحساب الـ Standard Deviation والـ Uncertainty للوصول للنتيجة النهائية <span class="en">x̄ ± U</span> عند 95% confidence.</p>
-<div class="chips"><span>Random Error</span><span>Systematic Error</span><span>Standard Deviation</span><span>Student's t</span><span>Overall Uncertainty</span></div>
-<span class="open">افتح المحاضرة</span></a></div>
-
-</div>
+    <a class="lec" style="--i:2" href="lecture-3.html">
+      <span class="num">03</span>
+      <div class="txt"><h2>Fundamentals of Errors in Measurements</h2><div class="ar">أساسيات الـ Errors في القياس</div></div>
+      <svg class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+    </a>
+  </div>
 </main>
 
-<footer><h4>Method Measurements</h4><p>Mechanical Measurements &amp; Instrumentation</p>
-<div class="tags"><span>Errors</span><span>Uncertainty</span><span>Calibration</span><span>Static Characteristics</span></div></footer>
+<footer>Mechanical Measurements &amp; Instrumentation</footer>
 <div class="closing">🤲 ولا تنسوا الصلاة على النبي صلى الله عليه وسلم، والدعاء لإخوانكم في فلسطين وغزة وفي جميع بقاع الأرض، وأن ينصر الله المسلمين المستضعفين. 🤲</div>
 </body>
 </html>
