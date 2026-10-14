@@ -52,11 +52,21 @@ footer p{opacity:.7;margin:0 0 14px;direction:ltr}
 @media(max-width:768px){body{font-size:16px}header{padding:52px 28px 70px}.card h2{font-size:1.35rem}}
 @media(max-width:650px){main{padding:36px 16px 6px}.lec{grid-template-columns:56px 1fr;gap:12px}.dial{width:56px}.dial span{width:48px;height:48px;font-size:1.05rem}.scale::before{right:27px}}
 @media(max-width:600px){header{padding:44px 18px 64px}.card{padding:18px 18px}.closing{margin:20px 16px 36px}footer{margin:36px 16px 0}}
-@media(max-width:380px){body{font-size:15px}h1{font-size:2rem}.card h2{font-size:1.2rem}.closing{font-size:17px;padding:22px 16px}}
+.hub-nav{margin-bottom:20px;display:flex;justify-content:center}
+.hub-link{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.32);border-radius:30px;padding:6px 18px;font-size:.85rem;font-weight:600;color:#fff;text-decoration:none;direction:ltr;backdrop-filter:blur(4px);transition:all .2s ease}
+.hub-link:hover,.hub-link:focus-visible{background:rgba(255,255,255,.28);border-color:#fff;transform:translateY(-1px);box-shadow:0 4px 14px rgba(0,0,0,.15);outline:none}
+.hub-link svg{width:14px;height:14px;transition:transform .2s ease}
+.hub-link:hover svg{transform:translateX(-3px)}
 </style>
 </head>
 <body>
 <header>
+<div class="hub-nav">
+  <a href="https://ahmedramadantajeldin-rgb.github.io/MechLibrary/" class="hub-link" title="العودة إلى MechHub">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    <span>Back to MechHub &nbsp;·&nbsp; العودة إلى MechHub</span>
+  </a>
+</div>
 <div class="badge">Course Notes</div>
 <h1>Method Measurements<small>فهرس المحاضرات</small></h1>
 <p class="subtitle">Structured lecture notes on measurement: from errors and uncertainty to the static characteristics of transducers.</p>
