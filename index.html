@@ -9,11 +9,11 @@
 :root{--navy:#0B2447;--royal:#1B4F8A;--sky:#2E86C1;--azure:#5DADE2;--mist:#D6EAF8;--pearl:#EBF5FB;--ink:#1A1A2E;--graphite:#2C3E50;--slate:#5D6D7E;--gold:#D4AC0D;--shadow:0 2px 12px rgba(11,36,71,.08);--shadow-lg:0 10px 30px rgba(11,36,71,.16);--radius:14px}
 *{box-sizing:border-box;max-width:100%}
 html,body{margin:0;overflow-x:hidden}
-body{background:linear-gradient(180deg,#eef5fc 0%,#f6faff 100%);font-family:'Cairo',sans-serif;font-size:16px;line-height:1.8;color:var(--ink)}
+body{background:linear-gradient(180deg,#c3d3e5 0%,#d8e4f0 100%);font-family:'Cairo',sans-serif;font-size:16px;line-height:1.8;color:var(--ink)}
 .en{direction:ltr;unicode-bidi:isolate}
 
 /* ───── Hero ───── */
-header{position:relative;overflow:hidden;color:#fff;text-align:center;background:linear-gradient(135deg,var(--navy) 0%,var(--royal) 62%,var(--sky) 100%);padding:calc(28px + env(safe-area-inset-top,0px)) 24px 84px}
+header{position:relative;overflow:hidden;color:#fff;text-align:center;background:linear-gradient(135deg,#071a36 0%,#123d70 62%,#2574a8 100%);padding:calc(28px + env(safe-area-inset-top,0px)) 24px 84px}
 header::before{content:"";position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M0 30h60M30 0v60' stroke='white' stroke-opacity='.045'/%3E%3C/svg%3E")}
 header::after{content:"";position:absolute;left:0;right:0;bottom:0;height:34px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.8) 0 2px,transparent 2px 100px) bottom/100% 34px no-repeat,repeating-linear-gradient(90deg,rgba(255,255,255,.55) 0 1px,transparent 1px 20px) bottom/100% 18px no-repeat,repeating-linear-gradient(90deg,rgba(255,255,255,.35) 0 1px,transparent 1px 10px) bottom/100% 9px no-repeat}
 header>*{position:relative;z-index:1}
@@ -39,14 +39,14 @@ h1 small{display:block;font:700 .36em 'Cairo',sans-serif;opacity:.9;margin-top:1
 
 /* ───── Main ───── */
 main{max-width:900px;margin:0 auto;padding:38px 20px 8px}
-.desc{margin:0 0 22px;text-align:center;color:var(--graphite);font-size:1rem}
+.desc{margin:0 0 22px;text-align:center;color:#1f2d3d;font-size:1rem}
 .label{display:flex;align-items:center;gap:12px;margin:0 0 16px;font:700 1.15rem 'Playfair Display',serif;color:var(--navy);direction:ltr}
 .label::after{content:"";flex:1;height:1px;background:repeating-linear-gradient(90deg,var(--azure) 0 2px,transparent 2px 8px)}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;direction:rtl}
 
-.lec{position:relative;display:flex;align-items:center;gap:14px;padding:16px 18px;min-height:84px;background:#fff;border:1px solid rgba(27,79,138,.12);border-radius:var(--radius);box-shadow:var(--shadow);color:inherit;text-decoration:none;overflow:hidden;opacity:0;animation:fade .55s ease forwards;animation-delay:calc(.5s + var(--i)*.1s);transition:box-shadow .25s,transform .25s,border-color .25s}
+.lec{position:relative;display:flex;align-items:center;gap:14px;padding:16px 18px;min-height:84px;background:#f3f7fb;border:1px solid rgba(27,79,138,.24);border-radius:var(--radius);box-shadow:0 2px 10px rgba(11,36,71,.16);color:inherit;text-decoration:none;overflow:hidden;opacity:0;animation:fade .55s ease forwards;animation-delay:calc(.5s + var(--i)*.1s);transition:box-shadow .25s,transform .25s,border-color .25s}
 .lec::before{content:"";position:absolute;inset-block:0;right:0;width:4px;background:var(--royal);transition:width .25s}
-.num{flex:none;width:44px;height:44px;border-radius:50%;border:2px solid var(--sky);background:var(--pearl);display:flex;align-items:center;justify-content:center;font:500 1rem 'JetBrains Mono',monospace;color:var(--navy);direction:ltr}
+.num{flex:none;width:44px;height:44px;border-radius:50%;border:2px solid var(--sky);background:#dbe8f4;display:flex;align-items:center;justify-content:center;font:500 1rem 'JetBrains Mono',monospace;color:var(--navy);direction:ltr}
 .txt{flex:1;min-width:0}
 .txt h2{margin:0;font:700 1.02rem/1.35 'Playfair Display',serif;color:var(--navy);direction:ltr;text-align:right}
 .txt .ar{margin-top:2px;font-weight:700;font-size:.9rem;color:var(--royal)}
@@ -56,15 +56,14 @@ a.lec:focus-visible{outline:3px solid var(--azure);outline-offset:2px}
 a.lec:active{transform:scale(.985)}
 @media(hover:hover){a.lec:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}a.lec:hover::before{width:7px}a.lec:hover .go{transform:translateX(-4px)}}
 
-div.lec.soon{background:rgba(255,255,255,.55);border:2px dashed var(--azure);box-shadow:none}
+div.lec.soon{background:rgba(255,255,255,.3);border:2px dashed #6f9cc4;box-shadow:none}
 .soon::before{display:none}
 .soon .num{border-style:dashed;color:var(--slate);background:transparent}
 .soon h2{color:var(--slate)}
 .tag-soon{flex:none;background:var(--mist);color:var(--royal);border-radius:30px;padding:0 12px;font:500 .72rem 'JetBrains Mono',monospace;direction:ltr}
 
-/* ───── Footer & closing ───── */
-footer{text-align:center;color:var(--slate);font-size:.88rem;margin:34px 0 0;direction:ltr}
-.closing{max-width:900px;margin:20px auto calc(32px + env(safe-area-inset-bottom,0px));padding:22px 24px;background:linear-gradient(135deg,var(--navy),var(--royal));border-top:3px solid var(--gold);border-radius:var(--radius);font:19px/2.1 'Amiri',serif;color:#fff;text-align:center;box-shadow:0 8px 28px rgba(11,36,71,.16)}
+/* ───── Footer ───── */
+footer{text-align:center;color:#2c3e50;font-size:.88rem;margin:34px 0 calc(32px + env(safe-area-inset-bottom,0px));padding:0 16px;direction:ltr}
 
 @media(max-width:600px){
   header{padding-bottom:70px}
@@ -73,7 +72,6 @@ footer{text-align:center;color:var(--slate);font-size:.88rem;margin:34px 0 0;dir
   .grid{grid-template-columns:1fr;gap:10px}
   .lec{padding:12px 14px;min-height:72px}
   .num{width:40px;height:40px;font-size:.92rem}
-  .closing{margin-inline:16px;font-size:17px}
 }
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
@@ -130,12 +128,15 @@ footer{text-align:center;color:var(--slate);font-size:.88rem;margin:34px 0 0;dir
       <div class="txt"><h2>Fundamentals of Errors in Measurements</h2><div class="ar">أساسيات الـ Errors في القياس</div></div>
       <svg class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
     </a>
+    <a class="lec" style="--i:3" href="lecture-4.html">
+      <span class="num">04</span>
+      <div class="txt"><h2>Dynamic Characteristics of Transducers</h2><div class="ar">الخصائص الديناميكية للمحولات</div></div>
+      <svg class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+    </a>
   </div>
 </main>
 
 <footer>Mechanical Measurements &amp; Instrumentation</footer>
-<div class="closing">🤲 ولا تنسوا الصلاة على النبي صلى الله عليه وسلم، والدعاء لإخوانكم في فلسطين وغزة وفي جميع بقاع الأرض، وأن ينصر الله المسلمين المستضعفين. 🤲</div>
-
 <script>
 /* ── MechHub back-navigation helper ──────────────────────────────────────────
  * Called by every "Back to MechHub" link.
