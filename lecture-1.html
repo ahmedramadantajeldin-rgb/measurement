@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lecture 1 — Introduction to Measurements</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=Cairo:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&family=Amiri&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+<style>
+:root{
+  --navy:#0B2447; --royal:#1B4F8A; --sky:#2E86C1; --azure:#5DADE2; --mist:#D6EAF8; --pearl:#EBF5FB; --white:#FFFFFF;
+  --ink:#1A1A2E; --graphite:#2C3E50; --slate:#5D6D7E; --gold:#D4AC0D; --amber:#F0B429;
+  --mint:#1ABC9C; --mint-light:#D5F5E3; --coral:#E74C3C; --coral-light:#FADBD8;
+  --shadow:0 4px 20px rgba(11,36,71,0.10); --shadow-lg:0 8px 40px rgba(11,36,71,0.16);
+  --radius:14px; --radius-sm:8px;
+}
+*{box-sizing:border-box;max-width:100%}
+html,body{margin:0;padding:0;overflow-x:hidden}
+body{
+  background:linear-gradient(160deg,#f0f6ff 0%,#e8f1fb 50%,#f5f9ff 100%);
+  font-family:'Cairo','Source Serif 4',serif; font-size:17px; line-height:1.85; color:var(--ink);
+}
+.en{direction:ltr;unicode-bidi:isolate}
+.mono{font-family:'JetBrains Mono',monospace;direction:ltr;unicode-bidi:isolate;font-size:.92em}
+p{margin:0 0 14px}
+strong.en,b.en{font-weight:700;color:var(--navy)}
+ul,ol{margin:0 0 16px;padding-inline-start:26px}
+li{margin-bottom:6px}
+
+/* ───── Header ───── */
+header.lec-header{
+  position:relative; overflow:hidden; text-align:center; color:#fff;
+  background:linear-gradient(135deg,var(--navy) 0%,var(--royal) 60%,var(--sky) 100%);
+  padding:60px 40px 50px; width:100%; max-width:none;
+}
+header.lec-header::before{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M0 30h60M30 0v60M0 0l60 60M60 0L0 60' stroke='white' stroke-opacity='.04' fill='none'/%3E%3C/svg%3E");
+}
+header.lec-header>*{position:relative;z-index:1}
+.badge{
+  display:inline-block; background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.3);
+  border-radius:30px; padding:4px 18px; font-size:.78rem; letter-spacing:2px; text-transform:uppercase;
+  margin-bottom:18px; direction:ltr; font-family:'JetBrains Mono',monospace; font-weight:400;
+}
+header.lec-header h1{
+  font-family:'Playfair Display',serif; font-weight:800; font-size:clamp(2rem,5vw,3.2rem); line-height:1.2;
+  margin:0 0 14px; text-shadow:0 2px 12px rgba(0,0,0,.28); direction:ltr;
+}
+header.lec-header h1 .h1-ar{display:block;font-family:'Cairo',sans-serif;font-weight:700;font-size:.65em;opacity:.85;margin-top:8px;direction:rtl}
+.subtitle{
+  font-family:'Source Serif 4',serif; font-size:1.1rem; opacity:.85; direction:ltr;
+  max-width:650px; margin:0 auto 24px; line-height:1.6;
+}
+.meta-row{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.meta-pill{
+  background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.28); border-radius:30px;
+  padding:4px 16px; font-size:.84rem; font-weight:600; direction:ltr;
+}
+
+/* ───── Opening du'a (collapsed by default) ───── */
+.dua-wrap{max-width:960px;margin:28px auto 0;padding:0 24px}
+.dua-card{background:#fff;border:1.5px solid #e8b84b;border-radius:14px;box-shadow:0 2px 12px rgba(168,120,42,0.10);overflow:hidden}
+.dua-btn{
+  width:100%; display:flex; align-items:center; justify-content:space-between; gap:12px;
+  background:linear-gradient(135deg,#7a5800,#b8860b); color:#fff; border:0; margin:0; cursor:pointer;
+  padding:12px 20px; font-family:'Cairo',sans-serif; font-weight:700; font-size:1.05rem; text-align:right;
+}
+.dua-btn:focus-visible{outline:3px solid var(--amber);outline-offset:-3px}
+.dua-arrow{display:inline-block;transition:transform .3s ease;font-size:.85rem}
+.dua-btn[aria-expanded="true"] .dua-arrow{transform:rotate(180deg)}
+.dua-content{display:none;padding:16px 20px 10px;background:linear-gradient(135deg,#fffbea,#fff9f0)}
+.dua-content.open{display:block;animation:duaIn .35s ease both}
+@keyframes duaIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.dua-line{font-family:'Amiri',serif;font-size:17px;line-height:2.1;color:#5a3e00;border-right:3px solid #e8b84b;padding-right:14px;margin:0 0 12px}
+
+/* ───── TOC ───── */
+.toc-wrapper{max-width:900px;margin:36px auto 0;padding:0 24px}
+.toc-card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+.toc-head{background:linear-gradient(90deg,var(--royal),var(--sky));color:#fff;font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;padding:14px 22px;direction:ltr}
+.toc-body{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:16px;direction:ltr}
+.toc-item{display:flex;align-items:center;gap:12px;padding:8px 12px;border-radius:var(--radius-sm);text-decoration:none;color:var(--graphite);transition:background .2s}
+.toc-item:hover,.toc-item:focus-visible{background:var(--pearl);outline:none}
+.toc-item:focus-visible{box-shadow:0 0 0 2px var(--azure)}
+.toc-num{flex:none;width:26px;height:26px;border-radius:50%;background:var(--royal);color:#fff;display:flex;align-items:center;justify-content:center;font:500 .78rem 'JetBrains Mono',monospace;direction:ltr}
+.toc-txt{flex:1;min-width:0;direction:ltr;text-align:left;font-family:'Source Serif 4',serif;font-weight:600;font-size:.95rem;line-height:1.4}
+
+/* ───── Content ───── */
+.content-wrapper{max-width:960px;margin:0 auto;padding:30px 24px 10px}
+.section{scroll-margin-top:16px}
+.section-header{display:flex;align-items:center;gap:16px;padding-bottom:14px;margin-bottom:26px;border-bottom:3px solid var(--mist)}
+.section-icon{flex:none;width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,var(--royal),var(--sky));display:flex;align-items:center;justify-content:center;font-size:1.6rem;line-height:1}
+.section-title{flex:1;min-width:0;direction:ltr;text-align:right}
+.section-title h2{font-family:'Playfair Display',serif;font-weight:700;font-size:1.75rem;line-height:1.25;color:var(--navy);margin:0}
+.section-title .sub{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--slate);margin-top:2px}
+.section-divider{border:0;height:2px;margin:50px 0;background:linear-gradient(90deg,transparent,var(--azure),transparent)}
+h3{font-family:'Playfair Display',serif;font-weight:700;font-size:1.3rem;line-height:1.35;color:var(--royal);margin:34px 0 14px;direction:ltr;text-align:right}
+h4{font-family:'Playfair Display',serif;font-weight:600;font-size:1.08rem;line-height:1.4;color:var(--navy);margin:24px 0 10px;direction:ltr;text-align:right}
+
+/* Boxes */
+.def-box{background:linear-gradient(135deg,var(--mist),var(--pearl));border-right:5px solid var(--sky);border-radius:var(--radius);padding:16px 22px;margin:18px 0;box-shadow:var(--shadow)}
+.box-label{display:block;font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:1.4px;text-transform:uppercase;color:var(--royal);margin-bottom:6px;direction:ltr;text-align:left}
+.def-en{margin:0;direction:ltr;text-align:left;font-family:'Source Serif 4',serif;font-size:1.08rem;line-height:1.65;color:var(--navy);font-weight:400;font-style:italic}
+.explain{margin-bottom:14px}
+.formula-box{background:var(--navy);color:#fff;border-radius:var(--radius);padding:18px 22px;margin:18px 0;text-align:center;direction:ltr;overflow-x:auto;box-shadow:var(--shadow)}
+.formula-box .box-label{color:var(--azure);text-align:left}
+.formula-box mjx-container{font-size:118% !important;margin:6px 0 !important}
+.note-box{background:#fffbea;border-right:5px solid var(--amber);border-radius:var(--radius);padding:14px 22px;margin:18px 0}
+.note-box .box-label{color:#8a6100}
+.note-box p:last-child,.def-box p:last-child{margin-bottom:0}
+
+/* Figures */
+.figure{margin:30px 0;background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px 20px;border:1px solid var(--mist)}
+.fig-head{display:flex;align-items:center;gap:12px;margin-bottom:12px;direction:ltr}
+.fig-no{flex:none;background:var(--royal);color:#fff;border-radius:30px;padding:2px 14px;font:500 .74rem 'JetBrains Mono',monospace;letter-spacing:1px;text-transform:uppercase}
+.fig-title{font-family:'Playfair Display',serif;font-weight:700;font-size:1.2rem;line-height:1.35;color:var(--navy);margin:0;text-align:left}
+.fig-frame{background:var(--white);border:1px solid var(--mist);border-radius:var(--radius);padding:12px;margin:16px 0 8px;overflow-x:auto;direction:ltr}
+.fig-frame img{display:block;margin:0 auto;width:100%;height:auto;border-radius:var(--radius-sm)}
+.fig-frame.narrow img{max-width:520px}
+.fig-cap{font:400 .82rem 'JetBrains Mono',monospace;color:var(--slate);text-align:center;direction:ltr;margin:0 0 14px}
+.swipe-hint{display:none;text-align:center;font-size:.78rem;color:var(--slate);margin:0 0 10px}
+.fig-points{list-style:none;margin:6px 0 14px;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:8px 18px}
+.fig-points li{margin:0;padding:6px 12px;background:var(--pearl);border-radius:var(--radius-sm);font-size:.94rem;line-height:1.6;border-right:3px solid var(--azure)}
+.fig-points li b{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:.85em;color:var(--royal);direction:ltr;unicode-bidi:isolate}
+
+/* Tables */
+.table-wrap{overflow-x:auto;margin:18px 0;border-radius:var(--radius);box-shadow:var(--shadow);background:var(--white)}
+table{width:100%;border-collapse:collapse;direction:ltr;font-size:.95rem;min-width:520px}
+thead th{background:var(--royal);color:#fff;font:600 .88rem 'Cairo',sans-serif;padding:10px 14px;text-align:left}
+tbody td{padding:9px 14px;text-align:left;vertical-align:top;color:var(--navy);border-top:1px solid var(--mist)}
+tbody tr:nth-child(even) td{background:var(--pearl)}
+td.num,th.num{text-align:center;font-family:'JetBrains Mono',monospace}
+td .ar{direction:rtl;unicode-bidi:isolate;display:inline-block;text-align:right}
+td.ar-cell{direction:rtl;text-align:right;font-family:'Cairo',sans-serif}
+
+/* Example card */
+.example-card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin:24px 0;border:1px solid var(--mist)}
+.ex-head{background:linear-gradient(90deg,var(--sky),var(--azure));color:#fff;padding:12px 22px;font:700 1.08rem 'Playfair Display',serif;direction:ltr;text-align:left}
+.ex-body{padding:18px 22px}
+.q-box{background:var(--pearl);border-radius:var(--radius-sm);padding:12px 16px;margin-bottom:16px;direction:ltr;text-align:left;font-family:'Source Serif 4',serif;font-size:1.02rem;line-height:1.65}
+.steps{list-style:none;counter-reset:st;margin:0 0 14px;padding:0}
+.steps li{counter-increment:st;position:relative;padding:4px 48px 10px 0;margin:0}
+.steps li::before{content:counter(st);position:absolute;right:0;top:2px;width:32px;height:32px;border-radius:50%;background:var(--royal);color:#fff;display:flex;align-items:center;justify-content:center;font:500 .88rem 'JetBrains Mono',monospace}
+.steps li strong.step-t{display:block;font-family:'Playfair Display',serif;color:var(--navy);direction:ltr;text-align:right;font-size:1rem}
+.answer-badge{display:inline-block;background:var(--mint-light);color:#0b6b57;border:1.5px solid var(--mint);border-radius:30px;padding:4px 18px;font-weight:700;font-size:.92rem;direction:ltr}
+
+/* Collapsible Q&A */
+.q-section{border:2px solid var(--royal);border-radius:var(--radius);padding:18px 20px;margin:20px 0;background:rgba(255,255,255,.35)}
+.q-item{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 20px;margin-bottom:16px;border:1px solid var(--mist)}
+.q-item:last-child{margin-bottom:0}
+.q-no{display:inline-block;font:500 .74rem 'JetBrains Mono',monospace;letter-spacing:1px;color:var(--royal);background:var(--mist);border-radius:30px;padding:1px 12px;margin-bottom:6px;direction:ltr}
+.q-text{direction:ltr;text-align:left;font-family:'Source Serif 4',serif;font-weight:600;font-size:1.05rem;line-height:1.6;color:var(--navy);margin:0 0 12px}
+.q-text.plain{font-weight:400}
+.sol-btn{display:inline-block;background:linear-gradient(90deg,var(--royal),var(--sky));color:#fff;border:0;border-radius:30px;padding:6px 20px;font:600 .9rem 'Cairo',sans-serif;cursor:pointer;margin:0}
+.sol-btn:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.sol-btn[aria-expanded="true"]{background:linear-gradient(90deg,var(--navy),var(--royal))}
+.q-solution{display:none;margin-top:14px;padding:14px 18px;border-radius:var(--radius-sm);background:var(--pearl);border-right:4px solid var(--mint);direction:ltr;text-align:left;font-family:'Source Serif 4',serif;font-size:1.02rem;line-height:1.7}
+.q-solution.open{display:block;animation:duaIn .3s ease both}
+.q-solution p:last-child,.q-solution ol:last-child{margin-bottom:0}
+.q-solution .sol-label{display:block;font:500 .72rem 'JetBrains Mono',monospace;letter-spacing:1.2px;text-transform:uppercase;color:#0b6b57;margin-bottom:4px}
+.q-solution ol,.q-solution ul{padding-inline-start:24px}
+
+/* Footer + closing */
+.end-wrap{max-width:960px;margin:0 auto;padding:0 24px}
+footer.lec-footer{background:var(--navy);color:#fff;text-align:center;border-radius:14px;margin-top:40px;padding:34px 28px}
+footer.lec-footer h2{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;margin:0 0 8px;direction:ltr}
+footer.lec-footer p{opacity:.7;margin:0 0 16px;direction:ltr;font-size:.95rem}
+.tags{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;direction:ltr}
+.tag{background:rgba(255,255,255,.10);border-radius:30px;padding:3px 14px;font-size:.8rem;font-weight:600}
+.closing{background:linear-gradient(135deg,#0B2447,#1B4F8A);border-top:4px solid #D4AC0D;border-radius:14px;box-shadow:0 8px 32px rgba(11,36,71,0.18);margin:24px 0 40px;padding:28px 30px;text-align:center}
+.closing p{margin:0;font-family:'Amiri',serif;font-size:19px;line-height:2.2;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.3)}
+
+/* ───── Responsive ───── */
+@media (max-width:768px){
+  body{font-size:16.5px}
+  header.lec-header{padding:56px 28px 42px}
+  .content-wrapper{padding:24px 20px 8px}
+  .section-title h2{font-size:1.5rem}
+  .section-divider{margin:42px 0}
+  .figure{padding:18px 16px 16px}
+}
+@media (max-width:650px){
+  .fig-points{grid-template-columns:1fr}
+  .def-box,.note-box{padding:14px 18px}
+  .q-section{padding:14px 12px}
+}
+@media (max-width:600px){
+  body{font-size:16px;line-height:1.8}
+  header.lec-header{padding:60px 18px 36px}
+  .dua-wrap,.toc-wrapper,.end-wrap{padding:0 14px}
+  .content-wrapper{padding:22px 14px 6px}
+  .toc-body{grid-template-columns:1fr;padding:12px}
+  .section-icon{width:44px;height:44px;font-size:1.35rem}
+  .section-title h2{font-size:1.3rem}
+  h3{font-size:1.15rem}
+  .swipe-hint{display:block}
+  .fig-frame img{min-width:540px}
+  .badge{letter-spacing:1px;font-size:.68rem;padding:4px 12px}
+  .fig-frame.narrow img{min-width:0}
+  .fig-head{flex-wrap:wrap;gap:8px}
+  .closing{padding:22px 18px}
+  .closing p{font-size:17px}
+  .dua-line{font-size:16px}
+}
+@media (max-width:380px){
+  body{font-size:15.5px}
+  header.lec-header{padding:60px 14px 30px}
+  .meta-pill{font-size:.76rem;padding:3px 12px}
+  .section-header{gap:10px}
+  .section-title h2{font-size:1.15rem}
+  .example-card .ex-body,.q-item{padding:14px 14px}
+  .steps li{padding-right:42px}
+  .steps li::before{width:28px;height:28px;font-size:.8rem}
+}
+</style>
+<script>
+try{ if(localStorage.getItem('eyeProtection')==='on'){ document.documentElement.setAttribute('data-eye','on'); } }catch(e){}
+</script>
+<style id="eye-protection-css">
+.eye-toggle{position:fixed; top:14px; left:14px; z-index:10000; direction:ltr; display:inline-flex; align-items:center; gap:8px; padding:6px 14px 6px 12px; border-radius:999px; cursor:pointer; margin:0; font-family:'Cairo',sans-serif; font-weight:600; font-size:0.82rem; line-height:1.4; background:rgba(255,255,255,0.93); color:#0B2447; border:1px solid rgba(11,36,71,0.28); box-shadow:0 2px 10px rgba(11,36,71,0.18); backdrop-filter:blur(6px); transition:background .2s, border-color .2s, color .2s;}
+.eye-toggle:focus-visible{outline:2px solid #F0B429; outline-offset:2px;}
+.eye-sw{position:relative; flex:0 0 30px; width:30px; height:16px; border-radius:999px; background:#A9B4C0; transition:background .2s;}
+.eye-sw::after{content:""; position:absolute; top:2px; left:2px; width:12px; height:12px; border-radius:50%; background:#fff; box-shadow:0 1px 2px rgba(0,0,0,.3); transition:transform .2s;}
+.eye-st{min-width:2.3em; text-align:left; font-family:'JetBrains Mono',monospace; font-size:0.76rem; font-weight:500;}
+.eye-toggle[aria-pressed="true"]{background:#F8EFD6; border-color:#C9A25A; color:#5A3E00;}
+.eye-toggle[aria-pressed="true"] .eye-sw{background:#C8902E;}
+.eye-toggle[aria-pressed="true"] .eye-sw::after{transform:translateX(14px);}
+@media (max-width:420px){ .eye-toggle{padding:5px 10px 5px 9px; gap:6px; font-size:0.74rem;} .eye-lbl{display:none;} }
+.eye-overlay{display:none;}
+
+/* Home link (top right), same pill shape as the eye toggle */
+.home-link{position:fixed; top:14px; right:14px; z-index:10000; direction:rtl; display:inline-flex; align-items:center; gap:6px; padding:6px 14px; border-radius:999px; text-decoration:none; font-family:'Cairo',sans-serif; font-weight:600; font-size:0.82rem; line-height:1.4; background:rgba(255,255,255,0.93); color:#0B2447; border:1px solid rgba(11,36,71,0.28); box-shadow:0 2px 10px rgba(11,36,71,0.18); backdrop-filter:blur(6px); transition:background .2s, border-color .2s;}
+.home-link:hover{background:#fff; border-color:rgba(11,36,71,0.5);}
+.home-link:focus-visible{outline:2px solid #F0B429; outline-offset:2px;}
+@media (max-width:420px){ .home-link{padding:5px 11px; font-size:0.74rem;} .home-link .hl-txt{display:none;} }
+
+@media screen{
+  html[data-eye="on"]{ --pearl:#EAF1F5; --mist:#D5E4EE; --white:#F8F8F5; --sky:#3A84B3; --azure:#69A8CF; --amber:#E2AD3C; --gold:#C8A21C; --mint:#27AD93; --mint-light:#D6EADC; --coral:#D9544A; --coral-light:#F0DCD6; --slate:#556576; --shadow:0 4px 20px rgba(50,44,32,0.10); --shadow-lg:0 8px 40px rgba(50,44,32,0.14); --eye-paper:#F8F8F5; }
+  html[data-eye="on"] body{background:linear-gradient(160deg,#F0F1F0 0%,#ECEDEC 50%,#F1F2F1 100%);}
+  html[data-eye="on"] img{filter:brightness(0.97) saturate(0.96);}
+  /* every pure-white surface of this page */
+  html[data-eye="on"] .dua-card,
+  html[data-eye="on"] .toc-card,
+  html[data-eye="on"] .figure,
+  html[data-eye="on"] .fig-frame,
+  html[data-eye="on"] .table-wrap,
+  html[data-eye="on"] .example-card,
+  html[data-eye="on"] .q-item{background:var(--eye-paper);}
+  html[data-eye="on"] .q-section{background:rgba(248,248,245,.45);}
+  html[data-eye="on"] .fig-frame img{filter:saturate(0.96);mix-blend-mode:multiply;}
+  /* light cream boxes */
+  html[data-eye="on"] .note-box{background:#F6F0DF;}
+  html[data-eye="on"] .dua-content{background:linear-gradient(135deg,#F6F1E0,#F7F2E6);}
+  html[data-eye="on"] .answer-badge{background:var(--mint-light);}
+  /* formulas inside dark boxes: soft light text, high contrast */
+  html[data-eye="on"] .formula-box,
+  html[data-eye="on"] .formula-box mjx-container,
+  html[data-eye="on"] .formula-box mjx-container *{color:#F4F4F2 !important;}
+  html[data-eye="on"] .formula-box mjx-container svg{fill:#F4F4F2 !important;}
+  html[data-eye="on"] .home-link{background:rgba(248,239,214,0.95); border-color:#C9A25A; color:#5A3E00;}
+  @supports (mix-blend-mode:multiply){ html[data-eye="on"] .eye-overlay{ display:block; position:fixed; inset:0; z-index:9990; pointer-events:none; background:rgba(255,225,170,0.22); mix-blend-mode:multiply; } }
+}
+@media print{ .eye-toggle,.eye-overlay{display:none !important;} }
+</style>
+</head>
+<body>
+<button type="button" class="eye-toggle" id="eyeToggle" aria-pressed="false" title="Eye Protection: softer brightness and less blue light for long study sessions">
+  <span class="eye-ico" aria-hidden="true">👁</span>
+  <span class="eye-lbl">Eye Protection</span>
+  <span class="eye-sw" aria-hidden="true"></span>
+  <span class="eye-st">OFF</span>
+</button>
+<div class="eye-overlay" aria-hidden="true"></div>
+<a class="home-link" href="index.html" aria-label="الصفحة الرئيسية"><span aria-hidden="true">←</span><span class="hl-txt">الصفحة الرئيسية</span></a>
+
+<header class="lec-header">
+  <div class="badge">Mechanical Measurements · Lecture 1</div>
+  <h1>Introduction to Measurements<span class="h1-ar">مقدمة في القياسات</span></h1>
+  <p class="subtitle">Why engineers measure, and how a measurement system turns a physical quantity into a result that can be read, seen, or recorded.</p>
+  <div class="meta-row">
+    <span class="meta-pill">🎓 ME305</span>
+    <span class="meta-pill">👨‍🏫 Dr. Mohamed Rashed</span>
+    <span class="meta-pill">🧩 3 Main Parts</span>
+    <span class="meta-pill">🖼️ 7 Figures</span>
+  </div>
+</header>
+
+<!-- Opening du'a: collapsed by default -->
+<div class="dua-wrap">
+  <div class="dua-card">
+    <button type="button" class="dua-btn" id="duaBtn" aria-expanded="false" aria-controls="duaContent" onclick="toggleDua(this)">
+      <span>📖 دعاء</span><span class="dua-arrow" aria-hidden="true">▼</span>
+    </button>
+    <div class="dua-content" id="duaContent">
+      <p class="dua-line">"اللَّهُمَّ لا سَهْلَ إِلاَّ ما جَعَلْتَهُ سَهْلاً، وأنْتَ تَجْعَلُ الحَزْنَ إِذَا شِئْتَ سَهْلاً."</p>
+      <p class="dua-line">"رَبِّ اشْرَحْ لِي صَدْرِي * وَيَسِّرْ لِي أَمْرِي * وَاحْلُلْ عُقْدَةً مِنْ لِسَانِي * يَفْقَهُوا قَوْلِي."</p>
+      <p class="dua-line">"اللَّهُمَّ انْفَعْنِي بِمَا عَلَّمْتَنِي، وَعَلِّمْنِي مَا يَنْفَعُنِي، وَزِدْنِي عِلْمًا."</p>
+      <p class="dua-line">"اللهم إني أسألك فهم النبيين، وحفظ المرسلين والملائكة المقربين، اللهم اجعل ألسنتنا عامرة بذكرك، وقلوبنا بخشيتك، وأسرارنا بطاعتك، إنك على كل شيء قدير."</p>
+      <p class="dua-line">"يا حي يا قيوم برحمتك أستغيث، أصلح لي شأني كله ولا تكلني إلى نفسي طرفة عين."</p>
+      <p class="dua-line">"اللهم يا جامع الناس ليوم لا ريب فيه، اجمع علي ضالتي."</p>
+      <p class="dua-line">"اللهم إني استودعتك ما قرأت وما حفظت وما تعلمت، فرده عند حاجتي إليه، إنك على كل شيء قدير، وحسبنا الله ونعم الوكيل."</p>
+      <p class="dua-line">"أستغفر الله، أستغفر الله، أستغفر الله."</p>
+    </div>
+  </div>
+</div>
+
+<!-- TOC -->
+<nav class="toc-wrapper" aria-label="Table of contents">
+  <div class="toc-card">
+    <div class="toc-head">Table of Contents</div>
+    <div class="toc-body">
+      <a class="toc-item" href="#s1"><span class="toc-num">1</span><span class="toc-txt">Introduction to Measurements</span></a>
+      <a class="toc-item" href="#s2"><span class="toc-num">2</span><span class="toc-txt">Why We Carry Out Measurements</span></a>
+      <a class="toc-item" href="#s3"><span class="toc-num">3</span><span class="toc-txt">Main Parts of Measurement Systems</span></a>
+      <a class="toc-item" href="#s4"><span class="toc-num">4</span><span class="toc-txt">Sensing Element</span></a>
+      <a class="toc-item" href="#s5"><span class="toc-num">5</span><span class="toc-txt">Signal Conditioning Element</span></a>
+      <a class="toc-item" href="#s6"><span class="toc-num">6</span><span class="toc-txt">Data Presentation Element</span></a>
+      <a class="toc-item" href="#s7"><span class="toc-num">7</span><span class="toc-txt">Complete Measurement System Block Diagram</span></a>
+      <a class="toc-item" href="#s8"><span class="toc-num">8</span><span class="toc-txt">Putting the Elements Together</span></a>
+      <a class="toc-item" href="#s9"><span class="toc-num">9</span><span class="toc-txt">Important Exam Questions</span></a>
+      <a class="toc-item" href="#s10"><span class="toc-num">10</span><span class="toc-txt">Practice Exercises</span></a>
+      <a class="toc-item" href="#s11"><span class="toc-num">11</span><span class="toc-txt">Final Revision</span></a>
+    </div>
+  </div>
+</nav>
+
+<main class="content-wrapper">
+
+<!-- ════════ 1 ════════ -->
+<section class="section" id="s1">
+  <div class="section-header">
+    <div class="section-icon" aria-hidden="true">📏</div>
+    <div class="section-title"><h2>Introduction to Measurements</h2><div class="sub">ME305 · Lecture 1</div></div>
+  </div>
+
+  <p>تعتبر مادة <strong class="en">Mechanical Measurements &amp; Instrumentation</strong> من المواد الأساسية في الهندسة الميكانيكية؛ لأنها بتشرح إزاي نقيس الكميات الفيزيائية المختلفة، وإزاي نحول القياسات دي إلى معلومات نقدر نقرأها ونستخدمها في التحليل واتخاذ القرارات الهندسية.</p>
+
+  <div class="table-wrap"><table>
+    <thead><tr><th>Course Title</th><th>Lecture Title</th></tr></thead>
+    <tbody><tr><td>Mechanical Measurements &amp; Instrumentation (ME305)</td><td>Introduction</td></tr></tbody>
+  </table></div>
+
+  <p>خلينا نفهم معنى العنوان:</p>
+  <ul>
+    <li><strong class="en">Mechanical:</strong> متعلق بالأنظمة والتطبيقات الميكانيكية.</li>
+    <li><strong class="en">Measurements:</strong> عملية قياس الكميات الفيزيائية، مثل <span class="en">Pressure</span> و<span class="en">Temperature</span> و<span class="en">Force</span> و<span class="en">Velocity</span>.</li>
+    <li><strong class="en">Instrumentation:</strong> المجال اللي بيدرس أجهزة القياس ومكوناتها وطرق استخدامها والتعامل مع الإشارات الناتجة عنها.</li>
+  </ul>
+
+  <h3>What Is a Measurement?</h3>
+  <div class="def-box">
+    <span class="box-label">Definition — Measurement</span>
+    <p class="def-en">Measurement is the process of determining the value of a physical quantity.</p>
+  </div>
+  <p class="explain">الـ <strong class="en">Measurement</strong> هي عملية تحديد قيمة كمية فيزيائية معينة. على سبيل المثال، لو عايزين نعرف درجة حرارة موتور، بنستخدم جهاز مناسب لقياس <span class="en">Temperature</span>، وبعد القياس نحصل على قيمة عددية، مثل:</p>
+  <div class="formula-box">\[ T = 85^\circ \mathrm{C} \]</div>
+  <p>القيمة دي بتساعدنا نحدد هل الموتور بيشتغل في نطاق درجة الحرارة الطبيعي، ولا درجة حرارته مرتفعة وتحتاج إلى فحص. أمثلة أخرى:</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Physical Quantity</th><th>Example of Measurement</th><th>Possible Instrument</th></tr></thead>
+    <tbody>
+      <tr><td>Temperature</td><td class="mono">85 °C</td><td>Thermocouple</td></tr>
+      <tr><td>Pressure</td><td class="mono">200 kPa</td><td>Pressure Gauge</td></tr>
+      <tr><td>Force</td><td class="mono">100 N</td><td>Force Sensor</td></tr>
+      <tr><td>Velocity</td><td class="mono">15 m/s</td><td>Velocity Measuring Device</td></tr>
+      <tr><td>Displacement</td><td class="mono">20 mm</td><td>Displacement Sensor</td></tr>
+    </tbody>
+  </table></div>
+  <div class="note-box">
+    <span class="box-label">Note</span>
+    <p>التعريف السابق تعريف تمهيدي لتسهيل الفهم، وليس اقتباسًا حرفيًا من سلايد الدكتور؛ لأن السلايد لا تحتوي على تعريف مكتوب للـ <span class="en">Measurement</span>.</p>
+  </div>
+
+  <h3>Course Content</h3>
+  <p>يعرض الدكتور الموضوعات الأساسية التي ستتم دراستها خلال الكورس.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th class="num">No.</th><th>Topic</th></tr></thead>
+    <tbody>
+      <tr><td class="num">1</td><td>Introduction to Measurements</td></tr>
+      <tr><td class="num">2</td><td>Static Performance Characteristics of Measuring Instruments</td></tr>
+      <tr><td class="num">3</td><td>Dynamic Performance Characteristics of Measuring Instruments</td></tr>
+      <tr><td class="num">4</td><td>Pressure Measurements</td></tr>
+      <tr><td class="num">5</td><td>Flow Measurements</td></tr>
+      <tr><td class="num">6</td><td>Velocity Measurements</td></tr>
+      <tr><td class="num">7</td><td>Temperature Measurements</td></tr>
+      <tr><td class="num">8</td><td>Force Measurements</td></tr>
+      <tr><td class="num">9</td><td>Stress–Strain Measurements</td></tr>
+    </tbody>
+  </table></div>
+  <p>خلينا نفهم العلاقة بين أجزاء المنهج.</p>
+
+  <h4>Introduction to Measurements</h4>
+  <p>ده الجزء التمهيدي اللي بيوضح أهمية القياس، والمكونات الأساسية لنظام القياس، ودور كل مكون.</p>
+
+  <h4>Static Performance Characteristics</h4>
+  <p>الـ <strong class="en">Static Performance Characteristics</strong> بتتناول أداء جهاز القياس في ظروف يكون فيها الدخل ثابتًا أو لا يتغير مع الزمن في نطاق الدراسة. ومن أمثلة الخصائص التي تُدرس عادةً في هذا المجال:</p>
+  <ul class="en"><li>Accuracy</li><li>Precision</li><li>Sensitivity</li><li>Linearity</li><li>Hysteresis</li><li>Resolution</li></ul>
+  <div class="note-box"><span class="box-label">Note</span><p>الموضوعات السابقة أمثلة توضيحية على خصائص الأداء الساكن، وليست قائمة مكتوبة في سلايد الـ <span class="en">Course Content</span>.</p></div>
+
+  <h4>Dynamic Performance Characteristics</h4>
+  <p>الـ <strong class="en">Dynamic Performance Characteristics</strong> بتدرس سلوك جهاز القياس لما الكمية المراد قياسها تتغير مع الزمن. مثلًا، لو درجة حرارة جسم ارتفعت فجأة، هل جهاز قياس الحرارة هيعرض القيمة الجديدة فورًا؟ ولا هيحتاج وقتًا حتى يقترب منها؟ ده مثال على <strong class="en">Dynamic Response</strong>، وهي الفكرة الأساسية وراء دراسة الاستجابة الديناميكية.</p>
+
+  <h4>Specific Measurement Topics</h4>
+  <p>باقي المنهج بيركز على قياس كميات فيزيائية محددة:</p>
+  <ul>
+    <li><strong class="en">Pressure Measurements:</strong> قياس الضغط.</li>
+    <li><strong class="en">Flow Measurements:</strong> قياس معدل تدفق المائع.</li>
+    <li><strong class="en">Velocity Measurements:</strong> قياس السرعة.</li>
+    <li><strong class="en">Temperature Measurements:</strong> قياس درجة الحرارة.</li>
+    <li><strong class="en">Force Measurements:</strong> قياس القوة.</li>
+    <li><strong class="en">Stress–Strain Measurements:</strong> قياس الإجهاد والانفعال.</li>
+  </ul>
+  <p>كل موضوع من دول بيحتاج اختيار جهاز مناسب، وفهم مبدأ عمله، وطريقة التعامل مع الإشارة الناتجة عنه.</p>
+
+  <h3>Reference Books and Instructor</h3>
+  <p>السلايد بتذكر ثلاثة مراجع أساسية للكورس، لكن السلايد لا تحدد فصلًا معينًا مطلوبًا من كل كتاب:</p>
+  <ol class="en" style="direction:ltr;text-align:left">
+    <li><strong>Experimental Methods for Engineers</strong> — J. P. Holman, McGraw Hill.</li>
+    <li><strong>Instrumentation, Measurements, &amp; Experiments in Fluids</strong> — Ethirajan Rathakrishnan, Taylor &amp; Francis.</li>
+    <li><strong>Mechanical Measurements</strong> — S. P. Venkateshan, Springer.</li>
+  </ol>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Instructor</th><th>Position</th><th>Department</th></tr></thead>
+    <tbody><tr><td>Dr. Mohamed Rashed</td><td>Assistant Professor</td><td>Mechanical Power Engineering – Cairo University</td></tr></tbody>
+  </table></div>
+  <p>المعلومات دي تنظيمية، ومش جزءًا من المفاهيم العلمية الأساسية للمحاضرة.</p>
+</section>
+
+<hr class="section-divider">
+
+<!-- ════════ 2 ════════ -->
+<section class="section" id="s2">
+  <div class="section-header">
+    <div class="section-icon" aria-hidden="true">❓</div>
+    <div class="section-title"><h2>Why We Carry Out Measurements</h2><div class="sub">6 reasons · measurements vs calculations</div></div>
+  </div>
+
+  <p>دي من أهم سلايدز المحاضرة؛ لأنها بتجاوب عن سؤال أساسي: <strong class="en">Why do engineers perform measurements instead of relying only on calculations?</strong> الدكتور ذكر ستة أسباب رئيسية.</p>
+
+  <h3>1 · To Validate Mathematical Models and Simulations</h3>
+  <div class="def-box"><span class="box-label">From the slide</span><p class="def-en">To validate mathematical models and simulations.</p></div>
+  <p>الـ <strong class="en">Mathematical Model</strong> هو تمثيل رياضي لسلوك نظام فيزيائي، بينما الـ <strong class="en">Simulation</strong> هي عملية استخدام نموذج لحساب أو توقع سلوك النظام تحت ظروف معينة. لكن وجود معادلة رياضية أو <span class="en">Simulation</span> مش معناه بالضرورة إن النتائج صحيحة في الواقع. عشان كده بنعمل <span class="en">Measurements</span> ونقارن النتائج الفعلية بالنتائج المتوقعة.</p>
+  <p><strong class="en">Example:</strong> لو مهندس صمم نموذجًا رياضيًا يتوقع إن درجة حرارة موتور معين هتكون <span class="mono">80 °C</span>، نقدر نقيس درجة الحرارة الفعلية ونقارنها بالقيمة المتوقعة. لو القيمة المقاسة قريبة من التوقعات ضمن الحدود المقبولة، ده يدعم صلاحية النموذج في ظروف الاختبار. أما لو فيه اختلاف كبير، فده ممكن يشير إلى وجود افتراضات غير مناسبة أو عوامل لم يأخذها النموذج في الاعتبار.</p>
+  <div class="note-box"><span class="box-label">Key Point</span><p class="en" style="text-align:left">Measurements help engineers determine whether mathematical models and simulations represent real physical behavior accurately enough for their intended use.</p></div>
+
+  <h3>2 · To Investigate Model Limits</h3>
+  <div class="def-box"><span class="box-label">From the slide</span><p class="def-en">To investigate model limits.</p></div>
+  <p>أي <strong class="en">Mathematical Model</strong> بيكون صالحًا في نطاق معين من ظروف التشغيل، ومش شرط يدي نتائج صحيحة بنفس الدرجة في كل الظروف. على سبيل المثال، نموذج معين ممكن يكون دقيقًا عند درجات حرارة منخفضة، لكنه يصبح أقل دقة عند درجات حرارة مرتفعة جدًا. هنا بنستخدم القياسات عشان نحدد حدود صلاحية النموذج، أو ما يسمى <strong class="en">Model Limits</strong>.</p>
+  <p><strong class="en">Example:</strong> لو نموذج لتوقع أداء مضخة بيدي نتائج جيدة عند معدل تدفق معين، لكن نتائجه بتختلف بشكل واضح عند معدلات تدفق أعلى، يبقى محتاجين نختبر النموذج عند الظروف المختلفة ونحدد النطاق اللي يمكن الاعتماد عليه فيه.</p>
+  <div class="note-box"><span class="box-label">Key Point</span><p class="en" style="text-align:left">Measurements help identify the operating conditions under which a model remains reliable.</p></div>
+
+  <h3>3 · To Determine Information That Cannot Be Obtained by Calculations</h3>
+  <div class="def-box"><span class="box-label">From the slide</span><p class="def-en">To determine information that can not be obtained by calculations.</p></div>
+  <p>في بعض الحالات، الحسابات وحدها مش بتكون كافية للحصول على كل المعلومات المطلوبة عن النظام الحقيقي. ممكن يكون عندنا نموذج نظري، لكن الواقع يحتوي على تأثيرات معقدة أو متغيرة يصعب تمثيلها بالكامل. ذكر الدكتور في السلايد المثال التالي:</p>
+  <div class="def-box"><span class="box-label">From the slide</span><p class="def-en">Almost all industrial flows are turbulent.</p></div>
+  <p>الـ <strong class="en">Turbulent Flow</strong> هو نوع من تدفق الموائع يتميز بتغيرات واضطرابات غير منتظمة في السرعة والضغط، مع وجود حركة معقدة للمائع. في التطبيقات الصناعية، ممكن تكون تفاصيل التدفق معقدة لدرجة إن الاعتماد على الحسابات وحدها لا يكفي للحصول على جميع المعلومات المطلوبة. لذلك، بنستخدم <span class="en">Measurements</span> للحصول على بيانات فعلية عن النظام.</p>
+  <p><strong class="en">Example:</strong> في خط أنابيب صناعي، قد نحتاج إلى قياس معدل التدفق الفعلي أو فرق الضغط بين نقطتين بدلًا من الاعتماد على الحسابات النظرية فقط.</p>
+  <div class="note-box"><span class="box-label">Key Point</span><p class="en" style="text-align:left">Measurements provide experimental information about real systems that may not be fully available from calculations alone.</p></div>
+
+  <h3>4 · To Satisfy the Customer Regarding the Performance of the Equipment</h3>
+  <div class="def-box"><span class="box-label">From the slide</span><p class="def-en">To satisfy the customer regarding the performance of the equipment.</p></div>
+  <p>في التطبيقات الهندسية والصناعية، لازم نتأكد إن المعدات بتؤدي الوظيفة المطلوبة بالمواصفات المتفق عليها. الـ <span class="en">Measurements</span> بتوفر دليلًا يمكن الاعتماد عليه لتقييم الأداء الفعلي للمعدات.</p>
+  <p><strong class="en">Example:</strong> لو شركة بتصنع مضخة، والعميل محتاج معدل تدفق معين عند ضغط محدد، ممكن يتم اختبار المضخة وقياس <span class="en">Flow Rate</span> و<span class="en">Pressure</span> للتأكد من إنها تحقق المتطلبات. لو النتائج مطابقة للمواصفات، ده بيدعم قبول أداء المعدة.</p>
+  <div class="note-box"><span class="box-label">Key Point</span><p class="en" style="text-align:left">Measurements are used to verify that equipment meets specified performance requirements.</p></div>
+
+  <h3>5 · To Investigate Technical Problems</h3>
+  <div class="def-box"><span class="box-label">From the slide</span><p class="def-en">To investigate technical problems.</p></div>
+  <p>لما تحصل مشكلة فنية في نظام هندسي، القياسات بتساعدنا نفهم المشكلة بدلًا من الاعتماد على التخمين. بنقيس الكميات المرتبطة بالمشكلة، ونقارن النتائج بالقيم الطبيعية أو المتوقعة.</p>
+  <p><strong class="en">Example:</strong> لو مضخة بتتعرض لارتفاع غير طبيعي في درجة الحرارة، نقدر نقيس:</p>
+  <ul class="en" style="direction:ltr;text-align:left"><li>Temperature</li><li>Pressure</li><li>Flow Rate</li><li>Vibration</li></ul>
+  <p>النتائج ممكن تساعدنا في تحديد السبب المحتمل للمشكلة، لكن تحديد السبب النهائي قد يحتاج إلى اختبارات إضافية.</p>
+  <div class="note-box"><span class="box-label">Key Point</span><p class="en" style="text-align:left">Measurements help diagnose technical problems by providing evidence about the actual operating condition of a system.</p></div>
+
+  <h3>6 · To Validate New Ideas</h3>
+  <div class="def-box"><span class="box-label">From the slide</span><p class="def-en">To validate new ideas.</p></div>
+  <p>لما مهندس يقترح فكرة جديدة لتحسين أداء جهاز أو تصميم نظام مختلف، لازم يختبر الفكرة عمليًا. الـ <span class="en">Measurements</span> بتساعدنا نعرف هل الفكرة حققت التحسين المطلوب فعلًا، ولا إن النتائج مختلفة عن المتوقع.</p>
+  <p><strong class="en">Example:</strong> لو مهندس اقترح تعديلًا في تصميم مبادل حراري بهدف تحسين انتقال الحرارة، يمكن قياس درجات الحرارة ومعدل التدفق قبل التعديل وبعده، ثم مقارنة النتائج.</p>
+  <div class="note-box"><span class="box-label">Key Point</span><p class="en" style="text-align:left">Measurements help evaluate whether a new engineering idea produces the expected improvement in real operation.</p></div>
+
+  <h3>Summary of the Reasons for Measurements</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Reason</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td>Validate mathematical models and simulations</td><td>Compare predicted behavior with real behavior</td></tr>
+      <tr><td>Investigate model limits</td><td>Determine where a model remains reliable</td></tr>
+      <tr><td>Obtain information unavailable from calculations</td><td>Measure real physical behavior</td></tr>
+      <tr><td>Satisfy customer requirements</td><td>Verify equipment performance</td></tr>
+      <tr><td>Investigate technical problems</td><td>Diagnose abnormal operating conditions</td></tr>
+      <tr><td>Validate new ideas</td><td>Evaluate proposed improvements experimentally</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Measurements and Calculations</h3>
+  <div class="def-box"><span class="box-label">From the slide</span><p class="def-en">Generally, measurements can be much easier in many cases and are essential for validations anyway.</p></div>
+  <p>الدكتور بيوضح هنا إن القياسات ممكن تكون أسهل من إجراء حسابات معقدة في بعض الحالات، وإنها تظل مهمة للتحقق من صحة النتائج حتى لو قدرنا نحسبها نظريًا. خلينا نفهم الفكرة من خلال مثال: لنفترض إننا عايزين نحدد درجة حرارة سطح جزء من ماكينة. ممكن نحاول حساب درجة الحرارة باستخدام نموذج حراري، لكن الحساب قد يحتاج إلى معرفة:</p>
+  <ul class="en" style="direction:ltr;text-align:left"><li>Thermal Conductivity</li><li>Heat Transfer Coefficient</li><li>Boundary Conditions</li><li>Heat Generation Rate</li></ul>
+  <p>ولو بعض القيم دي غير معروفة بدقة، الحساب ممكن يصبح معقدًا أو تكون نتائجه غير مؤكدة. في الحالة دي، استخدام جهاز مناسب لقياس درجة الحرارة قد يكون أسهل للحصول على القيمة الفعلية. ومع ذلك، القياس نفسه قد يحتاج إلى اختيار جهاز مناسب، ومعرفة دقته، والتأكد من إنه لا يؤثر على النظام بصورة غير مقبولة.</p>
+  <div class="note-box"><span class="box-label">Important Distinction</span><p class="en" style="text-align:left">Measurements and calculations are complementary methods. Measurements provide experimental evidence, while calculations and simulations help explain, predict, and analyze system behavior.</p></div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ════════ 3 ════════ -->
+<section class="section" id="s3">
+  <div class="section-header">
+    <div class="section-icon" aria-hidden="true">🧩</div>
+    <div class="section-title"><h2>Main Parts of Measurement Systems</h2><div class="sub">sensing → conditioning → presentation</div></div>
+  </div>
+
+  <p>دي أهم فكرة في الجزء الثاني من المحاضرة: <strong class="en">Measurement System</strong> مش مجرد جهاز بنقرأ منه رقمًا، لكنه مجموعة من العناصر اللي بتشتغل مع بعض عشان نحول الكمية الفيزيائية المراد قياسها إلى نتيجة مفهومة يمكن قراءتها أو تسجيلها أو استخدامها في التحكم. في السلايدز، الدكتور بيعرض ثلاثة أجزاء أساسية:</p>
+  <ol class="en" style="direction:ltr;text-align:left"><li><strong>Sensing Element</strong></li><li><strong>Signal Conditioning Element</strong></li><li><strong>Data Presentation Element</strong></li></ol>
+  <p>ويوضح الرسم العام كمان مراحل الإشارة، ووجود <span class="en">External Power</span> و<span class="en">Feedback Signal for Control</span> في النظام الموضح (هنشرحه في قسم الـ <span class="en">Complete Block Diagram</span>).</p>
+
+  <figure class="figure" id="fig1">
+    <div class="fig-head"><span class="fig-no">Figure 1</span><h3 class="fig-title">The Three Main Elements and a Liquid-in-Glass Thermometer</h3></div>
+    <p>الشكل ده بيجمع فكرتين: فوق، السلسلة الأساسية لأي <strong class="en">Measurement System</strong> (<span class="en">Sensing element → Signal conditioning element → Data presentation element</span>)، وتحت، جهاز حقيقي بسيط هو <strong class="en">Liquid-in-Glass Thermometer</strong> بأجزائه المكتوبة على الرسم. الفكرة إننا نبص على جهاز قياس مألوف ونحاول نشوف فيه نفس التسلسل: حاجة بتحس بالكمية، وحاجة بتوصّل أو تعدّل أثرها، وحاجة بتعرض النتيجة للمستخدم.</p>
+    <div class="fig-frame wide"><img src="lecture-1-images/measurement_system_elements_and_liquid_in_glass_thermometer.jpg" width="1600" height="1052" loading="lazy" alt="Block chain of sensing, signal conditioning and data presentation elements above a labelled liquid-in-glass thermometer"></div>
+    <p class="swipe-hint">← اسحب لرؤية المزيد →</p>
+    <p class="fig-cap">Fig. 1 — Measurement-system elements (top) and thermometer parts (bottom)</p>
+    <ul class="fig-points">
+      <li><b>Sensing element</b> — أول مرحلة، بتتفاعل مع الكمية المراد قياسها.</li>
+      <li><b>Signal conditioning element</b> — المرحلة الوسيطة اللي بتعالج الإشارة عند الحاجة.</li>
+      <li><b>Data presentation element</b> — المرحلة الأخيرة اللي بتعرض أو تسجل النتيجة.</li>
+      <li><b>Reservoir bulb · Liquid column</b> — الخزان والعمود السائل في الثيرمومتر.</li>
+      <li><b>Stem · Capillary tube</b> — الساق والأنبوب الشعري اللي بيتحرك فيه السائل.</li>
+      <li><b>Main scale</b> — التدريج اللي بيُقرأ عليه الناتج.</li>
+    </ul>
+    <p>المحاضرة النصية ما بتشرحش الثيرمومتر ده بالتفصيل، فتقسيم أجزائه على العناصر الثلاثة هنا <strong>تفسير تعليمي</strong> مش كلام منسوب للدكتور: الـ <span class="en">bulb</span> مع السائل هو الجزء اللي بيتأثر بدرجة الحرارة، والـ <span class="en">scale</span> هو اللي بيقدّم القراءة للمستخدم.</p>
+    <div class="note-box"><span class="box-label">Key Insight</span><p>أي جهاز قياس، حتى البسيط جدًا، ممكن نحلله لـ <span class="en">Sensing → Signal Conditioning → Data Presentation</span>. وقد لا يحتوي كل جهاز على مرحلة معالجة منفصلة واضحة، لأن الاحتياج بيختلف حسب الجهاز والتطبيق.</p></div>
+  </figure>
+
+  <h3>The General Measurement Process</h3>
+  <p>تخيل إننا عايزين نقيس ضغط الهواء داخل خزان. عملية القياس يمكن فهمها بالشكل التالي:</p>
+  <div class="formula-box">\[ \text{Physical Quantity} \;\rightarrow\; \text{Sensing Element} \;\rightarrow\; \text{Signal Conditioning} \;\rightarrow\; \text{Data Presentation} \]</div>
+  <p>خلينا نمشي مع الإشارة خطوة بخطوة.</p>
+  <ol class="steps">
+    <li><strong class="step-t">Physical Quantity</strong>الكمية الفيزيائية المراد قياسها هي الضغط داخل الخزان.</li>
+    <li><strong class="step-t">Sensing Element</strong>يتفاعل عنصر الاستشعار مع الضغط، وينتج تغيرًا فيزيائيًا أو إشارة مرتبطة بقيمة الضغط.</li>
+    <li><strong class="step-t">Signal Conditioning Element</strong>لو الإشارة الناتجة محتاجة إلى تقوية أو معالجة أو إزالة تشويش، يتم التعامل معها في هذه المرحلة.</li>
+    <li><strong class="step-t">Data Presentation Element</strong>في النهاية، تظهر النتيجة على مؤشر أو شاشة أو وسيلة تسجيل، بحيث يستطيع المستخدم قراءتها أو الاحتفاظ بها.</li>
+  </ol>
+  <div class="note-box"><span class="box-label">Important Note</span><p>مش كل نظام قياس لازم يحتوي على كل عمليات المعالجة المذكورة في السلايد. الاحتياجات بتختلف حسب طبيعة الإشارة والجهاز والتطبيق.</p></div>
+</section>
+
+<hr class="section-divider">
+<!-- ════════ 4 ════════ -->
+<section class="section" id="s4">
+  <div class="section-header">
+    <div class="section-icon" aria-hidden="true">🌡️</div>
+    <div class="section-title"><h2>Sensing Element</h2><div class="sub">transducer · sensor · examples</div></div>
+  </div>
+
+  <p>ده أول جزء أساسي في نظام القياس. الـ <strong class="en">Sensing Element</strong> هو الجزء اللي يتفاعل مع الكمية الفيزيائية المراد قياسها. على سبيل المثال، في جهاز قياس الضغط، لازم يكون فيه عنصر يستجيب للضغط. وفي جهاز قياس درجة الحرارة، لازم يكون فيه عنصر تتغير إحدى خصائصه استجابةً لدرجة الحرارة. السلايد بتقدم مفهومين مهمين جدًا: <span class="en">Transducer</span> و<span class="en">Sensor</span>.</p>
+
+  <h3>Transducer</h3>
+  <div class="def-box"><span class="box-label">Definition from the professor's slide</span><p class="def-en">Transducer – a device that converts one form of energy (electrical, mechanical, chemical, electromagnetic, acoustic, thermal) to another.</p></div>
+  <p>الـ <strong class="en">Transducer</strong> هو جهاز بيحوّل شكلًا من أشكال الطاقة إلى شكل آخر. الأشكال المذكورة في السلايد تشمل:</p>
+  <ul class="en" style="direction:ltr;text-align:left"><li>Electrical Energy</li><li>Mechanical Energy</li><li>Chemical Energy</li><li>Electromagnetic Energy</li><li>Acoustic Energy</li><li>Thermal Energy</li></ul>
+  <p>المهم هنا إن الـ <span class="en">Transducer</span> مش لازم يحوّل كل الأنواع دي، لكنه بيحوّل نوعًا من الطاقة إلى نوع آخر بحسب مبدأ عمله.</p>
+  <ul>
+    <li><strong class="en">Example 1 — Loudspeaker:</strong> الـ <span class="en">Loudspeaker</span> بيحوّل الإشارة الكهربائية إلى حركة ميكانيكية في الغشاء، والحركة دي بتنتج موجات صوتية. إذن، هو مثال على تحويل الطاقة الكهربائية إلى حركة ميكانيكية وصوت.</li>
+    <li><strong class="en">Example 2 — Thermocouple:</strong> الـ <span class="en">Thermocouple</span> بيحوّل فرقًا في درجة الحرارة، وفق ظروف تشغيله وتركيبه، إلى إشارة كهربائية يمكن قياسها.</li>
+    <li><strong class="en">Example 3 — Bourdon Tube Pressure Gauge:</strong> يستخدم تأثير الضغط في تشويه أنبوب مرن، ثم يحوّل الحركة الميكانيكية إلى حركة مؤشر على تدريج. ده مثال على تحويل تأثير الضغط إلى حركة ميكانيكية قابلة للقراءة.</li>
+  </ul>
+  <div class="note-box"><span class="box-label">Key Point</span><p class="en" style="text-align:left">A transducer converts one form of energy into another form of energy.</p></div>
+
+  <h3>Sensor</h3>
+  <div class="def-box"><span class="box-label">Definition from the professor's slide</span><p class="def-en">Sensor (special case) – a transducer that converts a parameter into an electric signal (electrical energy).</p></div>
+  <p>الـ <strong class="en">Sensor</strong> هو حالة خاصة من الـ <span class="en">Transducer</span>، حيث يحوّل الكمية أو الـ <span class="en">Parameter</span> المراد قياسها إلى إشارة كهربائية. الفرق المهم إن التعريف في السلايد بيشترط إن الإشارة الناتجة عن الـ <span class="en">Sensor</span> تكون كهربائية.</p>
+  <p><strong class="en">Example — Temperature Sensor:</strong> لو عندنا <span class="en">Temperature Sensor</span>، فإن الكمية المراد قياسها هي درجة الحرارة. استجابة الحساس قد تكون في صورة جهد كهربائي أو تغير في المقاومة أو إشارة كهربائية أخرى، بحسب نوع الحساس. بعد ذلك، يمكن معالجة الإشارة وقراءتها باستخدام النظام المناسب.</p>
+  <div class="note-box"><span class="box-label">Important Distinction</span><p>كل <span class="en">Sensor</span> وفق التعريف الوارد في السلايد هو نوع خاص من <span class="en">Transducer</span>، لكن ليس كل <span class="en">Transducer</span> لازم يكون <span class="en">Sensor</span> بالمعنى المحدد هنا. فمثلًا، الـ <span class="en">Loudspeaker</span> يعتبر <span class="en">Transducer</span>، لكنه لا يحوّل الكمية المراد قياسها إلى إشارة كهربائية؛ بل يحوّل الإشارة الكهربائية إلى صوت.</p></div>
+
+  <h3>Difference Between Transducer and Sensor</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Point</th><th>Transducer</th><th>Sensor</th></tr></thead>
+    <tbody>
+      <tr><td>Basic role</td><td>Converts one form of energy into another</td><td>Converts a parameter into an electrical signal</td></tr>
+      <tr><td>Output</td><td>Depends on the conversion process</td><td>Electrical signal</td></tr>
+      <tr><td>Relationship</td><td>General category</td><td>Special case of a transducer</td></tr>
+      <tr><td>Example</td><td>Loudspeaker</td><td>Temperature sensor</td></tr>
+    </tbody>
+  </table></div>
+  <div class="note-box"><span class="box-label">Exam Tip</span><p>لو السؤال طلب تعريف <span class="en">Transducer</span>، ركّز على تحويل الطاقة من شكل إلى شكل آخر. أما لو طلب تعريف <span class="en">Sensor</span> وفق السلايد، فلا تنسَ الجزء الخاص بتحويل الـ <span class="en">Parameter</span> إلى <span class="en">Electric Signal</span>.</p></div>
+
+  <h3>Examples of Sensing Elements</h3>
+  <p>السلايدز تعرض مثالين بصريين مهمين يساعدوا في فهم فكرة الـ <span class="en">Sensing Element</span>: الـ <span class="en">Bourdon Tube Pressure Gauge</span> والـ <span class="en">Thermocouple</span>.</p>
+
+  <h4>Bourdon Tube Pressure Gauge</h4>
+  <p>هو مثال على جهاز قياس الضغط باستخدام عنصر ميكانيكي يستجيب للضغط. يحتوي الجهاز على أنبوب منحني ومرن، ويتغير شكله عندما يتعرض للضغط الداخلي. الحركة الناتجة تنتقل من خلال آلية ميكانيكية إلى مؤشر يتحرك على تدريج. وبالتالي، يستطيع المستخدم قراءة الضغط من موضع المؤشر.</p>
+
+  <figure class="figure" id="fig2">
+    <div class="fig-head"><span class="fig-no">Figure 2</span><h3 class="fig-title">Components of a Bourdon Tube Pressure Gauge</h3></div>
+    <p>الرسم بيوضح الأجزاء الداخلية لـ <strong class="en">Bourdon Tube Pressure Gauge</strong>. الضغط بيدخل من الـ <span class="en">Socket</span> إلى الـ <span class="en">Bourdon Tube</span> المنحني، فيتغير شكل الأنبوب، والحركة دي بتنتقل عبر الـ <span class="en">Adjustable Link</span> إلى الـ <span class="en">Gear Sector</span> اللي بيحرك الـ <span class="en">Pinion</span> المركّب عليه الـ <span class="en">Pointer</span>، فيتحرك على الـ <span class="en">Scale</span>. الشكل بيدّي مثالًا واضحًا على إن الـ <span class="en">Sensing Element</span> (الأنبوب) بيحوّل تأثير الضغط إلى <em>حركة ميكانيكية</em>، وإن بقية الآلية بتوصّل الحركة دي لمؤشر قابل للقراءة.</p>
+    <div class="fig-frame wide"><img src="lecture-1-images/bourdon_tube_pressure_gauge_components.jpg" width="1600" height="1195" loading="lazy" alt="Cutaway schematic of a Bourdon tube pressure gauge with labelled tube, link, gear sector, pinion, hair spring, pointer, scale and socket"></div>
+    <p class="swipe-hint">← اسحب لرؤية المزيد →</p>
+    <p class="fig-cap">Fig. 2 — Bourdon tube gauge: pressure → tube deformation → linkage → pointer on scale</p>
+    <ul class="fig-points">
+      <li><b>Socket</b> — وصلة دخول الضغط إلى الجهاز.</li>
+      <li><b>Bourdon Tube</b> — الأنبوب المنحني المرن الذي يستجيب للضغط.</li>
+      <li><b>Adjustable Link (Connecting Link)</b> — الوصلة التي تنقل حركة طرف الأنبوب.</li>
+      <li><b>Gear Sector · Pinion</b> — ترس قطاعي وترس صغير ينقلان الحركة إلى المؤشر.</li>
+      <li><b>Spring (Hair Spring)</b> — النابض الشعري عند محور المؤشر.</li>
+      <li><b>Pointer · Scale</b> — المؤشر والتدريج الذي تُقرأ منه القيمة.</li>
+    </ul>
+    <div class="note-box"><span class="box-label">Key Insight</span><p>الضغط نفسه مش ظاهر مباشرةً على التدريج؛ اللي بيظهر هو حركة ميكانيكية ناتجة عن تأثير الضغط في الأنبوب، والتدريج بيتعاير عشان يعرض قيمة الضغط.</p></div>
+  </figure>
+
+  <h4>How Does It Work?</h4>
+  <ol class="steps">
+    <li><strong class="step-t">Pressure enters</strong>يدخل الضغط إلى الأنبوب من خلال وصلة الجهاز.</li>
+    <li><strong class="step-t">Tube deforms</strong>يتغير شكل الـ <span class="en">Bourdon Tube</span> بصورة تعتمد على الضغط.</li>
+    <li><strong class="step-t">Motion is transmitted</strong>تنتقل الحركة عبر الـ <span class="en">Linkage Mechanism</span>.</li>
+    <li><strong class="step-t">Sector and pinion</strong>تساعد أجزاء مثل الـ <span class="en">Sector</span> والـ <span class="en">Pinion</span> على نقل الحركة إلى المؤشر.</li>
+    <li><strong class="step-t">Pointer moves</strong>يتحرك الـ <span class="en">Pointer</span> على الـ <span class="en">Scale</span>، ويمكن قراءة قيمة الضغط.</li>
+  </ol>
+  <div class="note-box"><span class="box-label">Important Note</span><p>الشرح هنا يوضح المبدأ العام للرسم الموجود في السلايد. أما التفاصيل الدقيقة للتصميم، مثل اتجاه الحركة ومقدارها، فتعتمد على شكل الأنبوب والآلية المستخدمة. (الأجزاء المذكورة في السلايد: <span class="en">Bourdon Tube, Spring, Pinion, Sector, Segment Lever, Adjustable Link, Pointer, Scale</span>.)</p></div>
+
+  <h4>Thermocouple</h4>
+  <p>الـ <strong class="en">Thermocouple</strong> مثال آخر مرتبط بفكرة الـ <span class="en">Transducer</span> والـ <span class="en">Sensor</span>. يتكون من موصلين معدنيين مختلفين، يتصلان عند نقاط محددة. عندما تختلف درجة الحرارة بين الـ <span class="en">Measuring Junction</span> والـ <span class="en">Reference Junction</span>، ينشأ فرق جهد كهربائي مرتبط بفرق درجة الحرارة وخصائص المواد المستخدمة. يُقاس فرق الجهد باستخدام جهاز مناسب، ويمكن استخدامه لتحديد درجة الحرارة بعد المعايرة أو تطبيق العلاقة المناسبة.</p>
+
+  <figure class="figure" id="fig3">
+    <div class="fig-head"><span class="fig-no">Figure 3</span><h3 class="fig-title">Thermocouple Circuit: Hot and Cold Junctions</h3></div>
+    <p>الشكل ده بيوضح الدائرة الأساسية للـ <strong class="en">Thermocouple</strong>: سلكان من معدنين مختلفين (<span class="en">Dissimilar Metal Wires</span>) متصلان عند وصلتين. الوصلة الأولى هي الـ <span class="en">Measuring Junction (Hot)</span> المعرضة لمصدر الحرارة (<span class="en">Heat Source</span>)، والثانية هي الـ <span class="en">Reference Junction (Cold)</span>. الـ <span class="en">Voltmeter</span> موصّل في الدائرة ليقيس فرق الجهد الناتج. هنا الـ <span class="en">Thermocouple</span> بيشتغل كـ <strong class="en">Sensor</strong>: بيحوّل الكمية المقاسة (درجة الحرارة) إلى إشارة كهربائية.</p>
+    <div class="fig-frame wide"><img src="lecture-1-images/thermocouple_circuit_hot_cold_junction.jpg" width="1600" height="1195" loading="lazy" alt="Thermocouple circuit with a heated measuring junction, a cold reference junction, dissimilar metal wires and a voltmeter"></div>
+    <p class="swipe-hint">← اسحب لرؤية المزيد →</p>
+    <p class="fig-cap">Fig. 3 — Thermocouple circuit with voltmeter</p>
+    <ul class="fig-points">
+      <li><b>Measuring Junction (Hot)</b> — الوصلة المعرضة للحرارة المراد قياسها.</li>
+      <li><b>Reference Junction (Cold)</b> — الوصلة المرجعية.</li>
+      <li><b>Dissimilar Metal Wires</b> — السلكان المعدنيان المختلفان.</li>
+      <li><b>Voltmeter</b> — جهاز قياس فرق الجهد.</li>
+      <li><b>Heat Source</b> — مصدر الحرارة المطبَّق على الوصلة الساخنة.</li>
+    </ul>
+    <div class="note-box"><span class="box-label">Key Insight</span><p>الإشارة الكهربائية ترتبط بفرق درجة الحرارة بين الوصلتين، ولذلك لازم نعرف درجة حرارة الـ <span class="en">Reference Junction</span> أو نعوّضها.</p></div>
+  </figure>
+
+  <h4>How Does It Work?</h4>
+  <ol class="steps">
+    <li><strong class="step-t">Hot junction</strong>تتعرض الـ <span class="en">Measuring Junction</span> لدرجة الحرارة المراد قياسها.</li>
+    <li><strong class="step-t">Reference junction</strong>تكون الـ <span class="en">Reference Junction</span> عند درجة حرارة مرجعية أو تكون درجة حرارتها معلومة أو يتم تعويضها بطريقة مناسبة.</li>
+    <li><strong class="step-t">Voltage is produced</strong>ينتج فرق جهد كهربائي مرتبط بفرق درجة الحرارة بين الوصلتين.</li>
+    <li><strong class="step-t">Voltage is measured</strong>يُقاس الجهد باستخدام <span class="en">Voltmeter</span> أو دائرة قياس مناسبة.</li>
+    <li><strong class="step-t">Temperature is determined</strong>تُستخدم العلاقة أو المعايرة الخاصة بالـ <span class="en">Thermocouple</span> لتحديد درجة الحرارة.</li>
+  </ol>
+  <h4>Why Is the Reference Junction Important?</h4>
+  <p>لأن إشارة الـ <span class="en">Thermocouple</span> ترتبط بفرق درجة الحرارة بين الوصلتين، وليس بدرجة حرارة وصلة القياس وحدها في جميع الظروف. لو تغيرت درجة حرارة الـ <span class="en">Reference Junction</span>، فقد يؤثر ذلك على العلاقة بين الإشارة الكهربائية ودرجة الحرارة المراد قياسها. عشان كده أنظمة القياس العملية قد تستخدم <strong class="en">Cold Junction Compensation</strong>، وهنشرحه في قسم <span class="en">Signal Conditioning Element</span> لأنه مذكور صراحةً في سلايد الدكتور.</p>
+
+  <h4>Turbine Flow Meter (Additional Figure)</h4>
+  <figure class="figure" id="fig4">
+    <div class="fig-head"><span class="fig-no">Figure 4</span><h3 class="fig-title">Turbine Flow Meter with Magnet and Coil Pick-up</h3></div>
+    <p>الشكل ده مثال إضافي على <span class="en">Sensing Element</span> لكمية مختلفة هي <strong class="en">Flow</strong> (وده من موضوعات الكورس: <span class="en">Flow Measurements</span>). الزيت بيمر داخل الأنبوب (<span class="en">Flow of oil</span>) فيحرك الـ <span class="en">Turbine wheel</span> اللي بيدور حول الـ <span class="en">Axle</span>. على الـ <span class="en">Rim</span> فيه <span class="en">Magnet</span>، وفوق المجرى فيه <span class="en">Coil</span> موصّل بأسلاك <span class="en">Connections to data logger</span>. فالحركة الميكانيكية للتوربين بتتحول في النهاية إلى إشارة كهربائية بتتسجل في الـ <span class="en">data logger</span>.</p>
+    <div class="fig-frame narrow"><img src="lecture-1-images/turbine_flow_meter_magnetic_pickup.jpg" width="1600" height="1453" loading="lazy" alt="Cutaway of a pipe with a turbine wheel carrying a magnet on its rim, a coil above it and leads to a data logger"></div>
+    <p class="fig-cap">Fig. 4 — Turbine flow meter: oil flow → rotating wheel → magnet passes coil → data logger</p>
+    <ul class="fig-points">
+      <li><b>Flow of oil</b> — اتجاه تدفق المائع داخل الأنبوب.</li>
+      <li><b>Turbine wheel · Axle</b> — العجلة الدوّارة ومحورها.</li>
+      <li><b>Rim · Magnet</b> — الإطار الخارجي والمغناطيس المثبت عليه.</li>
+      <li><b>Coil</b> — الملف الذي يقابله المغناطيس أثناء الدوران.</li>
+      <li><b>Connections to data logger</b> — أسلاك نقل الإشارة للتسجيل.</li>
+    </ul>
+    <p><strong>ملاحظة:</strong> المحاضرة النصية المرفقة لا تشرح هذا الشكل، فالشرح هنا مبني على أسماء الأجزاء الظاهرة في الرسم والمبدأ المعتاد لهذا النوع من العدادات (مرور المغناطيس أمام الملف يولّد نبضات كهربائية يرتبط معدلها بسرعة دوران العجلة)، وليس منسوبًا لكلام الدكتور.</p>
+    <div class="note-box"><span class="box-label">Key Insight</span><p>الـ <span class="en">Sensing Element</span> هنا بيحوّل كمية ميكانيكية (التدفق) إلى إشارة كهربائية، والـ <span class="en">data logger</span> بيلعب دور مرحلة العرض/التسجيل.</p></div>
+  </figure>
+</section>
+
+<hr class="section-divider">
+
+<!-- ════════ 5 ════════ -->
+<section class="section" id="s5">
+  <div class="section-header">
+    <div class="section-icon" aria-hidden="true">⚙️</div>
+    <div class="section-title"><h2>Signal Conditioning Element</h2><div class="sub">6 possible operations</div></div>
+  </div>
+
+  <p>ده الجزء الثاني الأساسي في نظام القياس. في بعض الحالات، الإشارة الناتجة من الـ <span class="en">Sensing Element</span> بتكون مناسبة للاستخدام مباشرةً، لكن في حالات أخرى بتحتاج إلى معالجة قبل عرضها أو تسجيلها. السلايد بتذكر ستة احتياجات محتملة:</p>
+  <ol class="en" style="direction:ltr;text-align:left"><li>Amplification</li><li>Linearization</li><li>Analog-to-Digital Conversion</li><li>Digital-to-Analog Conversion</li><li>Filtering</li><li>Compensation</li></ol>
+
+  <figure class="figure" id="fig5">
+    <div class="fig-head"><span class="fig-no">Figure 5</span><h3 class="fig-title">From a Thermocouple to an Analogue Output Signal</h3></div>
+    <p>الشكل بيتتبع إشارة قياس درجة حرارة سائل بيتسخّن. الـ <strong class="en">Thermocouple (Analogue Sensor)</strong> مغمور في الـ <span class="en">Liquid</span> المسخّن من تحت (<span class="en">Heat</span>)، وبيطلّع <span class="en">Varying voltage</span> بيدخل على <span class="en">Signal Conditioner or System</span>، وخرجه <span class="en">Analogue Output Signal</span>. الرسم البياني جنب الشكل بيمثل الإشارة الـ <span class="en">Analogue</span>: المحور الرأسي <span class="en">Output Signal</span> والأفقي <span class="en">Time</span>، والمنحنى مستمر (مش قيم متقطعة) وبيرتفع مع تسخين السائل ثم يستقر تقريبًا مع تذبذبات صغيرة.</p>
+    <div class="fig-frame wide"><img src="lecture-1-images/thermocouple_analogue_signal_conditioning.jpg" width="1600" height="792" loading="lazy" alt="A thermocouple in a heated liquid sends a varying voltage to a signal conditioner producing an analogue output signal, with an output-versus-time graph"></div>
+    <p class="swipe-hint">← اسحب لرؤية المزيد →</p>
+    <p class="fig-cap">Fig. 5 — Sensor voltage → signal conditioner → analogue output (output signal vs time)</p>
+    <ul class="fig-points">
+      <li><b>Thermocouple (Analogue Sensor)</b> — الحساس، خرجه جهد متغير.</li>
+      <li><b>Varying voltage</b> — الإشارة الخارجة من الحساس.</li>
+      <li><b>Signal Conditioner or System</b> — مرحلة المعالجة.</li>
+      <li><b>Analogue Output Signal</b> — إشارة مستمرة التغير مع الزمن.</li>
+    </ul>
+    <p><strong>ملاحظة:</strong> نص الصورة نفسها فيه خطأ إملائي في تسمية الخرج (<span class="en">Output Sgnail</span> بدل <span class="en">Output Signal</span>) وبعض الحروف غير واضحة؛ المقصود هو <span class="en">Analogue Output Signal</span>. كما أن التذبذبات الصغيرة على المنحنى تُفهم هنا كمثال على إن الإشارة الفعلية قد لا تكون ملساء تمامًا (فكرة الـ <span class="en">Filtering</span>)، وهذا ربط تعليمي وليس كلامًا منسوبًا للدكتور.</p>
+    <div class="note-box"><span class="box-label">Key Insight</span><p>خرج الحساس غالبًا إشارة <span class="en">Analog</span> صغيرة ومتغيرة، ومرحلة الـ <span class="en">Signal Conditioning</span> هي اللي بتجهزها للاستخدام التالي (تكبير، ترشيح، تحويل <span class="en">ADC</span>… حسب الحاجة).</p></div>
+  </figure>
+
+  <h3>Amplification</h3>
+  <div class="def-box"><span class="box-label">Definition from the professor's slide</span><p class="def-en">The signal may be too small, i.e., requires amplification.</p></div>
+  <p>أحيانًا تكون الإشارة الكهربائية الناتجة من الحساس صغيرة جدًا، وبالتالي يصعب قياسها أو عرضها بالشكل المطلوب. في الحالة دي، بنستخدم <strong class="en">Amplifier</strong> لتكبير الإشارة. مثلًا لو حساس أنتج إشارة جهد صغيرة جدًا، فقد تحتاج دائرة القياس إلى تكبيرها حتى يمكن قراءتها بواسطة جهاز العرض أو نظام التسجيل. لكن لازم ننتبه إلى إن تكبير الإشارة لا يعني بالضرورة تحسين دقة القياس؛ لأن أي <span class="en">Noise</span> موجود في الإشارة قد يتأثر بالتكبير أيضًا.</p>
+  <div class="note-box"><span class="box-label">Key Point</span><p class="en" style="text-align:left">Amplification increases the signal amplitude to a more useful level.</p></div>
+
+  <h3>Linearization</h3>
+  <div class="def-box"><span class="box-label">Definition from the professor's slide</span><p class="def-en">The signal may be non-linear, i.e., it may requires linearization.</p></div>
+  <p>الـ <strong class="en">Non-linear Signal</strong> أو العلاقة غير الخطية تعني إن العلاقة بين الكمية المقاسة والإشارة الناتجة لا تتبع خطًا مستقيمًا. مثلًا، قد لا تكون الزيادة في الإشارة متناسبة بنفس المعدل مع الزيادة في الكمية الفيزيائية على كامل نطاق القياس. في هذه الحالة، قد نحتاج إلى <strong class="en">Linearization</strong>، أي معالجة أو تحويل يساعد على جعل العلاقة أقرب إلى علاقة خطية، أو على الأقل تسهيل تحويل الإشارة إلى قيمة مقاسة صحيحة.</p>
+  <p><strong class="en">Example:</strong> لو خرج الحساس يتغير بصورة غير خطية مع درجة الحرارة، يمكن استخدام دائرة إلكترونية أو خوارزمية لمعالجة العلاقة، وفق خصائص الحساس.</p>
+  <div class="note-box"><span class="box-label">Important Note</span><p>مش كل نظام يحتاج إلى <span class="en">Linearization</span>. الاحتياج يعتمد على خصائص الحساس ومتطلبات القياس.</p></div>
+
+  <h3>Analog-to-Digital Conversion</h3>
+  <div class="def-box"><span class="box-label">Definition from the professor's slide</span><p class="def-en">The signal may be analog, and may have to be digitized.</p></div>
+  <p>الـ <strong class="en">Analog Signal</strong> هي إشارة يمكن أن تتغير بصورة مستمرة ضمن نطاقها. أما الـ <strong class="en">Digital Signal</strong> فهي إشارة ممثلة في صورة قيم رقمية أو مستويات رقمية محددة. لو الحساس أنتج إشارة <span class="en">Analog</span>، وكان النظام النهائي عبارة عن <span class="en">Computer</span> أو <span class="en">Digital Data Acquisition System</span>، فقد نحتاج إلى تحويل الإشارة التناظرية إلى بيانات رقمية. العملية دي تسمى <strong class="en">Analog-to-Digital Conversion (ADC)</strong>.</p>
+  <p><strong class="en">Example:</strong> لو خرج حساس الضغط عبارة عن جهد كهربائي متغير، يمكن استخدام <span class="en">ADC</span> لتحويل الجهد إلى قيمة رقمية يستطيع الكمبيوتر معالجتها وتخزينها.</p>
+  <div class="note-box"><span class="box-label">Key Point</span><p class="en" style="text-align:left">ADC converts an analog input signal into digital data.</p></div>
+
+  <h3>Digital-to-Analog Conversion</h3>
+  <div class="def-box"><span class="box-label">Definition from the professor's slide</span><p class="def-en">The signal may be digital, and may have to be made analog.</p></div>
+  <p>في بعض الأنظمة، تكون الإشارة في صورة بيانات رقمية، لكن جزءًا آخر من النظام يحتاج إلى إشارة <span class="en">Analog</span>. في الحالة دي، بنستخدم <strong class="en">Digital-to-Analog Converter (DAC)</strong>. مثلًا، قد يستخدم نظام تحكم بيانات رقمية لإنتاج إشارة جهد تناظرية مطلوبة لتشغيل جهاز أو واجهة تحكم مناسبة.</p>
+  <div class="note-box"><span class="box-label">Key Point</span><p class="en" style="text-align:left">DAC converts digital data into an analog output signal.</p></div>
+
+  <h3>Filtering</h3>
+  <div class="def-box"><span class="box-label">Definition from the professor's slide</span><p class="def-en">The signal may contain interference that has to be removed, filters are required.</p></div>
+  <p>الإشارة الناتجة من الحساس قد تحتوي على <strong class="en">Interference</strong> أو <strong class="en">Noise</strong>، وهي مكونات غير مرغوب فيها قد تؤثر على قراءة الكمية المقاسة. يمكن استخدام <strong class="en">Filter</strong> لتقليل بعض المكونات غير المرغوبة في الإشارة. مثلًا، لو إشارة حساس تحتوي على تذبذبات سريعة غير مرتبطة بالتغير الحقيقي في الكمية المقاسة، فقد يساعد <span class="en">Low-Pass Filter</span> في تقليل المكونات عالية التردد، إذا كان ذلك مناسبًا لطبيعة الإشارة. لكن اختيار نوع الـ <span class="en">Filter</span> لازم يتم بعناية؛ لأن المرشح قد يقلل بعض التغيرات الحقيقية أيضًا إذا كانت ضمن نطاق الترددات التي يزيلها.</p>
+  <div class="note-box"><span class="box-label">Key Point</span><p class="en" style="text-align:left">Filtering reduces unwanted signal components while preserving the information needed for measurement.</p></div>
+
+  <h3>Compensation</h3>
+  <div class="def-box"><span class="box-label">Definition from the professor's slide</span><p class="def-en">The signal may require compensation (e.g., cold junction compensation in thermocouples).</p></div>
+  <p>الـ <strong class="en">Compensation</strong> هي معالجة تهدف إلى تصحيح أو تعويض تأثير عامل معين يؤثر على القياس. قد يكون خرج الحساس متأثرًا بعامل إضافي غير الكمية الأساسية التي نريد قياسها. في الحالة دي، نحتاج إلى تعويض هذا التأثير حتى نحصل على تقدير أنسب للقيمة المطلوبة.</p>
+  <h4>Example — Cold Junction Compensation</h4>
+  <p>في الـ <span class="en">Thermocouple</span>، تعتمد الإشارة الكهربائية على فرق درجة الحرارة بين الوصلات. لذلك، لو درجة حرارة الـ <span class="en">Reference Junction</span> ليست ثابتة أو معلومة، نحتاج إلى معرفة تأثيرها وتعويضه بالطريقة المناسبة. ده هو المقصود بـ <strong class="en">Cold Junction Compensation</strong>.</p>
+  <div class="note-box"><span class="box-label">Key Point</span><p class="en" style="text-align:left">Compensation corrects for the influence of additional factors that affect the measurement signal.</p></div>
+
+  <h3>Summary of Signal Conditioning Operations</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Operation</th><th>Why It May Be Needed</th><th>Basic Purpose</th></tr></thead>
+    <tbody>
+      <tr><td>Amplification</td><td>The signal is too small</td><td>Increase signal amplitude</td></tr>
+      <tr><td>Linearization</td><td>The response is non-linear</td><td>Correct or simplify the input-output relationship</td></tr>
+      <tr><td>ADC</td><td>Analog signal must be processed digitally</td><td>Convert analog data to digital data</td></tr>
+      <tr><td>DAC</td><td>Digital data must produce an analog signal</td><td>Convert digital data to analog</td></tr>
+      <tr><td>Filtering</td><td>The signal contains interference</td><td>Reduce unwanted signal components</td></tr>
+      <tr><td>Compensation</td><td>Additional factors affect the measurement</td><td>Correct for their influence</td></tr>
+    </tbody>
+  </table></div>
+  <div class="note-box"><span class="box-label">Important Exam Point</span><p>لازم تعرف إن الـ <span class="en">Signal Conditioning Element</span> مش وظيفة واحدة محددة. هو الجزء اللي يتعامل مع احتياجات معالجة الإشارة بحسب طبيعة نظام القياس. ممكن نظام يحتاج إلى <span class="en">Amplification</span> فقط، ونظام آخر يحتاج إلى <span class="en">Filtering</span> و<span class="en">ADC</span>، ونظام ثالث يحتاج إلى <span class="en">Compensation</span>، وهكذا.</p></div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ════════ 6 ════════ -->
+<section class="section" id="s6">
+  <div class="section-header">
+    <div class="section-icon" aria-hidden="true">📟</div>
+    <div class="section-title"><h2>Data Presentation Element</h2><div class="sub">read · see · record</div></div>
+  </div>
+
+  <p>ده الجزء الثالث من الأجزاء الأساسية لنظام القياس. بعد ما الـ <span class="en">Sensing Element</span> يستجيب للكمية الفيزيائية، وبعد ما تتم معالجة الإشارة عند الحاجة، لازم تكون فيه وسيلة تعرض النتيجة أو تسجلها. السلايد بتوضح إن وظيفة الـ <span class="en">Data Presentation Element</span> هي استقبال خرج مرحلة معالجة الإشارة وتقديمه للمستخدم.</p>
+
+  <h3>Definition</h3>
+  <div class="def-box"><span class="box-label">Definition from the professor's slide</span><p class="def-en">This element gathers the output of the signal conditioning element and presents it to be read, seen, or recorded by the experimenter.</p></div>
+  <p>الـ <strong class="en">Data Presentation Element</strong> بيستقبل الإشارة الخارجة من الـ <span class="en">Signal Conditioning Element</span>، وبعد ذلك يعرضها أو يسجلها بحيث يستطيع الشخص المسؤول عن التجربة قراءتها أو استخدامها. ممكن يكون العرض في صورة مؤشر ميكانيكي، أو قيمة على شاشة، أو قراءة على جهاز قياس.</p>
+
+  <h3>Examples</h3>
+  <div class="def-box"><span class="box-label">Examples from the professor's slide</span><p class="def-en">Pointer, Computer Screen, Gauge, Avometer, …etc</p></div>
+  <ul>
+    <li><strong class="en">Pointer:</strong> مؤشر يتحرك على تدريج لعرض قيمة مقاسة.</li>
+    <li><strong class="en">Computer Screen:</strong> شاشة تعرض القيم الرقمية أو الرسوم البيانية أو نتائج القياس.</li>
+    <li><strong class="en">Gauge:</strong> جهاز أو وسيلة لعرض كمية مقاسة، مثل الضغط.</li>
+    <li><strong class="en">Avometer:</strong> جهاز قياس كهربائي متعدد الاستخدامات، يُستخدم عادةً لقياس كميات مثل الجهد والتيار والمقاومة بحسب نوع الجهاز وإعداداته.</li>
+  </ul>
+
+  <figure class="figure" id="fig6">
+    <div class="fig-head"><span class="fig-no">Figure 6</span><h3 class="fig-title">A Real Dial Pressure Gauge: Pointer and Scale</h3></div>
+    <p>ده جهاز قياس ضغط حقيقي (صورة فوتوغرافية)، وبيدّي مثالًا عمليًا على <strong class="en">Gauge</strong> و<strong class="en">Pointer</strong> كوسيلة عرض (<span class="en">Data Presentation</span>). التدريج مدرّج بوحدة <span class="mono">MPa</span> من <span class="mono">0</span> إلى <span class="mono">1.6</span> بعلامات رئيسية عند <span class="mono">0, 0.4, 0.8, 1.2, 1.6</span> وتقسيمات صغيرة بينها، وفيه شريط أحمر قرب نهاية التدريج. القارئ ما بيشوفش الضغط نفسه، بيشوف <em>موضع المؤشر</em> على التدريج، وده الأساس اللي اتشرح في الـ <span class="en">Bourdon Tube Gauge</span> (Figure 2). في اللقطة دي المؤشر عند <span class="mono">0</span> على التدريج، أي إن الجهاز في حالة قراءة صفر.</p>
+    <div class="fig-frame narrow"><img src="lecture-1-images/dial_pressure_gauge_mpa_scale_photo.jpg" width="1600" height="1723" loading="lazy" alt="Photograph of a dial pressure gauge with a 0 to 1.6 MPa scale, red zone near the top of the scale and a black pointer at zero"></div>
+    <p class="fig-cap">Fig. 6 — Dial pressure gauge, scale 0–1.6 MPa</p>
+    <ul class="fig-points">
+      <li><b>Scale (MPa)</b> — تدريج الضغط بوحدة ميجاباسكال.</li>
+      <li><b>Pointer</b> — المؤشر الذي يحدد القراءة.</li>
+      <li><b>Red band</b> — شريط أحمر قرب الطرف الأعلى للتدريج.</li>
+      <li><b>Dial text</b> — النص الصيني بمعنى «مقياس ضغط مقاوم للصدمات» (耐震压力表)، والرقم المحاط بدائرة <span class="mono">1.5</span> يُعرف عادةً بفئة دقة الجهاز.</li>
+    </ul>
+    <p><strong>ملاحظة:</strong> دلالة الشريط الأحمر وفئة الدقة معلومتان معتادتان في هذا النوع من المقاييس، وليستا مشروحتين في المحاضرة النصية.</p>
+    <div class="note-box"><span class="box-label">Key Insight</span><p>مرحلة العرض هي نقطة التقاء الإنسان بالقياس: التدريج والمؤشر لازم يكونوا واضحين ومعايرين عشان القراءة تعبّر فعلًا عن الكمية المقاسة.</p></div>
+  </figure>
+
+  <h3>Requirements of a Data Presentation Element</h3>
+  <div class="def-box"><span class="box-label">Requirements from the professor's slide</span><p class="def-en">This element should:</p><ul class="def-en" style="margin:6px 0 0"><li>have as fast a response as possible.</li><li>Impose as little drag on the system as possible.</li></ul></div>
+  <p>الدكتور بيحدد شرطين مهمين للجزء ده.</p>
+  <h4>Requirement 1 — Fast Response</h4>
+  <p>لازم تكون استجابة وسيلة العرض سريعة قدر الإمكان. يعني لو الكمية المقاسة اتغيرت، المفروض وسيلة العرض تتابع التغير بسرعة مناسبة بدلًا من إنها تتأخر بشكل يؤثر على فهمنا لسلوك النظام. <strong class="en">Example:</strong> لو ضغط داخل نظام بيتغير بسرعة، فإن مؤشرًا بطيئًا جدًا قد لا يعكس التغيرات الفعلية في الوقت المناسب.</p>
+  <h4>Requirement 2 — Minimum Drag</h4>
+  <p>لازم يسبب عنصر العرض أقل تأثير ممكن على النظام. الـ <strong class="en">Drag</strong> هنا يُفهم في سياق جهاز القياس على أنه تأثير مقاوم أو حمل يفرضه الجهاز على الجزء الذي يتصل به، وقد يؤدي إلى تغيير سلوك النظام الأصلي. <strong class="en">Example:</strong> لو جهاز قياس السرعة يتصل بعمود دوار، فقد يؤدي الاحتكاك الميكانيكي داخل آلية القياس إلى مقاومة حركة العمود. لو المقاومة كبيرة، فقد تؤثر على السرعة التي نحاول قياسها نفسها. إذن، جهاز القياس المثالي قدر الإمكان هو اللي يقيس الكمية المطلوبة من غير ما يغيّرها بشكل ملحوظ.</p>
+  <div class="note-box"><span class="box-label">Key Point</span><p class="en" style="text-align:left">A data presentation element should respond quickly and introduce as little unwanted influence on the system as possible.</p></div>
+</section>
+
+<hr class="section-divider">
+<!-- ════════ 7 ════════ -->
+<section class="section" id="s7">
+  <div class="section-header">
+    <div class="section-icon" aria-hidden="true">🔁</div>
+    <div class="section-title"><h2>Complete Measurement System Block Diagram</h2><div class="sub">signal path · power · feedback</div></div>
+  </div>
+
+  <p>الرسم الموجود في السلايد الأخيرة بيجمع أجزاء نظام القياس في صورة واحدة، وبيوضح مسار الإشارة من الكمية الفيزيائية لحد مرحلة الخرج. الرسم يحتوي على العناصر التالية:</p>
+  <ol class="en" style="direction:ltr;text-align:left">
+    <li>Physical Variable to Be Measured</li><li>Input Signal</li><li>Detector–Transducer Stage</li>
+    <li>Transduced Signal</li><li>Intermediate Stage</li><li>Modified Signal</li>
+    <li>Output Stage</li><li>External Power</li><li>Feedback Signal for Control</li>
+  </ol>
+
+  <figure class="figure" id="fig7">
+    <div class="fig-head"><span class="fig-no">Figure 7</span><h3 class="fig-title">General Block Diagram of a Measurement System</h3></div>
+    <p>ده الرسم الشامل اللي بيربط الأفكار كلها. الإشارة بتبدأ من الـ <span class="en">Physical variable to be measured</span>، وتدخل كـ <span class="en">Input signal</span> إلى الـ <span class="en">Detector-transducer stage</span> (وده المقابل للـ <span class="en">Sensing Element</span>)، فتخرج <span class="en">Transduced signal</span> إلى الـ <span class="en">Intermediate stage</span> (المقابل للـ <span class="en">Signal Conditioning</span>) فتصبح <span class="en">Modified signal</span> داخلة على الـ <span class="en">Output stage</span> اللي فيها <span class="en">Controller</span> و<span class="en">Indicator</span> و<span class="en">Recorder</span>. الإطارات الحمراء في الصورة بتشدّ الانتباه إلى العناصر الإضافية فوق السلسلة الثلاثية الأساسية: <span class="en">External power</span> الداخل على المرحلة الوسيطة، و<span class="en">Controller</span> و<span class="en">Recorder</span> في مرحلة الخرج، و<span class="en">Feedback signal for control</span> الراجع إلى الكمية الفيزيائية.</p>
+    <div class="fig-frame wide"><img src="lecture-1-images/complete_measurement_system_block_diagram.png" width="1319" height="602" loading="lazy" alt="Block diagram: physical variable, detector-transducer stage, intermediate stage with external power, output stage with controller, indicator and recorder, and a feedback signal for control"></div>
+    <p class="swipe-hint">← اسحب لرؤية المزيد →</p>
+    <p class="fig-cap">Fig. 7 — Physical variable → detector-transducer → intermediate stage → output stage (+ external power, feedback)</p>
+    <ul class="fig-points">
+      <li><b>Detector-transducer stage</b> — مرحلة الاستشعار والتحويل.</li>
+      <li><b>Intermediate stage</b> — مرحلة المعالجة، ويدخلها <span class="en">External power</span>.</li>
+      <li><b>Output stage</b> — <span class="en">Controller / Indicator / Recorder</span>.</li>
+      <li><b>Feedback signal for control</b> — من الـ <span class="en">Controller</span> إلى الكمية الفيزيائية.</li>
+    </ul>
+    <div class="note-box"><span class="box-label">Key Insight</span><p>نظام القياس ممكن يتوسّع من «قياس وعرض» إلى «قياس وتسجيل وتحكم»: نفس سلسلة الاستشعار والمعالجة والعرض، مع إضافة مصدر طاقة خارجي للمرحلة الوسيطة ومسار تغذية راجعة للتحكم.</p></div>
+  </figure>
+
+  <p>خلينا نفسر الرسم بالتفصيل.</p>
+
+  <h3>Physical Variable to Be Measured</h3>
+  <p>ده يمثل الكمية الفيزيائية اللي عايزين نعرف قيمتها. ممكن تكون مثلًا:</p>
+  <ul class="en" style="direction:ltr;text-align:left"><li>Pressure</li><li>Temperature</li><li>Flow Rate</li><li>Velocity</li><li>Force</li></ul>
+  <p>الكمية دي هي نقطة البداية في عملية القياس.</p>
+
+  <h3>Input Signal</h3>
+  <p>الـ <strong class="en">Input Signal</strong> هو التأثير أو الإشارة المرتبطة بالكمية الفيزيائية عند دخولها إلى مرحلة الاستشعار. على سبيل المثال، في جهاز قياس الضغط، يكون الضغط هو الكمية المراد قياسها، ويؤثر على عنصر الاستشعار بطريقة تعتمد على مبدأ عمل الجهاز.</p>
+
+  <h3>Detector–Transducer Stage</h3>
+  <p>المرحلة دي مرتبطة بالـ <span class="en">Sensing Element</span> والـ <span class="en">Transducer</span>. وظيفتها الاستجابة للكمية الفيزيائية وتحويل تأثيرها إلى إشارة يمكن تمريرها إلى المراحل التالية. <strong class="en">Example:</strong> في الـ <span class="en">Bourdon Tube Pressure Gauge</span>، يؤدي الضغط إلى تشوه ميكانيكي في الأنبوب، وتنتقل الحركة الناتجة إلى آلية المؤشر. أما في الـ <span class="en">Thermocouple</span>، فينتج فرق جهد مرتبط بفرق درجة الحرارة بين الوصلتين.</p>
+
+  <h3>Transduced Signal</h3>
+  <p>دي الإشارة الناتجة من مرحلة الـ <span class="en">Detector–Transducer</span>. شكل الإشارة يعتمد على طبيعة الجهاز. قد تكون إشارة كهربائية، أو حركة ميكانيكية، أو صورة أخرى من صور التحويل التي يسمح بها مبدأ عمل الجهاز.</p>
+
+  <h3>Intermediate Stage</h3>
+  <p>الـ <strong class="en">Intermediate Stage</strong> هي المرحلة الوسيطة التي تتعامل مع الإشارة القادمة من مرحلة التحويل، وقد تُستخدم لتعديلها أو تجهيزها قبل وصولها إلى الخرج. وده يرتبط بالفكرة اللي شرحناها في <span class="en">Signal Conditioning Element</span>. قد تحتاج الإشارة إلى تكبير أو ترشيح أو تعويض أو تحويل إلى شكل آخر، حسب احتياجات النظام.</p>
+
+  <h3>Modified Signal</h3>
+  <p>الـ <strong class="en">Modified Signal</strong> هي الإشارة بعد مرورها بمرحلة المعالجة أو التعديل. الهدف هو تجهيز الإشارة لتكون مناسبة للعرض أو التسجيل أو الاستخدام في مرحلة التحكم.</p>
+
+  <h3>Output Stage</h3>
+  <p>السلايد بتوضح إن مرحلة الخرج قد تحتوي على عناصر مثل:</p>
+  <ul>
+    <li><strong class="en">Indicator:</strong> وظيفته عرض قيمة القياس بحيث يستطيع المستخدم قراءتها.</li>
+    <li><strong class="en">Recorder:</strong> يُستخدم لتسجيل بيانات القياس، بحيث يمكن الرجوع إليها وتحليلها لاحقًا.</li>
+    <li><strong class="en">Controller:</strong> يُستخدم في نظام التحكم للتعامل مع الإشارة وفقًا للهدف المحدد للنظام.</li>
+  </ul>
+  <div class="note-box"><span class="box-label">Important Distinction</span><p>وجود <span class="en">Controller</span> في الرسم لا يعني أن كل جهاز قياس لازم يكون جزءًا من نظام تحكم مغلق. الرسم يعرض تصورًا عامًا يمكن أن يتضمن القياس والعرض والتسجيل والتحكم.</p></div>
+
+  <h3>External Power</h3>
+  <p>الرسم يوضح وجود <strong class="en">External Power</strong> متصل بالمرحلة الوسيطة. في بعض أنظمة القياس، تحتاج دوائر معالجة الإشارة إلى مصدر طاقة خارجي حتى تستطيع تشغيل المكونات الإلكترونية أو تكبير الإشارة أو تنفيذ عمليات المعالجة المطلوبة. <strong class="en">Example:</strong> قد يحتاج نظام قياس إلكتروني إلى مصدر طاقة لتشغيل <span class="en">Amplifier</span> أو دائرة معالجة الإشارة. لكن مش كل عنصر استشعار يحتاج بالضرورة إلى تغذية خارجية بالطريقة نفسها؛ لأن ده يعتمد على تصميم الجهاز ومبدأ عمله.</p>
+
+  <h3>Feedback Signal for Control</h3>
+  <p>الرسم يوضح مسارًا يسمى <strong class="en">Feedback Signal for Control</strong>. الـ <strong class="en">Feedback</strong> هي إشارة راجعة تُستخدم في نظام التحكم للمساعدة على تحديد الفرق بين الحالة الفعلية والحالة المطلوبة، أو لدعم عملية اتخاذ قرار التحكم بحسب تصميم النظام. <strong class="en">Example:</strong> لو نظام تحكم مطلوب منه الحفاظ على درجة حرارة معينة، يمكن قياس درجة الحرارة الفعلية وإرسال الإشارة إلى الـ <span class="en">Controller</span>. يقارن المتحكم القيمة المقاسة بالقيمة المطلوبة، ثم يحدد الإجراء المناسب لتقليل الفرق بينهما.</p>
+  <div class="note-box"><span class="box-label">Key Point</span><p class="en" style="text-align:left">The measurement system provides information about the actual condition of the system, while the controller uses that information to support control actions.</p></div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ════════ 8 ════════ -->
+<section class="section" id="s8">
+  <div class="section-header">
+    <div class="section-icon" aria-hidden="true">🔗</div>
+    <div class="section-title"><h2>Putting the Elements Together</h2><div class="sub">relationships · worked example · distinctions</div></div>
+  </div>
+
+  <h3>Relationship Between the Three Main Elements</h3>
+  <p>خلينا نربط الأجزاء الثلاثة الأساسية ببعض.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Element</th><th>Main Function</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td>Sensing Element</td><td>Responds to the physical quantity being measured</td><td>Thermocouple</td></tr>
+      <tr><td>Signal Conditioning Element</td><td>Processes the measurement signal when required</td><td>Amplifier or Filter</td></tr>
+      <tr><td>Data Presentation Element</td><td>Displays or records the measurement result</td><td>Computer Screen or Gauge</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="example-card">
+    <div class="ex-head">Complete Example — Temperature Measurement</div>
+    <div class="ex-body">
+      <div class="q-box">Measure the temperature of an industrial furnace using a thermocouple and display the result on a computer screen.</div>
+      <p>لنفترض إننا عايزين نقيس درجة حرارة فرن صناعي باستخدام <span class="en">Thermocouple</span> ونظهر النتيجة على شاشة كمبيوتر.</p>
+      <ol class="steps">
+        <li><strong class="step-t">Physical Quantity</strong>الكمية المراد قياسها هي <span class="en">Temperature</span> داخل الفرن.</li>
+        <li><strong class="step-t">Sensing Element</strong>يستجيب الـ <span class="en">Thermocouple</span> لدرجة الحرارة وينتج إشارة كهربائية مرتبطة بفرق درجة الحرارة بين الوصلات.</li>
+        <li><strong class="step-t">Signal Conditioning</strong>قد تحتاج الإشارة إلى معالجة مناسبة، مثل <span class="en">Filtering</span> أو <span class="en">Amplification</span> أو <span class="en">Cold Junction Compensation</span>، حسب تصميم النظام.</li>
+        <li><strong class="step-t">Signal Conversion</strong>إذا كان الكمبيوتر يحتاج إلى بيانات رقمية وكانت الإشارة <span class="en">Analog</span>، فقد تُستخدم دائرة <span class="en">ADC</span> لتحويل الإشارة إلى بيانات رقمية.</li>
+        <li><strong class="step-t">Data Presentation</strong>يعرض الكمبيوتر قيمة درجة الحرارة على الشاشة.</li>
+        <li><strong class="step-t">Recording</strong>يمكن تسجيل القراءات بمرور الزمن لمتابعة تغير درجة الحرارة وتحليل أداء الفرن.</li>
+      </ol>
+      <span class="answer-badge">✔ Result: temperature displayed on screen and recorded over time</span>
+    </div>
+  </div>
+  <div class="note-box"><span class="box-label">Important Note</span><p>ده مثال توضيحي يجمع بين المفاهيم الموجودة في السلايدز. مش معناه إن كل نظام يستخدم <span class="en">Thermocouple</span> لازم يحتوي على نفس مكونات المعالجة بالضبط؛ لأن التصميم يعتمد على متطلبات التطبيق.</p></div>
+
+  <h3>Important Distinctions</h3>
+  <h4>Measurement vs. Instrumentation</h4>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Measurement</th><th>Instrumentation</th></tr></thead>
+    <tbody><tr><td>Determines the value of a physical quantity</td><td>Deals with the devices and systems used to measure and process quantities</td></tr></tbody>
+  </table></div>
+  <h4>Transducer vs. Sensor</h4>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Transducer</th><th>Sensor</th></tr></thead>
+    <tbody><tr><td>Converts one form of energy into another</td><td>Converts a parameter into an electrical signal</td></tr>
+    <tr><td>May produce different forms of output</td><td>Produces an electrical signal according to the lecture definition</td></tr></tbody>
+  </table></div>
+  <h4>Sensing vs. Signal Conditioning</h4>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Sensing Element</th><th>Signal Conditioning Element</th></tr></thead>
+    <tbody><tr><td>Responds to the physical quantity</td><td>Processes the resulting signal when needed</td></tr>
+    <tr><td>Produces a response related to the quantity</td><td>May amplify, filter, linearize, convert, or compensate the signal</td></tr></tbody>
+  </table></div>
+  <h4>Signal Conditioning vs. Data Presentation</h4>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Signal Conditioning</th><th>Data Presentation</th></tr></thead>
+    <tbody><tr><td>Prepares the signal for further use</td><td>Makes the result available for reading, viewing, or recording</td></tr>
+    <tr><td>Example: Amplifier</td><td>Example: Computer Screen</td></tr></tbody>
+  </table></div>
+</section>
+
+<hr class="section-divider">
+<!-- ════════ 9 ════════ -->
+<section class="section" id="s9">
+  <div class="section-header">
+    <div class="section-icon" aria-hidden="true">📝</div>
+    <div class="section-title"><h2>Important Exam Questions</h2><div class="sub">18 questions · model answers</div></div>
+  </div>
+  <p>حاول تجاوب بنفسك الأول، وبعدين اضغط على الزر لعرض الإجابة النموذجية.</p>
+  <div class="q-section">
+
+    <div class="q-item"><span class="q-no">Question 1</span><p class="q-text">Why do engineers carry out measurements?</p>
+      <button type="button" class="sol-btn" aria-expanded="false" onclick="toggleSol(this)">عرض الحل الكامل ▼</button>
+      <div class="q-solution"><span class="sol-label">Model Answer</span><p>Engineers carry out measurements to validate mathematical models and simulations, investigate model limits, obtain information that cannot be obtained from calculations alone, verify equipment performance, investigate technical problems, and validate new ideas.</p></div></div>
+
+    <div class="q-item"><span class="q-no">Question 2</span><p class="q-text">Why are measurements important even when mathematical calculations are available?</p>
+      <button type="button" class="sol-btn" aria-expanded="false" onclick="toggleSol(this)">عرض الحل الكامل ▼</button>
+      <div class="q-solution"><span class="sol-label">Model Answer</span><p>Measurements provide experimental evidence about real physical systems. They can be easier to perform in some cases and are essential for validating mathematical models and calculations.</p></div></div>
+
+    <div class="q-item"><span class="q-no">Question 3</span><p class="q-text">Define a transducer according to the lecture.</p>
+      <button type="button" class="sol-btn" aria-expanded="false" onclick="toggleSol(this)">عرض الحل الكامل ▼</button>
+      <div class="q-solution"><span class="sol-label">Model Answer</span><p>A transducer is a device that converts one form of energy, such as electrical, mechanical, chemical, electromagnetic, acoustic, or thermal energy, to another.</p></div></div>
+
+    <div class="q-item"><span class="q-no">Question 4</span><p class="q-text">Define a sensor according to the lecture.</p>
+      <button type="button" class="sol-btn" aria-expanded="false" onclick="toggleSol(this)">عرض الحل الكامل ▼</button>
+      <div class="q-solution"><span class="sol-label">Model Answer</span><p>A sensor is a special case of a transducer that converts a parameter into an electrical signal.</p></div></div>
+
+    <div class="q-item"><span class="q-no">Question 5</span><p class="q-text">What is the difference between a transducer and a sensor?</p>
+      <button type="button" class="sol-btn" aria-expanded="false" onclick="toggleSol(this)">عرض الحل الكامل ▼</button>
+      <div class="q-solution"><span class="sol-label">Model Answer</span><p>A transducer converts one form of energy into another, whereas a sensor is a special case of a transducer that converts a parameter into an electrical signal.</p></div></div>
+
+    <div class="q-item"><span class="q-no">Question 6</span><p class="q-text">List the three main parts of a measurement system presented in the lecture.</p>
+      <button type="button" class="sol-btn" aria-expanded="false" onclick="toggleSol(this)">عرض الحل الكامل ▼</button>
+      <div class="q-solution"><span class="sol-label">Model Answer</span><ol><li>Sensing Element</li><li>Signal Conditioning Element</li><li>Data Presentation Element</li></ol></div></div>
+
+    <div class="q-item"><span class="q-no">Question 7</span><p class="q-text">What is the function of the sensing element?</p>
+      <button type="button" class="sol-btn" aria-expanded="false" onclick="toggleSol(this)">عرض الحل الكامل ▼</button>
+      <div class="q-solution"><span class="sol-label">Model Answer</span><p>The sensing element responds to the physical quantity being measured and produces a response related to that quantity.</p></div></div>
+
+    <div class="q-item"><span class="q-no">Question 8</span><p class="q-text">Why may a signal conditioning element be required in a measurement system?</p>
+      <button type="button" class="sol-btn" aria-expanded="false" onclick="toggleSol(this)">عرض الحل الكامل ▼</button>
+      <div class="q-solution"><span class="sol-label">Model Answer</span><p>A signal conditioning element may be required to amplify a small signal, linearize a non-linear response, convert analog signals to digital signals or digital signals to analog signals, remove interference using filters, or provide compensation.</p></div></div>
+
+    <div class="q-item"><span class="q-no">Question 9</span><p class="q-text">What is the purpose of amplification?</p>
+      <button type="button" class="sol-btn" aria-expanded="false" onclick="toggleSol(this)">عرض الحل الكامل ▼</button>
+      <div class="q-solution"><span class="sol-label">Model Answer</span><p>Amplification increases the amplitude of a small signal to a more useful level for subsequent processing or measurement.</p></div></div>
+
+    <div class="q-item"><span class="q-no">Question 10</span><p class="q-text">What is the difference between ADC and DAC?</p>
+      <button type="button" class="sol-btn" aria-expanded="false" onclick="toggleSol(this)">عرض الحل الكامل ▼</button>
+      <div class="q-solution"><span class="sol-label">Model Answer</span><p>An Analog-to-Digital Converter (ADC) converts an analog signal into digital data, whereas a Digital-to-Analog Converter (DAC) converts digital data into an analog signal.</p></div></div>
+
+    <div class="q-item"><span class="q-no">Question 11</span><p class="q-text">Why are filters used in measurement systems?</p>
+      <button type="button" class="sol-btn" aria-expanded="false" onclick="toggleSol(this)">عرض الحل الكامل ▼</button>
+      <div class="q-solution"><span class="sol-label">Model Answer</span><p>Filters are used to reduce unwanted signal components or interference that may affect the measurement.</p></div></div>
+
+    <div class="q-item"><span class="q-no">Question 12</span><p class="q-text">What is compensation in a measurement system?</p>
+      <button type="button" class="sol-btn" aria-expanded="false" onclick="toggleSol(this)">عرض الحل الكامل ▼</button>
+      <div class="q-solution"><span class="sol-label">Model Answer</span><p>Compensation is a process used to correct for the influence of additional factors that affect the measurement signal.</p></div></div>
+
+    <div class="q-item"><span class="q-no">Question 13</span><p class="q-text">What is cold junction compensation in a thermocouple measurement system?</p>
+      <button type="button" class="sol-btn" aria-expanded="false" onclick="toggleSol(this)">عرض الحل الكامل ▼</button>
+      <div class="q-solution"><span class="sol-label">Model Answer</span><p>Cold junction compensation accounts for the temperature of the reference junction so that the thermocouple signal can be used to determine the temperature at the measuring junction correctly.</p></div></div>
+
+    <div class="q-item"><span class="q-no">Question 14</span><p class="q-text">What is the function of the data presentation element?</p>
+      <button type="button" class="sol-btn" aria-expanded="false" onclick="toggleSol(this)">عرض الحل الكامل ▼</button>
+      <div class="q-solution"><span class="sol-label">Model Answer</span><p>The data presentation element gathers the output of the signal conditioning element and presents it so that the experimenter can read, view, or record the measurement result.</p></div></div>
+
+    <div class="q-item"><span class="q-no">Question 15</span><p class="q-text">What are the two requirements of the data presentation element mentioned in the lecture?</p>
+      <button type="button" class="sol-btn" aria-expanded="false" onclick="toggleSol(this)">عرض الحل الكامل ▼</button>
+      <div class="q-solution"><span class="sol-label">Model Answer</span><p>The data presentation element should have as fast a response as possible and impose as little drag on the system as possible.</p></div></div>
+
+    <div class="q-item"><span class="q-no">Question 16</span><p class="q-text">Explain the working principle of a Bourdon tube pressure gauge.</p>
+      <button type="button" class="sol-btn" aria-expanded="false" onclick="toggleSol(this)">عرض الحل الكامل ▼</button>
+      <div class="q-solution"><span class="sol-label">Model Answer</span><p>Pressure causes a mechanical deformation of the Bourdon tube. The resulting motion is transmitted through a linkage and gear mechanism to move a pointer over a calibrated scale, allowing the pressure to be read.</p></div></div>
+
+    <div class="q-item"><span class="q-no">Question 17</span><p class="q-text">Explain the basic working principle of a thermocouple.</p>
+      <button type="button" class="sol-btn" aria-expanded="false" onclick="toggleSol(this)">عرض الحل الكامل ▼</button>
+      <div class="q-solution"><span class="sol-label">Model Answer</span><p>A thermocouple uses two dissimilar metal wires. A temperature difference between the measuring junction and the reference junction produces a voltage related to the temperature difference. The voltage is measured and used to determine the temperature.</p></div></div>
+
+    <div class="q-item"><span class="q-no">Question 18</span><p class="q-text">What is the role of a controller in a measurement and control system?</p>
+      <button type="button" class="sol-btn" aria-expanded="false" onclick="toggleSol(this)">عرض الحل الكامل ▼</button>
+      <div class="q-solution"><span class="sol-label">Model Answer</span><p>A controller uses measurement information to determine control actions according to the requirements of the system.</p></div></div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ════════ 10 ════════ -->
+<section class="section" id="s10">
+  <div class="section-header">
+    <div class="section-icon" aria-hidden="true">✏️</div>
+    <div class="section-title"><h2>Practice Exercises</h2><div class="sub">7 exercises · answer keys</div></div>
+  </div>
+  <div class="q-section">
+
+    <div class="q-item"><span class="q-no">Exercise 1 — Classification</span>
+      <p class="q-text">Classify each item as a transducer, a sensor, a signal conditioning operation, or a data presentation element.</p>
+      <ol class="en" style="direction:ltr;text-align:left"><li>Loudspeaker</li><li>Temperature sensor</li><li>Amplifier</li><li>Computer screen</li><li>Filter</li><li>Bourdon tube pressure gauge</li><li>Digital-to-Analog Converter</li></ol>
+      <button type="button" class="sol-btn" aria-expanded="false" onclick="toggleSol(this)">عرض الحل الكامل ▼</button>
+      <div class="q-solution"><span class="sol-label">Answer Key</span><ol><li>Transducer</li><li>Sensor</li><li>Signal conditioning operation</li><li>Data presentation element</li><li>Signal conditioning operation</li><li>Measuring instrument that uses a mechanical sensing and indicating mechanism</li><li>Signal conditioning operation</li></ol></div></div>
+
+    <div class="q-item"><span class="q-no">Exercise 2 — Identify the Missing Element</span>
+      <p class="q-text">A temperature sensor produces an electrical signal, but the signal is too small for the next stage to process reliably. Which signal conditioning operation may be required?</p>
+      <button type="button" class="sol-btn" aria-expanded="false" onclick="toggleSol(this)">عرض الحل الكامل ▼</button>
+      <div class="q-solution"><span class="sol-label">Answer</span><p>Amplification.</p></div></div>
+
+    <div class="q-item"><span class="q-no">Exercise 3 — ADC or DAC?</span>
+      <p class="q-text">A measurement system produces an analog voltage, but a computer must process the measurement as digital data. Which converter is required?</p>
+      <button type="button" class="sol-btn" aria-expanded="false" onclick="toggleSol(this)">عرض الحل الكامل ▼</button>
+      <div class="q-solution"><span class="sol-label">Answer</span><p>An Analog-to-Digital Converter (ADC).</p></div></div>
+
+    <div class="q-item"><span class="q-no">Exercise 4 — Measurement System Sequence</span>
+      <p class="q-text">Arrange the following elements in a typical measurement sequence: Data Presentation Element, Physical Quantity, Signal Conditioning Element, Sensing Element.</p>
+      <button type="button" class="sol-btn" aria-expanded="false" onclick="toggleSol(this)">عرض الحل الكامل ▼</button>
+      <div class="q-solution"><span class="sol-label">Answer</span><p>Physical Quantity → Sensing Element → Signal Conditioning Element → Data Presentation Element.</p></div></div>
+
+    <div class="q-item"><span class="q-no">Exercise 5 — Thermocouple</span>
+      <p class="q-text">Why is the reference junction important in a thermocouple measurement system?</p>
+      <button type="button" class="sol-btn" aria-expanded="false" onclick="toggleSol(this)">عرض الحل الكامل ▼</button>
+      <div class="q-solution"><span class="sol-label">Answer</span><p>The thermocouple voltage depends on the temperature difference between its junctions. Therefore, the reference-junction temperature must be known or compensated for when determining the measuring-junction temperature.</p></div></div>
+
+    <div class="q-item"><span class="q-no">Exercise 6 — Troubleshooting</span>
+      <p class="q-text">A measurement signal contains unwanted high-frequency interference. Which signal conditioning operation may help reduce this interference?</p>
+      <button type="button" class="sol-btn" aria-expanded="false" onclick="toggleSol(this)">عرض الحل الكامل ▼</button>
+      <div class="q-solution"><span class="sol-label">Answer</span><p>Filtering, provided that the unwanted interference can be distinguished from the signal components that need to be preserved.</p></div></div>
+
+    <div class="q-item"><span class="q-no">Exercise 7 — System Requirements</span>
+      <p class="q-text">A measuring instrument introduces significant resistance to the movement of the system being measured. Which requirement of the data presentation element may be violated?</p>
+      <button type="button" class="sol-btn" aria-expanded="false" onclick="toggleSol(this)">عرض الحل الكامل ▼</button>
+      <div class="q-solution"><span class="sol-label">Answer</span><p>The requirement to impose as little drag on the system as possible.</p></div></div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ════════ 11 ════════ -->
+<section class="section" id="s11">
+  <div class="section-header">
+    <div class="section-icon" aria-hidden="true">📚</div>
+    <div class="section-title"><h2>Final Revision</h2><div class="sub">revision table · final review</div></div>
+  </div>
+
+  <h3>Final Revision Table</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Concept</th><th>Main Idea to Remember</th></tr></thead>
+    <tbody>
+      <tr><td>Measurement</td><td>Determining the value of a physical quantity</td></tr>
+      <tr><td>Instrumentation</td><td>Devices and systems used for measurement</td></tr>
+      <tr><td>Mathematical Model</td><td>Mathematical representation of a physical system</td></tr>
+      <tr><td>Simulation</td><td>Computational prediction or analysis of system behavior</td></tr>
+      <tr><td>Model Validation</td><td>Comparing model predictions with experimental results</td></tr>
+      <tr><td>Sensing Element</td><td>Responds to the physical quantity</td></tr>
+      <tr><td>Transducer</td><td>Converts one form of energy into another</td></tr>
+      <tr><td>Sensor</td><td>Converts a parameter into an electrical signal</td></tr>
+      <tr><td>Signal Conditioning</td><td>Prepares or modifies the measurement signal</td></tr>
+      <tr><td>Amplification</td><td>Increases signal amplitude</td></tr>
+      <tr><td>Linearization</td><td>Corrects or simplifies a non-linear input-output relationship</td></tr>
+      <tr><td>ADC</td><td>Converts analog data to digital data</td></tr>
+      <tr><td>DAC</td><td>Converts digital data to analog data</td></tr>
+      <tr><td>Filtering</td><td>Reduces unwanted signal components</td></tr>
+      <tr><td>Compensation</td><td>Corrects for additional influences on measurement</td></tr>
+      <tr><td>Data Presentation</td><td>Displays or records the measurement result</td></tr>
+      <tr><td>Bourdon Tube Pressure Gauge</td><td>Uses pressure-induced mechanical deformation to indicate pressure</td></tr>
+      <tr><td>Thermocouple</td><td>Produces a voltage related to the temperature difference between junctions</td></tr>
+      <tr><td>External Power</td><td>Supplies energy to components that require it</td></tr>
+      <tr><td>Feedback</td><td>Provides information used in a control system</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Final Review</h3>
+  <p>قبل الامتحان، تأكد إنك تقدر تشرح النقاط التالية من غير ما تعتمد على الحفظ فقط:</p>
+  <ol>
+    <li><strong class="en">Why We Carry Out Measurements:</strong> افهم الأسباب الستة المذكورة في السلايد، واعرف تشرح كل سبب بمثال.</li>
+    <li><strong class="en">Transducer vs. Sensor:</strong> احفظ التعريفين الإنجليزيين وافهم الفرق بينهما.</li>
+    <li><strong class="en">Main Parts of Measurement Systems:</strong> اعرف وظيفة كل جزء، وترتيب انتقال الإشارة.</li>
+    <li><strong class="en">Signal Conditioning:</strong> افهم الحالات الست التي ذكرها الدكتور، ومتى قد تحتاج إليها.</li>
+    <li><strong class="en">Bourdon Tube Pressure Gauge:</strong> افهم إزاي الضغط يؤدي إلى حركة المؤشر.</li>
+    <li><strong class="en">Thermocouple:</strong> افهم دور الـ <span class="en">Measuring Junction</span> والـ <span class="en">Reference Junction</span> وسبب الحاجة إلى <span class="en">Cold Junction Compensation</span>.</li>
+    <li><strong class="en">Data Presentation Element:</strong> احفظ الشرطين الأساسيين المذكورين في السلايد: سرعة الاستجابة وتقليل التأثير على النظام.</li>
+    <li><strong class="en">Complete Block Diagram:</strong> اعرف مسار الإشارة، والفرق بين مراحل الاستشعار والمعالجة والعرض، ودور الـ <span class="en">Controller</span> والـ <span class="en">Feedback</span>.</li>
+  </ol>
+
+  <h3>The Most Important Idea in the Lecture</h3>
+  <div class="def-box"><span class="box-label">Big Picture</span>
+    <p>الفكرة الأساسية للمحاضرة إن القياس مش مجرد قراءة رقم من جهاز. إحنا بنحتاج إلى نظام يستجيب للكمية الفيزيائية، وينقل أو يعالج الإشارة عند الحاجة، ثم يعرض النتيجة أو يسجلها بصورة مفيدة.</p>
+    <p>وفي نفس الوقت، القياسات بتساعد المهندس على التحقق من الحسابات والنماذج، وفهم سلوك الأنظمة الحقيقية، واكتشاف المشكلات، وتقييم أداء المعدات.</p></div>
+  <div class="note-box"><span class="box-label">Source Note</span><p>تم إعداد الشرح بالاعتماد على محتوى ملف <span class="en">1. Introduction.pdf</span>، مع إضافة أمثلة تعليمية لتوضيح المفاهيم. وبما إن المحاضرة الأولى ليس لها تفريغ صوتي، فالشرح ليس إعادة بناء حرفية لكلام الدكتور، وإنما شرح منظم للمحتوى المتاح في السلايدز.</p></div>
+</section>
+
+</main>
+
+<div class="end-wrap">
+  <footer class="lec-footer">
+    <h2>Lecture 1 — Introduction to Measurements</h2>
+    <p>Mechanical Measurements &amp; Instrumentation (ME305) · Dr. Mohamed Rashed · Cairo University</p>
+    <div class="tags">
+      <span class="tag">Measurement</span><span class="tag">Why We Measure</span><span class="tag">Transducer vs Sensor</span>
+      <span class="tag">Sensing Element</span><span class="tag">Signal Conditioning</span><span class="tag">Data Presentation</span>
+      <span class="tag">Bourdon Tube</span><span class="tag">Thermocouple</span><span class="tag">Block Diagram</span>
+    </div>
+  </footer>
+  <div class="closing"><p>🤲 ولا تنسوا الصلاة على النبي صلى الله عليه وسلم، والدعاء لإخوانكم في فلسطين وغزة وفي جميع بقاع الأرض، وأن ينصر الله المسلمين المستضعفين. 🤲</p></div>
+</div>
+
+<script>
+function toggleDua(btn){
+  var c=document.getElementById('duaContent');
+  var open=btn.getAttribute('aria-expanded')==='true';
+  btn.setAttribute('aria-expanded', open?'false':'true');
+  if(open){ c.classList.remove('open'); } else { c.classList.add('open'); }
+}
+function toggleSol(btn){
+  var sol=btn.nextElementSibling;
+  var open=btn.getAttribute('aria-expanded')==='true';
+  btn.setAttribute('aria-expanded', open?'false':'true');
+  if(open){ sol.classList.remove('open'); btn.textContent='عرض الحل الكامل ▼'; }
+  else { sol.classList.add('open'); btn.textContent='إخفاء الحل ▲'; }
+}
+(function(){
+  var links=document.querySelectorAll('.toc-item');
+  for(var i=0;i<links.length;i++){
+    links[i].addEventListener('click',function(e){
+      var id=this.getAttribute('href').slice(1), t=document.getElementById(id);
+      if(!t) return;
+      e.preventDefault();
+      t.scrollIntoView({behavior:'smooth',block:'start'});
+      try{ history.replaceState(null,'','#'+id); }catch(err){}
+    });
+  }
+})();
+(function(){
+  var KEY='eyeProtection', root=document.documentElement, btn=document.getElementById('eyeToggle');
+  if(!btn) return;
+  var st=btn.querySelector('.eye-st');
+  function render(on){ btn.setAttribute('aria-pressed', on?'true':'false'); st.textContent = on?'ON':'OFF'; }
+  render(root.getAttribute('data-eye')==='on');
+  btn.addEventListener('click', function(){
+    var on = root.getAttribute('data-eye') !== 'on';
+    if(on){ root.setAttribute('data-eye','on'); } else { root.removeAttribute('data-eye'); }
+    render(on);
+    try{ localStorage.setItem(KEY, on?'on':'off'); }catch(e){}
+  });
+})();
+</script>
+</body>
+</html>
