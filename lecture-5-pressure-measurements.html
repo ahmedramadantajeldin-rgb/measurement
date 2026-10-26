@@ -1,0 +1,1785 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pressure Measurements — Measurement Lecture 5</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=Cairo:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&family=Amiri&display=swap" rel="stylesheet">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] },
+  options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js" async></script>
+<style>
+:root{
+  --navy:#0B2447; --royal:#1B4F8A; --sky:#2E86C1; --azure:#5DADE2; --mist:#D6EAF8; --pearl:#EBF5FB;
+  --white:#FFFFFF; --ink:#1A1A2E; --graphite:#2C3E50; --slate:#5D6D7E; --gold:#D4AC0D; --amber:#F0B429;
+  --mint:#1ABC9C; --mint-light:#D5F5E3; --coral:#E74C3C; --coral-light:#FADBD8;
+  --shadow:0 4px 20px rgba(11,36,71,0.10); --shadow-lg:0 8px 40px rgba(11,36,71,0.16);
+  --radius:14px; --radius-sm:8px;
+}
+*{ box-sizing:border-box; margin:0; padding:0; max-width:100%; }
+html,body{ overflow-x:hidden; }
+html{ scroll-behavior:smooth; }
+body{
+  background:linear-gradient(160deg,#f0f6ff 0%,#e8f1fb 50%,#f5f9ff 100%);
+  font-family:'Cairo','Source Serif 4',serif; font-size:17px; line-height:1.85; color:var(--ink);
+}
+mjx-container, mjx-container *{ max-width:none; }
+.ltr{ direction:ltr; unicode-bidi:isolate; }
+.mono{ font-family:'JetBrains Mono',monospace; direction:ltr; unicode-bidi:isolate; font-size:0.9em; }
+.en{ direction:ltr; unicode-bidi:isolate; font-family:'Source Serif 4','Cairo',serif; }
+
+/* ===== Header ===== */
+.header{
+  position:relative; width:100%; padding:60px 40px 50px; text-align:center; color:#fff; overflow:hidden;
+  background:linear-gradient(135deg,var(--navy) 0%,var(--royal) 60%,var(--sky) 100%);
+}
+.header::before{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M0 30h60M30 0v60M0 0l60 60M60 0L0 60' stroke='white' stroke-opacity='0.04' stroke-width='1' fill='none'/%3E%3C/svg%3E");
+}
+.header > *{ position:relative; }
+.badge{
+  display:inline-block; background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3);
+  border-radius:999px; padding:4px 18px; font-size:0.78rem; letter-spacing:2px; text-transform:uppercase;
+  font-family:'Cairo',sans-serif; margin-bottom:18px; direction:ltr;
+}
+.header h1{
+  font-family:'Playfair Display',serif; font-weight:800; font-size:clamp(2rem,5vw,3.2rem); line-height:1.25;
+  text-shadow:0 2px 12px rgba(0,0,0,0.25); direction:ltr; margin-bottom:14px;
+}
+.header h1 .h1-sub{ display:inline-block; font-size:0.65em; opacity:0.85; font-weight:700; }
+.subtitle{
+  font-family:'Source Serif 4',serif; font-size:1.1rem; opacity:0.85; direction:ltr;
+  max-width:650px; margin:0 auto 26px;
+}
+.meta-row{ display:flex; flex-wrap:wrap; gap:10px; justify-content:center; direction:ltr; }
+.meta-pill{
+  background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.28); border-radius:999px;
+  padding:4px 14px; font-size:0.82rem; font-family:'Cairo',sans-serif;
+}
+
+/* ===== Du'a ===== */
+.dua-wrap{ max-width:960px; margin:28px auto 0; padding:0 24px; }
+.dua-card{ background:#fff; border:1.5px solid #e8b84b; border-radius:14px; box-shadow:0 2px 12px rgba(168,120,42,0.10); overflow:hidden; }
+.dua-btn{
+  width:100%; display:flex; align-items:center; justify-content:space-between; gap:10px; text-align:right;
+  background:linear-gradient(135deg,#7a5800,#b8860b); color:#fff; border:none; cursor:pointer;
+  font-family:'Cairo',sans-serif; font-weight:700; font-size:1.05rem; padding:12px 20px;
+}
+.dua-btn:focus-visible{ outline:3px solid var(--amber); outline-offset:-3px; }
+.dua-arrow{ display:inline-block; transition:transform .3s ease; }
+.dua-btn[aria-expanded="true"] .dua-arrow{ transform:rotate(180deg); }
+.dua-body{ display:none; padding:18px 20px 20px; background:linear-gradient(135deg,#fffbea,#fff9f0); }
+.dua-body.open{ display:block; }
+.dua-body p{
+  font-family:'Amiri',serif; font-size:17px; line-height:2.1; color:#5a3e00;
+  border-right:3px solid #e8b84b; padding-right:14px; margin-bottom:12px;
+}
+.dua-body p:last-child{ margin-bottom:0; }
+
+/* ===== TOC ===== */
+.toc-wrapper{ max-width:900px; margin:34px auto 0; padding:0 24px; }
+.toc-card{ background:var(--white); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden; }
+.toc-head{
+  background:linear-gradient(90deg,var(--royal),var(--sky)); color:#fff; padding:14px 24px;
+  font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:700; direction:ltr; text-align:left;
+}
+.toc-body{ display:grid; grid-template-columns:1fr 1fr; gap:8px; padding:18px 20px; direction:ltr; }
+.toc-item{
+  display:flex; align-items:center; gap:12px; padding:8px 12px; border-radius:var(--radius-sm);
+  text-decoration:none; color:var(--navy); font-family:'Source Serif 4','Cairo',serif; font-weight:600; font-size:0.95rem; line-height:1.4;
+  transition:background .2s;
+}
+.toc-item:hover,.toc-item:focus-visible{ background:var(--pearl); outline:none; }
+.toc-num{
+  flex:0 0 26px; width:26px; height:26px; border-radius:50%; background:var(--royal); color:#fff;
+  display:inline-flex; align-items:center; justify-content:center; font-family:'JetBrains Mono',monospace; font-size:0.72rem; font-weight:500;
+}
+
+/* ===== Content ===== */
+.content-wrapper{ max-width:960px; margin:0 auto; padding:30px 24px 10px; }
+.section{ padding-top:10px; scroll-margin-top:70px; }
+.section-header{
+  display:flex; align-items:center; gap:16px; padding-bottom:14px; margin-bottom:22px; border-bottom:3px solid var(--mist); direction:ltr;
+}
+.section-icon{
+  flex:0 0 52px; width:52px; height:52px; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:1.6rem;
+  background:linear-gradient(135deg,var(--royal),var(--sky)); box-shadow:var(--shadow);
+}
+.section-title{ font-family:'Playfair Display',serif; font-size:1.75rem; font-weight:700; color:var(--navy); line-height:1.25; }
+.section-sub{ font-family:'JetBrains Mono',monospace; font-size:0.78rem; color:var(--slate); margin-top:2px; }
+.section-divider{ border:none; height:2px; margin:50px 0; background:linear-gradient(90deg,transparent,var(--sky),transparent); }
+.section h3{
+  font-family:'Playfair Display',serif; font-size:1.3rem; font-weight:700; color:var(--royal); margin:26px 0 10px; direction:ltr; text-align:left;
+}
+.section h4{
+  font-family:'Playfair Display',serif; font-size:1.08rem; font-weight:600; color:var(--graphite); margin:18px 0 8px; direction:ltr; text-align:left;
+}
+.section p{ margin-bottom:12px; }
+.section ul,.section ol{ margin:6px 24px 14px 0; padding-right:8px; }
+.section li{ margin-bottom:6px; }
+
+/* ===== Boxes ===== */
+.def-box{
+  background:linear-gradient(135deg,var(--mist),var(--pearl)); border-right:5px solid var(--sky);
+  border-radius:var(--radius); padding:16px 22px; margin:18px 0; box-shadow:var(--shadow);
+}
+.def-box .box-label{
+  font-family:'JetBrains Mono',monospace; font-size:0.75rem; letter-spacing:1px; text-transform:uppercase; color:var(--royal);
+  direction:ltr; text-align:left; margin-bottom:4px; font-weight:500;
+}
+.def-box .def-en{ font-family:'Source Serif 4',serif; font-size:1.05rem; font-weight:600; color:var(--navy); direction:ltr; text-align:left; margin-bottom:8px; }
+.def-box .def-ar{ margin-bottom:0; }
+.formula-box{
+  background:var(--navy); color:#fff; border-radius:var(--radius); padding:16px 22px; margin:18px 0; box-shadow:var(--shadow-lg);
+  direction:ltr; text-align:center; overflow-x:auto; overflow-y:hidden;
+}
+.formula-box .box-label{ font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:1px; text-transform:uppercase; color:var(--azure); margin-bottom:4px; text-align:left; }
+.formula-box mjx-container{ color:#fff; }
+.formula-box mjx-container[display="true"]{ margin:0.4em 0 !important; }
+.note-box{
+  background:#fffbea; border-right:5px solid var(--amber); border-radius:var(--radius); padding:14px 22px; margin:18px 0; box-shadow:var(--shadow);
+}
+.note-box .box-label{ font-family:'JetBrains Mono',monospace; font-size:0.75rem; letter-spacing:1px; text-transform:uppercase; color:#8a6500; direction:ltr; text-align:left; margin-bottom:4px; font-weight:500; }
+.note-box p:last-child,.def-box p:last-child{ margin-bottom:0; }
+.eqwrap{ overflow-x:auto; overflow-y:hidden; direction:ltr; text-align:center; padding:2px 0; }
+.vars{ background:var(--pearl); border-radius:var(--radius-sm); padding:10px 18px; margin:10px 0 16px; direction:ltr; text-align:left; }
+.vars .vars-title{ font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--slate); letter-spacing:1px; margin-bottom:4px; }
+.vars ul{ list-style:none; margin:0; padding:0; }
+.vars li{ margin-bottom:2px; font-family:'Source Serif 4',serif; font-size:0.97rem; line-height:1.7; }
+
+/* ===== Example card ===== */
+.example-card{ background:var(--white); border-radius:var(--radius); box-shadow:var(--shadow); margin:24px 0; overflow:hidden; }
+.example-head{
+  background:linear-gradient(90deg,var(--sky),var(--azure)); color:#fff; padding:10px 22px; direction:ltr; text-align:left;
+  font-family:'Playfair Display',serif; font-weight:700; font-size:1.08rem;
+}
+.example-body{ padding:18px 22px 20px; }
+.q-box{ background:var(--pearl); border-radius:var(--radius-sm); padding:12px 16px; margin-bottom:14px; direction:ltr; text-align:left; font-family:'Source Serif 4',serif; }
+.q-box .lab{ font-family:'JetBrains Mono',monospace; font-size:0.74rem; color:var(--royal); letter-spacing:1px; text-transform:uppercase; margin-bottom:2px; }
+.steps{ list-style:none; margin:0; padding:0; counter-reset:st; direction:ltr; text-align:left; }
+.steps li{ counter-increment:st; display:flex; gap:12px; align-items:flex-start; margin-bottom:10px; font-family:'Source Serif 4',serif; }
+.steps li::before{
+  content:counter(st); flex:0 0 26px; width:26px; height:26px; border-radius:50%; background:var(--royal); color:#fff;
+  display:inline-flex; align-items:center; justify-content:center; font-family:'JetBrains Mono',monospace; font-size:0.78rem; margin-top:2px;
+}
+.steps li > div{ flex:1; min-width:0; overflow-x:auto; overflow-y:hidden; }
+.ans-badge{
+  display:inline-block; direction:ltr; background:var(--mint-light); color:#0e6b57; border:1.5px solid var(--mint);
+  border-radius:999px; padding:4px 16px; font-family:'JetBrains Mono',monospace; font-size:0.88rem; font-weight:500; margin:6px 0 12px;
+}
+.ar-explain{ background:#fff; border-right:4px solid var(--azure); border-radius:var(--radius-sm); padding:10px 16px; margin-top:6px; }
+
+/* ===== Questions ===== */
+.q-section{ border:2px solid var(--royal); border-radius:var(--radius); margin:28px 0 8px; overflow:hidden; background:var(--white); }
+.q-section-head{
+  background:linear-gradient(90deg,var(--royal),var(--sky)); color:#fff; padding:10px 22px; direction:ltr; text-align:left;
+  font-family:'Playfair Display',serif; font-weight:700; font-size:1.05rem;
+}
+.q-item{ padding:14px 22px; border-top:1px solid var(--mist); }
+.q-item:first-of-type{ border-top:none; }
+.q-text{ direction:ltr; text-align:left; font-family:'Source Serif 4',serif; font-weight:600; color:var(--navy); margin-bottom:8px; }
+.q-text .qn{ font-family:'JetBrains Mono',monospace; color:var(--royal); margin-right:6px; }
+.q-btn{
+  font-family:'Cairo',sans-serif; font-weight:600; font-size:0.88rem; cursor:pointer; background:var(--pearl); color:var(--royal);
+  border:1.5px solid var(--sky); border-radius:var(--radius-sm); padding:5px 16px; transition:background .2s,color .2s;
+}
+.q-btn:hover{ background:var(--royal); color:#fff; }
+.q-btn:focus-visible{ outline:2px solid var(--amber); outline-offset:2px; }
+.q-sol{ display:none; margin-top:12px; background:var(--pearl); border-radius:var(--radius-sm); padding:12px 16px; }
+.q-sol.open{ display:block; }
+.q-sol .ans-en{ direction:ltr; text-align:left; font-family:'Source Serif 4',serif; margin-bottom:8px; }
+.q-sol .ans-en .lab{ font-family:'JetBrains Mono',monospace; font-size:0.74rem; color:var(--royal); letter-spacing:1px; text-transform:uppercase; }
+.q-sol p:last-child{ margin-bottom:0; }
+
+/* ===== Tables ===== */
+.table-wrap{ overflow-x:auto; margin:18px 0; border-radius:var(--radius); box-shadow:var(--shadow); background:var(--white); }
+.swipe-hint{ display:none; text-align:center; font-size:0.78rem; color:var(--slate); margin:-8px 0 12px; font-family:'Cairo',sans-serif; }
+table{ width:100%; border-collapse:collapse; background:var(--white); min-width:560px; direction:ltr; }
+th{ background:var(--royal); color:#fff; padding:10px 14px; font-family:'Source Serif 4',serif; font-weight:600; font-size:0.95rem; text-align:left; direction:ltr; }
+td{ padding:9px 14px; border-bottom:1px solid var(--mist); font-size:0.95rem; vertical-align:top; }
+tr:nth-child(even) td{ background:var(--pearl); }
+td.num{ font-family:'JetBrains Mono',monospace; text-align:center; direction:ltr; }
+td.lbl{ text-align:right; direction:rtl; color:var(--navy); font-weight:600; font-family:'Cairo',sans-serif; }
+td.en-cell{ direction:ltr; text-align:left; font-family:'Source Serif 4',serif; }
+
+/* ===== Figures ===== */
+/* A figure is a small image labelled only "Figure N"; its explanation sits beside it (wide screens) or directly under it (narrow screens / wide diagrams). */
+.figure-row{ display:flex; align-items:center; gap:22px; margin:20px auto; max-width:860px; }
+.figure-row.stack{ flex-direction:column; align-items:center; gap:12px; }
+.figure{ flex:0 0 auto; width:min(var(--fw,300px),100%); background:var(--white); border-radius:var(--radius); box-shadow:var(--shadow); padding:10px 12px 8px; margin:0; text-align:center; }
+.figure a{ display:block; cursor:zoom-in; }
+.figure img{ display:block; margin:0 auto; width:100%; height:auto; border-radius:var(--radius-sm); }
+.figure figcaption{ margin-top:6px; font-family:'JetBrains Mono',monospace; font-weight:500; font-size:0.82rem; letter-spacing:.3px; color:var(--navy); direction:ltr; text-align:center; line-height:1.3; }
+.fig-text{ flex:1 1 0; min-width:0; border-inline-start:3px solid var(--azure); padding-inline-start:14px; }
+.figure-row.stack .fig-text{ flex:none; width:100%; }
+.fig-text p{ margin:0 0 8px; font-size:0.95rem; line-height:1.8; }
+.fig-text p:last-child{ margin-bottom:0; }
+.fig-text .fig-en{ direction:ltr; text-align:left; font-family:'Source Serif 4',serif; color:var(--graphite); }
+.fig-text .fig-ar{ text-align:right; }
+@media (max-width:720px){
+  .figure-row{ flex-direction:column; align-items:center; gap:12px; }
+  .fig-text{ width:100%; flex:none; }
+}
+
+/* ===== Footer & closing ===== */
+.footer{
+  max-width:960px; margin:40px auto 0; background:var(--navy); color:#fff; text-align:center; border-radius:var(--radius);
+  padding:34px 26px 30px; box-shadow:var(--shadow-lg);
+}
+.footer-title{ font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:700; margin-bottom:6px; direction:ltr; }
+.footer-desc{ opacity:0.7; font-size:0.92rem; margin-bottom:16px; direction:ltr; font-family:'Source Serif 4',serif; }
+.footer-tags{ display:flex; flex-wrap:wrap; gap:8px; justify-content:center; direction:ltr; }
+.footer-tag{ background:rgba(255,255,255,0.10); border-radius:999px; padding:3px 14px; font-size:0.8rem; font-family:'Source Serif 4',serif; }
+.footer-wrap{ padding:0 24px; }
+.closing-wrap{ max-width:960px; margin:24px auto 40px; padding:0 24px; }
+.closing{
+  background:linear-gradient(135deg,#0B2447,#1B4F8A); border-top:4px solid #D4AC0D; border-radius:14px;
+  box-shadow:0 8px 32px rgba(11,36,71,0.18); padding:30px 28px; text-align:center;
+}
+.closing p{ font-family:'Amiri',serif; font-size:19px; line-height:2.2; color:#fff; text-shadow:0 1px 3px rgba(0,0,0,0.25); margin:0; }
+
+/* ===== Responsive ===== */
+@media (max-width:768px){
+  body{ font-size:16px; }
+  .header{ padding:52px 24px 40px; }
+  .content-wrapper,.toc-wrapper,.dua-wrap,.footer-wrap,.closing-wrap{ padding-left:16px; padding-right:16px; }
+  .section-title{ font-size:1.5rem; }
+  .section-divider{ margin:40px 0; }
+}
+@media (max-width:650px){
+  .example-body{ padding:14px 14px 16px; }
+  .q-item{ padding:12px 14px; }
+  .def-box,.note-box,.formula-box{ padding:12px 14px; }
+}
+@media (max-width:600px){
+  .toc-body{ grid-template-columns:1fr; }
+  .section-icon{ flex:0 0 44px; width:44px; height:44px; font-size:1.3rem; }
+  .section-title{ font-size:1.3rem; }
+  .swipe-hint{ display:block; }
+  .header{ padding:56px 16px 34px; }
+  .footer{ padding:26px 16px 24px; }
+  .closing{ padding:22px 16px; }
+  .closing p{ font-size:17px; }
+}
+@media (max-width:380px){
+  body{ font-size:15px; }
+  .section-title{ font-size:1.15rem; }
+  .badge{ font-size:0.68rem; letter-spacing:1px; padding:3px 12px; }
+  .meta-pill{ font-size:0.74rem; padding:3px 10px; }
+  .dua-btn{ font-size:0.95rem; padding:10px 14px; }
+  .toc-head{ font-size:1.05rem; padding:12px 16px; }
+}
+</style>
+<script>
+try{ if(localStorage.getItem('eyeProtection')==='on'){ document.documentElement.setAttribute('data-eye','on'); } }catch(e){}
+</script>
+<style id="eye-protection-css">
+.eye-toggle{position:fixed; top:14px; left:14px; z-index:10000; direction:ltr; display:inline-flex; align-items:center; gap:8px; padding:6px 14px 6px 12px; border-radius:999px; cursor:pointer; margin:0; font-family:'Cairo',sans-serif; font-weight:600; font-size:0.82rem; line-height:1.4; background:rgba(255,255,255,0.93); color:#0B2447; border:1px solid rgba(11,36,71,0.28); box-shadow:0 2px 10px rgba(11,36,71,0.18); backdrop-filter:blur(6px); transition:background .2s, border-color .2s, color .2s;}
+.eye-toggle:focus-visible{outline:2px solid #F0B429; outline-offset:2px;}
+.eye-sw{position:relative; flex:0 0 30px; width:30px; height:16px; border-radius:999px; background:#A9B4C0; transition:background .2s;}
+.eye-sw::after{content:""; position:absolute; top:2px; left:2px; width:12px; height:12px; border-radius:50%; background:#fff; box-shadow:0 1px 2px rgba(0,0,0,.3); transition:transform .2s;}
+.eye-st{min-width:2.3em; text-align:left; font-family:'JetBrains Mono',monospace; font-size:0.76rem; font-weight:500;}
+.eye-toggle[aria-pressed="true"]{background:#F8EFD6; border-color:#C9A25A; color:#5A3E00;}
+.eye-toggle[aria-pressed="true"] .eye-sw{background:#C8902E;}
+.eye-toggle[aria-pressed="true"] .eye-sw::after{transform:translateX(14px);}
+@media (max-width:420px){ .eye-toggle{padding:5px 10px 5px 9px; gap:6px; font-size:0.74rem;} .eye-lbl{display:none;} }
+.eye-overlay{display:none;}
+.home-link{position:fixed; top:14px; right:14px; z-index:10000; direction:rtl; display:inline-flex; align-items:center; gap:6px; padding:6px 14px; border-radius:999px; text-decoration:none; font-family:'Cairo',sans-serif; font-weight:600; font-size:0.82rem; line-height:1.4; background:rgba(255,255,255,0.93); color:#0B2447; border:1px solid rgba(11,36,71,0.28); box-shadow:0 2px 10px rgba(11,36,71,0.18); backdrop-filter:blur(6px);}
+.home-link:focus-visible{outline:2px solid #F0B429; outline-offset:2px;}
+@media (max-width:420px){ .home-link{padding:5px 10px; font-size:0.74rem;} }
+@media screen{
+  html[data-eye="on"]{ --pearl:#EAF1F5; --mist:#D5E4EE; --white:#F8F8F5; --sky:#3A84B3; --azure:#69A8CF; --amber:#E2AD3C; --gold:#C8A21C; --mint:#27AD93; --mint-light:#D6EADC; --coral:#D9544A; --coral-light:#F0DCD6; --slate:#556576; --shadow:0 4px 20px rgba(50,44,32,0.10); --shadow-lg:0 8px 40px rgba(50,44,32,0.14); --eye-paper:#F8F8F5; }
+  html[data-eye="on"] body{background:linear-gradient(160deg,#F0F1F0 0%,#ECEDEC 50%,#F1F2F1 100%);}
+  html[data-eye="on"] img{filter:brightness(0.97) saturate(0.96);}
+  html[data-eye="on"] .dua-card,
+  html[data-eye="on"] .toc-card,
+  html[data-eye="on"] .example-card,
+  html[data-eye="on"] .q-section,
+  html[data-eye="on"] .table-wrap,
+  html[data-eye="on"] table,
+  html[data-eye="on"] .figure,
+  html[data-eye="on"] .ar-explain{ background:var(--eye-paper); }
+  html[data-eye="on"] .note-box{ background:#F6F0DF; }
+  html[data-eye="on"] .dua-body{ background:linear-gradient(135deg,#F6F1E0,#F7F2E6); }
+  html[data-eye="on"] .formula-box,
+  html[data-eye="on"] .formula-box mjx-container,
+  html[data-eye="on"] .formula-box mjx-container *{ color:#F4F4F2 !important; }
+  html[data-eye="on"] .eye-toggle,
+  html[data-eye="on"] .home-link{ background:rgba(248,248,245,0.93); }
+  html[data-eye="on"] .eye-toggle[aria-pressed="true"]{ background:#F8EFD6; }
+  @supports (mix-blend-mode:multiply){
+    html[data-eye="on"] .eye-overlay{ display:block; position:fixed; inset:0; z-index:9990; pointer-events:none; background:rgba(255,225,170,0.22); mix-blend-mode:multiply; }
+  }
+}
+@media print{ .eye-toggle,.eye-overlay{display:none !important;} }
+</style>
+</head>
+<body>
+<button type="button" class="eye-toggle" id="eyeToggle" aria-pressed="false" title="Eye Protection: softer brightness and less blue light for long study sessions">
+  <span class="eye-ico" aria-hidden="true">👁</span>
+  <span class="eye-lbl">Eye Protection</span>
+  <span class="eye-sw" aria-hidden="true"></span>
+  <span class="eye-st">OFF</span>
+</button>
+<div class="eye-overlay" aria-hidden="true"></div>
+<a class="home-link" href="index.html">← الصفحة الرئيسية</a>
+
+<header class="header">
+  <div class="badge">Measurement · Lecture 5</div>
+  <h1>Pressure Measurements<br><span class="h1-sub">Manometers, Dead Weight Tester and Mechanical Pressure Sensors</span></h1>
+  <p class="subtitle">Pressure terminology, gravitational methods, barometers, manometer design and errors, calibration, and elastic pressure-sensing elements.</p>
+  <div class="meta-row">
+    <span class="meta-pill">📏 Pressure Terminology</span>
+    <span class="meta-pill">🧪 Manometers</span>
+    <span class="meta-pill">⚖️ Calibration</span>
+    <span class="meta-pill">⚙️ Mechanical Sensors</span>
+  </div>
+</header>
+
+<div class="dua-wrap">
+  <div class="dua-card">
+    <button type="button" class="dua-btn" id="duaBtn" aria-expanded="false" aria-controls="duaBody">
+      <span>📖 دعاء</span><span class="dua-arrow" aria-hidden="true">▼</span>
+    </button>
+    <div class="dua-body" id="duaBody">
+      <p>اللَّهُمَّ لا سَهْلَ إِلاَّ ما جَعَلْتَهُ سَهْلاً، وأنْتَ تَجْعَلُ الحَزْنَ إِذَا شِئْتَ سَهْلاً.</p>
+      <p>رَبِّ اشْرَحْ لِي صَدْرِي * وَيَسِّرْ لِي أَمْرِي * وَاحْلُلْ عُقْدَةً مِنْ لِسَانِي * يَفْقَهُوا قَوْلِي.</p>
+      <p>اللَّهُمَّ انْفَعْنِي بِمَا عَلَّمْتَنِي، وَعَلِّمْنِي مَا يَنْفَعُنِي، وَزِدْنِي عِلْمًا.</p>
+      <p>اللهم إني أسألك فهم النبيين، وحفظ المرسلين والملائكة المقربين، اللهم اجعل ألسنتنا عامرة بذكرك، وقلوبنا بخشيتك، وأسرارنا بطاعتك، إنك على كل شيء قدير.</p>
+      <p>يا حي يا قيوم برحمتك أستغيث، أصلح لي شأني كله ولا تكلني إلى نفسي طرفة عين.</p>
+      <p>اللهم يا جامع الناس ليوم لا ريب فيه، اجمع علي ضالتي.</p>
+      <p>اللهم إني استودعتك ما قرأت وما حفظت وما تعلمت، فرده عند حاجتي إليه، إنك على كل شيء قدير، وحسبنا الله ونعم الوكيل.</p>
+      <p>أستغفر الله، أستغفر الله، أستغفر الله.</p>
+    </div>
+  </div>
+</div>
+
+<div class="toc-wrapper"><nav class="toc-card" aria-label="Table of contents"><div class="toc-head">Table of Contents</div><div class="toc-body"><a class="toc-item" href="#s1"><span class="toc-num">1</span><span>Definition of Pressure and Its Units</span></a><a class="toc-item" href="#s2"><span class="toc-num">2</span><span>Pressure Terminology</span></a><a class="toc-item" href="#s3"><span class="toc-num">3</span><span>Gravitational Methods of Pressure Measurement</span></a><a class="toc-item" href="#s4"><span class="toc-num">4</span><span>Barometer</span></a><a class="toc-item" href="#s5"><span class="toc-num">5</span><span>Manometer</span></a><a class="toc-item" href="#s6"><span class="toc-num">6</span><span>Selecting the Manometric Fluid</span></a><a class="toc-item" href="#s7"><span class="toc-num">7</span><span>Sources of Error in Manometer Measurements</span></a><a class="toc-item" href="#s8"><span class="toc-num">8</span><span>Understanding the Pressure Difference in a Manometer</span></a><a class="toc-item" href="#s9"><span class="toc-num">9</span><span>Static, Dynamic and Total Pressure</span></a><a class="toc-item" href="#s10"><span class="toc-num">10</span><span>Errors in Manometer Measurements — Slide Discussion</span></a><a class="toc-item" href="#s11"><span class="toc-num">11</span><span>Choosing the Manometric Fluid — Slide Discussion</span></a><a class="toc-item" href="#s12"><span class="toc-num">12</span><span>Inclined Manometer</span></a><a class="toc-item" href="#s13"><span class="toc-num">13</span><span>Well-Type and Inclined Well-Type Manometers</span></a><a class="toc-item" href="#s14"><span class="toc-num">14</span><span>Sensitivity, Accuracy and Design Purpose</span></a><a class="toc-item" href="#s15"><span class="toc-num">15</span><span>Advantages and Limitations of Manometers</span></a><a class="toc-item" href="#s16"><span class="toc-num">16</span><span>Dead Weight Tester</span></a><a class="toc-item" href="#s17"><span class="toc-num">17</span><span>Mechanical Methods of Pressure Measurement</span></a><a class="toc-item" href="#s18"><span class="toc-num">18</span><span>Bourdon Tube</span></a><a class="toc-item" href="#s19"><span class="toc-num">19</span><span>Diaphragm Pressure Sensor</span></a><a class="toc-item" href="#s20"><span class="toc-num">20</span><span>Bellows Pressure Sensor</span></a><a class="toc-item" href="#s21"><span class="toc-num">21</span><span>Mechanical Displacement and Electrical Measurement</span></a><a class="toc-item" href="#s22"><span class="toc-num">22</span><span>Static vs. Dynamic Pressure Measurement</span></a></div></nav></div>
+
+<main class="content-wrapper">
+<!-- ===================== 1 ===================== -->
+<section class="section" id="s1">
+  <div class="section-header"><div class="section-icon">📐</div><div><h2 class="section-title">Definition of Pressure and Its Units</h2><div class="section-sub">P = F / A · SI unit: Pa · bar · atm · mmHg · psi</div></div></div>
+
+  <div class="def-box">
+    <div class="box-label">Definition — Pressure</div>
+    <div class="def-en">Pressure is the normal force acting per unit area.</div>
+    <p class="def-ar">الـ Pressure هو الضغط، وبيعبر عن مقدار القوة العمودية (Normal Force) المؤثرة على وحدة المساحة.</p>
+  </div>
+
+  <div class="formula-box">
+    <div class="box-label">Pressure Definition</div>
+    \[ P=\frac{F}{A} \]
+  </div>
+  <div class="vars">
+    <div class="vars-title">WHERE</div>
+    <ul>
+      <li>\(P\) = Pressure</li>
+      <li>\(F\) = Normal force acting on the surface</li>
+      <li>\(A\) = Area over which the force acts</li>
+    </ul>
+  </div>
+
+  <p>يعني لو عندك قوة معينة بتأثر على مساحة صغيرة، الضغط هيكون أكبر من نفس القوة لو بتأثر على مساحة أكبر. من العلاقة:</p>
+  <div class="formula-box">\[ P\propto\frac{1}{A} \]</div>
+  <p>بشرط إن القوة تفضل ثابتة، لما المساحة تقل، الضغط يزيد، ولما المساحة تزيد، الضغط يقل.</p>
+  <div class="note-box">
+    <div class="box-label">Example</div>
+    <p>لو أثرت نفس القوة على مساحة صغيرة ومساحة كبيرة، الضغط على المساحة الصغيرة هيكون أكبر.</p>
+  </div>
+
+  <h3>Units of Pressure</h3>
+  <div class="def-box">
+    <div class="box-label">Definition — Pascal</div>
+    <div class="def-en">The SI unit of pressure is the Pascal (Pa), where one Pascal equals one Newton per square metre.</div>
+    <p class="def-ar">وحدة الضغط في النظام الدولي (SI Unit) هي الـ Pascal (Pa). يعني الضغط يساوي 1 باسكال لما قوة مقدارها 1 نيوتن تؤثر عموديًا على مساحة 1 م².</p>
+  </div>
+  <div class="formula-box">\[ 1\ \text{Pa}=1\ \text{N/m}^2 \]</div>
+
+  <p>فيه وحدات تانية مهمة لقياس الضغط:</p>
+  <ul class="ltr" style="direction:ltr;text-align:left;margin:6px 0 14px 24px;">
+    <li>Pascal (Pa)</li>
+    <li>Kilopascal (kPa)</li>
+    <li>Bar</li>
+    <li>Atmosphere (atm)</li>
+    <li>Millimeter of Mercury (mmHg)</li>
+    <li>Torr</li>
+    <li>Pounds per Square Inch (psi)</li>
+  </ul>
+
+  <h4>Important Conversions</h4>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Conversion</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td class="num">1 bar</td><td class="num">= 10<sup>5</sup> Pa</td></tr>
+        <tr><td class="num">1 bar</td><td class="num">= 100 kPa</td></tr>
+        <tr><td class="num">1 atm</td><td class="num">= 101325 Pa</td></tr>
+        <tr><td class="num">1 atm</td><td class="num">= 101.325 kPa</td></tr>
+        <tr><td class="num">1 atm</td><td class="num">≈ 1.01325 bar</td></tr>
+        <tr><td class="num">1 atm</td><td class="num">= 760 mmHg = 760 torr</td></tr>
+        <tr><td class="num">1 bar</td><td class="num">≈ 14.5 psi</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="swipe-hint">← اسحب لرؤية المزيد →</div>
+
+  <div class="note-box">
+    <div class="box-label">Note</div>
+    <p>خلي بالك إن الـ bar والـ atm وحدتين مختلفتين، حتى لو قيمتهم قريبة من بعض. في المسائل، لازم تستخدم التحويل الصحيح حسب الوحدة المطلوبة.</p>
+  </div>
+
+  <div class="q-section">
+    <div class="q-section-head">Questions — Definition of Pressure and Units</div>
+    <div class="q-item">
+      <div class="q-text"><span class="qn">Q1.</span>What is the SI unit of pressure?</div>
+      <button type="button" class="q-btn" aria-expanded="false">عرض الحل الكامل ▼</button>
+      <div class="q-sol"><div class="ans-en"><span class="lab">Answer</span><br>Pascal (Pa).</div></div>
+    </div>
+    <div class="q-item">
+      <div class="q-text"><span class="qn">Q2.</span>What is the relationship between pressure, force, and area?</div>
+      <button type="button" class="q-btn" aria-expanded="false">عرض الحل الكامل ▼</button>
+      <div class="q-sol"><div class="ans-en"><span class="lab">Answer</span>
+        <div class="eqwrap">\[ P=\frac{F}{A} \]</div></div>
+        <p>الضغط هو القوة العمودية مقسومة على المساحة اللي بتأثر عليها.</p></div>
+    </div>
+    <div class="q-item">
+      <div class="q-text"><span class="qn">Q3.</span>What happens to pressure when the area decreases while the force remains constant?</div>
+      <button type="button" class="q-btn" aria-expanded="false">عرض الحل الكامل ▼</button>
+      <div class="q-sol"><div class="ans-en"><span class="lab">Answer</span><br>Pressure increases.</div>
+        <p>لأن \(P\propto 1/A\) عند ثبات القوة، فلما المساحة تقل الضغط بيزيد.</p></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ===================== 2 ===================== -->
+<section class="section" id="s2">
+  <div class="section-header"><div class="section-icon">🧭</div><div><h2 class="section-title">Pressure Terminology</h2><div class="section-sub">Atmospheric · Absolute · Gauge · Vacuum · Differential · STP</div></div></div>
+
+  <p>عشان نفهم أجهزة قياس الضغط، لازم نفرّق بين أنواع الضغط المختلفة؛ لأن كل نوع بيعبر عن حاجة مختلفة.</p>
+
+  <h3>2.1 Atmospheric Pressure</h3>
+  <div class="def-box">
+    <div class="box-label">Definition — Atmospheric Pressure</div>
+    <div class="def-en">Atmospheric pressure is the pressure produced by the weight of the air in the atmosphere acting on bodies and surfaces.</div>
+    <p class="def-ar">Atmospheric Pressure هو الضغط الناتج عن وزن الهواء الموجود في الغلاف الجوي (Atmosphere) والمؤثر على الأجسام والأسطح. الضغط الجوي بيتغير من مكان للتاني، وممكن يتغير مع الارتفاع عن سطح البحر والظروف الجوية.</p>
+  </div>
+  <p>القيمة القياسية الشائعة للضغط الجوي:</p>
+  <div class="formula-box">
+    \[ P_{atm}=101325\ \text{Pa} \]
+    \[ P_{atm}=1\ \text{atm}=760\ \text{mmHg} \]
+  </div>
+  <p>دي قيمة قياسية مرجعية، مش معناها إن الضغط الجوي لازم يكون نفس القيمة في كل مكان وكل وقت.</p>
+
+  <h3>2.2 Absolute Pressure</h3>
+  <div class="def-box">
+    <div class="box-label">Definition — Absolute Pressure</div>
+    <div class="def-en">Absolute pressure is the pressure measured relative to a perfect vacuum, whose pressure is absolute zero.</div>
+    <p class="def-ar">الـ Absolute Pressure هو الضغط المقاس بالنسبة إلى الفراغ التام (Perfect Vacuum)، اللي ضغطه يساوي صفرًا مطلقًا. يعني بنعتبر الـ Absolute Zero Pressure هو نقطة البداية للقياس.</p>
+  </div>
+
+  <h3>2.3 Gauge Pressure</h3>
+  <div class="def-box">
+    <div class="box-label">Definition — Gauge Pressure</div>
+    <div class="def-en">Gauge pressure is the pressure measured relative to the surrounding atmospheric pressure.</div>
+    <p class="def-ar">أغلب أجهزة قياس الضغط الشائعة، زي الـ Pressure Gauge، بتعرض الضغط بالنسبة إلى الضغط الجوي، مش بالنسبة إلى الفراغ التام.</p>
+  </div>
+  <p>العلاقة الأساسية:</p>
+  <div class="formula-box">
+    <div class="box-label">Absolute, Atmospheric and Gauge Pressure</div>
+    \[ P_{abs}=P_{atm}+P_g \]
+  </div>
+  <div class="vars">
+    <div class="vars-title">WHERE</div>
+    <ul>
+      <li>\(P_{abs}\) = Absolute Pressure</li>
+      <li>\(P_{atm}\) = Atmospheric Pressure</li>
+      <li>\(P_g\) = Gauge Pressure</li>
+    </ul>
+  </div>
+  <p>إذن:</p>
+  <div class="formula-box">\[ P_g=P_{abs}-P_{atm} \]</div>
+  <p>لو ضغط النظام أكبر من الضغط الجوي، بيكون الـ Gauge Pressure موجبًا. ولو ضغط النظام أقل من الضغط الجوي، ممكن تكون قراءة الـ Gauge Pressure سالبة، وده بيعبّر عن حالة Vacuum relative to atmospheric pressure.</p>
+
+  <div class="example-card">
+    <div class="example-head">Example 1 — Gauge Pressure from Absolute Pressure</div>
+    <div class="example-body">
+      <div class="q-box"><div class="lab">Problem Statement</div>A system is at an absolute pressure of \(200\ \text{kPa}\) and the atmospheric pressure is \(100\ \text{kPa}\). Find the gauge pressure.</div>
+      <ol class="steps">
+        <li><div><b>Given:</b> \(P_{abs}=200\ \text{kPa}\), \(P_{atm}=100\ \text{kPa}\).</div></li>
+        <li><div><b>Required:</b> \(P_g\).</div></li>
+        <li><div><b>Governing equation:</b> \(P_g=P_{abs}-P_{atm}\)</div></li>
+        <li><div><b>Solution:</b> \(P_g=200-100=100\ \text{kPa}\)</div></li>
+      </ol>
+      <div class="ans-badge">Final Answer: P_g = 100 kPa</div>
+      <div class="ar-explain"><b>شرح بالمصري:</b> الـ Gauge Pressure هو الضغط بالنسبة للجو، فبنشيل الضغط الجوي من الضغط المطلق. الناتج موجب (100 kPa) لأن ضغط النظام أكبر من الضغط الجوي.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <div class="example-head">Example 2 — Absolute Pressure from Gauge Pressure</div>
+    <div class="example-body">
+      <div class="q-box"><div class="lab">Problem Statement</div>The gauge pressure is \(50\ \text{kPa}\) and the atmospheric pressure is \(100\ \text{kPa}\). Find the absolute pressure.</div>
+      <ol class="steps">
+        <li><div><b>Given:</b> \(P_g=50\ \text{kPa}\), \(P_{atm}=100\ \text{kPa}\).</div></li>
+        <li><div><b>Required:</b> \(P_{abs}\).</div></li>
+        <li><div><b>Governing equation:</b> \(P_{abs}=P_{atm}+P_g\)</div></li>
+        <li><div><b>Solution:</b> \(P_{abs}=100+50=150\ \text{kPa}\)</div></li>
+      </ol>
+      <div class="ans-badge">Final Answer: P_abs = 150 kPa</div>
+      <div class="ar-explain"><b>شرح بالمصري:</b> هنا الجهاز بيقرا بالنسبة للجو، فعشان نرجع للضغط المطلق لازم نضيف الضغط الجوي على قراءة الـ Gauge.</div>
+    </div>
+  </div>
+
+  <h3>2.4 Vacuum Pressure</h3>
+  <div class="def-box">
+    <div class="box-label">Definition — Vacuum Pressure</div>
+    <div class="def-en">Vacuum pressure expresses how far a pressure lies below atmospheric pressure.</div>
+    <p class="def-ar">الـ Vacuum Pressure بيعبّر عن مقدار انخفاض الضغط عن الضغط الجوي.</p>
+  </div>
+  <p>في حالة الضغط الأقل من الضغط الجوي، ممكن نعبّر عن مقدار الـ Vacuum بالعلاقة:</p>
+  <div class="formula-box">\[ P_{vac}=P_{atm}-P_{abs} \]</div>
+  <p>وده بيكون مقدارًا موجبًا لو الضغط المطلق أقل من الضغط الجوي.</p>
+  <div class="note-box">
+    <div class="box-label">Important</div>
+    <p>ما تخلطش بين الـ Absolute Pressure والـ Gauge Pressure والـ Vacuum Pressure؛ لأن كل واحد فيهم له مرجع مختلف.</p>
+  </div>
+
+  <h3>2.5 Differential Pressure</h3>
+  <div class="def-box">
+    <div class="box-label">Definition — Differential Pressure</div>
+    <div class="def-en">Differential pressure is the difference between the pressures at two different points.</div>
+    <p class="def-ar">الـ Differential Pressure مش لازم يعبّر عن الضغط المطلق عند أي نقطة؛ هو بيعبّر عن الفرق بين الضغطين.</p>
+  </div>
+  <div class="formula-box">\[ \Delta P=P_1-P_2 \]</div>
+  <p>حيث \(P_1\) هو الضغط عند النقطة الأولى، و\(P_2\) هو الضغط عند النقطة الثانية. وده مهم في أجهزة قياس الضغط التفاضلي (Differential Pressure Instruments)، ومنها الـ Differential Manometer. لو عارف الضغط عند نقطة والفرق بين الضغطين، تقدر تحسب الضغط عند النقطة التانية.</p>
+
+  <div class="example-card">
+    <div class="example-head">Example 3 — Unknown Pressure from a Known Pressure Difference</div>
+    <div class="example-body">
+      <div class="q-box"><div class="lab">Problem Statement</div>At one point \(P_1=150\ \text{kPa}\), and the pressure difference between the two points is \(P_1-P_2=40\ \text{kPa}\). Find \(P_2\).</div>
+      <ol class="steps">
+        <li><div><b>Given:</b> \(P_1=150\ \text{kPa}\), \(P_1-P_2=40\ \text{kPa}\).</div></li>
+        <li><div><b>Required:</b> \(P_2\).</div></li>
+        <li><div><b>Governing equation:</b> \(\Delta P=P_1-P_2\ \Rightarrow\ P_2=P_1-\Delta P\)</div></li>
+        <li><div><b>Solution:</b> \(P_2=150-40=110\ \text{kPa}\)</div></li>
+      </ol>
+      <div class="ans-badge">Final Answer: P_2 = 110 kPa</div>
+      <div class="ar-explain"><b>شرح بالمصري:</b> عرفنا ضغط نقطة وعرفنا الفرق، فنقدر نطلع الضغط التاني بإعادة ترتيب المعادلة.</div>
+    </div>
+  </div>
+  <div class="note-box">
+    <div class="box-label">Note</div>
+    <p>لكن لو مش عارف أي ضغط من الضغطين ولا عندك معلومة إضافية، مجرد معرفة إن الجهاز بيقيس فرق الضغط مش كفاية لتحديد كل ضغط بصورة منفصلة.</p>
+  </div>
+
+  <h3>2.6 Standard Temperature and Pressure (STP)</h3>
+  <div class="def-box">
+    <div class="box-label">Definition — STP</div>
+    <div class="def-en">STP stands for Standard Temperature and Pressure.</div>
+    <p class="def-ar">STP اختصار لـ Standard Temperature and Pressure، أي درجة الحرارة والضغط القياسيان.</p>
+  </div>
+  <p>في التعريف التقليدي الشائع في مسائل الغازات:</p>
+  <div class="formula-box">
+    \[ T=0^\circ\text{C}=273.15\ \text{K} \]
+    \[ P=1\ \text{atm} \]
+  </div>
+  <div class="note-box">
+    <div class="box-label">Note</div>
+    <p>لكن خلي بالك: بعض المراجع بتستخدم تعريفات قياسية مختلفة حسب السياق. لذلك في أي مسألة، اعتمد على التعريف اللي محدده السؤال أو المرجع المستخدم في المقرر.</p>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ===================== 3 ===================== -->
+<section class="section" id="s3">
+  <div class="section-header"><div class="section-icon">⛰️</div><div><h2 class="section-title">Gravitational Methods of Pressure Measurement</h2><div class="section-sub">P = ρ g h · hydrostatic liquid column</div></div></div>
+
+  <p>فيه طرق مختلفة لقياس الضغط، ومن الطرق الأساسية <span class="en">Gravitational Methods</span>، وهي طرق بتعتمد على تأثير الجاذبية ووزن عمود من سائل. الفكرة الأساسية إن وزن السائل الموجود في عمود ارتفاعه معين بيولّد فرق ضغط بين مستويين.</p>
+
+  <p>العلاقة الأساسية لضغط عمود سائل:</p>
+  <div class="formula-box">
+    <div class="box-label">Hydrostatic Pressure of a Liquid Column</div>
+    \[ P=\rho g h \]
+  </div>
+  <div class="vars">
+    <div class="vars-title">WHERE</div>
+    <ul>
+      <li>\(P\) = Pressure due to the liquid column</li>
+      <li>\(\rho\) = Density of the liquid</li>
+      <li>\(g\) = Acceleration due to gravity</li>
+      <li>\(h\) = Vertical height of the liquid column</li>
+    </ul>
+  </div>
+  <p>العلاقة دي مهمة جدًا؛ لأنها بتربط الضغط بكثافة السائل وارتفاعه. من المعادلة، عند ثبات \(g\):</p>
+  <div class="formula-box">\[ P\propto\rho h \]</div>
+  <p>يعني الضغط بيتناسب طرديًا مع كثافة السائل وارتفاع العمود الرأسي. لو كثافة السائل زادت، فالضغط الناتج عن نفس الارتفاع يزيد. ولو الارتفاع زاد مع ثبات الكثافة، فالضغط يزيد برضه.</p>
+  <p>ومن هنا نفهم ليه اختيار السائل المستخدم في أجهزة قياس الضغط مهم، وليه كثافة السائل بتأثر على ارتفاع العمود المطلوب.</p>
+</section>
+
+<hr class="section-divider">
+
+<!-- ===================== 4 ===================== -->
+<section class="section" id="s4">
+  <div class="section-header"><div class="section-icon">🌡️</div><div><h2 class="section-title">Barometer</h2><div class="section-sub">P_atm = ρ_Hg · g · h · Torricellian vacuum</div></div></div>
+
+  <h3>Definition and Working Principle</h3>
+  <div class="def-box">
+    <div class="box-label">Definition — Barometer</div>
+    <div class="def-en">A barometer is an instrument used to measure atmospheric pressure.</div>
+    <p class="def-ar">الـ Barometer هو جهاز بيُستخدم لقياس Atmospheric Pressure. أحد الأنواع المعروفة هو الـ Mercury Barometer، اللي بيعتمد على عمود من الزئبق (Mercury) داخل أنبوبة مناسبة.</p>
+  </div>
+
+  <p>الفكرة الأساسية كالتالي:</p>
+  <ol>
+    <li>بنستخدم أنبوبة مملوءة بالزئبق.</li>
+    <li>بنقلب الأنبوبة داخل وعاء يحتوي على الزئبق.</li>
+    <li>بنسمح للزئبق داخل الأنبوبة إنه يستقر عند ارتفاع معين.</li>
+    <li>بيتكوّن فراغ تقريبًا أعلى عمود الزئبق، وده معروف باسم <span class="en">Torricellian Vacuum</span>.</li>
+    <li>الضغط الجوي المؤثر على سطح الزئبق في الوعاء بيساعد على موازنة وزن عمود الزئبق داخل الأنبوبة.</li>
+  </ol>
+
+  <!-- Figure 1 · Fig_02_Mercury_Barometer_Atmospheric_Pressure.png · source: Lecture PDF slide 5 -->
+  <div class="figure-row">
+    <figure class="figure" id="fig-1" style="--fw:280px">
+      <a href="images/Fig_02_Mercury_Barometer_Atmospheric_Pressure.png" target="_blank" rel="noopener"><img src="images/Fig_02_Mercury_Barometer_Atmospheric_Pressure.png" alt="Mercury barometer: inverted tube in a mercury reservoir with vacuum above the column of height h" width="516" height="563" loading="lazy" decoding="async"></a>
+      <figcaption>Figure 1</figcaption>
+    </figure>
+    <div class="fig-text">
+      <p class="fig-en">A mercury-filled tube is inverted into a reservoir of mercury (Hg). The space above the column is a vacuum (<i>P</i><sub>abs</sub> = 0). The atmospheric pressure <i>P</i><sub>atm</sub> acts on the reservoir surface, and at the base of the column <i>P</i><sub>abs</sub> = hρg = <i>P</i><sub>atm</sub>.</p>
+      <p class="fig-ar">في الرسم: فوق عمود الزئبق فراغ (Vacuum) ضغطه المطلق صفر، و\(P_{atm}\) بتضغط على سطح الزئبق في الوعاء. عند مستوى سطح الزئبق في الوعاء، الضغط الناتج عن عمود الزئبق \(h\rho g\) بيساوي الضغط الجوي.</p>
+    </div>
+  </div>
+
+  <p>عند الاتزان، يكون الضغط الجوي مساويًا للضغط الناتج عن عمود الزئبق:</p>
+  <div class="formula-box">
+    <div class="box-label">Mercury Barometer</div>
+    \[ P_{atm}=\rho_{Hg}\,g\,h \]
+  </div>
+  <div class="vars">
+    <div class="vars-title">WHERE</div>
+    <ul>
+      <li>\(\rho_{Hg}\) = Density of mercury</li>
+      <li>\(g\) = Acceleration due to gravity</li>
+      <li>\(h\) = Vertical height of the mercury column</li>
+    </ul>
+  </div>
+  <p>في الظروف القياسية المعتادة، ارتفاع عمود الزئبق بيكون تقريبًا:</p>
+  <div class="formula-box">\[ h=760\ \text{mm}=76\ \text{cm} \]</div>
+  <p>وبالتالي:</p>
+  <div class="formula-box">\[ 1\ \text{atm}\approx 760\ \text{mmHg} \]</div>
+  <div class="note-box">
+    <div class="box-label">Note</div>
+    <p>الـ \(76\ \text{cm}\) هنا هو <span class="en">Vertical Height</span> لعمود الزئبق، مش طول الأنبوبة بالكامل.</p>
+  </div>
+
+  <h3>Why Is Mercury Used?</h3>
+  <p>اختيار الزئبق (Mercury) مرتبط بكثافته العالية. من العلاقة \(P=\rho g h\)، لو الضغط ثابت، يبقى:</p>
+  <div class="formula-box">\[ h=\frac{P}{\rho g} \]</div>
+  <p>يعني كل ما كثافة السائل تزيد، الارتفاع المطلوب لمعادلة نفس الضغط يقل. الزئبق كثافته عالية مقارنة بالماء؛ لذلك يقدر يوازن الضغط الجوي بعمود ارتفاعه حوالي \(76\ \text{cm}\)، بينما استخدام سائل أقل كثافة، زي الماء، يتطلب عمودًا أعلى بكثير لنفس الضغط. إذن اختيار الزئبق بيساعد على تقليل ارتفاع العمود المطلوب، وده بيخلي الجهاز أكثر عملية في التصميم.</p>
+
+  <h3>Barometer Applications</h3>
+  <p>من استخدامات قياس الضغط الجوي متابعة التغيرات في الضغط الجوي، وده ممكن يساعد في فهم تغيرات الطقس. الضغط الجوي بيتغير من مكان لمكان، وبيتأثر بالارتفاع عن سطح البحر والظروف الجوية. والتغيرات في الضغط الجوي ممكن تكون من المؤشرات المستخدمة في التنبؤ بالطقس، لكنها مش العامل الوحيد.</p>
+
+  <div class="q-section">
+    <div class="q-section-head">Questions — Barometer</div>
+    <div class="q-item">
+      <div class="q-text"><span class="qn">Q1.</span>What does a barometer measure?</div>
+      <button type="button" class="q-btn" aria-expanded="false">عرض الحل الكامل ▼</button>
+      <div class="q-sol"><div class="ans-en"><span class="lab">Answer</span><br>Atmospheric pressure.</div></div>
+    </div>
+    <div class="q-item">
+      <div class="q-text"><span class="qn">Q2.</span>What is the working principle of a mercury barometer?</div>
+      <button type="button" class="q-btn" aria-expanded="false">عرض الحل الكامل ▼</button>
+      <div class="q-sol"><div class="ans-en"><span class="lab">Answer</span><br>It balances atmospheric pressure against the hydrostatic pressure of a mercury column.
+        <div class="eqwrap">\[ P_{atm}=\rho_{Hg}\,g\,h \]</div></div>
+        <p>يعني الضغط الجوي بيشيل عمود الزئبق، فعند الاتزان الاتنين بيتساووا.</p></div>
+    </div>
+    <div class="q-item">
+      <div class="q-text"><span class="qn">Q3.</span>Why is mercury used instead of water in a traditional barometer?</div>
+      <button type="button" class="q-btn" aria-expanded="false">عرض الحل الكامل ▼</button>
+      <div class="q-sol"><div class="ans-en"><span class="lab">Answer</span><br>Because mercury has a much higher density, so a much shorter liquid column is required to balance atmospheric pressure.</div>
+        <p>الماء كثافته أقل بكتير، فهيحتاج عمود أعلى بكتير لنفس الضغط.</p></div>
+    </div>
+    <div class="q-item">
+      <div class="q-text"><span class="qn">Q4.</span>What is the approximate height of a mercury column at standard atmospheric pressure?</div>
+      <button type="button" class="q-btn" aria-expanded="false">عرض الحل الكامل ▼</button>
+      <div class="q-sol"><div class="ans-en"><span class="lab">Answer</span>
+        <div class="eqwrap">\[ h\approx 760\ \text{mm}=76\ \text{cm} \]</div></div></div>
+    </div>
+    <div class="q-item">
+      <div class="q-text"><span class="qn">Q5.</span>If the liquid density decreases while the pressure remains constant, what happens to the required column height?</div>
+      <button type="button" class="q-btn" aria-expanded="false">عرض الحل الكامل ▼</button>
+      <div class="q-sol"><div class="ans-en"><span class="lab">Answer</span>
+        <div class="eqwrap">\[ h=\frac{P}{\rho g} \]</div>
+        The required height increases.</div>
+        <p>من العلاقة، \(h\) بتتناسب عكسيًا مع \(\rho\)، فلما الكثافة تقل الارتفاع المطلوب يزيد.</p></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+<!-- ===================== 5 ===================== -->
+<section class="section" id="s5">
+  <div class="section-header"><div class="section-icon">🧪</div><div><h2 class="section-title">Manometer</h2><div class="section-sub">liquid column · ΔP = ρ g h · differential manometer</div></div></div>
+
+  <h3>Definition</h3>
+  <div class="def-box">
+    <div class="box-label">Definition — Manometer</div>
+    <div class="def-en">A manometer is an instrument used to measure pressure or pressure difference by means of a column of liquid (the manometric fluid).</div>
+    <p class="def-ar">الـ Manometer هو جهاز بيُستخدم لقياس الضغط أو فرق الضغط عن طريق عمود من سائل (<span class="en">Manometric Fluid</span>). من الأجهزة اللي بتعتمد على العلاقة بين الضغط وارتفاع عمود السائل، وبيكون مهم في قياس الضغط عند نقطة أو فرق الضغط بين نقطتين حسب نوع الجهاز وطريقة توصيله.</p>
+  </div>
+
+  <!-- Figure 2 · Fig_03_U_Tube_Manometer_Higher_and_Lower_Applied_Pressure.png · source: Lecture PDF manometer section; exact slide number not confirmed -->
+  <div class="figure-row">
+    <figure class="figure" id="fig-2" style="--fw:280px">
+      <a href="images/Fig_03_U_Tube_Manometer_Higher_and_Lower_Applied_Pressure.png" target="_blank" rel="noopener"><img src="images/Fig_03_U_Tube_Manometer_Higher_and_Lower_Applied_Pressure.png" alt="U-tube manometer with greater applied pressure on the left and lesser on the right, head difference shown" width="562" height="590" loading="lazy" decoding="async"></a>
+      <figcaption>Figure 2</figcaption>
+    </figure>
+    <div class="fig-text">
+      <p class="fig-en">Transparent tubes let the liquid columns be seen. The greater applied pressure pushes its liquid column down and the lesser applied pressure side rises; the level difference is the <i>Head</i>.</p>
+      <p class="fig-ar">الأنبوبة الشفافة بتخلينا نشوف مستويات السائل. الجانب اللي عليه ضغط أكبر (greater) مستوى السائل فيه بينزل، والجانب اللي عليه ضغط أقل (lesser) المستوى فيه بيطلع، وفرق المستويين هو الـ Head.</p>
+    </div>
+  </div>
+
+  <h3>Working Principle</h3>
+  <p>الفكرة الأساسية للـ Manometer هي إن الضغط عند نفس المستوى الأفقي داخل نفس السائل المتصل، في حالة الاتزان الساكن، بيكون متساويًا. كمان فرق الضغط بين مستويين رأسيين داخل سائل ساكن بيعتمد على كثافة السائل وفرق الارتفاع الرأسي.</p>
+  <div class="formula-box">\[ \Delta P=\rho g h \]</div>
+  <p>العلاقة دي تنطبق على فرق الضغط الناتج عن عمود سائل واحد في الحالة المناسبة. أما في الـ Differential Manometer اللي بيحتوي على سائل مانومتري مختلف عن السائل الموجود في الخط أو الوعاء، فالمعادلة بتعتمد على ترتيب السوائل وكثافاتها ومستوياتها.</p>
+  <p>في الحالة الشائعة لقياس فرق الضغط بين نقطتين باستخدام سائل مانومتري كثافته \(\rho_m\)، وسائل العملية كثافته \(\rho_f\)، يمكن كتابة مقدار فرق الضغط في الصورة المبسطة التالية عندما تنطبق هندسة التوصيل والاتزان المستخدمة:</p>
+  <div class="formula-box">
+    <div class="box-label">Simplified Manometer Relation</div>
+    \[ \Delta P=(\rho_m-\rho_f)\,g\,h \]
+  </div>
+  <div class="vars">
+    <div class="vars-title">WHERE</div>
+    <ul>
+      <li>\(\Delta P\) = Pressure difference</li>
+      <li>\(\rho_m\) = Density of the manometric fluid</li>
+      <li>\(\rho_f\) = Density of the fluid in the connecting line</li>
+      <li>\(g\) = Acceleration due to gravity</li>
+      <li>\(h\) = Relevant vertical level difference</li>
+    </ul>
+  </div>
+  <div class="note-box">
+    <div class="box-label">Important</div>
+    <p>مهم جدًا: المعادلة دي مش قاعدة تُستخدم بنفس الصورة في كل شكل من أشكال الـ Manometer. في المسائل، لازم تحدد اتجاهات الأعمدة ومستويات السوائل وكثافة كل سائل، وبعدها تكتب اتزان الضغط من نقطة للتانية. الإشارة بتتحدد حسب اتجاه الحركة في عمود السائل وحسب أي ضغط أكبر.</p>
+    <p>استخدم الصورة المبسطة دي بس لما ترتيب السوائل واتزان الضغط يطابقوا الترتيب المفترض.</p>
+  </div>
+
+  <h3>Differential Manometer</h3>
+  <div class="def-box">
+    <div class="box-label">Definition — Differential Manometer</div>
+    <div class="def-en">A differential manometer is used to measure the pressure difference between two points.</div>
+    <p class="def-ar">بيكون فيه طرف متصل بالنقطة الأولى وطرف متصل بالنقطة الثانية، والسائل الموجود داخل الجهاز بيتحرك لحد ما يوصل لحالة اتزان.</p>
+  </div>
+  <p>لو الضغط عند نقطة أكبر من الضغط عند النقطة التانية، فرق الضغط ده بيظهر في اختلاف مستويات السائل داخل الأنبوبة. بالتالي، ارتفاع العمود مش مجرد قراءة شكلية؛ ده جزء من العلاقة اللي بنستخدمها لحساب فرق الضغط.</p>
+
+  <!-- Figure 3 · Fig_05_Differential_Open_End_and_Sealed_End_Manometers.png · source: lecture figure; exact slide number not confirmed -->
+  <div class="figure-row stack">
+    <figure class="figure" id="fig-3" style="--fw:520px">
+      <a href="images/Fig_05_Differential_Open_End_and_Sealed_End_Manometers.png" target="_blank" rel="noopener"><img src="images/Fig_05_Differential_Open_End_and_Sealed_End_Manometers.png" alt="Three manometer schematics: differential, open-end and sealed-end" width="1193" height="477" loading="lazy" decoding="async"></a>
+      <figcaption>Figure 3</figcaption>
+    </figure>
+    <div class="fig-text">
+      <p class="fig-en">In each schematic the first limb is connected to the pipe pressure <i>P</i><sub>1</sub>. Differential: the second limb is connected to <i>P</i><sub>2</sub> in the same pipe. Open-end: the second limb is open, with <i>P</i><sub>2</sub> acting on it. Sealed-end: the second limb is sealed, with <i>P</i><sub>2</sub> marked at the closed end.</p>
+      <p class="fig-ar">الرسم بيقارن ثلاث ترتيبات: الـ Differential Manometer (الطرفين متوصلين بنقطتين \(P_1\) و\(P_2\))، والـ Open-end (طرف مفتوح)، والـ Sealed-end (طرف مقفول). النص المرفق للمحاضرة مش بيشرح الـ Open-end والـ Sealed-end بالتفصيل، فالوصف هنا من الرسم نفسه.</p>
+    </div>
+  </div>
+
+  <div class="q-section">
+    <div class="q-section-head">Questions — Manometer and Differential Manometer</div>
+    <div class="q-item">
+      <div class="q-text"><span class="qn">Q1.</span>What does a differential manometer measure?</div>
+      <button type="button" class="q-btn" aria-expanded="false">عرض الحل الكامل ▼</button>
+      <div class="q-sol"><div class="ans-en"><span class="lab">Answer</span><br>The pressure difference between two points.</div></div>
+    </div>
+    <div class="q-item">
+      <div class="q-text"><span class="qn">Q2.</span>If one pressure and the pressure difference are known, can the other pressure be calculated?</div>
+      <button type="button" class="q-btn" aria-expanded="false">عرض الحل الكامل ▼</button>
+      <div class="q-sol"><div class="ans-en"><span class="lab">Answer</span><br>Yes, by rearranging the pressure-difference equation. For example:
+        <div class="eqwrap">\[ \Delta P=P_1-P_2 \]</div>
+        Therefore:
+        <div class="eqwrap">\[ P_2=P_1-\Delta P \]</div></div>
+        <p>زي ما عملنا في Example 3 في قسم Pressure Terminology.</p></div>
+    </div>
+    <div class="q-item">
+      <div class="q-text"><span class="qn">Q3.</span>If neither pressure is known, is the pressure difference alone enough to determine both pressures?</div>
+      <button type="button" class="q-btn" aria-expanded="false">عرض الحل الكامل ▼</button>
+      <div class="q-sol"><div class="ans-en"><span class="lab">Answer</span><br>No. Additional information is required to determine the individual pressure values.</div>
+        <p>الفرق لوحده مش بيحدد قيمة كل ضغط؛ محتاجين معلومة إضافية.</p></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ===================== 6 ===================== -->
+<section class="section" id="s6">
+  <div class="section-header"><div class="section-icon">💧</div><div><h2 class="section-title">Selecting the Manometric Fluid</h2><div class="section-sub">h = ΔP / ρg · h ∝ 1/ρ</div></div></div>
+
+  <p>اختيار الـ <span class="en">Manometric Fluid</span> نقطة مهمة جدًا في تصميم جهاز قياس الضغط، لأن كثافة السائل بتحدد ارتفاع العمود المطلوب لقياس فرق ضغط معين. العلاقة العامة لعمود سائل واحد:</p>
+  <div class="formula-box">\[ \Delta P=\rho g h \]</div>
+  <p>ومنها:</p>
+  <div class="formula-box">\[ h=\frac{\Delta P}{\rho g} \]</div>
+  <p>إذن، لو فرق الضغط ثابت:</p>
+  <div class="formula-box">\[ h\propto\frac{1}{\rho} \]</div>
+  <p>يعني ارتفاع العمود بيتناسب عكسيًا مع كثافة السائل في الحالة دي.</p>
+
+  <h3>Case 1: High-Density Manometric Fluid</h3>
+  <p>لو استخدمنا سائل كثافته عالية، هيكون ارتفاع العمود المطلوب أقل لنفس فرق الضغط، في الحالة اللي العلاقة دي بتنطبق عليها. وده ممكن يكون مناسبًا لما يكون فرق الضغط كبيرًا، ونحتاج نقلل ارتفاع عمود السائل.</p>
+
+  <h3>Case 2: Low-Density Manometric Fluid</h3>
+  <p>لو استخدمنا سائل كثافته أقل، هيكون ارتفاع العمود المطلوب أكبر لنفس فرق الضغط. وده ممكن يساعد على إظهار فروق الضغط الصغيرة على هيئة فروق ارتفاع أكبر، بشرط إن تصميم الجهاز مناسب وإن خواص السائل تسمح بالقياس المطلوب. لكن ارتفاع العمود الكبير جدًا ممكن يكون غير عملي، وبالتالي لازم نختار السائل بناءً على مدى الضغط المتوقع (<span class="en">Expected Pressure Range</span>) وشكل الجهاز وظروف القياس.</p>
+
+  <h3>Important Design Considerations</h3>
+  <p>اختيار السائل مش معتمد على الكثافة وحدها؛ لازم كمان نراعي ظروف التشغيل وخواص السائل وتوافقه مع المواد المستخدمة. لكن من ناحية علاقة الضغط بالارتفاع، كثافة السائل عامل أساسي.</p>
+  <div class="note-box">
+    <div class="box-label">Important</div>
+    <p>في المسائل، لو اتغيّرت كثافة السائل، ما ينفعش تفترض إن فرق الضغط هيفضل مرتبط بنفس الارتفاع من غير ما تعيد الحساب.</p>
+  </div>
+
+  <div class="example-card">
+    <div class="example-head">Example 4 — Effect of Halving the Fluid Density</div>
+    <div class="example-body">
+      <div class="q-box"><div class="lab">Problem Statement</div>The pressure difference is constant, and a fluid whose density is half that of the original fluid is used. In the single-fluid case, how does the required column height change?</div>
+      <ol class="steps">
+        <li><div><b>Given:</b> \(\Delta P\) constant, \(\rho_{new}=\tfrac{1}{2}\rho_{original}\).</div></li>
+        <li><div><b>Governing equation (single liquid column):</b> \(h=\dfrac{\Delta P}{\rho g}\)</div></li>
+        <li><div><b>Solution:</b> \(h_{new}=\dfrac{\Delta P}{\tfrac{1}{2}\rho_{original}\,g}=2\cdot\dfrac{\Delta P}{\rho_{original}\,g}=2\,h_{original}\)</div></li>
+      </ol>
+      <div class="ans-badge">Final Answer: the required height doubles</div>
+      <div class="ar-explain"><b>شرح بالمصري:</b> الارتفاع بيتناسب عكسيًا مع الكثافة، فلما الكثافة تقل للنص، الارتفاع المطلوب بيتضاعف.</div>
+    </div>
+  </div>
+
+  <div class="q-section">
+    <div class="q-section-head">Questions — Selecting the Manometric Fluid</div>
+    <div class="q-item">
+      <div class="q-text"><span class="qn">Q1.</span>How does the density of the manometric fluid affect the column height for a given pressure difference?</div>
+      <button type="button" class="q-btn" aria-expanded="false">عرض الحل الكامل ▼</button>
+      <div class="q-sol"><div class="ans-en"><span class="lab">Answer</span><br>A higher density generally gives a smaller required height, while a lower density gives a larger required height.</div>
+        <p>لأن \(h=\Delta P/\rho g\).</p></div>
+    </div>
+    <div class="q-item">
+      <div class="q-text"><span class="qn">Q2.</span>Why must the expected pressure range be considered when selecting a manometric fluid?</div>
+      <button type="button" class="q-btn" aria-expanded="false">عرض الحل الكامل ▼</button>
+      <div class="q-sol"><div class="ans-en"><span class="lab">Answer</span><br>Because the expected pressure difference affects the required column height and therefore the practicality of the instrument.</div>
+        <p>عمود طويل جدًا يبقى جهاز غير عملي، فلازم نختار السائل على حسب المدى المتوقع للضغط.</p></div>
+    </div>
+    <div class="q-item">
+      <div class="q-text"><span class="qn">Q3.</span>If the same pressure difference is measured using a less dense fluid, what happens to the height in the single-fluid relation?</div>
+      <button type="button" class="q-btn" aria-expanded="false">عرض الحل الكامل ▼</button>
+      <div class="q-sol"><div class="ans-en"><span class="lab">Answer</span><br>The required height increases.</div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ===================== 7 ===================== -->
+<section class="section" id="s7">
+  <div class="section-header"><div class="section-icon">⚠️</div><div><h2 class="section-title">Sources of Error in Manometer Measurements</h2><div class="section-sub">parallax · alignment · temperature · random vs systematic</div></div></div>
+
+  <p>أي جهاز قياس ممكن يكون فيه أخطاء (<span class="en">Measurement Errors</span>)، والـ Manometer مش استثناء. من الأخطاء المهمة اللي لازم ناخد بالنا منها:</p>
+
+  <h3>7.1 Parallax Error</h3>
+  <div class="def-box">
+    <div class="box-label">Definition — Parallax Error</div>
+    <div class="def-en">Parallax error is an error in reading the level caused by viewing the mark or the liquid surface from an unsuitable angle.</div>
+    <p class="def-ar">عشان نقلل الخطأ ده، لازم تكون العين في مستوى القراءة الصحيح، وتتم قراءة سطح السائل بطريقة مناسبة حسب شكل الأنبوبة والسائل المستخدم. لو قرأت المنسوب من زاوية مختلفة، ممكن تلاحظ ارتفاعًا ظاهريًا مختلفًا عن الارتفاع الحقيقي.</p>
+  </div>
+
+  <h3>7.2 Tube Alignment</h3>
+  <p>محاذاة الأنبوبة (<span class="en">Tube Alignment</span>) وطريقة وضع الجهاز ممكن تأثر على دقة القراءة. لازم يكون الجهاز مركبًا بالشكل المناسب بالنسبة لاتجاه الجاذبية؛ لأن معادلة الضغط الهيدروستاتيكي بتعتمد على <span class="en">Vertical Height</span>. لو الأنبوبة مائلة، ما ينفعش تستخدم طول السائل على امتداد الأنبوبة مباشرة على إنه الارتفاع الرأسي في معادلة:</p>
+  <div class="formula-box">\[ \Delta P=\rho g h \]</div>
+  <p>لازم تحدد فرق الارتفاع الرأسي الصحيح.</p>
+
+  <h3>7.3 Effect of Temperature on Density</h3>
+  <p>كثافة السائل (<span class="en">Liquid Density</span>) ممكن تتغير مع درجة الحرارة. وبما إن معادلة الضغط بتعتمد على الكثافة:</p>
+  <div class="formula-box">\[ \Delta P=\rho g h \]</div>
+  <p>فأي تغير في \(\rho\) ممكن يؤثر على القيمة المحسوبة للضغط لو استخدمت كثافة غير مناسبة لدرجة حرارة القياس. عشان كده، في القياسات اللي بتحتاج دقة، لازم تراعي درجة حرارة السائل وتستخدم قيمة كثافة مناسبة لظروف التجربة.</p>
+
+  <h3>7.4 Random and Systematic Errors</h3>
+  <p>فيه فرق بين نوعين مهمين من الأخطاء:</p>
+  <div class="def-box">
+    <div class="box-label">Definition — Random Error</div>
+    <div class="def-en">Random errors cause readings to increase or decrease unpredictably from one measurement to the next.</div>
+    <p class="def-ar">أخطاء عشوائية ممكن تخلي القراءات تزيد أو تقل من مرة للتانية.</p>
+  </div>
+  <div class="def-box">
+    <div class="box-label">Definition — Systematic Error</div>
+    <div class="def-en">Systematic errors cause a consistent deviation of the readings in a particular direction or pattern, for example a fixed calibration error.</div>
+    <p class="def-ar">أخطاء منتظمة بتسبب انحرافًا في القراءات في اتجاه أو نمط معين، مثل خطأ ثابت في معايرة الجهاز.</p>
+  </div>
+  <p>مش كل اختلاف بين قراءتين معناه بالضرورة إن فيه خطأ عشوائي فقط؛ لازم نفكر في ظروف القياس وطريقة تركيب الجهاز ومعايرته.</p>
+
+  <h3>Reducing Measurement Errors</h3>
+  <p>قبل إجراء التجربة، لازم نتأكد من:</p>
+  <ul>
+    <li>تركيب الجهاز بصورة صحيحة.</li>
+    <li>قراءة مستوى السائل من زاوية مناسبة لتقليل Parallax Error.</li>
+    <li>تحديد فرق الارتفاع الرأسي الصحيح.</li>
+    <li>مراعاة درجة حرارة السائل عند الحاجة.</li>
+    <li>استخدام كثافة مناسبة للسائل.</li>
+    <li>فحص الجهاز والتأكد من ملاءمته للقياس المطلوب.</li>
+  </ul>
+
+  <h3>Solving Manometer Problems</h3>
+  <div class="note-box">
+    <div class="box-label">Procedure</div>
+    <p>في مسائل الـ Manometer، حدد الأول: نقطتين الضغط، وكثافات السوائل، وفروق الارتفاع الرأسية، واتزان الضغط، وبعد كده عوّض بالقيم.</p>
+    <p>وفي النهاية راجع دايمًا الـ Units وإشارة فرق الضغط (sign of the pressure difference) قبل ما تكتب الإجابة النهائية.</p>
+  </div>
+
+  <div class="q-section">
+    <div class="q-section-head">Questions — Sources of Error in Manometer Measurements</div>
+    <div class="q-item">
+      <div class="q-text"><span class="qn">Q1.</span>What is parallax error?</div>
+      <button type="button" class="q-btn" aria-expanded="false">عرض الحل الكامل ▼</button>
+      <div class="q-sol"><div class="ans-en"><span class="lab">Answer</span><br>An error in reading a measurement caused by viewing the scale or liquid level from an incorrect angle.</div></div>
+    </div>
+    <div class="q-item">
+      <div class="q-text"><span class="qn">Q2.</span>Why is tube alignment important in a manometer?</div>
+      <button type="button" class="q-btn" aria-expanded="false">عرض الحل الكامل ▼</button>
+      <div class="q-sol"><div class="ans-en"><span class="lab">Answer</span><br>Because the hydrostatic pressure relationship depends on the vertical height difference, not simply the length along an inclined tube.</div></div>
+    </div>
+    <div class="q-item">
+      <div class="q-text"><span class="qn">Q3.</span>Why can temperature affect a manometer reading?</div>
+      <button type="button" class="q-btn" aria-expanded="false">عرض الحل الكامل ▼</button>
+      <div class="q-sol"><div class="ans-en"><span class="lab">Answer</span><br>Because temperature can change the liquid density, which affects the pressure calculated from the liquid column.</div></div>
+    </div>
+    <div class="q-item">
+      <div class="q-text"><span class="qn">Q4.</span>What is the difference between random and systematic errors?</div>
+      <button type="button" class="q-btn" aria-expanded="false">عرض الحل الكامل ▼</button>
+      <div class="q-sol"><div class="ans-en"><span class="lab">Answer</span><br>Random errors vary unpredictably between measurements, whereas systematic errors introduce a consistent bias or pattern.</div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ===================== 8 ===================== -->
+<section class="section" id="s8">
+  <div class="section-header"><div class="section-icon">↔️</div><div><h2 class="section-title">Understanding the Pressure Difference in a Manometer</h2><div class="section-sub">continuation · Δp = (ρm − ρf) g h</div></div></div>
+
+  <p>الـ Manometer جهاز بيُستخدم لقياس فرق الضغط (<span class="en">Pressure Difference</span>) بين نقطتين، أو لتحديد ضغط مجهول لو الضغط عند النقطة التانية معروف. العلاقة الموجودة في المحاضرة هي:</p>
+  <div class="formula-box">\[ \Delta p=(\rho_m-\rho_f)\,g\,h \]</div>
+  <div class="vars">
+    <div class="vars-title">WHERE</div>
+    <ul>
+      <li>\(\Delta p\): فرق الضغط بين النقطتين.</li>
+      <li>\(\rho_m\): كثافة الـ Manometric Fluid، أي السائل الموجود في المانومتر.</li>
+      <li>\(\rho_f\): كثافة السائل الموجود في الخط أو الأنبوبة، حسب ترتيب الجهاز.</li>
+      <li>\(g\): عجلة الجاذبية الأرضية.</li>
+      <li>\(h\): فرق الارتفاع الرأسي بين مستويي السائل المناسبين في الرسم.</li>
+    </ul>
+  </div>
+
+  <!-- Figure 4 · Fig_06_U_Tube_Manometer_Pressure_Difference_Head.png · source: Lecture PDF slides 6–14; exact slide number not confirmed -->
+  <div class="figure-row">
+    <figure class="figure" id="fig-4" style="--fw:260px">
+      <a href="images/Fig_06_U_Tube_Manometer_Pressure_Difference_Head.png" target="_blank" rel="noopener"><img src="images/Fig_06_U_Tube_Manometer_Pressure_Difference_Head.png" alt="U-tube manometer with applied pressures on both sides and the head difference marked" width="453" height="486" loading="lazy" decoding="async"></a>
+      <figcaption>Figure 4</figcaption>
+    </figure>
+    <div class="fig-text">
+      <p class="fig-en">Unequal applied pressures give unequal liquid levels, and the head is read as a <i>vertical</i> distance between the two levels.</p>
+      <p class="fig-ar">الرسم ده شبه الرسم اللي فات بس بعرض مختلف شوية: الضغط الأكبر على اليسار والأقل على اليمين، والـ Head هو فرق الارتفاع الرأسي بين مستويي السائل.</p>
+    </div>
+  </div>
+  <p>المعادلة دي بالشكل ده تنطبق على ترتيب المانومتر الموضح في السلايد، مع مراعاة كثافات السوائل ومستوياتها. لو ترتيب السوائل مختلف، لازم نكتب اتزان الضغط وفقًا للرسم بدل ما نستخدم المعادلة آليًا.</p>
+  <div class="note-box">
+    <div class="box-label">Key Idea</div>
+    <p>المانومتر لا يقيس الضغط من شكل الأنبوبة وحده؛ هو يعتمد على اتزان الضغط ووزن عمود السائل. فرق الضغط هو اللي يحدد فرق المستويات بعد ما السائل يوصل إلى الاتزان.</p>
+  </div>
+
+  <!-- Figure 5 · Fig_04_Manometer_Readings_Pressure_and_Vacuum_Examples.png · source: Lecture PDF slides 6–14; exact slide number not confirmed -->
+  <div class="figure-row">
+    <figure class="figure" id="fig-5" style="--fw:360px">
+      <a href="images/Fig_04_Manometer_Readings_Pressure_and_Vacuum_Examples.png" target="_blank" rel="noopener"><img src="images/Fig_04_Manometer_Readings_Pressure_and_Vacuum_Examples.png" alt="Three U-tube level diagrams: Figure 1 equal levels, Figure 2 pressure, Figure 3 vacuum" width="767" height="423" loading="lazy" decoding="async"></a>
+      <figcaption>Figure 5</figcaption>
+    </figure>
+    <div class="fig-text">
+      <p class="fig-en">Diagram labelled “Figure 1” in the image: both liquid levels sit at the zero mark. Diagram labelled “Figure 2” (PRESSURE): the levels are displaced, with the level difference marked as <i>h</i>. Diagram labelled “Figure 3” (VACUUM): the displacement is reversed, again with level difference <i>h</i>.</p>
+      <p class="fig-ar">في الرسم المكتوب عليه <span class="en">“Figure 1”</span> جوه الصورة، المستويين عند الصفر يعني مفيش فرق ضغط. في الرسم المكتوب عليه <span class="en">“Figure 2” (PRESSURE)</span> المستوى على جنب نزل والتاني طلع، و\(h\) هي فرق المستويين. في الرسم المكتوب عليه <span class="en">“Figure 3” (VACUUM)</span> الاتجاه بيتعكس. نفس الفكرة: فرق المستويات (\(h\)) مع مرجع الضغط هو اللي بيحدد قراءة الـ gauge pressure أو الـ vacuum.</p>
+    </div>
+  </div>
+
+  <h3>Does the Liquid Always Move from High Pressure to Low Pressure?</h3>
+  <p>مش كفاية نحفظ الجملة دي ونطبقها من غير ما نفهم الرسم. لما يكون فيه فرق ضغط، السائل بيتحرك نتيجة عدم الاتزان، وتستمر الحركة لحد ما يتحقق الاتزان الهيدروستاتيكي في حالة القياس الساكنة.</p>
+  <p>عشان نحدد أي ضغط أكبر في المانومتر، بنحلل مستويات السائل وكثافاته ونوازن الضغط عند نقاط مناسبة. ما ينفعش نحدد إن الضغط عند النقطة الأولى أكبر لمجرد إننا شايفين مستوى معين أعلى أو أقل، من غير ما نعرف نوع السائل وترتيب الأعمدة.</p>
+  <p>كمان لازم نفرّق بين حركة السائل داخل المانومتر بسبب فرق الضغط وبين اتجاه حركة المائع داخل ماسورة. دول مش نفس السؤال.</p>
+
+  <!-- Figure 6 · Fig_01_Orifice_Plate_Differential_Pressure_in_Pipe.png · source: exact slide placement not confirmed -->
+  <div class="figure-row">
+    <figure class="figure" id="fig-6" style="--fw:340px">
+      <a href="images/Fig_01_Orifice_Plate_Differential_Pressure_in_Pipe.png" target="_blank" rel="noopener"><img src="images/Fig_01_Orifice_Plate_Differential_Pressure_in_Pipe.png" alt="Orifice plate in a pipe with a differential pressure instrument connected to taps before and after the orifice" width="690" height="492" loading="lazy" decoding="async"></a>
+      <figcaption>Figure 6</figcaption>
+    </figure>
+    <div class="fig-text">
+      <p class="fig-en">Fluid flows through a pipe past an orifice; one tap upstream and one tap near the vena contracta feed the H and L ports of a differential pressure instrument.</p>
+      <p class="fig-ar">الرسم بيوضح الفرق بين اتجاه جريان المائع في الماسورة (Direction of flow) وحركة السائل جوه جهاز قياس فرق الضغط. الجهاز متوصل بنقطتين على جانبي الـ Orifice (طرف H وطرف L).</p>
+    </div>
+  </div>
+
+  <div class="q-section">
+    <div class="q-section-head">Questions — Pressure Difference in a Manometer</div>
+    <div class="q-item">
+      <div class="q-text"><span class="qn">Q1.</span>Does the liquid in a manometer always move from the high-pressure side to the low-pressure side, and is that enough to identify the larger pressure?</div>
+      <button type="button" class="q-btn" aria-expanded="false">عرض الحل الكامل ▼</button>
+      <div class="q-sol"><div class="ans-en"><span class="lab">Answer</span><br>Memorizing that statement is not enough. A pressure difference causes liquid motion because the system is out of balance, and the motion continues until hydrostatic equilibrium is reached in the static measurement case. To decide which pressure is larger, analyse the liquid levels, the densities and the arrangement of the columns, and balance the pressures at suitable points. Also distinguish the liquid motion inside the manometer from the direction of the fluid flow inside a pipe.</div>
+        <p>يعني ما نحكمش على أي ضغط أكبر من منسوب واحد بس؛ لازم نعرف نوع السائل وترتيب الأعمدة ونكتب اتزان الضغط.</p></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ===================== 9 ===================== -->
+<section class="section" id="s9">
+  <div class="section-header"><div class="section-icon">🌬️</div><div><h2 class="section-title">Static, Dynamic and Total Pressure</h2><div class="section-sub">q = ½ρV² · p₀ = p + ½ρV²</div></div></div>
+
+  <p>ظهر في التسجيل نقاش عن الضغط الساكن والضغط الكلي وسرعة المائع، لكن التفريغ الصوتي مش واضح بما يكفي لتحديد كل تفاصيل الرسم أو المثال اللي كان بيتناقش. لذلك، المفاهيم الأساسية المرتبطة بالمصطلحات دي هي:</p>
+
+  <div class="def-box">
+    <div class="box-label">Definition — Static Pressure (p)</div>
+    <div class="def-en">Static pressure is the pressure of the fluid at a point, associated with the state of the fluid at that point.</div>
+    <p class="def-ar">هو الضغط الساكن للمائع عند النقطة. في مسائل الجريان، ده الضغط اللي بنربطه بحالة المائع عند النقطة، وليس بمجرد سرعة الجريان وحدها.</p>
+  </div>
+
+  <div class="def-box">
+    <div class="box-label">Definition — Dynamic Pressure (q)</div>
+    <div class="def-en">In incompressible flow, dynamic pressure is usually defined by the relation below.</div>
+    <div class="eqwrap">\[ q=\frac{1}{2}\rho V^2 \]</div>
+    <p class="def-ar">حيث \(\rho\) كثافة المائع و\(V\) سرعته.</p>
+  </div>
+
+  <div class="def-box">
+    <div class="box-label">Definition — Total Pressure (p₀)</div>
+    <div class="def-en">In the ideal case suited to Bernoulli's equation, neglecting height differences and energy losses, total pressure can be expressed as the static pressure plus the dynamic pressure.</div>
+    <div class="eqwrap">\[ p_0=p+\frac{1}{2}\rho V^2 \]</div>
+    <p class="def-ar">أي إن الضغط الكلي هنا يساوي الضغط الساكن مضافًا إليه ضغط الحركة.</p>
+  </div>
+
+  <div class="note-box">
+    <div class="box-label">Important</div>
+    <p>العلاقة السابقة تخص الشروط المذكورة، وليست قاعدة نستخدمها دون مراعاة فرق الارتفاع وفواقد الطاقة. كما أن الجزء الصوتي المتعلق بالمثال غير واضح، فمش مؤكد إن التسجيل كان بيطلب تطبيق هذه المعادلة تحديدًا على رسم معين.</p>
+  </div>
+</section>
+
+<hr class="section-divider">
+<!-- ===================== 10 ===================== -->
+<section class="section" id="s10">
+  <div class="section-header"><div class="section-icon">🔍</div><div><h2 class="section-title">Errors in Manometer Measurements — Slide Discussion</h2><div class="section-sub">parallax · vertical tube · ρ = f(T) · random vs systematic</div></div></div>
+
+  <p>من النقاط الأساسية في السلايد والتسجيل إن قراءة فرق الضغط تعتمد على دقة قياس \(h\)، وعلى صحة تركيب الجهاز وخواص السائل.</p>
+
+  <h3>A. Parallax Error</h3>
+  <p>الـ Parallax Error هو خطأ في قراءة موضع مستوى السائل بسبب زاوية النظر. لو عينك مش في الموضع المناسب بالنسبة للتدريج ومستوى السائل، ممكن تقرأ ارتفاعًا مختلفًا عن الارتفاع الحقيقي. لتقليل الخطأ، اقرأ مستوى السائل من زاوية النظر الصحيحة، وانتبه لطريقة تحديد مستوى السائل في الأنبوبة.</p>
+
+  <h3>B. Tube Not Perfectly Vertical</h3>
+  <p>لو أنبوبة المانومتر المفروض تكون رأسية لكنها مائلة، فالقراءة المقاسة على امتداد الأنبوبة لا تساوي بالضرورة الارتفاع الرأسي \(h\) المطلوب في معادلة الضغط. الضغط الهيدروستاتيكي يعتمد على الارتفاع الرأسي، وليس طول المسار المائل.</p>
+
+  <h3>C. Density Changes with Temperature</h3>
+  <p>السلايد يوضح العلاقة:</p>
+  <div class="formula-box">\[ \rho=f(T) \]</div>
+  <p>أي إن كثافة السائل تعتمد على درجة الحرارة. لو درجة الحرارة اتغيرت، كثافة السائل ممكن تتغير، وده يؤثر على علاقة فرق الضغط بفرق الارتفاع. مثلًا، لو استخدمنا كثافة اسمية أو قيمة محسوبة عند درجة حرارة مختلفة عن درجة حرارة التجربة، فالحساب ممكن ينتج عنه خطأ منتظم.</p>
+
+  <h3>D. Random Error vs. Systematic Error</h3>
+  <div class="def-box">
+    <div class="box-label">Definition — Random Error</div>
+    <div class="def-en">A random error is an error whose value or direction changes from one reading to another.</div>
+    <p class="def-ar">مثل اختلاف قراءة مستوى السائل قليلًا بسبب صعوبة تحديده بدقة.</p>
+  </div>
+  <div class="def-box">
+    <div class="box-label">Definition — Systematic Error</div>
+    <div class="def-en">A systematic error is an error caused by a fixed cause or bias in the measurement.</div>
+    <p class="def-ar">مثل تركيب الأنبوبة بزاوية غير صحيحة، أو استخدام قيمة غير مناسبة للكثافة في الحساب.</p>
+  </div>
+  <div class="note-box">
+    <div class="box-label">Note</div>
+    <p>لو الخطأ ثابت الاتجاه، تكرار القياس وحده مش كفاية لإزالته. لازم نحدد سببه ونعالجه.</p>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ===================== 11 ===================== -->
+<section class="section" id="s11">
+  <div class="section-header"><div class="section-icon">🧴</div><div><h2 class="section-title">Choosing the Manometric Fluid — Slide Discussion</h2><div class="section-sub">small pressure differences · low-density fluid</div></div></div>
+
+  <p>السلايد يوضح إنه عند قياس <span class="en">Small Pressure Differences</span> يمكن استخدام سائل مانومتري منخفض الكثافة. من العلاقة:</p>
+  <div class="formula-box">\[ \Delta p=(\rho_m-\rho_f)\,g\,h \]</div>
+  <p>نلاحظ إنه عند ثبات فرق الضغط والجاذبية وكثافة السائل الآخر، فإن تقليل فرق الكثافة المناسب في المعادلة يؤدي إلى زيادة فرق الارتفاع المطلوب لتحقيق نفس فرق الضغط.</p>
+  <p>لكن اختيار السائل مش معناه إننا نختار أقل كثافة ممكنة من غير شروط؛ لازم نراعي السوائل الموجودة في الجهاز، ومدى الضغط المطلوب قياسه، وإمكانية الحصول على قراءة واضحة.</p>
+
+  <div class="q-section">
+    <div class="q-section-head">Questions — Choosing the Manometric Fluid</div>
+    <div class="q-item">
+      <div class="q-text"><span class="qn">Q1.</span>If the pressure difference is very small, is changing the manometric fluid enough?</div>
+      <button type="button" class="q-btn" aria-expanded="false">عرض الحل الكامل ▼</button>
+      <div class="q-sol"><div class="ans-en"><span class="lab">Answer</span><br>Not necessarily. Even after choosing a suitable manometric fluid, the level difference may remain small and difficult to read. This is why designs that make small changes easier to observe are used, such as the Inclined Manometer.</div>
+        <p>يعني مش بالضرورة؛ حتى بعد اختيار سائل مناسب ممكن فرق الارتفاع يفضل صغير وصعب القراءة، وده سبب الانتقال للـ Inclined Manometer.</p></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ===================== 12 ===================== -->
+<section class="section" id="s12">
+  <div class="section-header"><div class="section-icon">📈</div><div><h2 class="section-title">Inclined Manometer</h2><div class="section-sub">h = L sin θ · increase the sensitivity</div></div></div>
+
+  <div class="def-box">
+    <div class="box-label">Definition — Inclined Manometer</div>
+    <div class="def-en">An inclined manometer is a manometer whose reading tube is inclined instead of vertical. Its main purpose is to increase the sensitivity.</div>
+    <p class="def-ar">الـ Inclined Manometer هو مانومتر تكون أنبوبة القراءة فيه مائلة بدلًا من رأسية. الغرض الأساسي منه هو <span class="en">Increase the Sensitivity</span>، أي زيادة مقدار الحركة المقروءة على التدريج مقابل تغير صغير في الضغط.</p>
+  </div>
+
+  <!-- Figure 7 · Fig_07_Inclined_Manometer_Length_Angle_and_Vertical_Head.png · source: Lecture PDF slides 6–14; exact slide number not confirmed -->
+  <div class="figure-row">
+    <figure class="figure" id="fig-7" style="--fw:360px">
+      <a href="images/Fig_07_Inclined_Manometer_Length_Angle_and_Vertical_Head.png" target="_blank" rel="noopener"><img src="images/Fig_07_Inclined_Manometer_Length_Angle_and_Vertical_Head.png" alt="Conventional U-tube manometer beside an inclined manometer with length L at 30 degrees" width="706" height="352" loading="lazy" decoding="async"></a>
+      <figcaption>Figure 7</figcaption>
+    </figure>
+    <div class="fig-text">
+      <p class="fig-en">In the inclined limb, the reading length <i>L</i> is measured along the tube at an angle (shown as 30°), while the vertical head <i>h</i> is its vertical component.</p>
+      <p class="fig-ar">على الشمال U-tube عادي والارتفاع \(h\) رأسي. على اليمين الأنبوبة مائلة بزاوية 30°، والمسافة \(L\) على امتداد الأنبوبة أكبر من الارتفاع الرأسي المقابل لها.</p>
+    </div>
+  </div>
+
+  <h3>Geometric Relation</h3>
+  <div class="vars">
+    <div class="vars-title">WHERE</div>
+    <ul>
+      <li>\(L\): length of the movement read along the tube.</li>
+      <li>\(h\): the corresponding vertical height.</li>
+      <li>\(\theta\): inclination angle of the tube relative to the horizontal.</li>
+    </ul>
+  </div>
+  <div class="formula-box">
+    <div class="box-label">Vertical Head from the Inclined Reading</div>
+    \[ h=L\sin\theta \]
+  </div>
+  <p>وبالتالي، في حالة المانومتر اللي تنطبق عليه علاقة فرق الكثافة السابقة:</p>
+  <div class="formula-box">\[ \Delta p=(\rho_m-\rho_f)\,g\,L\sin\theta \]</div>
+  <p>إذن القراءة \(L\) ليست هي نفسها الارتفاع الرأسي \(h\). لازم نحوّل القراءة إلى ارتفاع رأسي قبل استخدامها في معادلة الضغط.</p>
+
+  <h3>Why Does Inclination Increase the Sensitivity?</h3>
+  <p>عند الزوايا الصغيرة، تكون المسافة المقروءة على امتداد الأنبوبة أكبر من الارتفاع الرأسي المقابل لها. لذلك يصبح تغير مستوى السائل أسهل في الملاحظة عند قياس فروق ضغط صغيرة. لكن لازم نعرف زاوية الميل بدقة؛ لأن الخطأ في \(\theta\) ينتقل إلى حساب \(h\)، ثم إلى حساب فرق الضغط.</p>
+
+  <div class="q-section">
+    <div class="q-section-head">Questions — Inclined Manometer</div>
+    <div class="q-item">
+      <div class="q-text"><span class="qn">Q1.</span>What is the main purpose of an Inclined Manometer?</div>
+      <button type="button" class="q-btn" aria-expanded="false">عرض الحل الكامل ▼</button>
+      <div class="q-sol"><div class="ans-en"><span class="lab">Answer</span><br>To increase sensitivity when measuring small pressure differences.</div></div>
+    </div>
+    <div class="q-item">
+      <div class="q-text"><span class="qn">Q2.</span>Does using an inclined tube eliminate errors?</div>
+      <button type="button" class="q-btn" aria-expanded="false">عرض الحل الكامل ▼</button>
+      <div class="q-sol"><div class="ans-en"><span class="lab">Answer</span><br>No. It improves the readability of small movements, but it does not remove reading error or the error in measuring the angle. The inclination angle itself can be a source of systematic error if the value used in the calculation is incorrect.</div>
+        <p>لأ، الأنبوبة المائلة بتحسّن قابلية قراءة الحركة الصغيرة بس، لكن مش بتلغي خطأ القراءة ولا خطأ قياس الزاوية.</p></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ===================== 13 ===================== -->
+<section class="section" id="s13">
+  <div class="section-header"><div class="section-icon">🏺</div><div><h2 class="section-title">Well-Type and Inclined Well-Type Manometers</h2><div class="section-sub">reservoir · scale compensation · inclined well</div></div></div>
+
+  <h3>Well-Type Manometer</h3>
+  <p>السلايد التالي بيطرح مشكلة مختلفة: في بعض تصميمات المانومتر، لازم نقرأ مستويين مختلفين للسائل عشان نحسب \(h\). لو القراءة الأولى \(h_1\) والقراءة الثانية \(h_2\)، فإن فرق الارتفاع يُحدد من موضعي المستويين وفقًا لتعريفهما في الرسم. وفي الحالة الشائعة:</p>
+  <div class="formula-box">\[ h=|h_1-h_2| \]</div>
+  <p>قراءة مستويين تعني وجود قراءتين يمكن أن تدخل أخطاؤهما في حساب فرق الارتفاع.</p>
+
+  <h4>How Does the Well-Type Manometer Solve the Problem?</h4>
+  <div class="def-box">
+    <div class="box-label">Definition — Well-Type Manometer</div>
+    <div class="def-en">A well-type manometer contains a relatively large well (reservoir) connected to a measuring tube, designed so that the liquid-level change in the well is negligible or compensated in the scale.</div>
+    <p class="def-ar">الـ Well-Type Manometer يحتوي على خزان أو وعاء (<span class="en">Well / Reservoir</span>) كبير نسبيًا متصل بأنبوبة قياس. طبقًا للسلايد، يُصمَّم الـ Well بحيث يكون تغير مستوى السائل فيه مهملًا تقريبًا، أو يكون التدريج معوّضًا عن التغير في مستوى السائل داخل الخزان.</p>
+  </div>
+
+  <!-- Figure 8 · Fig_08_Well_Type_Manometer_Reservoir_and_Scale.png · source: Lecture PDF slides 6–14; exact slide number not confirmed -->
+  <div class="figure-row">
+    <figure class="figure" id="fig-8" style="--fw:280px">
+      <a href="images/Fig_08_Well_Type_Manometer_Reservoir_and_Scale.png" target="_blank" rel="noopener"><img src="images/Fig_08_Well_Type_Manometer_Reservoir_and_Scale.png" alt="Well-type manometer with a large well, applied pressure connection, narrow tube and scale" width="525" height="507" loading="lazy" decoding="async"></a>
+      <figcaption>Figure 8</figcaption>
+    </figure>
+    <div class="fig-text">
+      <p class="fig-en">A large well receives the applied pressure and connects to a narrow vertical measuring tube beside a graduated scale.</p>
+      <p class="fig-ar">الـ Well (الخزان) واسع ومتوصل بالضغط المطبّق، وبعدين أنبوبة رفيعة جنبها Scale. لما الضغط يتغير بيتحرك السائل في الأنبوبة الرفيعة حركة واضحة، ومستوى الـ Well بيتغير بمقدار صغير.</p>
+    </div>
+  </div>
+
+  <p>الفكرة إن مساحة مقطع الـ Well تكون كبيرة مقارنة بمساحة مقطع أنبوبة المؤشر، وبالتالي فإن تغير مستوى السائل في الـ Well يكون صغيرًا نسبيًا عند انتقال كمية من السائل إلى الأنبوبة أو منها. ده يسمح باستخدام قراءة الأنبوبة مع إهمال تغير مستوى الـ Well في حالة التصميم المناسب، أو استخدام تدريج يعوّض هذا التغير.</p>
+  <div class="note-box">
+    <div class="box-label">Important Slide Point</div>
+    <p>لازم نراعي قطر الـ Well، وكذلك زاوية المؤشر، التي يوضح السلايد أنها \(90^\circ\) في التصميم المعروض. أي إن هندسة الجهاز والتدريج جزء من صحة القراءة، وليست مجرد تفاصيل شكلية.</p>
+  </div>
+
+  <h4>Does the Well-Type Improve Sensitivity or Accuracy?</h4>
+  <p>السؤال ده مهم لأنهم مش نفس الخاصية:</p>
+  <ul>
+    <li><b>Sensitivity (الحساسية):</b> مقدار التغير في القراءة الناتج عن تغير صغير في الكمية المقاسة.</li>
+    <li><b>Accuracy (الدقة):</b> مدى قرب القراءة من القيمة الحقيقية.</li>
+  </ul>
+  <p>فكرة الـ Well-Type الأساسية في السلايد هي التغلب على الحاجة لقراءة مستويين، بجعل تغير مستوى الخزان مهملًا أو تعويضه في التدريج. ده يبسط تحديد الارتفاع، وقد يقلل بعض أخطاء القراءة، لكنه لا يضمن وحده زيادة الـ Sensitivity أو إزالة جميع الأخطاء. أما الـ Inclined Manometer، فالسلايد يذكر صراحةً أنه يُستخدم لزيادة الـ Sensitivity.</p>
+
+  <h3>Inclined Well-Type Manometer</h3>
+  <p>السلايد يوضح أن <span class="en">Inclined Well-Type Manometers</span> يمكن استخدامها أيضًا. التصميم يجمع بين فكرتين:</p>
+  <ul>
+    <li>استخدام الـ Well لتقليل تأثير تغير مستوى السائل داخل الخزان على القراءة أو تعويضه في التدريج.</li>
+    <li>استخدام الأنبوبة المائلة لزيادة الحركة المقروءة مقابل تغير صغير في الضغط.</li>
+  </ul>
+
+  <!-- Figure 9 · Fig_09_Inclined_Well_Type_Manometer_Geometry.png · source: Lecture PDF slides 6–14; exact slide number not confirmed -->
+  <div class="figure-row stack">
+    <figure class="figure" id="fig-9" style="--fw:520px">
+      <a href="images/Fig_09_Inclined_Well_Type_Manometer_Geometry.png" target="_blank" rel="noopener"><img src="images/Fig_09_Inclined_Well_Type_Manometer_Geometry.png" alt="Inclined well-type manometer with reservoir area A1, inclined tube area A2, angle theta, reservoir drop x, reading d and vertical rise y" width="1035" height="368" loading="lazy" decoding="async"></a>
+      <figcaption>Figure 9</figcaption>
+    </figure>
+    <div class="fig-text">
+      <p class="fig-en">The pressure to be measured, <i>P</i><sub>1</sub>, acts on the large reservoir (area <i>A</i><sub>1</sub>); the other end of the inclined tube (area <i>A</i><sub>2</sub>) is at <i>P</i><sub>2</sub>. The figure marks the reservoir level change <i>x</i> from the original level, the reading <i>d</i> along the graduated inclined tube, the vertical rise <i>y</i>, and the angle θ.</p>
+      <p class="fig-ar">الرسم بيجمع الفكرتين: الخزان الكبير (المساحة \(A_1\)) والأنبوبة المائلة (المساحة \(A_2\)). الـ \(x\) هو تغير مستوى الخزان عن المستوى الأصلي، والـ \(d\) القراءة على امتداد الأنبوبة، والـ \(y\) الارتفاع الرأسي، و\(\theta\) زاوية الميل.</p>
+    </div>
+  </div>
+
+  <p>وبالتالي، لازم عند التعامل مع الجهاز نراعي هندسة الـ Well وزاوية الأنبوبة، ونستخدم العلاقة الهندسية الصحيحة لتحويل القراءة إلى الارتفاع الرأسي المناسب.</p>
+
+  <div class="q-section">
+    <div class="q-section-head">Questions — Well-Type Manometers</div>
+    <div class="q-item">
+      <div class="q-text"><span class="qn">Q1.</span>What is the main purpose of a Well-Type Manometer?</div>
+      <button type="button" class="q-btn" aria-expanded="false">عرض الحل الكامل ▼</button>
+      <div class="q-sol"><div class="ans-en"><span class="lab">Answer</span><br>To reduce the effect of reservoir-level change on the reading, or compensate for it through the scale.</div></div>
+    </div>
+    <div class="q-item">
+      <div class="q-text"><span class="qn">Q2.</span>Does the Well-Type Manometer improve Sensitivity or Accuracy?</div>
+      <button type="button" class="q-btn" aria-expanded="false">عرض الحل الكامل ▼</button>
+      <div class="q-sol"><div class="ans-en"><span class="lab">Answer</span><br>Its main idea is to avoid reading two levels by making the reservoir-level change negligible or compensating for it in the scale. This simplifies determining the height and may reduce some reading errors, but it does not by itself guarantee higher Sensitivity or remove all errors. The Inclined Manometer is the design the slide states is used to increase Sensitivity.</div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ===================== 14 ===================== -->
+<section class="section" id="s14">
+  <div class="section-header"><div class="section-icon">🎯</div><div><h2 class="section-title">Sensitivity, Accuracy and Design Purpose</h2><div class="section-sub">completing the manometer discussion · S = Δoutput / Δinput</div></div></div>
+
+  <p>بعد ما فهمنا الـ Inclined Manometer والـ Well-Type Manometer، لازم نميّز بين الهدف من كل تصميم، وده كان محور أسئلة المقارنة في المناقشة.</p>
+
+  <h3>A. Sensitivity vs. Accuracy</h3>
+  <div class="def-box">
+    <div class="box-label">Definition — Sensitivity</div>
+    <div class="def-en">Sensitivity is the change in the output of a measuring instrument per change in the measured quantity.</div>
+    <p class="def-ar">في سياق المانومتر، نقدر نفهمها على إنها مقدار التغير في القراءة الناتج عن تغير صغير في الضغط.</p>
+  </div>
+  <div class="formula-box">
+    <div class="box-label">Sensitivity</div>
+    \[ S=\frac{\text{Change in Output}}{\text{Change in Input}} \]
+  </div>
+  <div class="def-box">
+    <div class="box-label">Definition — Accuracy</div>
+    <div class="def-en">Accuracy is how close the measured value is to the true value.</div>
+    <p class="def-ar">يعني ممكن جهاز يكون حساسًا جدًا للتغيرات الصغيرة، لكن قراءته لا تكون دقيقة لو فيه خطأ في المعايرة أو تركيب الجهاز.</p>
+  </div>
+
+  <h3>B. What Is the Purpose of an Inclined Manometer?</h3>
+  <p>الـ Inclined Manometer بيزود الـ Sensitivity؛ لأن تغيرًا صغيرًا في الضغط يمكن أن ينتج عنه حركة واضحة على طول الأنبوبة المائلة. من العلاقة الهندسية:</p>
+  <div class="formula-box">\[ h=L\sin\theta \]</div>
+  <p>حيث \(L\) طول الحركة على الأنبوبة، و\(h\) الارتفاع الرأسي، و\(\theta\) زاوية الميل بالنسبة للأفقي. عند الزوايا الصغيرة، يمكن أن تكون الحركة \(L\) كبيرة نسبيًا مقارنةً بالارتفاع الرأسي \(h\). وده يسهل ملاحظة فروق الضغط الصغيرة.</p>
+
+  <h3>C. What Is the Purpose of a Well-Type Manometer?</h3>
+  <p>الـ Well-Type Manometer بيعالج مشكلة مختلفة: بدل ما نعتمد على قياس تغير مستويين من السائل بشكل مستقل، بيكون فيه خزان أو Well مساحة مقطعه كبيرة مقارنةً بمساحة مقطع أنبوبة القراءة. بالتالي، لما السائل يتحرك من الخزان إلى الأنبوبة أو العكس، يتغير مستوى السائل في الخزان بمقدار صغير نسبيًا. في التصميم المناسب، يمكن إهمال هذا التغير تقريبًا أو تعويضه عن طريق تدريج الجهاز. الهدف هنا هو تسهيل قراءة فرق الارتفاع وتقليل الاعتماد على قراءة مستويين منفصلين.</p>
+
+  <div class="q-section">
+    <div class="q-section-head">Questions — Sensitivity, Accuracy and Design Purpose</div>
+    <div class="q-item">
+      <div class="q-text"><span class="qn">Q1.</span>Does an increase in Sensitivity necessarily mean that Accuracy has increased?</div>
+      <button type="button" class="q-btn" aria-expanded="false">عرض الحل الكامل ▼</button>
+      <div class="q-sol"><div class="ans-en"><span class="lab">Answer</span><br>No. The inclined manometer improves the observability of small changes, but if the inclination angle is not set correctly or the reading itself is inaccurate, an error can remain in the result.</div>
+        <p>وبالتالي التصميم المائل له ميزة مرتبطة بالـ Sensitivity، لكنه يضيف ضرورة الاهتمام بقياس زاوية الميل.</p></div>
+    </div>
+    <div class="q-item">
+      <div class="q-text"><span class="qn">Q2.</span>Do the Well-Type and the Inclined Manometer achieve exactly the same purpose?</div>
+      <button type="button" class="q-btn" aria-expanded="false">عرض الحل الكامل ▼</button>
+      <div class="q-sol"><div class="ans-en"><span class="lab">Answer</span><br>Not necessarily.
+        <ul class="ltr" style="direction:ltr;text-align:left;margin:6px 0 6px 22px;">
+          <li>The Inclined Manometer mainly aims to increase Sensitivity.</li>
+          <li>The Well-Type Manometer uses a large reservoir to reduce the effect of its level change on the reading, or to compensate for that change in the scale.</li>
+          <li>The Inclined Well-Type Manometer combines both ideas, taking the reservoir geometry and the angle of the reading tube into account.</li>
+        </ul></div>
+        <p>في التصميم الموضح في السلايد، لازم نراعي زاوية الأنبوبة والتدريج، بما في ذلك الزاوية القائمة (\(90^\circ\)) المشار إليها في الرسم. لا يصح افتراض أن كل تصميم Well-Type له نفس الهندسة من غير الرجوع إلى الرسم.</p></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ===================== 15 ===================== -->
+<section class="section" id="s15">
+  <div class="section-header"><div class="section-icon">⚖️</div><div><h2 class="section-title">Advantages and Limitations of Manometers</h2><div class="section-sub">simple · inexpensive · sensitive · limited range ≤ 7 bar</div></div></div>
+
+  <p>قبل الانتقال إلى أجهزة القياس الأخرى، لازم نعرف إمتى يكون المانومتر اختيارًا مناسبًا، وإمتى تظهر حدوده.</p>
+
+  <h3>Advantages</h3>
+  <ol>
+    <li><b>Simple:</b> مبدأ العمل بسيط؛ لأنه يعتمد على اتزان الضغط ووزن عمود السائل.</li>
+    <li><b>Inexpensive:</b> تكلفته منخفضة نسبيًا، وممكن تنفيذ قياس الضغط باستخدام أنبوبة وسائل مناسبين من غير نظام إلكتروني معقد.</li>
+    <li><b>Can be highly sensitive:</b> بعض تصميماته، خصوصًا الـ Inclined Manometer، تقدر تُظهر فروق الضغط الصغيرة بوضوح.</li>
+  </ol>
+
+  <h3>Limitations</h3>
+  <ol>
+    <li><b>Poor Dynamic Response:</b> الاستجابة للتغيرات السريعة في الضغط ضعيفة نسبيًا؛ لأن السائل يحتاج وقتًا ليتحرك ويصل إلى حالة اتزان جديدة. لو الضغط بيتغير بسرعة كبيرة، ممكن قراءة مستوى السائل ما تلحقش التغير الفعلي لحظة بلحظة.</li>
+    <li><b>No Remote Sensing:</b> في الاستخدام المعتاد، لازم يكون فيه اتصال مادي بين المانومتر والنقطة المراد قياس الضغط عندها. لذلك لا يوفر ميزة القياس عن بُعد بالطريقة المتاحة في أنظمة الاستشعار المناسبة (أجهزة القياس الإلكترونية).</li>
+    <li><b>Limited Pressure Range:</b> ارتفاع عمود السائل المطلوب لموازنة الضغط بيزيد كلما زاد فرق الضغط. وده يفرض حدودًا عملية على أبعاد الجهاز واستخدامه. السلايد يذكر أن مدى الضغط العملي للمانومترات يكون عادةً في حدود لا تتجاوز \(7\ \text{bar}\). دي معلومة مرتبطة بالنطاق العملي المذكور في المحاضرة، وليست حدًا مطلقًا لكل تصميم مانومتر.</li>
+  </ol>
+  <p>إذن المانومتر مناسب عندما تكون بساطة القياس وتكلفته وانخفاض فرق الضغط عوامل مهمة، لكنه ليس الاختيار الأفضل لكل مدى ضغط أو لكل قياس سريع.</p>
+
+  <div class="q-section">
+    <div class="q-section-head">Questions — Advantages and Limitations of Manometers</div>
+    <div class="q-item">
+      <div class="q-text"><span class="qn">Q1.</span>Why is it difficult to use a manometer at large pressures?</div>
+      <button type="button" class="q-btn" aria-expanded="false">عرض الحل الكامل ▼</button>
+      <div class="q-sol"><div class="ans-en"><span class="lab">Answer</span><br>Because the pressure difference is related to the height of the liquid column:
+        <div class="eqwrap">\[ \Delta p=\rho g h \]</div>
+        and, for a pressure difference between two fluids in the suitable arrangement:
+        <div class="eqwrap">\[ \Delta p=(\rho_m-\rho_f)\,g\,h \]</div>
+        When the pressure increases, a taller liquid column may be required, making the instrument large and impractical. A higher-density fluid may reduce the required height, but it does not remove all practical limits.</div>
+        <p>لما الضغط يزيد، ممكن نحتاج عمود سائل أطول، وده يخلي الجهاز كبير وغير عملي. اختيار سائل أعلى كثافة قد يقلل الارتفاع المطلوب، لكن لا يلغي كل القيود العملية.</p></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+<!-- ===================== 16 ===================== -->
+<section class="section" id="s16">
+  <div class="section-header"><div class="section-icon">🏋️</div><div><h2 class="section-title">Dead Weight Tester</h2><div class="section-sub">p = mg / A · pressure calibration</div></div></div>
+
+  <p>بعد أجهزة القياس المعتمدة على أعمدة السوائل، ننتقل إلى جهاز يُستخدم أساسًا في <span class="en">Pressure Calibration</span> (معايرة الضغط)، وهو الـ Dead Weight Tester.</p>
+
+  <h3>Principle of Operation</h3>
+  <div class="def-box">
+    <div class="box-label">Definition — Dead Weight Tester</div>
+    <div class="def-en">A dead weight tester is an instrument used to calibrate pressure-measuring instruments and to verify their readings, by generating a reference pressure from a known force acting on a known area.</div>
+    <p class="def-ar">الـ Dead Weight Tester جهاز يُستخدم لمعايرة أجهزة قياس الضغط والتحقق من صحة قراءاتها. فكرته إنه يولّد ضغطًا مرجعيًا من قوة معلومة تؤثر على مساحة معلومة.</p>
+  </div>
+
+  <p>يتكون النظام المعتاد من:</p>
+  <ul>
+    <li><b>Piston and Cylinder:</b> مكبس وأسطوانة.</li>
+    <li><b>Known Masses / Weights:</b> أوزان معلومة توضع على المكبس.</li>
+    <li><b>Pressure Fluid:</b> سائل ينقل الضغط داخل النظام.</li>
+    <li><b>Test Gauge:</b> جهاز الضغط المراد معايرته.</li>
+  </ul>
+
+  <!-- Figure 10 · Fig_10_Dead_Weight_Tester_Pressure_Gauge_Calibration.png · source: Lecture PDF slides 16–17 -->
+  <div class="figure-row">
+    <figure class="figure" id="fig-10" style="--fw:360px">
+      <a href="images/Fig_10_Dead_Weight_Tester_Pressure_Gauge_Calibration.png" target="_blank" rel="noopener"><img src="images/Fig_10_Dead_Weight_Tester_Pressure_Gauge_Calibration.png" alt="Dead weight tester with weight on a primary piston, oil chamber, secondary piston and the gauge to be calibrated" width="653" height="380" loading="lazy" decoding="async"></a>
+      <figcaption>Figure 10</figcaption>
+    </figure>
+    <div class="fig-text">
+      <p class="fig-en">Known weights load the primary piston; the pressure is transmitted through the oil to the gauge to be calibrated. The figure also shows a secondary piston at the oil chamber; its function is not described in the lecture text, so it is not elaborated here.</p>
+      <p class="fig-ar">الوزن (weight) بيتحط على الـ Primary Piston، والزيت (oil) بينقل الضغط للـ Gauge to be Calibrated. الضغط المرجعي بيتحسب من القوة ÷ المساحة.</p>
+    </div>
+  </div>
+
+  <p>عند وضع أوزان معلومة على المكبس، تؤثر الجاذبية بقوة على مساحة المكبس. الضغط النظري الناتج يُحسب من القوة مقسومة على المساحة.</p>
+
+  <h3>Governing Equations</h3>
+  <p>القوة الناتجة عن كتلة معلومة:</p>
+  <div class="formula-box">\[ F=mg \]</div>
+  <p>والضغط:</p>
+  <div class="formula-box">\[ p=\frac{F}{A} \]</div>
+  <p>إذن:</p>
+  <div class="formula-box">
+    <div class="box-label">Dead Weight Tester</div>
+    \[ p=\frac{mg}{A} \]
+  </div>
+  <div class="vars">
+    <div class="vars-title">WHERE</div>
+    <ul>
+      <li>\(p\): الضغط المرجعي (reference pressure).</li>
+      <li>\(m\): الكتلة الكلية للأوزان المؤثرة.</li>
+      <li>\(g\): عجلة الجاذبية.</li>
+      <li>\(A\): مساحة المقطع الفعالة للمكبس (effective area).</li>
+    </ul>
+  </div>
+  <p>المعادلة دي بتوضح المبدأ الأساسي. أما الحساب الدقيق في التطبيق العملي، فقد يحتاج إلى مراعاة عوامل المعايرة والتصميم الخاصة بالجهاز، مثل المساحة الفعالة وظروف التشغيل.</p>
+
+  <h3>Calibration Procedure</h3>
+  <p>لما نكون عايزين نعاير جهاز ضغط:</p>
+  <ol>
+    <li>نوصل الجهاز المراد اختباره بالـ Dead Weight Tester.</li>
+    <li>نختار أوزانًا معلومة ونضعها على المكبس.</li>
+    <li>نحسب الضغط المرجعي المتوقع باستخدام القوة والمساحة.</li>
+    <li>نقارن قراءة جهاز الضغط بالقيمة المرجعية.</li>
+    <li>نكرر العملية عند قيم ضغط مختلفة ضمن نطاق المعايرة المطلوب.</li>
+  </ol>
+  <p>لو قراءة الجهاز مختلفة عن الضغط المرجعي، نقدر نحدد مقدار الخطأ عند نقطة المعايرة.</p>
+
+  <h3>Advantages</h3>
+  <ul>
+    <li><b>High Accuracy:</b> يمكن الحصول على ضغط مرجعي دقيق عند استخدام الجهاز بطريقة صحيحة ومعرفة المساحة الفعالة.</li>
+    <li><b>Suitable for Calibration:</b> مناسب لمعايرة أجهزة قياس الضغط والتحقق من قراءاتها.</li>
+    <li><b>Wide Usable Pressure Range:</b> يمكن اختيار أوزان مناسبة لتوليد مستويات ضغط مختلفة ضمن نطاق تصميم الجهاز.</li>
+  </ul>
+
+  <h3>Limitations</h3>
+  <ol>
+    <li><b>Static Calibration:</b> الـ Dead Weight Tester مناسب أساسًا لمعايرة الضغط في ظروف ساكنة أو شبه ساكنة. لا يُستخدم عادةً لتتبع تغيرات الضغط السريعة لحظة بلحظة.</li>
+    <li><b>Gravity and Area Dependence:</b> الحساب يعتمد على \(g\) والمساحة الفعالة \(A\)، ولذلك فإن دقة هذه القيم تؤثر في الضغط المرجعي المحسوب.</li>
+    <li><b>Practical Pressure Limits:</b> نطاق الضغط المتاح يعتمد على تصميم الجهاز، ومساحة المكبس، والأوزان التي يمكن استخدامها بأمان. لا يصح افتراض أن كل Dead Weight Tester يصل إلى نفس أقصى ضغط.</li>
+  </ol>
+
+  <div class="q-section">
+    <div class="q-section-head">Questions — Dead Weight Tester</div>
+    <div class="q-item">
+      <div class="q-text"><span class="qn">Q1.</span>What is the principle of a Dead Weight Tester?</div>
+      <button type="button" class="q-btn" aria-expanded="false">عرض الحل الكامل ▼</button>
+      <div class="q-sol"><div class="ans-en"><span class="lab">Answer</span><br>It generates a reference pressure from a known force acting on a known effective area:
+        <div class="eqwrap">\[ p=\frac{mg}{A} \]</div></div></div>
+    </div>
+    <div class="q-item">
+      <div class="q-text"><span class="qn">Q2.</span>Why do we use known weights instead of relying on the reading of the pressure gauge itself?</div>
+      <button type="button" class="q-btn" aria-expanded="false">عرض الحل الكامل ▼</button>
+      <div class="q-sol"><div class="ans-en"><span class="lab">Answer</span><br>Because the aim is to obtain a reference pressure that can be calculated from known quantities and then used to compare against the reading of the instrument under test. If the instrument's own reading were used to decide the correct pressure, the required independent calibration would not have been achieved.</div>
+        <p>الهدف إننا نجيب ضغط مرجعي نحسبه من كميات معلومة، وبعدين نقارن بيه قراءة الجهاز اللي بنختبره.</p></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ===================== 17 ===================== -->
+<section class="section" id="s17">
+  <div class="section-header"><div class="section-icon">🔩</div><div><h2 class="section-title">Mechanical Methods of Pressure Measurement</h2><div class="section-sub">pressure → elastic deformation → displacement → indication</div></div></div>
+
+  <p>بعد الـ Dead Weight Tester، ننتقل إلى عائلة أخرى من أجهزة القياس: <span class="en">Mechanical Pressure Measurement Devices</span>. الفكرة الأساسية إن الضغط يؤثر على عنصر ميكانيكي قابل للتشوه المرن (<span class="en">Elastic Element</span>). هذا التشوه ينتج عنه إزاحة أو حركة ميكانيكية يمكن ربطها بقراءة الضغط.</p>
+  <p>المبدأ العام:</p>
+  <div class="formula-box">
+    <div class="box-label">General Principle</div>
+    \[ \text{Pressure}\rightarrow\text{Elastic Deformation}\rightarrow\text{Mechanical Displacement}\rightarrow\text{Indication} \]
+  </div>
+  <p>يعني الضغط نفسه لا يتحول مباشرةً إلى رقم على التدريج؛ بل يسبب تشوهًا في العنصر الحساس، ثم تنتقل الحركة إلى مؤشر أو آلية أخرى تعرض القراءة.</p>
+  <p>من أمثلة العناصر الميكانيكية التي تتعامل مع الضغط: <b>Bourdon Tube</b>، <b>Diaphragm</b>، <b>Bellows</b>. كل واحد منها يستخدم شكلًا ميكانيكيًا مختلفًا لتحقيق استجابة للضغط.</p>
+
+  <!-- Figure 11 · Fig_15_Comparison_of_Diaphragm_Bellows_and_Bourdon_Tube_Elements.jpg · source: Lecture PDF slides 18–21 -->
+  <div class="figure-row stack">
+    <figure class="figure" id="fig-11" style="--fw:560px">
+      <a href="images/Fig_15_Comparison_of_Diaphragm_Bellows_and_Bourdon_Tube_Elements.jpg" target="_blank" rel="noopener"><img src="images/Fig_15_Comparison_of_Diaphragm_Bellows_and_Bourdon_Tube_Elements.jpg" alt="Comparison chart of flat and corrugated diaphragms, capsule, bellows, straight tube and C-shaped, twisted, helical and spiral Bourdon tubes" width="1400" height="1045" loading="lazy" decoding="async"></a>
+      <figcaption>Figure 11</figcaption>
+    </figure>
+    <div class="fig-text">
+      <p class="fig-en">(a) Flat diaphragm, (b) Corrugated diaphragm, (c) Capsule, (d) Bellows, (e) Straight tube, (f) C-shaped Bourdon tube, (g) Twisted Bourdon tube, (h) Helical Bourdon tube, (i) Spiral Bourdon tube. Each panel shows the applied pressure and the resulting motion.</p>
+      <p class="fig-ar">الشكل بيقارن أشكال العناصر المرنة: diaphragm (مسطح ومموّج)، capsule، bellows، أنبوبة مستقيمة، وأنواع Bourdon tube (C-shaped وtwisted وhelical وspiral). في كل شكل بتشوف اتجاه الضغط واتجاه الحركة (Motion) الناتجة.</p>
+    </div>
+  </div>
+
+  <h3>Why Must the Element Be Elastic?</h3>
+  <p>لازم العنصر يرجع تقريبًا إلى شكله الأصلي لما الضغط يتشال، طالما إنه اشتغل داخل حدود التصميم. لو الضغط سبب تشوهًا دائمًا (<span class="en">Plastic Deformation</span>)، فلن تعود العلاقة بين الضغط والإزاحة كما كانت، وده يؤدي إلى خطأ في القراءة وقد يسبب تلف العنصر.</p>
+  <div class="def-box">
+    <div class="box-label">Definition — Elastic Limit</div>
+    <div class="def-en">The elastic limit is the limit up to which the element can withstand deformation and return to its original state without permanent deformation.</div>
+    <p class="def-ar">لذلك لازم نراعي Elastic Limit، أي الحد الذي يمكن عنده للعنصر أن يتحمل التشوه ويرجع إلى حالته الأصلية من غير تشوه دائم.</p>
+  </div>
+
+  <div class="q-section">
+    <div class="q-section-head">Questions — Elastic Pressure Elements</div>
+    <div class="q-item">
+      <div class="q-text"><span class="qn">Q1.</span>Why must the Bourdon Tube, Diaphragm, and Bellows remain within their elastic limits?</div>
+      <button type="button" class="q-btn" aria-expanded="false">عرض الحل الكامل ▼</button>
+      <div class="q-sol"><div class="ans-en"><span class="lab">Answer</span><br>To avoid permanent deformation that can affect the pressure-to-displacement relationship and cause measurement errors.</div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ===================== 18 ===================== -->
+<section class="section" id="s18">
+  <div class="section-header"><div class="section-icon">🌀</div><div><h2 class="section-title">Bourdon Tube</h2><div class="section-sub">curved elastic tube · tip displacement · pointer</div></div></div>
+
+  <p>الـ Bourdon Tube من أشهر عناصر قياس الضغط الميكانيكية.</p>
+
+  <h3>Construction</h3>
+  <p>هو أنبوب مرن، غالبًا يكون منحنيًا، ومقطعه غير دائري تمامًا. أحد طرفيه متصل بالضغط المراد قياسه، بينما الطرف الآخر يكون مغلقًا ومتاحًا له التحرك ميكانيكيًا. تُوصل حركة الطرف المتحرك بآلية ميكانيكية مثل <span class="en">Linkage</span> و<span class="en">Pointer</span> لعرض القراءة على تدريج.</p>
+
+  <!-- Figure 12 · Fig_11_Bourdon_Tube_Gauge_Linkage_Pinion_Sector_Pointer.png · source: Lecture PDF slides 18–19 -->
+  <div class="figure-row">
+    <figure class="figure" id="fig-12" style="--fw:340px">
+      <a href="images/Fig_11_Bourdon_Tube_Gauge_Linkage_Pinion_Sector_Pointer.png" target="_blank" rel="noopener"><img src="images/Fig_11_Bourdon_Tube_Gauge_Linkage_Pinion_Sector_Pointer.png" alt="Bourdon tube gauge showing tube, link, sector gear, pinion and pointer on a psi scale" width="575" height="405" loading="lazy" decoding="async"></a>
+      <figcaption>Figure 12</figcaption>
+    </figure>
+    <div class="fig-text">
+      <p class="fig-en">The pressure <i>p</i> enters the curved Bourdon tube; its free end is attached through a link to a sector gear, which turns the pinion and the pointer over a scale in psi.</p>
+      <p class="fig-ar">الضغط \(p\) بيدخل الأنبوبة المنحنية، فالطرف الحر بيتحرك، والـ Link بيحرّك الـ Sector، والـ Sector بيلف الـ Pinion اللي عليه الـ Pointer، فالمؤشر بيتحرك على التدريج.</p>
+    </div>
+  </div>
+
+  <h3>Working Principle</h3>
+  <p>عندما يدخل الضغط إلى الأنبوبة، تتعرض جدرانها لتأثير الضغط الداخلي، فيتغير شكل الأنبوبة المنحنية قليلًا، وينتج عن ذلك تحرك الطرف الحر. الحركة تنتقل إلى المؤشر من خلال آلية الربط الميكانيكية، فتظهر قراءة الضغط على التدريج. إذن:</p>
+  <div class="formula-box">\[ \text{Pressure}\rightarrow\text{Tube Deformation}\rightarrow\text{Tip Displacement}\rightarrow\text{Pointer Movement} \]</div>
+  <p>في النطاق التشغيلي المناسب، يمكن معايرة المؤشر بحيث ترتبط حركته بقيمة الضغط.</p>
+
+  <h3>Static Characteristics</h3>
+  <p>الـ <span class="en">Static Characteristics</span> (الخصائص الساكنة) هي الخصائص المرتبطة بسلوك الجهاز عندما يكون الضغط ثابتًا أو يتغير ببطء بما يسمح بالاستقرار. من المهم مراعاة العلاقة بين الضغط والإزاحة، ومدى تكرار القراءة عند نفس الضغط، وحدود التشوه المرن. في النطاق المناسب، يمكن تقريب العلاقة بين الضغط والإزاحة بخط مستقيم إذا كان ذلك مدعومًا بمعايرة الجهاز، لكن لا يجب افتراض الخطية التامة لكل Bourdon Tube وفي كل نطاق.</p>
+
+  <h3>Why Must the Tube Remain Elastic?</h3>
+  <p>لو زاد الضغط عن الحد المسموح، ممكن يحصل تشوه دائم في الأنبوبة. عندها قد لا يرجع المؤشر إلى موضعه الأصلي بعد إزالة الضغط، وتصبح القراءة غير صحيحة. لهذا السبب، يجب اختيار الجهاز ضمن نطاق الضغط المصمم له، وتجنب تحميله بما يتجاوز حدوده.</p>
+
+  <h3>Advantages</h3>
+  <ul>
+    <li>تصميم ميكانيكي عملي وشائع.</li>
+    <li>يمكنه قياس نطاقات ضغط مناسبة لتصميمه.</li>
+    <li>لا يحتاج بالضرورة إلى دائرة كهربائية لإظهار القراءة؛ إذ يمكن عرض الضغط مباشرةً بمؤشر ميكانيكي.</li>
+  </ul>
+  <h3>Limitations</h3>
+  <ul>
+    <li>يعتمد على التشوه الميكانيكي، لذلك له حدود مرتبطة بالمرونة والتعب الميكانيكي (mechanical fatigue).</li>
+    <li>قد يتأثر بالأخطاء الميكانيكية أو تغير خصائص العنصر مع الاستخدام.</li>
+    <li>الاستجابة للتغيرات السريعة تعتمد على التصميم والكتلة والآلية الميكانيكية، ولا ينبغي افتراض أنه مناسب لكل تغير ديناميكي سريع.</li>
+  </ul>
+</section>
+
+<hr class="section-divider">
+
+<!-- ===================== 19 ===================== -->
+<section class="section" id="s19">
+  <div class="section-header"><div class="section-icon">🥁</div><div><h2 class="section-title">Diaphragm Pressure Sensor</h2><div class="section-sub">flexible membrane · pressure difference · deflection</div></div></div>
+
+  <div class="def-box">
+    <div class="box-label">Definition — Diaphragm</div>
+    <div class="def-en">A diaphragm is a thin flexible element that separates two regions and can deflect when a pressure difference exists across it.</div>
+    <p class="def-ar">الـ Diaphragm هو عنصر مرن رقيق يفصل بين منطقتين، ويمكن أن ينحني عند وجود فرق ضغط عبره.</p>
+  </div>
+
+  <h3>Construction and Working Principle</h3>
+  <p>عندما يؤثر الضغط على أحد جانبي الـ Diaphragm، ويتوفر ضغط مرجعي أو ضغط مختلف على الجانب الآخر، يتولد فرق ضغط يؤدي إلى انحناء العنصر. مقدار الانحناء يعتمد على فرق الضغط، وخواص المادة، وسُمك العنصر، وشكله، وطريقة تثبيته. يمكن استخدام الإزاحة الناتجة في تحريك مؤشر ميكانيكي أو ربطها بوسيلة تحويل مناسبة.</p>
+
+  <!-- Figure 13 · Fig_12_Diaphragm_Pressure_Gauge_and_Pointer_Mechanism.jpg · source: Lecture PDF slides 20–21 -->
+  <div class="figure-row">
+    <figure class="figure" id="fig-13" style="--fw:400px">
+      <a href="images/Fig_12_Diaphragm_Pressure_Gauge_and_Pointer_Mechanism.jpg" target="_blank" rel="noopener"><img src="images/Fig_12_Diaphragm_Pressure_Gauge_and_Pointer_Mechanism.jpg" alt="Diaphragm pressure gauge schematic: diaphragm, stem, gearbox, pointer and scale" width="1400" height="1097" loading="lazy" decoding="async"></a>
+      <figcaption>Figure 13</figcaption>
+    </figure>
+    <div class="fig-text">
+      <p class="fig-en">As printed on the figure: when pressure increases at the bottom, the diaphragm expands toward the upper side; the expansion moves the stem (rod) upward, and the stem moves the pointer through a mechanical gearbox over the scale.</p>
+      <p class="fig-ar">لما الضغط يزيد من تحت، الـ Diaphragm بينتفخ لفوق، فالـ Stem (القضيب) بيطلع لفوق وبيحرّك الـ Pointer عن طريق Mechanical Gearbox على الـ Scale.</p>
+    </div>
+  </div>
+
+  <div class="note-box">
+    <div class="box-label">Important</div>
+    <p>الاستجابة الأساسية للـ Diaphragm ترتبط بفرق الضغط عبره. لذلك، عند تحديد الضغط الذي يقيسه، يجب معرفة ما إذا كان الجانب الآخر معرضًا للضغط الجوي أو لضغط آخر.</p>
+  </div>
+
+  <h3>Why Is the Diaphragm Shape Important?</h3>
+  <p>شكل العنصر وأبعاده وخواص مادته تؤثر على مرونته وعلى مقدار الإزاحة الناتجة من الضغط. تغيير التصميم يمكن أن يغيّر الحساسية ونطاق القياس. لذلك لا يكفي أن نقول إن كل Diaphragm له نفس الحساسية أو نفس مجال الضغط.</p>
+
+  <h3>Elastic Limit</h3>
+  <p>مثل الـ Bourdon Tube، يجب ألا يتجاوز العنصر حدود التشوه المرن. لو حدث تشوه دائم، قد لا يعود إلى موضعه الأصلي، وبالتالي تصبح علاقة الضغط بالإزاحة غير دقيقة.</p>
+</section>
+
+<hr class="section-divider">
+
+<!-- ===================== 20 ===================== -->
+<section class="section" id="s20">
+  <div class="section-header"><div class="section-icon">🪗</div><div><h2 class="section-title">Bellows Pressure Sensor</h2><div class="section-sub">folded elastic element · length change · displacement</div></div></div>
+
+  <div class="def-box">
+    <div class="box-label">Definition — Bellows</div>
+    <div class="def-en">A bellows is an elastic element resembling a tube with successive folds or corrugations.</div>
+    <p class="def-ar">الـ Bellows عنصر مرن يشبه الأنبوبة ذات الطيات أو التموجات المتتابعة.</p>
+  </div>
+
+  <h3>Construction and Working Principle</h3>
+  <p>عندما يؤثر الضغط داخل الـ Bellows أو خارجه، ينتج فرق ضغط يؤدي إلى تغير طوله، أي إنه يتمدد أو ينكمش بحسب اتجاه الضغط وترتيب الجهاز. يمكن ربط الحركة الطولية بآلية ميكانيكية لتحريك مؤشر أو نقل الإزاحة إلى عنصر آخر. بالتالي:</p>
+  <div class="formula-box">\[ \text{Pressure Difference}\rightarrow\text{Bellows Expansion/Contraction}\rightarrow\text{Mechanical Displacement} \]</div>
+  <p>في النظام المعتاد، يمكن استخدام هذه الحركة لقياس الضغط أو فرق الضغط حسب طريقة توصيل الجهاز.</p>
+
+  <!-- Figure 14 · Fig_14_Bellows_Pressure_Element_and_Pointer.jpg · source: Lecture PDF slides 20–21 -->
+  <div class="figure-row">
+    <figure class="figure" id="fig-14" style="--fw:340px">
+      <a href="images/Fig_14_Bellows_Pressure_Element_and_Pointer.jpg" target="_blank" rel="noopener"><img src="images/Fig_14_Bellows_Pressure_Element_and_Pointer.jpg" alt="Bellows pressure gauge schematic: corrugated bellows with an inner spring, rod, pointer and scale" width="1400" height="1378" loading="lazy" decoding="async"></a>
+      <figcaption>Figure 14</figcaption>
+    </figure>
+    <div class="fig-text">
+      <p class="fig-en">A corrugated bellows, drawn with a coil spring inside it, moves a rod connected to a pointer that sweeps over a scale.</p>
+      <p class="fig-ar">الـ Bellows المموّج بيتمدد أو بينكمش مع الضغط، وحركته بتنتقل بقضيب للـ Pointer على الـ Scale. الرسم بيوضح كمان زنبرك جوه الـ Bellows، لكن نص المحاضرة مش بيشرح دوره.</p>
+    </div>
+  </div>
+
+  <h3>Why Does the Bellows Have Folds?</h3>
+  <p>الطيات تسمح للعنصر بالتغير في طوله تحت تأثير الضغط. لكن شكل الطيات وعددها وأبعادها وخواص المادة تؤثر جميعها في مقدار الحركة والاستجابة. لذلك، اختلاف تصميم الـ Bellows يمكن أن يؤدي إلى اختلاف الحساسية ونطاق الضغط.</p>
+
+  <h3>Limitations</h3>
+  <p>الـ Bellows عنصر ميكانيكي مرن، ولذلك يجب مراعاة حدوده الميكانيكية وخصائصه الديناميكية. لا يصح افتراض أنه مناسب تلقائيًا للضغط المتغير بسرعة لمجرد أنه متصل بمؤشر أو بدائرة كهربائية.</p>
+
+  <div class="q-section">
+    <div class="q-section-head">Questions — Bourdon Tube, Diaphragm and Bellows</div>
+    <div class="q-item">
+      <div class="q-text"><span class="qn">Q1.</span>What is the difference between a Bourdon Tube, a Diaphragm, and a Bellows?</div>
+      <button type="button" class="q-btn" aria-expanded="false">عرض الحل الكامل ▼</button>
+      <div class="q-sol"><div class="ans-en"><span class="lab">Answer</span><br>They use different elastic geometries to produce mechanical displacement under pressure: a curved tube, a flexible membrane, and a folded expandable element, respectively.</div>
+        <p>التلاتة بيحوّلوا الضغط لحركة ميكانيكية، بس بأشكال مرنة مختلفة: أنبوبة منحنية (Bourdon Tube)، وغشاء مرن (Diaphragm)، وعنصر مطوي قابل للتمدد (Bellows).</p></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ===================== 21 ===================== -->
+<section class="section" id="s21">
+  <div class="section-header"><div class="section-icon">🔌</div><div><h2 class="section-title">Mechanical Displacement and Electrical Measurement</h2><div class="section-sub">sensing element · displacement-to-signal · Wheatstone bridge</div></div></div>
+
+  <p>في بعض الأنظمة، لا تُستخدم حركة الـ Bourdon Tube أو الـ Diaphragm أو الـ Bellows لتحريك مؤشر فقط، بل يمكن نقل الإزاحة إلى عنصر كهربائي. مثلًا، يمكن أن تؤدي الحركة الميكانيكية إلى تحريك جزء في <span class="en">Resistive Sensor</span>، فتتغير المقاومة الكهربائية. بعد ذلك يمكن قياس التغير الكهربائي وربطه بالضغط بعد المعايرة. التسلسل هنا يكون:</p>
+  <div class="formula-box">\[ \text{Pressure}\rightarrow\text{Mechanical Displacement}\rightarrow\text{Electrical Change}\rightarrow\text{Pressure Indication} \]</div>
+
+  <!-- Figure 15 · Fig_13_Diaphragm_Spring_Linkage_to_Wheatstone_Bridge.jpg · source: Lecture PDF slides 20–21 -->
+  <div class="figure-row">
+    <figure class="figure" id="fig-15" style="--fw:420px">
+      <a href="images/Fig_13_Diaphragm_Spring_Linkage_to_Wheatstone_Bridge.jpg" target="_blank" rel="noopener"><img src="images/Fig_13_Diaphragm_Spring_Linkage_to_Wheatstone_Bridge.jpg" alt="Elastic pressure element with spring and connecting rod driving a resistive element wired to a Wheatstone bridge circuit" width="1400" height="929" loading="lazy" decoding="async"></a>
+      <figcaption>Figure 15</figcaption>
+    </figure>
+    <div class="fig-text">
+      <p class="fig-en">Process pressure acts on the elastic element at the bottom; a connecting rod with an attached spring moves along a resistive element whose terminals go to a Wheatstone bridge circuit.</p>
+      <p class="fig-ar">الضغط (Process Pressure) بيحرّك العنصر المرن، والـ Connecting Rod بيحرّك نقطة التلامس على مقاومة (resistive element)، والمقاومة دي متوصلة بدائرة Wheatstone Bridge. يعني الإزاحة الميكانيكية اتحولت لتغير كهربائي. العنصر المرسوم بجدران مموجة؛ ونص المحاضرة بيربط الفكرة بالـ Diaphragm والتحويل الكهربائي من غير تفاصيل أكتر.</p>
+    </div>
+  </div>
+
+  <div class="note-box">
+    <div class="box-label">Important</div>
+    <p>لكن وجود خرج كهربائي لا يعني أن الجهاز أصبح خاليًا من القيود الميكانيكية؛ لأن عنصر الاستشعار لا يزال يعتمد على التشوه والحركة. ولهذا السبب، يجب التمييز بين <span class="en">Sensing Element</span>، وهو العنصر الذي يتأثر بالضغط، وبين عنصر تحويل الإزاحة إلى إشارة كهربائية، وبين دائرة معالجة الإشارة.</p>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ===================== 22 ===================== -->
+<section class="section" id="s22">
+  <div class="section-header"><div class="section-icon">⏱️</div><div><h2 class="section-title">Static vs. Dynamic Pressure Measurement</h2><div class="section-sub">response speed · selecting a pressure instrument</div></div></div>
+
+  <p>من النقاط المهمة في نهاية المناقشة أن أجهزة القياس الميكانيكية التي تعتمد على تشوه عنصر مرن تكون مناسبة غالبًا للضغط الثابت أو المتغير ببطء، بحسب تصميمها. في القياس الديناميكي، الضغط يتغير مع الزمن، ولذلك لا يكفي أن نعرف العلاقة بين الضغط والإزاحة عند الاتزان؛ بل يجب أيضًا معرفة سرعة استجابة الجهاز. لو الضغط اتغير بسرعة أكبر من قدرة العنصر والآلية على الاستجابة، فقد تتأخر القراءة عن القيمة الفعلية.</p>
+
+  <p>لذلك، عند اختيار جهاز قياس ضغط، يجب أن نسأل:</p>
+  <ol>
+    <li>هل المطلوب قياس <span class="en">Static Pressure</span> أم ضغط متغير بسرعة؟</li>
+    <li>ما مدى الضغط المتوقع؟</li>
+    <li>ما مقدار الدقة المطلوبة؟</li>
+    <li>هل نحتاج إلى قراءة ميكانيكية مباشرة أم إشارة كهربائية؟</li>
+    <li>هل الجهاز مصمم لتحمل الضغط المطلوب من غير تجاوز حدود العنصر المرن؟</li>
+  </ol>
+
+  <h3>Comparison of Pressure-Measuring Devices</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Device</th><th>Main Principle</th><th>Typical Purpose</th><th>Main Limitation</th></tr></thead>
+      <tbody>
+        <tr><td class="en-cell">Manometer</td><td class="en-cell">Hydrostatic liquid column</td><td class="lbl">قياس الضغط أو فرق الضغط من فرق الارتفاع</td><td class="lbl">الاستجابة البطيئة نسبيًا والحجم العملي عند الضغوط الكبيرة</td></tr>
+        <tr><td class="en-cell">Dead Weight Tester</td><td class="en-cell">Known force divided by effective area</td><td class="lbl">معايرة أجهزة الضغط</td><td class="lbl">مناسب أساسًا للمعايرة الساكنة</td></tr>
+        <tr><td class="en-cell">Bourdon Tube</td><td class="en-cell">Deformation of a curved elastic tube</td><td class="lbl">قياس الضغط وتحريك مؤشر ميكانيكي</td><td class="lbl">حدود المرونة والأخطاء الميكانيكية</td></tr>
+        <tr><td class="en-cell">Diaphragm</td><td class="en-cell">Deflection of a flexible membrane</td><td class="lbl">قياس الضغط أو فرق الضغط</td><td class="lbl">يتأثر بالتصميم وحدود التشوه المرن</td></tr>
+        <tr><td class="en-cell">Bellows</td><td class="en-cell">Expansion or contraction of a folded elastic element</td><td class="lbl">تحويل الضغط إلى إزاحة ميكانيكية</td><td class="lbl">حدود العنصر المرن والاستجابة الديناميكية</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="swipe-hint">← اسحب لرؤية المزيد →</div>
+
+  <div class="q-section">
+    <div class="q-section-head">Questions — Static vs. Dynamic Pressure Measurement</div>
+    <div class="q-item">
+      <div class="q-text"><span class="qn">Q1.</span>Why is dynamic response important?</div>
+      <button type="button" class="q-btn" aria-expanded="false">عرض الحل الكامل ▼</button>
+      <div class="q-sol"><div class="ans-en"><span class="lab">Answer</span><br>Because a device may measure a steady pressure correctly but fail to follow rapid pressure changes accurately.</div>
+        <p>يعني الجهاز ممكن يقرا ضغط ثابت صح، لكن لو الضغط اتغير بسرعة القراءة تتأخر عن القيمة الفعلية.</p></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div class="footer-wrap">
+  <footer class="footer">
+    <div class="footer-title">Measurement · Lecture 5 — Pressure Measurements</div>
+    <div class="footer-desc">Manometers, Dead Weight Tester, Bourdon Tube, Diaphragm and Bellows pressure sensors.</div>
+    <div class="footer-tags">
+      <span class="footer-tag">Pressure Terminology</span>
+      <span class="footer-tag">Barometer</span>
+      <span class="footer-tag">Manometers</span>
+      <span class="footer-tag">Inclined &amp; Well-Type</span>
+      <span class="footer-tag">Dead Weight Tester</span>
+      <span class="footer-tag">Bourdon Tube</span>
+      <span class="footer-tag">Diaphragm</span>
+      <span class="footer-tag">Bellows</span>
+    </div>
+  </footer>
+</div>
+
+<div class="closing-wrap">
+  <div class="closing">
+    <p>🤲 ولا تنسوا الصلاة على النبي صلى الله عليه وسلم، والدعاء لإخوانكم في فلسطين وغزة وفي جميع بقاع الأرض، وأن ينصر الله المسلمين المستضعفين. 🤲</p>
+  </div>
+</div>
+
+<script>
+(function(){
+  var duaBtn=document.getElementById('duaBtn'), duaBody=document.getElementById('duaBody');
+  if(duaBtn&&duaBody){
+    duaBtn.addEventListener('click',function(){
+      var open=duaBtn.getAttribute('aria-expanded')==='true';
+      duaBtn.setAttribute('aria-expanded',open?'false':'true');
+      if(open){ duaBody.classList.remove('open'); duaBody.style.display='none'; }
+      else{ duaBody.classList.add('open'); duaBody.style.display='block'; }
+    });
+  }
+  document.addEventListener('click',function(e){
+    var b=e.target.closest&&e.target.closest('.q-btn'); if(!b) return;
+    var sol=b.parentNode.querySelector('.q-sol'); if(!sol) return;
+    var open=sol.classList.toggle('open');
+    b.setAttribute('aria-expanded',open?'true':'false');
+    b.textContent=open?'إخفاء الحل ▲':'عرض الحل الكامل ▼';
+    if(open&&window.MathJax&&MathJax.typesetPromise){ try{ MathJax.typesetPromise([sol]); }catch(err){} }
+  });
+  var links=document.querySelectorAll('.toc-item');
+  for(var i=0;i<links.length;i++){
+    links[i].addEventListener('click',function(e){
+      var id=this.getAttribute('href').slice(1), t=document.getElementById(id);
+      if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth',block:'start'}); if(history.replaceState){ history.replaceState(null,'','#'+id); } }
+    });
+  }
+})();
+</script>
+<script>
+(function(){
+  var KEY='eyeProtection', root=document.documentElement, btn=document.getElementById('eyeToggle');
+  if(!btn) return;
+  var st=btn.querySelector('.eye-st');
+  function render(on){ btn.setAttribute('aria-pressed', on?'true':'false'); st.textContent = on?'ON':'OFF'; }
+  render(root.getAttribute('data-eye')==='on');
+  btn.addEventListener('click', function(){
+    var on = root.getAttribute('data-eye') !== 'on';
+    if(on){ root.setAttribute('data-eye','on'); } else { root.removeAttribute('data-eye'); }
+    render(on);
+    try{ localStorage.setItem(KEY, on?'on':'off'); }catch(e){}
+  });
+})();
+</script>
+</body>
+</html>
