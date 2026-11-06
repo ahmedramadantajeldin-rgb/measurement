@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lectures 5 &amp; 6: Pressure Measurements | ME305</title>
+  <title>Lectures 5 &amp; 6: Pressure Measurements | قياسات الضغط</title>
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -938,19 +938,10 @@
     details.show-question[open]>summary::before{content:"▼"}
     details.show-question[open]>summary{margin-bottom:12px}
     .sol-label{font-weight:700;color:var(--royal);margin:6px 0}
-  
-    /* Back to index link */
-    .home-link{position:fixed; top:14px; right:14px; z-index:10000; direction:rtl; display:inline-flex; align-items:center; gap:6px; padding:6px 14px; border-radius:999px; text-decoration:none; font-family:'Cairo',sans-serif; font-weight:600; font-size:0.82rem; line-height:1.4; background:rgba(255,255,255,0.93); color:#0B2447; border:1px solid rgba(11,36,71,0.28); box-shadow:0 2px 10px rgba(11,36,71,0.18); backdrop-filter:blur(6px);}
-    .home-link:hover{background:#fff;}
-    .home-link:focus-visible{outline:2px solid #F0B429; outline-offset:2px;}
-    @media (max-width:420px){ .home-link{padding:5px 10px; font-size:0.74rem;} }
-    html[data-eye="on"] .home-link{ background:rgba(248,248,245,0.93); }
   </style>
 </head>
 
 <body>
-
-  <a class="home-link" href="index.html">← الصفحة الرئيسية</a>
 
   <!-- Eye Protection Toggle Button & Mix Overlay -->
   <button type="button" class="eye-toggle" id="eyeToggle" aria-pressed="false" title="Eye Protection: softer brightness and less blue light for long study sessions">
@@ -966,16 +957,16 @@
     <div class="header-badge">Measurement · ME305 · Lectures 5 &amp; 6</div>
     <h1>
       Pressure Measurements
-      <span class="h1-ar">Gravitational, Mechanical &amp; Electrical Methods</span>
+      <span class="h1-ar">قياسات الضغط: الطرق الهيدروستاتيكية والميكانيكية والكهربائية</span>
     </h1>
     <div class="header-subtitle">
       A rigorous university study guide covering gravitational head sensing, elastic mechanical transducers, molecular piezoelectric &amp; piezoresistive elements, parametric circuits, and flow field pressure dynamics.
     </div>
     <div class="meta-pills">
-      <div class="meta-pill">⏱️ Lectures: 5 &amp; 6</div>
-      <div class="meta-pill">📐 Field: Measurement &amp; Instrumentation Engineering</div>
-      <div class="meta-pill">🔬 Scope: Gravitational, Mechanical &amp; Electrical Methods</div>
-      <div class="meta-pill">📊 10 integrated sections + solved examples</div>
+      <div class="meta-pill">⏱️ المحاضرات: 5 &amp; 6</div>
+      <div class="meta-pill">📐 التخصص: هندسة القياسات وأجهزة الاستشعار</div>
+      <div class="meta-pill">🔬 المنهج: الطرق الجاذبية والميكانيكية والكهربائية</div>
+      <div class="meta-pill">📊 10 أقسام دراسية متكاملة + أمثلة محلولة</div>
     </div>
   </header>
 
@@ -1001,9 +992,9 @@
 
   <!-- Table of Contents (TOC) -->
   <div class="toc-wrapper">
-    <nav class="toc-card" aria-label="Table of Contents">
+    <nav class="toc-card" aria-label="جدول المحتويات">
       <div class="toc-header">
-        <span>📑 Table of Contents</span>
+        <span>📑 جدول محتويات المحاضرة (Table of Contents)</span>
       </div>
       <div class="toc-grid">
         <a href="#sec-1" class="toc-item">
@@ -1016,35 +1007,35 @@
         </a>
         <a href="#sec-3" class="toc-item">
           <span class="toc-num">3</span>
-          <span>Gravitational Methods: Barometer &amp; Manometer</span>
+          <span>طرق الاستشعار الجاذبية: البارومتر والمانومتر</span>
         </a>
         <a href="#sec-4" class="toc-item">
           <span class="toc-num">4</span>
-          <span>Pressure Calibration: Dead Weight Tester</span>
+          <span>معايرة الضغط بجهاز الأوزان الميتة (Dead Weight Tester)</span>
         </a>
         <a href="#sec-5" class="toc-item">
           <span class="toc-num">5</span>
-          <span>Mechanical Methods (Bourdon, Diaphragm, Bellows)</span>
+          <span>طرق الاستشعار الميكانيكية (Bourdon, Diaphragm, Bellows)</span>
         </a>
         <a href="#sec-6" class="toc-item">
           <span class="toc-num">6</span>
-          <span>Electrical Pressure Sensors: Overview</span>
+          <span>طرق الاستشعار الكهربائية: نظرة عامة (Sensors Overview)</span>
         </a>
         <a href="#sec-7" class="toc-item">
           <span class="toc-num">7</span>
-          <span>Molecular Sensors (Piezoelectric &amp; Piezoresistive)</span>
+          <span>الحساسات الجزيئية (Molecular: Piezoelectric &amp; Piezoresistive)</span>
         </a>
         <a href="#sec-8" class="toc-item">
           <span class="toc-num">8</span>
-          <span>Parametric Sensors (Resistive, LVDT, Capacitive)</span>
+          <span>الحساسات البارامترية (Parametric: R, LVDT, Capacitive)</span>
         </a>
         <a href="#sec-9" class="toc-item">
           <span class="toc-num">9</span>
-          <span>Pressure Measurement in Flow Fields</span>
+          <span>قياس الضغط في مجالات الجريان (Flow Field Pressures)</span>
         </a>
         <a href="#sec-10" class="toc-item">
           <span class="toc-num">10</span>
-          <span>Comprehensive Comparison Table &amp; Revision Questions</span>
+          <span>جدول المقارنة الشامل وبنك الأسئلة التدريبية</span>
         </a>
       </div>
     </nav>
@@ -1082,29 +1073,6 @@
           </tbody>
         </table>
       </div>
-      <div class="prof-explanation" dir="rtl">
-        <div class="prof-title" dir="ltr" style="justify-content:flex-end;">🎙️ Professor's Explanation: Pressure &amp; Units</div>
-        <p style="margin: 0;">
-          الـ <span class="mono">Pressure</span> بيعبّر عن مقدار الـ <span class="mono">Normal Force</span> المؤثرة على وحدة الـ <span class="mono">Area</span>. يعني لو عندك <span class="mono">Force</span> معينة بتأثر على <span class="mono">Area</span> صغيرة، الـ <span class="mono">Pressure</span> هيكون أكبر من نفس الـ <span class="mono">Force</span> لو أثرت على <span class="mono">Area</span> أكبر. من العلاقة \( P \propto \frac{1}{A} \) بشرط إن الـ <span class="mono">Force</span> تفضل ثابتة: لما الـ <span class="mono">Area</span> تقل الـ <span class="mono">Pressure</span> يزيد، ولما الـ <span class="mono">Area</span> تزيد الـ <span class="mono">Pressure</span> يقل.
-        </p>
-        <p style="margin: 8px 0 0 0;">
-          وحدة الـ <span class="mono">Pressure</span> في الـ <span class="mono">SI Unit</span> هي الـ <span class="mono">Pascal (Pa)</span>، وفيه وحدات تانية مهمة زي الـ <span class="mono">kPa</span> والـ <span class="mono">bar</span> والـ <span class="mono">atm</span> والـ <span class="mono">mmHg</span> والـ <span class="mono">Torr</span> والـ <span class="mono">psi</span>. خلي بالك إن الـ <span class="mono">bar</span> والـ <span class="mono">atm</span> وحدتين مختلفتين، حتى لو قيمتهم قريبة من بعض؛ في المسائل لازم تستخدم التحويل الصحيح حسب الوحدة المطلوبة.
-        </p>
-      </div>
-      <div class="prof-explanation" dir="rtl">
-        <div class="prof-title" dir="ltr" style="justify-content:flex-end;">🎙️ Professor's Explanation: Pressure Terminology</div>
-        <p style="margin: 0;">
-          عشان نفهم أجهزة الـ <span class="mono">Pressure Measurement</span>، لازم نفرّق بين أنواع الـ <span class="mono">Pressure</span> المختلفة؛ لأن كل نوع بيعبّر عن حاجة مختلفة:
-        </p>
-        <ul style="margin: 8px 0 0 0; padding-right: 22px; line-height: 1.9;">
-          <li><strong><span class="mono">Atmospheric Pressure</span>:</strong> هو الـ <span class="mono">Pressure</span> الناتج عن <span class="mono">Weight</span> الـ <span class="mono">Air</span> الموجود في الـ <span class="mono">Atmosphere</span>، وبيتغير من مكان للتاني ومع الـ <span class="mono">Altitude</span> والظروف الجوية. القيمة \( 101325\ \text{Pa} \) <span class="mono">Standard Reference Value</span>، مش معناها إن الـ <span class="mono">Atmospheric Pressure</span> لازم يكون نفس القيمة في كل مكان وكل وقت.</li>
-          <li><strong><span class="mono">Absolute Pressure</span>:</strong> هو الـ <span class="mono">Pressure</span> المقاس بالنسبة للـ <span class="mono">Perfect Vacuum</span>، اللي الـ <span class="mono">Pressure</span> بتاعه يساوي <span class="mono">Absolute Zero</span>؛ يعني الـ <span class="mono">Absolute Zero Pressure</span> هو نقطة البداية للـ <span class="mono">Measurement</span>.</li>
-          <li><strong><span class="mono">Gauge Pressure</span>:</strong> هو الـ <span class="mono">Pressure</span> المقاس بالنسبة للـ <span class="mono">Atmospheric Pressure</span> المحيط. أغلب الأجهزة الشائعة زي الـ <span class="mono">Pressure Gauge</span> بتعرض الـ <span class="mono">Gauge Pressure</span> مش الـ <span class="mono">Absolute Pressure</span>. لو الـ <span class="mono">System Pressure</span> أكبر من الـ <span class="mono">Atmospheric Pressure</span> بيكون الـ <span class="mono">Gauge Pressure</span> <span class="mono">Positive</span>، ولو أقل ممكن تكون قراءة الـ <span class="mono">Gauge Pressure</span> <span class="mono">Negative</span>، وده بيعبّر عن حالة <span class="mono">Vacuum</span> بالنسبة للـ <span class="mono">Atmospheric Pressure</span>. مثال: لو \( P_{abs} = 200\ \text{kPa} \) و\( P_{atm} = 100\ \text{kPa} \) يبقى \( P_g = 200 - 100 = 100\ \text{kPa} \)؛ ولو \( P_g = 50\ \text{kPa} \) يبقى \( P_{abs} = 100 + 50 = 150\ \text{kPa} \).</li>
-          <li><strong><span class="mono">Vacuum Pressure</span>:</strong> بيعبّر عن مقدار انخفاض الـ <span class="mono">Pressure</span> عن الـ <span class="mono">Atmospheric Pressure</span>، وبيكون <span class="mono">Positive</span> لو الـ <span class="mono">Absolute Pressure</span> أقل من الـ <span class="mono">Atmospheric Pressure</span>.</li>
-          <li><strong><span class="mono">Differential Pressure</span>:</strong> هو الفرق بين الـ <span class="mono">Pressure</span> عند نقطتين، ومش لازم يعبّر عن الـ <span class="mono">Absolute Pressure</span> عند أي نقطة؛ هو بيعبّر عن الفرق بين الاثنين بس، وده مهم في الـ <span class="mono">Differential Pressure Instruments</span> زي الـ <span class="mono">Differential Manometer</span>. لو عارف الـ <span class="mono">Pressure</span> عند نقطة والـ <span class="mono">Differential Pressure</span>، تقدر تحسب الـ <span class="mono">Pressure</span> عند النقطة التانية؛ مثلًا \( P_1 = 150\ \text{kPa} \) و\( P_1 - P_2 = 40\ \text{kPa} \) يبقى \( P_2 = 150 - 40 = 110\ \text{kPa} \). لكن لو مش عارف أي <span class="mono">Pressure</span> من الاثنين، مجرد معرفة الفرق مش كفاية لتحديد كل <span class="mono">Pressure</span> بصورة منفصلة.</li>
-          <li><strong><span class="mono">STP</span>:</strong> اختصار <span class="mono">Standard Temperature and Pressure</span>. في التعريف التقليدي الشائع في مسائل الـ <span class="mono">Gas</span> هو \( T = 0^\circ\text{C} = 273.15\ \text{K} \) و\( P = 1\ \text{atm} \)، لكن بعض المراجع بتستخدم تعريفات مختلفة حسب السياق؛ فاعتمد على التعريف اللي محدده السؤال أو المرجع المستخدم في المقرر.</li>
-        </ul>
-      </div>
       <div class="media-row" style="--col: 380px;">
         <div class="media-text">
           <div class="note-box">
@@ -1113,7 +1081,7 @@
           </div>
         </div>
 <figure class="fig-box" style="--w: 380px;">
-  <img src="images/Fig_01_Orifice_Plate_Differential_Pressure_in_Pipe.png" alt="Orifice Plate Differential Pressure in Pipe" width="690" height="492" loading="lazy" decoding="async">
+  <img src="assast/Fig_01_Orifice_Plate_Differential_Pressure_in_Pipe.png" alt="Orifice Plate Differential Pressure in Pipe" width="690" height="492" loading="lazy" decoding="async">
   <figcaption><span class="fig-num">Figure 2.1:</span> Differential pressure measured between two ports (H and L) on either side of an orifice plate; the vena contracta is also shown.</figcaption>
 </figure>
       </div>
@@ -1175,13 +1143,13 @@
       <div class="section-header">
         <div class="section-icon">🧪</div>
         <div class="section-title-wrap">
-          <h2 dir="ltr" style="text-align:right;">3. Gravitational Methods of Pressure Measurement</h2>
+          <h2>3. طرق الاستشعار الجاذبية (البارومتر والمانومتر)</h2>
           <span class="section-subtitle">Gravitational Sensing Methods: Hydrostatic Column Balancing</span>
         </div>
       </div>
 
       <p>
-        فيه طرق مختلفة لقياس الـ <span class="mono">Pressure</span>، ومن الطرق الأساسية الـ <span class="mono">Gravitational Methods</span>، وهي طرق بتعتمد على تأثير الـ <span class="mono">Gravity</span> و<span class="mono">Weight</span> الـ <span class="mono">Liquid Column</span>. الفكرة الأساسية إن <span class="mono">Weight</span> الـ <span class="mono">Liquid</span> الموجود في <span class="mono">Column</span> له <span class="mono">Height</span> معين بيولّد <span class="mono">Pressure Difference</span> بين مستويين، والعلاقة الأساسية لـ <span class="mono">Pressure</span> الـ <span class="mono">Liquid Column</span> هي:
+        تعتمد الطرق الجاذبية (<span class="mono">Gravitational Methods</span>) على مبدأ الهيدروستاتيكا: وزن عمود سائل متزن تحت تأثير عجلة الجاذبية الأرضية يولد ضغطاً يتناسب طردياً مع كثافة السائل والارتفاع الرأسي للعمود:
       </p>
 
       <div class="formula-box">
@@ -1192,13 +1160,9 @@
         </p>
       </div>
 
-      <p>
-        العلاقة دي مهمة جدًا؛ لأنها بتربط الـ <span class="mono">Pressure</span> بـ <span class="mono">Density</span> الـ <span class="mono">Liquid</span> وبالـ <span class="mono">Height</span>. عند ثبات \( g \): \( P \propto \rho h \)، يعني الـ <span class="mono">Pressure</span> بيتناسب طرديًا مع الـ <span class="mono">Density</span> ومع الـ <span class="mono">Vertical Height</span> للـ <span class="mono">Column</span>. لو الـ <span class="mono">Density</span> زادت فالـ <span class="mono">Pressure</span> الناتج عن نفس الـ <span class="mono">Height</span> يزيد، ولو الـ <span class="mono">Height</span> زاد مع ثبات الـ <span class="mono">Density</span> فالـ <span class="mono">Pressure</span> يزيد برضه. ومن هنا نفهم ليه اختيار الـ <span class="mono">Liquid</span> المستخدم في أجهزة الـ <span class="mono">Pressure Measurement</span> مهم، وليه الـ <span class="mono">Density</span> بتأثر على الـ <span class="mono">Height</span> المطلوب للـ <span class="mono">Column</span>.
-      </p>
-
       <!-- 3.1 Barometer -->
-      <h3 dir="ltr" style="text-align:right; color: var(--royal); margin-top: 32px; border-bottom: 2px solid var(--pearl); padding-bottom: 8px;">
-        3.1 Mercury Barometer
+      <h3 style="color: var(--royal); margin-top: 32px; border-bottom: 2px solid var(--pearl); padding-bottom: 8px;">
+        3.1 البارومتر الزئبقي (Mercury Barometer)
       </h3>
 
       <div class="media-row" style="--col: 300px;">
@@ -1210,39 +1174,28 @@
         </p>
       </div>
         <p>
-        الـ <span class="mono">Barometer</span> جهاز بيُستخدم لقياس الـ <span class="mono">Atmospheric Pressure</span>، ومن الأنواع المعروفة الـ <span class="mono">Mercury Barometer</span> اللي بيعتمد على <span class="mono">Column</span> من الـ <span class="mono">Mercury</span> داخل <span class="mono">Tube</span> مناسبة. الفكرة الأساسية:
-      </p>
-        <ul style="margin: 0; padding-right: 22px; line-height: 1.9;">
-          <li>بنستخدم <span class="mono">Tube</span> مملوءة بالـ <span class="mono">Mercury</span>.</li>
-          <li>بنقلب الـ <span class="mono">Tube</span> داخل وعاء فيه <span class="mono">Mercury</span>.</li>
-          <li>بنسمح للـ <span class="mono">Mercury</span> داخل الـ <span class="mono">Tube</span> إنه يستقر عند <span class="mono">Height</span> معين.</li>
-          <li>بيتكوّن <span class="mono">Vacuum</span> تقريبًا أعلى الـ <span class="mono">Mercury Column</span>، وده معروف باسم <span class="mono">Torricellian Vacuum</span>.</li>
-          <li>الـ <span class="mono">Atmospheric Pressure</span> المؤثر على سطح الـ <span class="mono">Mercury</span> في الوعاء بيوازن <span class="mono">Weight</span> الـ <span class="mono">Mercury Column</span> داخل الـ <span class="mono">Tube</span>.</li>
-        </ul>
-      <p>
-        عند الـ <span class="mono">Equilibrium</span> بيكون \( P_{atm} = \rho_{Hg}\, g\, h \). وفي الـ <span class="mono">Standard Conditions</span> الـ <span class="mono">Height</span> بيكون تقريبًا \( h = 760\ \text{mm} = 76\ \text{cm} \)، وبالتالي \( 1\ \text{atm} \approx 760\ \text{mmHg} \). الـ \( 76\ \text{cm} \) هنا هي الـ <span class="mono">Vertical Height</span> للـ <span class="mono">Mercury Column</span>، مش طول الـ <span class="mono">Tube</span> بالكامل.
+        اخترع العالم توريشيللي (<span class="mono">Torricelli</span>) البارومتر بملء أنبوبة زجاجية طويلة بالزئبق وقلبها في حوض مفتوح يحتوي على الزئبق. ينخفض الزئبق مستقراً عند ارتفاع \( h \) تاركاً فراغاً شبه تام في الأعلى يسمى فراغ توريشيللي (<span class="mono">Torricellian Vacuum</span>).
       </p>
       </div>
       <figure class="fig-box" style="--w: 300px;">
-  <img src="images/Fig_02_Mercury_Barometer_Atmospheric_Pressure.png" alt="Mercury Barometer Atmospheric Pressure Diagram" width="516" height="563" loading="lazy" decoding="async">
-  <figcaption><span class="fig-num">Figure 3.1:</span> الـ <span class="mono">Mercury Barometer</span>: <span class="mono">Equilibrium</span> بين <span class="mono">Weight</span> الـ <span class="mono">Mercury Column</span> والـ <span class="mono">Atmospheric Pressure</span> عند الـ <span class="mono">Torricellian Vacuum</span>.</figcaption>
+  <img src="assast/Fig_02_Mercury_Barometer_Atmospheric_Pressure.png" alt="Mercury Barometer Atmospheric Pressure Diagram" width="516" height="563" loading="lazy" decoding="async">
+  <figcaption><span class="fig-num">Figure 3.1:</span> البارومتر الزئبقي واتزان وزن عمود الزئبق مع الضغط الجوي المحيط عند الفراغ التوريشيللي.</figcaption>
 </figure>
     </div>
 
 
       <div class="prof-explanation">
-        <div class="prof-title" dir="ltr" style="justify-content:flex-end;">🎙️ Professor's Explanation: Why Is Mercury Used?</div>
+        <div class="prof-title">🎙️ لماذا يُستخدم الزئبق بالتحديد في البارومتر؟</div>
         <p style="margin: 0;">
-          اختيار الـ <span class="mono">Mercury</span> مرتبط بـ <span class="mono">Density</span> بتاعه العالية. من العلاقة \( P = \rho g h \) لو الـ <span class="mono">Pressure</span> ثابت يبقى \( h = \frac{P}{\rho g} \)، يعني كل ما الـ <span class="mono">Density</span> تزيد، الـ <span class="mono">Height</span> المطلوب لمعادلة نفس الـ <span class="mono">Pressure</span> يقل. الـ <span class="mono">Mercury</span> <span class="mono">Density</span> بتاعه عالية مقارنة بالـ <span class="mono">Water</span>؛ علشان كده يقدر يوازن الـ <span class="mono">Atmospheric Pressure</span> بـ <span class="mono">Column</span> الـ <span class="mono">Height</span> بتاعه حوالي \( 76\ \text{cm} \)، بينما استخدام <span class="mono">Liquid</span> أقل <span class="mono">Density</span> زي الـ <span class="mono">Water</span> بيتطلب <span class="mono">Column</span> أعلى بكتير لنفس الـ <span class="mono">Pressure</span> (حوالي \( 10.3\ \text{m} \)، مقابل \( \rho_{Hg} \approx 13{,}600\ \text{kg/m}^3 \) للـ <span class="mono">Mercury</span>). إذن اختيار الـ <span class="mono">Mercury</span> بيقلل الـ <span class="mono">Height</span> المطلوب للـ <span class="mono">Column</span>، وده بيخلي الجهاز أكتر عملية في الـ <span class="mono">Design</span>.
-        </p>
-        <p style="margin: 8px 0 0 0;">
-          من استخدامات الـ <span class="mono">Barometer</span> متابعة التغيرات في الـ <span class="mono">Atmospheric Pressure</span>، وده ممكن يساعد في فهم تغيرات الطقس؛ فالتغيرات دي من المؤشرات المستخدمة في التنبؤ بالطقس لكنها مش العامل الوحيد.
+          من المعادلة الهيدروستاتيكية:
+          \[ h = \frac{P_{atm}}{\rho \cdot g} \]
+          نلاحظ أن ارتفاع العمود يتناسب <strong>عكسياً</strong> مع كثافة السائل المستخدم. الزئبق معدن سائل ذو كثافة فائقة (\( \rho_{Hg} \approx 13,600 \text{ kg/m}^3 \))؛ لذا يحتاج فقط إلى عمود بارتفاع حوالي <span class="mono">760 mm (76 cm)</span> لموازنة الضغط الجوي. بينما لو استخدمنا الماء (\( \rho_{w} = 1000 \text{ kg/m}^3 \))، فسنحتاج إلى أنبوبة بارتفاع يتجاوز <strong>10.3 متر</strong>، وهو أمر غير عملي إطلاقاً في المختبرات!
         </p>
       </div>
 
       <!-- 3.2 Manometers -->
-      <h3 dir="ltr" style="text-align:right; color: var(--royal); margin-top: 36px; border-bottom: 2px solid var(--pearl); padding-bottom: 8px;">
-        3.2 Manometers
+      <h3 style="color: var(--royal); margin-top: 36px; border-bottom: 2px solid var(--pearl); padding-bottom: 8px;">
+        3.2 المانومترات (Manometers)
       </h3>
 
       <div class="media-row" style="--col: 310px;">
@@ -1254,7 +1207,7 @@
         </p>
       </div>
         <p>
-        الـ <span class="mono">Manometer</span> جهاز بيُستخدم لقياس الـ <span class="mono">Pressure</span> أو الـ <span class="mono">Pressure Difference</span> عن طريق <span class="mono">Liquid Column</span> (<span class="mono">Manometric Fluid</span>). الفكرة الأساسية إن الـ <span class="mono">Pressure</span> عند نفس الـ <span class="mono">Horizontal Level</span> داخل نفس الـ <span class="mono">Liquid</span> المتصل، في حالة الـ <span class="mono">Static Equilibrium</span>، بيكون متساويًا. وكمان الـ <span class="mono">Pressure Difference</span> بين <span class="mono">Two Vertical Levels</span> داخل <span class="mono">Static Liquid</span> بيعتمد على الـ <span class="mono">Density</span> وفرق الـ <span class="mono">Vertical Height</span>: \( \Delta P = \rho g h \). أما في الـ <span class="mono">Differential Manometer</span> اللي فيه <span class="mono">Manometric Fluid</span> مختلف عن الـ <span class="mono">Liquid</span> الموجود في الخط، فالـ <span class="mono">Equation</span> بتعتمد على ترتيب الـ <span class="mono">Liquids</span> و<span class="mono">Densities</span> ومستوياتها:
+        يعتمد المانومتر على حقيقة أن الضغط متساوٍ عند جميع النقاط الواقعة على نفس المستوى الأفقي داخل سائل ساكن ومتصل. في حالة مانومتر تفاضلي يقيس فرق الضغط بين نقطتين عبر أنبوبة تحتوي سائلين، تكون المعادلة العامة:
       </p>
         <div class="formula-box">
         <span class="formula-box-title">Differential Manometer Equation</span>
@@ -1263,36 +1216,17 @@
           Where: \( \rho_m \) = Density of manometric fluid, \( \rho_f \) = Density of flowing line fluid, \( h \) = Vertical level difference.
         </p>
       </div>
-        <div class="note-box">
-        <div class="note-box-title" dir="ltr" style="text-align:right;">⚠️ Important</div>
-        <p style="margin: 0;">
-          الـ <span class="mono">Equation</span> دي مش <span class="mono">Rule</span> تُستخدم بنفس الصورة في كل شكل من أشكال الـ <span class="mono">Manometer</span>. في المسائل لازم تحدد اتجاهات الـ <span class="mono">Columns</span> ومستويات الـ <span class="mono">Liquids</span> والـ <span class="mono">Density</span> بتاعة كل <span class="mono">Liquid</span>، وبعدها تكتب الـ <span class="mono">Pressure Balance</span> من نقطة للتانية. الإشارة بتتحدد حسب اتجاه الحركة في الـ <span class="mono">Liquid Column</span> وحسب أي <span class="mono">Pressure</span> أكبر.
-        </p>
-      </div>
       </div>
       <figure class="fig-box" style="--w: 310px;">
-  <img src="images/Fig_03_U_Tube_Manometer_Higher_and_Lower_Applied_Pressure.png" alt="U-Tube Manometer Higher and Lower Pressure" width="562" height="590" loading="lazy" decoding="async">
-  <figcaption><span class="fig-num">Figure 3.2:</span> الـ <span class="mono">U-Tube Manometer</span>: <span class="mono">Liquid Displacement</span> تحت الـ <span class="mono">Higher Applied Pressure</span> والـ <span class="mono">Lower Applied Pressure</span>.</figcaption>
+  <img src="assast/Fig_03_U_Tube_Manometer_Higher_and_Lower_Applied_Pressure.png" alt="U-Tube Manometer Higher and Lower Pressure" width="562" height="590" loading="lazy" decoding="async">
+  <figcaption><span class="fig-num">Figure 3.2:</span> مانومتر U-Tube وحالة الإزاحة تحت الضغط المرتفع والمنخفض.</figcaption>
 </figure>
     </div>
 
       <figure class="fig-box" style="--w: 640px;">
-  <img src="images/Fig_05_Differential_Open_End_and_Sealed_End_Manometers.png" alt="Differential Open-End and Sealed-End Manometers" width="1193" height="477" loading="lazy" decoding="async">
-  <figcaption><span class="fig-num">Figure 3.3:</span> أنواع الـ <span class="mono">Manometers</span>: <span class="mono">Open-End</span> و<span class="mono">Sealed-End</span> و<span class="mono">Differential</span> بين نقطتين.</figcaption>
+  <img src="assast/Fig_05_Differential_Open_End_and_Sealed_End_Manometers.png" alt="Differential Open-End and Sealed-End Manometers" width="1193" height="477" loading="lazy" decoding="async">
+  <figcaption><span class="fig-num">Figure 3.3:</span> أنواع المانومترات: طرف مفتوح، مغلق، وتفاضلي بين نقطتين.</figcaption>
 </figure>
-
-      <div class="prof-explanation">
-        <div class="prof-title" dir="ltr" style="justify-content:flex-end;">🎙️ Professor's Explanation: Differential Manometer &amp; Pressure Balance</div>
-        <p style="margin: 0;">
-          الـ <span class="mono">Differential Manometer</span> بيُستخدم لقياس الـ <span class="mono">Pressure Difference</span> بين نقطتين: فيه طرف متصل بالنقطة الأولى وطرف متصل بالنقطة التانية، والـ <span class="mono">Liquid</span> الموجود داخل الجهاز بيتحرك لحد ما يوصل لحالة <span class="mono">Equilibrium</span>. لو الـ <span class="mono">Pressure</span> عند نقطة أكبر من الـ <span class="mono">Pressure</span> عند النقطة التانية، فالفرق ده بيظهر في اختلاف مستويات الـ <span class="mono">Liquid</span> داخل الـ <span class="mono">Tube</span>؛ فالـ <span class="mono">Height</span> مش مجرد <span class="mono">Reading</span> شكلية، ده جزء من العلاقة اللي بنحسب بيها الـ <span class="mono">Pressure Difference</span>.
-        </p>
-        <p style="margin: 8px 0 0 0;">
-          <strong>الفكرة الأساسية:</strong> الـ <span class="mono">Manometer</span> مش بيقيس الـ <span class="mono">Pressure</span> من شكل الـ <span class="mono">Tube</span> وحده؛ هو بيعتمد على الـ <span class="mono">Pressure Balance</span> و<span class="mono">Weight</span> الـ <span class="mono">Liquid Column</span>. الـ <span class="mono">Pressure Difference</span> هو اللي بيحدد فرق المستويات بعد ما الـ <span class="mono">Liquid</span> يوصل لـ <span class="mono">Equilibrium</span>.
-        </p>
-        <p style="margin: 8px 0 0 0;">
-          <strong>سؤال للفهم: هل الـ <span class="mono">Liquid</span> بيتحرك دائمًا من الـ <span class="mono">High Pressure</span> للـ <span class="mono">Low Pressure</span>؟</strong> مش كفاية نحفظ الجملة دي من غير ما نفهم الرسم. لما يكون فيه <span class="mono">Pressure Difference</span>، الـ <span class="mono">Liquid</span> بيتحرك نتيجة عدم الـ <span class="mono">Equilibrium</span>، وتستمر الحركة لحد ما يتحقق الـ <span class="mono">Hydrostatic Equilibrium</span>. وعلشان نحدد أي <span class="mono">Pressure</span> أكبر بنحلل مستويات الـ <span class="mono">Liquids</span> و<span class="mono">Densities</span> ونوازن الـ <span class="mono">Pressure</span> عند نقاط مناسبة؛ ما ينفعش نحدد إن الـ <span class="mono">Pressure</span> عند النقطة الأولى أكبر لمجرد إننا شايفين مستوى معين أعلى أو أقل، من غير ما نعرف نوع الـ <span class="mono">Liquid</span> وترتيب الـ <span class="mono">Columns</span>. وكمان لازم نفرّق بين حركة الـ <span class="mono">Liquid</span> داخل الـ <span class="mono">Manometer</span> بسبب الـ <span class="mono">Pressure Difference</span> وبين اتجاه حركة الـ <span class="mono">Fluid</span> داخل الـ <span class="mono">Pipe</span>؛ دول مش نفس السؤال.
-        </p>
-      </div>
 
       <!-- Figures Grid for Manometers -->
       
@@ -1301,169 +1235,121 @@
 
 
       <!-- Errors in Manometer -->
-      <h3 dir="ltr" style="text-align:right; color: var(--royal); margin-top: 30px;">Errors in Manometer Measurements</h3>
-      <p>أي جهاز قياس ممكن يكون فيه <span class="mono">Measurement Errors</span>، والـ <span class="mono">Manometer</span> مش استثناء. قراءة الـ <span class="mono">Pressure Difference</span> بتعتمد على <span class="mono">Accuracy</span> قياس \( h \) وعلى صحة تركيب الجهاز وخواص الـ <span class="mono">Liquid</span>، ومن أهم مصادر الـ <span class="mono">Error</span>:</p>
+      <h3 style="color: var(--royal); margin-top: 30px;">مصادر الخطأ في قياسات المانومتر (Errors in Manometer Measurements)</h3>
+      <p>تعتمد دقة المانومتر بشكل صارم على قياس الارتفاع \( h \) والخواص الفيزيائية، ومن أهم مصادر الخطأ:</p>
       <ul>
-        <li><strong>Parallax Error:</strong> <span class="mono">Reading Error</span> في موضع مستوى الـ <span class="mono">Liquid</span> بسبب زاوية النظر. لو عينك مش في الموضع المناسب بالنسبة للـ <span class="mono">Scale</span> ومستوى الـ <span class="mono">Liquid</span> (عند الـ <span class="mono">Meniscus</span>)، ممكن تقرأ <span class="mono">Height</span> مختلف عن الـ <span class="mono">Height</span> الحقيقي؛ ولتقليل الـ <span class="mono">Error</span> اقرأ مستوى الـ <span class="mono">Liquid</span> من زاوية النظر الصحيحة.</li>
-        <li><strong>Tubes Not Perfectly Vertical:</strong> لو الـ <span class="mono">Tube</span> المفروض تكون <span class="mono">Vertical</span> لكنها مائلة، فالـ <span class="mono">Reading</span> المقاس على امتداد الـ <span class="mono">Tube</span> لا يساوي بالضرورة الـ <span class="mono">Vertical Height</span> \( h \) المطلوب في الـ <span class="mono">Equation</span>؛ لأن الـ <span class="mono">Hydrostatic Pressure</span> بيعتمد على الـ <span class="mono">Vertical Height</span> وليس طول المسار المائل.</li>
-        <li><strong>Density Changes with Temperature (\( \rho = f(T) \)):</strong> <span class="mono">Density</span> الـ <span class="mono">Liquid</span> بتعتمد على الـ <span class="mono">Temperature</span>. لو الـ <span class="mono">Temperature</span> اتغيرت، الـ <span class="mono">Density</span> ممكن تتغير، وده بيؤثر على العلاقة بين الـ <span class="mono">Pressure Difference</span> والـ <span class="mono">Height Difference</span>. مثلًا لو استخدمنا <span class="mono">Nominal Density</span> أو قيمة محسوبة عند <span class="mono">Temperature</span> مختلفة عن <span class="mono">Temperature</span> التجربة، فالحساب ممكن ينتج عنه <span class="mono">Systematic Error</span>.</li>
-        <li><strong>Random vs. Systematic Errors:</strong> الـ <span class="mono">Random Error</span> بتتغير قيمته أو اتجاهه من <span class="mono">Reading</span> لـ <span class="mono">Reading</span>، زي اختلاف قراءة مستوى الـ <span class="mono">Liquid</span> شوية بسبب صعوبة تحديده بالظبط. أما الـ <span class="mono">Systematic Error</span> فبيكون ناتج عن سبب ثابت أو انحياز في الـ <span class="mono">Measurement</span>، زي تركيب الـ <span class="mono">Tube</span> بزاوية غير صحيحة أو استخدام قيمة <span class="mono">Density</span> غير مناسبة في الحساب. لو الـ <span class="mono">Error</span> ثابت الاتجاه، تكرار الـ <span class="mono">Measurement</span> وحده مش كفاية لإزالته؛ لازم نحدد سببه ونعالجه.</li>
+        <li><strong>Parallax Error (خطأ زاوية النظر):</strong> خطأ يحدث عند قراءة منسوب السائل في الأنبوبة إذا لم تكن عين الراصد متعامدة تماماً على مستوى قعر التقعر السطحي (<span class="mono">Meniscus</span>).</li>
+        <li><strong>Tubes Not Perfectly Vertical (عدم تعامد الأنبوبة):</strong> معادلة الضغط تعتمد على الارتفاع الرأسي الصافي؛ فإذا كانت الأنبوبة مائلة بدون قصد، فإن القراءة المقاسة على طول الأنبوبة تكون أكبر من الارتفاع الحقيقي، مما يسبب خطأ منتظماً (<span class="mono">Systematic Error</span>).</li>
+        <li><strong>Density Changes with Temperature (\( \rho = f(T) \)):</strong> تتغير كثافة السوائل المانومترية مع الحرارة، وإهمال تأثير الحرارة واستخدام كثافة اسمية غير دقيقة يدخل انحيازاً منتظماً في النتيجة.</li>
+        <li><strong>Random vs. Systematic Errors:</strong> الخطأ العشوائي ناتج عن اهتزاز السطح أو دقة العين ويمكن تقليله بتكرار القراءات؛ بينما الخطأ المنتظم (مثل ميل الأنبوبة أو خطأ التدريج) لا يزول بالتكرار بل يتطلب إعادة ضبط ومعايرة الجهاز.</li>
       </ul>
 
-      <div class="note-box">
-        <div class="note-box-title" dir="ltr" style="text-align:right;">✅ Reducing Measurement Errors</div>
-        <p style="margin: 0 0 6px 0;">قبل إجراء التجربة لازم نتأكد من:</p>
-        <ul style="margin: 0; padding-right: 22px;">
-          <li>تركيب الجهاز بصورة صحيحة.</li>
-          <li>قراءة مستوى الـ <span class="mono">Liquid</span> من زاوية مناسبة لتقليل الـ <span class="mono">Parallax Error</span>.</li>
-          <li>تحديد فرق الـ <span class="mono">Vertical Height</span> الصحيح.</li>
-          <li>مراعاة الـ <span class="mono">Temperature</span> بتاعة الـ <span class="mono">Liquid</span> عند الحاجة.</li>
-          <li>استخدام <span class="mono">Density</span> مناسبة للـ <span class="mono">Liquid</span>.</li>
-          <li>فحص الجهاز والتأكد من ملاءمته للـ <span class="mono">Measurement</span> المطلوب.</li>
-        </ul>
-      </div>
-
       <figure class="fig-box" style="--w: 460px;">
-  <img src="images/Fig_04_Manometer_Readings_Pressure_and_Vacuum_Examples.png" alt="Manometer Pressure and Vacuum Readings" width="767" height="423" loading="lazy" decoding="async">
-  <figcaption><span class="fig-num">Figure 3.4:</span> <span class="mono">Readings</span> الـ <span class="mono">Manometer</span>: الشكل 1 حالة الـ <span class="mono">Equilibrium</span> (المستويان عند الصفر)، الشكل 2 تأثير الـ <span class="mono">Pressure</span>، الشكل 3 تأثير الـ <span class="mono">Vacuum</span> — بتتقرأ مستويين لتقدير \( h \).</figcaption>
+  <img src="assast/Fig_04_Manometer_Readings_Pressure_and_Vacuum_Examples.png" alt="Manometer Pressure and Vacuum Readings" width="767" height="423" loading="lazy" decoding="async">
+  <figcaption><span class="fig-num">Figure 3.4:</span> قراءات المانومتر: الشكل 1 حالة التوازن (المستويان عند الصفر)، الشكل 2 تأثير الضغط (<span class="mono">Pressure</span>)، الشكل 3 تأثير التفريغ (<span class="mono">Vacuum</span>) — يُقرأ منسوبان لتقدير \( h \).</figcaption>
 </figure>
 
       <!-- Selecting Fluid & Inclined Manometer -->
       <p class="ltr" style="font-weight: 600;">Two level values have to be read to evaluate h.</p>
-      <h3 dir="ltr" style="text-align:right; color: var(--royal); margin-top: 30px;">Selecting the Manometric Fluid &amp; Inclined Manometer</h3>
+      <h3 style="color: var(--royal); margin-top: 30px;">اختيار السائل والمانومتر المائل (Inclined Manometer)</h3>
       <div class="media-row rev" style="--col: 280px;">
       <div class="media-text">
         <p>
-        عند قياس <span class="mono">Small Pressure Differences</span> ممكن نستخدم <span class="mono">Manometric Fluid</span> <span class="mono">Density</span> بتاعه منخفضة. من العلاقة \( \Delta p = (\rho_m - \rho_f)\, g\, h \) نلاحظ إنه عند ثبات الـ <span class="mono">Pressure Difference</span> والـ <span class="mono">Gravity</span> و<span class="mono">Density</span> الـ <span class="mono">Liquid</span> التاني، فتقليل فرق الـ <span class="mono">Density</span> بيؤدي إلى زيادة فرق الـ <span class="mono">Height</span> المطلوب لتحقيق نفس الـ <span class="mono">Pressure Difference</span>. لكن اختيار الـ <span class="mono">Liquid</span> مش معناه إننا نختار أقل <span class="mono">Density</span> ممكنة من غير شروط؛ لازم نراعي الـ <span class="mono">Liquids</span> الموجودة في الجهاز، والـ <span class="mono">Expected Pressure Range</span>، وإمكانية الحصول على <span class="mono">Reading</span> واضحة:
+        عند قياس فروق ضغط صغيرة جداً، لو استخدمنا الزئبق فسيكون الارتفاع \( h \) بالغ الصغر وصعب القراءة بالعين المجردة. القاعدة تنص على:
       </p>
       <p class="ltr" style="font-weight: 600;">For small pressure differences, use a manometric fluid of low density. But h is still small.</p>
         <div class="note-box">
-        <div class="note-box-title" dir="ltr" style="text-align:right;">💡 Selecting the Manometric Fluid</div>
+        <div class="note-box-title">💡 اختيار كثافة السائل المانومتري:</div>
         <p style="margin: 0;">
           \[ h = \frac{\Delta p}{\rho \cdot g} \implies h \propto \frac{1}{\rho} \]
-          <strong>Case 1 — High-Density Manometric Fluid:</strong> لو استخدمنا <span class="mono">Liquid</span> <span class="mono">Density</span> بتاعه عالية، هيكون الـ <span class="mono">Height</span> المطلوب أقل لنفس الـ <span class="mono">Pressure Difference</span>، وده ممكن يكون مناسبًا لما الـ <span class="mono">Pressure Difference</span> يكون كبير ونحتاج نقلل الـ <span class="mono">Height</span>.<br><strong>Case 2 — Low-Density Manometric Fluid:</strong> لو استخدمنا <span class="mono">Liquid</span> <span class="mono">Density</span> بتاعه أقل، هيكون الـ <span class="mono">Height</span> المطلوب أكبر لنفس الـ <span class="mono">Pressure Difference</span>، وده ممكن يساعد على إظهار <span class="mono">Small Pressure Differences</span> على هيئة فروق <span class="mono">Height</span> أكبر، بشرط إن الـ <span class="mono">Design</span> مناسب. لكن الـ <span class="mono">Height</span> الكبير جدًا ممكن يكون غير عملي، وعلشان كده بنختار الـ <span class="mono">Liquid</span> بناءً على الـ <span class="mono">Expected Pressure Range</span> وشكل الجهاز وظروف الـ <span class="mono">Measurement</span>.<br><strong>مثال:</strong> لو الـ <span class="mono">Pressure Difference</span> ثابت واستخدمنا <span class="mono">Liquid</span> <span class="mono">Density</span> بتاعه نص <span class="mono">Density</span> الـ <span class="mono">Liquid</span> الأصلي، فالـ <span class="mono">Height</span> المطلوب بيتضاعف (في حالة <span class="mono">Single Liquid Column</span>).
+          لقياس فروق الضغط الصغيرة (\( \text{Small } \Delta P \))، نختار سائلاً منخفض الكثافة (مثل الزيت الخفيف أو الكحول الملون) لزيادة ارتفاع العمود وتسهيل الملاحظة.
         </p>
       </div>
       </div>
       <figure class="fig-box" style="--w: 280px;">
-  <img src="images/Fig_06_U_Tube_Manometer_Pressure_Difference_Head.png" alt="U-Tube Differential Pressure Head" width="453" height="486" loading="lazy" decoding="async">
-  <figcaption><span class="fig-num">Figure 3.5:</span> <span class="mono">Head Difference</span> \( h \) بين طرفي الـ <span class="mono">U-Tube Manometer</span> عند قياس الـ <span class="mono">Pressure Difference</span>.</figcaption>
+  <img src="assast/Fig_06_U_Tube_Manometer_Pressure_Difference_Head.png" alt="U-Tube Differential Pressure Head" width="453" height="486" loading="lazy" decoding="async">
+  <figcaption><span class="fig-num">Figure 3.5:</span> قياس فرق الضغط الرأسي (Head difference \( h \)) بدقة بين طرفين.</figcaption>
 </figure>
     </div>
 
       <div class="media-row" style="--col: 380px;">
       <div class="media-text">
         <p>
-        ولو الـ <span class="mono">Pressure Difference</span> صغير جدًا، مش بالضرورة يكفي إننا نغيّر الـ <span class="mono">Manometric Fluid</span>؛ حتى بعد اختيار <span class="mono">Liquid</span> مناسب ممكن يفضل فرق الـ <span class="mono">Height</span> صغير وصعب القراءة. وده سبب الانتقال لتصميمات ترفع قابلية ملاحظة التغيرات الصغيرة، زي الـ <strong><span class="mono">Inclined Manometer</span></strong>:
+        ولكن إذا كان فرق الضغط صغيراً جداً لدرجة لا تكفي معها السوائل الخفيفة، نلجأ إلى <strong>المانومتر المائل (Inclined Manometer)</strong>:
       </p>
         <div class="def-box">
         <div class="def-box-title">📖 Inclined Manometer: Purpose &amp; Principle</div>
         <p style="margin: 0;">
-          <strong>"Used to increase sensitivity"</strong> — الـ <span class="mono">Inclined Manometer</span> هو <span class="mono">Manometer</span> بتكون الـ <span class="mono">Tube</span> بتاعة الـ <span class="mono">Reading</span> فيه مائلة بدل ما تكون <span class="mono">Vertical</span>. الغرض الأساسي منه هو <span class="mono">Increase the Sensitivity</span>، أي زيادة مقدار الحركة المقروءة على الـ <span class="mono">Scale</span> مقابل تغير صغير في الـ <span class="mono">Pressure</span>. لو \( L \) هو طول الحركة المقروءة على امتداد الـ <span class="mono">Tube</span>، و\( h \) هو الـ <span class="mono">Vertical Height</span> المقابل، و\( \theta \) هي زاوية الميل بالنسبة للـ <span class="mono">Horizontal</span>، فإن:
+          <strong>"Used to increase sensitivity"</strong> — يتم إمالة أنبوبة القراءة بزاوية \( \theta \) بالنسبة للأفقي. عندئذ تتحرك جبهة السائل مسافة مائلة طويلة \( L \) على طول التدريج مقابل ارتفاع رأسي ضئيل \( h \):
         </p>
         <div style="text-align: center; margin: 12px 0;">
           \[ h = L \sin\theta \]
           \[ \Delta p = (\rho_m - \rho_f) \cdot g \cdot L \sin\theta \]
         </div>
-        <p style="margin: 0 0 8px 0;">إذن الـ <span class="mono">Reading</span> \( L \) مش هي نفسها الـ <span class="mono">Vertical Height</span> \( h \)؛ لازم نحوّل الـ <span class="mono">Reading</span> إلى <span class="mono">Vertical Height</span> قبل استخدامها في الـ <span class="mono">Equation</span> بتاعة الـ <span class="mono">Pressure</span>.</p>
         <p style="margin: 0; color: var(--coral); font-weight: 600;">
-          ⚠️ "Take care of the angle — Systematic Error": لازم نعرف زاوية الميل \( \theta \) بالظبط؛ لأن أي <span class="mono">Error</span> في الزاوية بينتقل إلى حساب \( h \)، ثم إلى حساب الـ <span class="mono">Pressure Difference</span>.
+          ⚠️ "Take care of the angle — Systematic Error": يجب ضبط زاوية الميل \( \theta \) بمنتهى الدقة؛ لأن أي خطأ في الزاوية ينتقل مباشرة إلى حساب فرق الضغط.
         </p>
       </div>
       </div>
       <figure class="fig-box" style="--w: 380px;">
-  <img src="images/Fig_07_Inclined_Manometer_Length_Angle_and_Vertical_Head.png" alt="Inclined Manometer Diagram" width="706" height="352" loading="lazy" decoding="async">
-  <figcaption><span class="fig-num">Figure 3.6:</span> الـ <span class="mono">Inclined Manometer</span> والعلاقة الهندسية بين الـ <span class="mono">Reading</span> \( L \) على الـ <span class="mono">Scale</span> والـ <span class="mono">Vertical Height</span> \( h = L \sin\theta \).</figcaption>
+  <img src="assast/Fig_07_Inclined_Manometer_Length_Angle_and_Vertical_Head.png" alt="Inclined Manometer Diagram" width="706" height="352" loading="lazy" decoding="async">
+  <figcaption><span class="fig-num">Figure 3.6:</span> المانومتر المائل والعلاقة الهندسية بين الطول المقروء على التدريج \( L \) والارتفاع الرأسي \( h = L \sin\theta \).</figcaption>
 </figure>
     </div>
 
 
-      <div class="prof-explanation">
-        <div class="prof-title" dir="ltr" style="justify-content:flex-end;">🎙️ Professor's Explanation: Why Does the Inclination Increase the Sensitivity?</div>
-        <p style="margin: 0;">
-          عند الزوايا الصغيرة، تكون المسافة المقروءة على امتداد الـ <span class="mono">Tube</span> (\( L \)) أكبر من الـ <span class="mono">Vertical Height</span> المقابل لها (\( h \))؛ لذلك يصبح تغير مستوى الـ <span class="mono">Liquid</span> أسهل في الملاحظة عند قياس <span class="mono">Small Pressure Differences</span>. لكن لازم نعرف زاوية الميل بالظبط؛ لأن الـ <span class="mono">Error</span> في \( \theta \) بينتقل لحساب \( h \) ثم لحساب الـ <span class="mono">Pressure Difference</span>.
-        </p>
-        <p style="margin: 8px 0 0 0;">
-          <strong>سؤال: هل استخدام الـ <span class="mono">Tube</span> المائلة بيلغي الـ <span class="mono">Errors</span>؟</strong> لأ. هو بيحسّن قابلية قراءة الحركة الصغيرة، لكنه مش بيلغي <span class="mono">Reading Error</span> ولا <span class="mono">Error</span> قياس الزاوية. بل إن زاوية الميل نفسها ممكن تكون مصدر <span class="mono">Systematic Error</span> لو القيمة المستخدمة في الحساب غير صحيحة.
-        </p>
-      </div>
-
       <!-- Well-Type Manometers -->
-      <h3 dir="ltr" style="text-align:right; color: var(--royal); margin-top: 30px;">Well-Type Manometer</h3>
+      <h3 style="color: var(--royal); margin-top: 30px;">مانومتر الخزان (Well-Type Manometer)</h3>
       <div class="media-row rev" style="--col: 280px;">
       <div class="media-text">
         <p>
-        في بعض تصميمات الـ <span class="mono">Manometer</span> لازم نقرأ <span class="mono">Two Different Liquid Levels</span> علشان نحسب \( h \). لو الـ <span class="mono">Reading</span> الأولى \( h_1 \) والتانية \( h_2 \)، فإن فرق الـ <span class="mono">Height</span> بيتحدد من موضعي المستويين وفقًا لتعريفهما في الرسم، وفي الحالة الشائعة: \( h = |h_1 - h_2| \). قراءة مستويين معناها وجود <span class="mono">Readings</span> ممكن أخطاؤهما تدخل في حساب فرق الـ <span class="mono">Height</span>.
+        في مانومتر U-Tube العادي، يتغير مستوى السائل في كلا الطرفين، مما يلزم المراقب بقراءة منسوبين منفصلين (\( h_1 \) و \( h_2 \)) وحساب الفرق بينهما: \( h = |h_1 - h_2| \)، وهذا يضاعف احتمال حدوث أخطاء القراءة.
       </p>
         <div class="def-box">
         <div class="def-box-title">📖 Well-Type Solution</div>
         <p style="margin: 0;">
-          الـ <span class="mono">Well-Type Manometer</span> فيه الـ <span class="mono">Well / Reservoir</span> كبير نسبيًا متصل بـ <span class="mono">Tube</span> القياس. طبقًا للسلايد، الـ <span class="mono">Well</span> بيتصمم بحيث إن تغير مستوى الـ <span class="mono">Liquid</span> فيه يكون <span class="mono">Negligible</span> تقريبًا، أو يكون الـ <span class="mono">Scale</span> معوّضًا عن التغير ده. الفكرة إن <span class="mono">Cross-Sectional Area</span> الـ <span class="mono">Well</span> كبيرة مقارنة بـ <span class="mono">Cross-Sectional Area</span> الـ <span class="mono">Tube</span>، وبالتالي تغير مستوى الـ <span class="mono">Liquid</span> في الـ <span class="mono">Well</span> بيكون صغير نسبيًا لما كمية من الـ <span class="mono">Liquid</span> تنتقل للـ <span class="mono">Tube</span> أو منها، فبنقدر ناخد الـ <span class="mono">Reading</span> من <span class="mono">Tube</span> واحدة بس.
+          تم استبدال أحد الطرفين بخزان عريض (<span class="mono">Well / Reservoir</span>) مساحة مقطعه كبيرة جداً مقارنة بمساحة مقطع أنبوبة القياس. عندما يرتفع السائل في الأنبوبة، يكون انخفاض السائل في الخزان ضئيلاً جداً ويمكن إهماله عملياً، أو يتم تعويضه مسبقاً في تدريج الجهاز بحيث يتم أخذ القراءة مباشرة من أنبوبة واحدة فقط!
         </p>
         <p style="margin: 8px 0 0 0; font-weight: 600; color: var(--royal);">
           "Take care of well diameter and indicator angle (90°)"
         </p>
-        <p style="margin: 8px 0 0 0;">نقطة مهمة من السلايد: لازم نراعي <span class="mono">Diameter</span> الـ <span class="mono">Well</span> وكمان زاوية الـ <span class="mono">Indicator</span> (\( 90^\circ \) في الـ <span class="mono">Design</span> المعروض)؛ يعني هندسة الجهاز والـ <span class="mono">Scale</span> جزء من صحة الـ <span class="mono">Reading</span>، مش مجرد تفاصيل شكلية.</p>
       </div>
       </div>
       <figure class="fig-box" style="--w: 280px;">
-  <img src="images/Fig_08_Well_Type_Manometer_Reservoir_and_Scale.png" alt="Well Type Manometer Diagram" width="525" height="507" loading="lazy" decoding="async">
-  <figcaption><span class="fig-num">Figure 3.7:</span> الـ <span class="mono">Well-Type Manometer</span> بالـ <span class="mono">Scale</span> المعوّض وقراءة الـ <span class="mono">Tube</span> الواحدة.</figcaption>
+  <img src="assast/Fig_08_Well_Type_Manometer_Reservoir_and_Scale.png" alt="Well Type Manometer Diagram" width="525" height="507" loading="lazy" decoding="async">
+  <figcaption><span class="fig-num">Figure 3.7:</span> مانومتر الخزان (<span class="mono">Well-Type</span>) ذو التدريج المعوض وقراءة الساق الواحدة.</figcaption>
 </figure>
     </div>
 
       <figure class="fig-box" style="--w: 560px;">
-  <img src="images/Fig_09_Inclined_Well_Type_Manometer_Geometry.png" alt="Inclined Well Type Manometer" width="1035" height="368" loading="lazy" decoding="async">
-  <figcaption><span class="fig-num">Figure 3.8:</span> الـ <span class="mono">Inclined Well-Type Manometer</span>: بيجمع بين ميزة الـ <span class="mono">Well</span> وميزة الـ <span class="mono">Inclined Tube</span> لزيادة الـ <span class="mono">Sensitivity</span>.</figcaption>
+  <img src="assast/Fig_09_Inclined_Well_Type_Manometer_Geometry.png" alt="Inclined Well Type Manometer" width="1035" height="368" loading="lazy" decoding="async">
+  <figcaption><span class="fig-num">Figure 3.8:</span> مانومتر الخزان المائل (<span class="mono">Inclined Well-Type</span>) لجمع ميزتي الحساسية العالية وتسهيل القراءة.</figcaption>
 </figure>
 
       
 
-      <p><strong>Inclined Well-Type Manometer:</strong> الـ <span class="mono">Inclined Well-Type Manometers</span> ممكن تُستخدم كمان، والـ <span class="mono">Design</span> بتاعها بيجمع بين فكرتين: (1) استخدام الـ <span class="mono">Well</span> لتقليل تأثير تغير مستوى الـ <span class="mono">Liquid</span> داخل الـ <span class="mono">Reservoir</span> على الـ <span class="mono">Reading</span> أو تعويضه في الـ <span class="mono">Scale</span>. (2) استخدام الـ <span class="mono">Tube</span> المائلة لزيادة الحركة المقروءة مقابل تغير صغير في الـ <span class="mono">Pressure</span>. وبالتالي لازم نراعي هندسة الـ <span class="mono">Well</span> وزاوية الـ <span class="mono">Tube</span>، ونستخدم الـ <span class="mono">Geometric Relation</span> الصحيحة لتحويل الـ <span class="mono">Reading</span> إلى الـ <span class="mono">Vertical Height</span> المناسب.</p>
-
-      <div class="prof-explanation">
-        <div class="prof-title" dir="ltr" style="justify-content:flex-end;">🎙️ Professor's Explanation: Sensitivity vs. Accuracy</div>
-        <ul style="margin: 6px 0; padding-right: 22px;">
-          <li><strong>Sensitivity:</strong> مقدار التغير في الـ <span class="mono">Output</span> مقابل تغير صغير في الكمية المقاسة، \( S = \frac{\text{Change in Output}}{\text{Change in Input}} \). في الـ <span class="mono">Manometer</span> نفهمها على إنها مقدار التغير في الـ <span class="mono">Reading</span> الناتج عن تغير صغير في الـ <span class="mono">Pressure</span>.</li>
-          <li><strong>Accuracy:</strong> مدى قرب الـ <span class="mono">Reading</span> من القيمة الحقيقية. يعني ممكن جهاز يكون <span class="mono">Sensitive</span> جدًا للتغيرات الصغيرة، لكن الـ <span class="mono">Reading</span> بتاعه ما تكونش <span class="mono">Accurate</span> لو فيه <span class="mono">Error</span> في الـ <span class="mono">Calibration</span> أو تركيب الجهاز.</li>
-        </ul>
-        <p style="margin: 0;">
-          <strong>هل الـ <span class="mono">Well-Type</span> والـ <span class="mono">Inclined Manometer</span> بيحققوا نفس الغرض بالضبط؟</strong> مش بالضرورة:
-        </p>
-        <ul style="margin: 6px 0; padding-right: 22px;">
-          <li>الـ <span class="mono">Inclined Manometer</span>: هدفه الأساسي زيادة الـ <span class="mono">Sensitivity</span>.</li>
-          <li>الـ <span class="mono">Well-Type Manometer</span>: بيستخدم الـ <span class="mono">Well</span> الكبير لتقليل تأثير تغير مستواه على الـ <span class="mono">Reading</span> أو لتعويض التغير ده في الـ <span class="mono">Scale</span>؛ وده بيبسّط تحديد الـ <span class="mono">Height</span> وقد يقلل بعض <span class="mono">Reading Errors</span>، لكنه لا يضمن وحده زيادة الـ <span class="mono">Sensitivity</span> أو إزالة كل الـ <span class="mono">Errors</span>.</li>
-          <li>الـ <span class="mono">Inclined Well-Type Manometer</span>: بيجمع بين الفكرتين، مع مراعاة هندسة الـ <span class="mono">Well</span> وزاوية الـ <span class="mono">Tube</span>.</li>
-        </ul>
-        <p style="margin: 8px 0 0 0;">
-          تحسين الـ <span class="mono">Sensitivity</span> لا يعني تلقائيًا تحسين الـ <span class="mono">Accuracy</span>. ولا يصح نفترض إن كل <span class="mono">Well-Type Manometer</span> له نفس الهندسة من غير الرجوع إلى الرسم.
-        </p>
-      </div>
-
       <!-- Manometer Advantages and Limitations -->
-      <h3 dir="ltr" style="text-align:right; color: var(--royal); margin-top: 30px;">Advantages &amp; Limitations of Manometers</h3>
+      <h3 style="color: var(--royal); margin-top: 30px;">مميزات وعيوب المانومترات (Advantages &amp; Limitations)</h3>
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 20px 0;">
         <div style="background: var(--mint-light); border: 1.5px solid var(--mint); border-radius: var(--radius-sm); padding: 18px 20px;">
-          <h4 dir="ltr" style="text-align:right; color: #0E6251; margin: 0 0 10px 0;">✅ Advantages</h4>
+          <h4 style="color: #0E6251; margin: 0 0 10px 0;">✅ المميزات (Advantages)</h4>
           <ul style="margin: 0; padding-right: 20px; color: #0B5345;">
-            <li><strong>Simple:</strong> مبدأ العمل بسيط؛ لأنه بيعتمد على الـ <span class="mono">Pressure Balance</span> و<span class="mono">Weight</span> الـ <span class="mono">Liquid Column</span>.</li>
-            <li><strong>Inexpensive:</strong> تكلفته منخفضة نسبيًا؛ ممكن تنفيذ الـ <span class="mono">Pressure Measurement</span> بـ <span class="mono">Tube</span> و<span class="mono">Liquid</span> مناسبين من غير <span class="mono">Electronic System</span> معقد.</li>
-            <li><strong>Can be highly sensitive:</strong> ممكن يكون عالي الـ <span class="mono">Sensitivity</span>، خصوصًا مع الـ <span class="mono">Inclined Design</span>.</li>
-            <li><strong>Standard:</strong> بيعتبر مرجعًا فيزيائيًا مباشرًا ولا يحتاج لـ <span class="mono">Calibrations</span> معقدة.</li>
+            <li><strong>Simple:</strong> تصميم ميكانيكي هيدروستاتيكي بسيط وخالٍ من التعقيد.</li>
+            <li><strong>Inexpensive:</strong> تكلفة منخفضة جداً مقارنة بالحساسات الإلكترونية.</li>
+            <li><strong>Can be highly sensitive:</strong> حساسية فائقة عند استخدام الأنبوبة المائلة.</li>
+            <li><strong>Standard:</strong> يعتبر مرجعاً فيزيائياً مباشراً لا يحتاج لمعايرات معقدة.</li>
           </ul>
         </div>
         <div style="background: var(--coral-light); border: 1.5px solid var(--coral); border-radius: var(--radius-sm); padding: 18px 20px;">
-          <h4 dir="ltr" style="text-align:right; color: #922B21; margin: 0 0 10px 0;">❌ Limitations</h4>
+          <h4 style="color: #922B21; margin: 0 0 10px 0;">❌ العيوب والقيود (Limitations)</h4>
           <ul style="margin: 0; padding-right: 20px; color: #78281F;">
-            <li><strong>Poor Dynamic Response:</strong> الاستجابة للتغيرات السريعة في الـ <span class="mono">Pressure</span> ضعيفة نسبيًا؛ لأن الـ <span class="mono">Liquid</span> محتاج وقت علشان يتحرك ويوصل لحالة <span class="mono">Equilibrium</span> جديدة، فلو الـ <span class="mono">Pressure</span> بيتغير بسرعة كبيرة ممكن الـ <span class="mono">Reading</span> ما تلحقش التغير الفعلي.</li>
-            <li><strong>No Remote Sensing:</strong> في الاستخدام المعتاد لازم يكون فيه اتصال مادي بين الـ <span class="mono">Manometer</span> والنقطة المراد قياس الـ <span class="mono">Pressure</span> عندها؛ فمفيش <span class="mono">Remote Sensing</span> ولا <span class="mono">Electrical Signal</span> للمراقبة أو التحكم عن بُعد.</li>
-            <li><strong>Limited Pressure Range:</strong> الـ <span class="mono">Height</span> المطلوب للـ <span class="mono">Liquid Column</span> بيزيد كل ما زاد الـ <span class="mono">Pressure Difference</span>، وده بيفرض حدودًا عملية على أبعاد الجهاز. السلايد بيذكر إن المدى العملي عادةً لا يتجاوز <span class="mono">7 bar</span>؛ ودي معلومة مرتبطة بالمدى العملي المذكور في المحاضرة، مش حد مطلق لكل <span class="mono">Design</span>.</li>
-            <li><strong>Glass Fragility &amp; Vapors:</strong> قابلية كسر الـ <span class="mono">Glass Tubes</span> وسمية أبخرة الـ <span class="mono">Mercury</span>.</li>
+            <li><strong>Poor Dynamic Response:</strong> استجابة بطيئة للتغيرات السريعة بسبب قصور السائل الذاتي.</li>
+            <li><strong>No Remote Sensing:</strong> لا يوفر إشارة كهربائية للمراقبة أو التحكم عن بعد.</li>
+            <li><strong>Limited Pressure Range:</strong> نطاق محدود عملياً لا يتجاوز عادةً <span class="mono">7 bar</span>.</li>
+            <li><strong>Glass Fragility &amp; Vapors:</strong> قابلية كسر الأنابيب الزجاجية وسمية أبخرة الزئبق.</li>
           </ul>
         </div>
       </div>
-
-      <p><strong>ليه صعب نستخدم الـ <span class="mono">Manometer</span> عند الـ <span class="mono">High Pressures</span>؟</strong> لأن الـ <span class="mono">Pressure Difference</span> مرتبط بـ <span class="mono">Height</span> الـ <span class="mono">Liquid Column</span> (\( \Delta p = \rho g h \) أو \( \Delta p = (\rho_m - \rho_f)\, g\, h \))؛ فلما الـ <span class="mono">Pressure</span> يزيد قد نحتاج <span class="mono">Liquid Column</span> أطول، وده بيخلي الجهاز كبير وغير عملي. اختيار <span class="mono">Liquid</span> <span class="mono">Density</span> بتاعه أعلى قد يقلل الـ <span class="mono">Height</span> المطلوب، لكنه لا يلغي كل القيود العملية.</p>
 
       <!-- Example Card 3 -->
       <div class="example-card" dir="ltr">
@@ -1493,7 +1379,7 @@
       <div class="section-header">
         <div class="section-icon">🏋️‍♂️</div>
         <div class="section-title-wrap">
-          <h2 dir="ltr" style="text-align:right;">4. Dead Weight Tester</h2>
+          <h2>4. جهاز اختبار الأوزان الميتة (Dead Weight Tester)</h2>
           <span class="section-subtitle">Primary Standard for Static Pressure Gauge Calibration</span>
         </div>
       </div>
@@ -1507,19 +1393,12 @@
         </p>
       </div>
         <p>
-        الـ <span class="mono">Dead Weight Tester</span> جهاز بيُستخدم لعمل <span class="mono">Calibration</span> لأجهزة الـ <span class="mono">Pressure Measurement</span> والتحقق من صحة قراءاتها. فكرته إنه بيولّد <span class="mono">Reference Pressure</span> من <span class="mono">Force</span> معلومة بتؤثر على <span class="mono">Area</span> معلومة. النظام المعتاد بيتكون من:
+        يقوم مبدأ عمل الـ <span class="mono">Dead Weight Tester</span> على توليد ضغط مرجعي عالي الدقة من خلال وضع كتل دقيقة معلومة الوزن (<span class="mono">Known Masses</span>) فوق مكبس رأسي ذي مساحة مقطع عرضي فعالة معلومة بدقة (<span class="mono">Piston Area A</span>):
       </p>
-        <ul style="margin: 0; padding-right: 22px; line-height: 1.9;">
-          <li><strong>Piston and Cylinder</strong></li>
-          <li><strong>Known Masses / Weights:</strong> بتتحط على الـ <span class="mono">Piston</span>.</li>
-          <li><strong>Pressure Fluid:</strong> <span class="mono">Fluid</span> بينقل الـ <span class="mono">Pressure</span> داخل النظام.</li>
-          <li><strong>Test Gauge:</strong> جهاز الـ <span class="mono">Pressure</span> المراد عمل <span class="mono">Calibration</span> له.</li>
-        </ul>
-      <p>لما نحط <span class="mono">Known Masses</span> على الـ <span class="mono">Piston</span>، الـ <span class="mono">Gravity</span> بتأثر بـ <span class="mono">Force</span> على <span class="mono">Area</span> الـ <span class="mono">Piston</span>، والـ <span class="mono">Pressure</span> النظري الناتج بيتحسب من الـ <span class="mono">Force</span> مقسومة على الـ <span class="mono">Area</span>:</p>
       </div>
       <figure class="fig-box" style="--w: 340px;">
-  <img src="images/Fig_10_Dead_Weight_Tester_Pressure_Gauge_Calibration.png" alt="Dead Weight Tester Gauge Calibration" width="653" height="380" loading="lazy" decoding="async">
-  <figcaption><span class="fig-num">Figure 4.1:</span> الـ <span class="mono">Dead Weight Tester</span> أثناء الـ <span class="mono">Calibration</span> لـ <span class="mono">Pressure Gauge</span> صناعي.</figcaption>
+  <img src="assast/Fig_10_Dead_Weight_Tester_Pressure_Gauge_Calibration.png" alt="Dead Weight Tester Gauge Calibration" width="653" height="380" loading="lazy" decoding="async">
+  <figcaption><span class="fig-num">Figure 4.1:</span> جهاز اختبار الأوزان الميتة (<span class="mono">Dead Weight Tester</span>) أثناء معايرة عداد ضغط صناعي.</figcaption>
 </figure>
     </div>
 
@@ -1531,43 +1410,26 @@
         </p>
       </div>
 
-      <p>المعادلة دي بتوضح المبدأ الأساسي. أما الحساب الدقيق في التطبيق العملي، فقد يحتاج إلى مراعاة عوامل الـ <span class="mono">Calibration</span> والـ <span class="mono">Design</span> الخاصة بالجهاز، زي الـ <span class="mono">Effective Area</span> وظروف التشغيل.</p>
-
 
       <div class="prof-explanation">
-        <div class="prof-title" dir="ltr" style="justify-content:flex-end;">🎙️ Professor's Explanation: Calibration Procedure</div>
+        <div class="prof-title">🎙️ كيف تتم عملية المعايرة (Calibration Procedure)؟</div>
         <p style="margin: 0;">
-          لما نكون عايزين نعمل <span class="mono">Calibration</span> لجهاز <span class="mono">Pressure</span>:
+          الهدف هو الحصول على ضغط مرجعي مستقل تماماً، لا يعتمد على أي مؤشر قياس آخر. الخطوات:
         </p>
         <ol style="margin: 8px 0 0 0; padding-right: 22px;">
-          <li>نوصّل الجهاز المراد اختباره بالـ <span class="mono">Dead Weight Tester</span>.</li>
-          <li>نختار <span class="mono">Known Masses</span> ونحطها على الـ <span class="mono">Piston</span>.</li>
-          <li>نحسب الـ <span class="mono">Reference Pressure</span> المتوقع باستخدام الـ <span class="mono">Force</span> والـ <span class="mono">Area</span>: \( p_{ref} = \frac{mg}{A} \).</li>
-          <li>نقارن <span class="mono">Reading</span> الـ <span class="mono">Pressure Gauge</span> بالـ <span class="mono">Reference Value</span>.</li>
-          <li>نكرر العملية عند قيم <span class="mono">Pressure</span> مختلفة ضمن مدى الـ <span class="mono">Calibration</span> المطلوب.</li>
+          <li>يتم توصيل عداد الضغط المراد معايرته بالمنظومة الهيدروليكية للجهاز.</li>
+          <li>توضع كتلة دقيقة معلومة \( m \) فوق صينية المكبس.</li>
+          <li>يتم تدوير المكبس ببطء باليد لتقليل الاحتكاك الاستاتيكي مع الأسطوانة.</li>
+          <li>يُحسب الضغط الحقيقي المطبق: \( p_{ref} = \frac{mg}{A} \).</li>
+          <li>تُسجل قراءة العداد وتُقارن بالقيمة المحسوبة لتحديد مقدار الخطأ وإعداد جدول ومنحنى المعايرة.</li>
         </ol>
-        <p style="margin: 8px 0 0 0;">
-          لو <span class="mono">Reading</span> الجهاز مختلفة عن الـ <span class="mono">Reference Pressure</span>، نقدر نحدد مقدار الـ <span class="mono">Error</span> عند نقطة الـ <span class="mono">Calibration</span>.
-        </p>
-        <p style="margin: 8px 0 0 0;">
-          <strong>سؤال: ليه نستخدم <span class="mono">Known Masses</span> بدل ما نعتمد على <span class="mono">Reading</span> جهاز الـ <span class="mono">Pressure</span> نفسه؟</strong> لأن الهدف هو الحصول على <span class="mono">Reference Pressure</span> يمكن حسابه من كميات معلومة، ثم استخدامه للمقارنة مع <span class="mono">Reading</span> الجهاز المراد اختباره. لو اعتمدنا على <span class="mono">Reading</span> الجهاز نفسه لتحديد الـ <span class="mono">Pressure</span> الصحيح، مش هنكون حققنا <span class="mono">Independent Calibration</span> المطلوبة.
-        </p>
-        <p style="margin: 8px 0 0 0;">
-          <strong>Advantages:</strong>
-        </p>
-        <ul style="margin: 4px 0 0 0; padding-right: 22px;">
-          <li><strong>High Accuracy:</strong> ممكن نحصل على <span class="mono">Reference Pressure</span> <span class="mono">Accurate</span> لما نستخدم الجهاز بطريقة صحيحة ونعرف الـ <span class="mono">Effective Area</span>.</li>
-          <li><strong>Suitable for Calibration:</strong> مناسب لعمل <span class="mono">Calibration</span> لأجهزة الـ <span class="mono">Pressure Measurement</span> والتحقق من قراءاتها.</li>
-          <li><strong>Wide Usable Pressure Range:</strong> ممكن نختار <span class="mono">Weights</span> مناسبة لتوليد مستويات <span class="mono">Pressure</span> مختلفة ضمن مدى تصميم الجهاز.</li>
-        </ul>
       </div>
 
-      <h3 dir="ltr" style="text-align:right; color: var(--royal); margin-top: 28px;">Limitations of the Dead Weight Tester (Slide 17)</h3>
+      <h3 style="color: var(--royal); margin-top: 28px;">قيود وعيوب الـ Dead Weight Tester (Slide 17 Limitations)</h3>
       <ol style="color: var(--ink); line-height: 2;">
-        <li><strong>Friction between Piston and Cylinder:</strong> الـ <span class="mono">Friction</span> بين الـ <span class="mono">Piston</span> والـ <span class="mono">Cylinder</span> بتقلل <span class="mono">Accuracy</span> نقل الـ <span class="mono">Force</span>، وللتغلب على ده بيتم تدوير الـ <span class="mono">Piston</span> أثناء أخذ الـ <span class="mono">Reading</span> لتحويل الـ <span class="mono">Friction</span> إلى <span class="mono">Rotational Kinetic Friction</span>.</li>
-        <li><strong>Poor Dynamic Response:</strong> الجهاز مناسب أساسًا لعمل <span class="mono">Calibration</span> للـ <span class="mono">Pressure</span> في ظروف <span class="mono">Static</span> أو شبه <span class="mono">Static</span> (<strong>Static Calibrations Only</strong>)، وما بيُستخدمش عادةً لتتبع تغيرات الـ <span class="mono">Pressure</span> السريعة لحظة بلحظة.</li>
-        <li><strong>Affected by Uncertainty in Gravitational Constant \( g \):</strong> الحساب بيعتمد على \( g \) والـ <span class="mono">Effective Area</span> \( A \)، ولذلك <span class="mono">Accuracy</span> القيم دي بتأثر في الـ <span class="mono">Reference Pressure</span> المحسوب؛ وأي اختلاف جغرافي في قيمة \( g \) بيأثر لو ما اتصححش.</li>
-        <li><strong>Practical Pressure Limits:</strong> المدى المتاح بيعتمد على <span class="mono">Design</span> الجهاز، و<span class="mono">Area</span> الـ <span class="mono">Piston</span>، والـ <span class="mono">Weights</span> اللي ممكن نستخدمها بأمان؛ ولا يصح نفترض إن كل <span class="mono">Dead Weight Tester</span> يوصل لنفس أقصى <span class="mono">Pressure</span>.</li>
+        <li><strong>Friction between Piston and Cylinder:</strong> احتكاك المكبس بالأسطوانة يقلل من دقة نقل القوة، وللتغلب على ذلك يتم تدوير المكبس أثناء أخذ القراءة لتحويل الاحتكاك إلى احتكاك حركي دوراني.</li>
+        <li><strong>Poor Dynamic Response:</strong> جهاز مخصص <strong>للمعايرة الاستاتيكية فقط (Static Calibrations Only)</strong>، ولا يمكن استخدامه لمتابعة الضغوط المتغيرة ديناميكياً مع الزمن.</li>
+        <li><strong>Affected by Uncertainty in Gravitational Constant \( g \):</strong> يعتمد الضغط على عجلة الجاذبية المحلية؛ وأي تفاوت جغرافي في قيمة \( g \) يؤثر في دقة الضغط المحسوب إذا لم يُصحح.</li>
       </ol>
     </section>
 
@@ -1580,13 +1442,13 @@
       <div class="section-header">
         <div class="section-icon">⚙️</div>
         <div class="section-title-wrap">
-          <h2 dir="ltr" style="text-align:right;">5. Mechanical Methods of Pressure Measurement</h2>
+          <h2>5. طرق الاستشعار الميكانيكية (العناصر المرنة)</h2>
           <span class="section-subtitle">Mechanical Sensing Methods: Bourdon Tube, Diaphragms &amp; Bellows</span>
         </div>
       </div>
 
       <p>
-        بعد الـ <span class="mono">Dead Weight Tester</span> ننتقل لعائلة تانية من أجهزة القياس: <span class="mono">Mechanical Pressure Measurement Devices</span>. الفكرة الأساسية إن الـ <span class="mono">Pressure</span> بيأثر على <span class="mono">Mechanical Element</span> قابل للـ <span class="mono">Elastic Deformation</span> (<span class="mono">Elastic Element</span>)، والـ <span class="mono">Deformation</span> ده بيدي <span class="mono">Displacement</span> أو <span class="mono">Mechanical Motion</span> ممكن نربطها بقراءة الـ <span class="mono">Pressure</span>. يعني الـ <span class="mono">Pressure</span> نفسه مش بيتحول مباشرةً لرقم على الـ <span class="mono">Scale</span>؛ بل بيسبب <span class="mono">Deformation</span> في الـ <span class="mono">Sensing Element</span>، وبعد كده الحركة بتنتقل لـ <span class="mono">Pointer</span> أو <span class="mono">Mechanism</span> تانية تعرض الـ <span class="mono">Reading</span>. ومن أمثلة الـ <span class="mono">Mechanical Elements</span> اللي بتتعامل مع الـ <span class="mono">Pressure</span>: <span class="mono">Bourdon Tube</span> و<span class="mono">Diaphragm</span> و<span class="mono">Bellows</span>، وكل واحد منهم بيستخدم شكل <span class="mono">Mechanical</span> مختلف لتحقيق استجابة للـ <span class="mono">Pressure</span>:
+        تعتمد الأجهزة الميكانيكية على تشوه عنصر مرن (<span class="mono">Elastic Element</span>) تحت تأثير الضغط، وتحويل هذا التشوه إلى إزاحة ميكانيكية تحرك مؤشراً على تدريج دائري:
       </p>
 
       <div class="formula-box" style="padding: 16px;">
@@ -1595,15 +1457,15 @@
       </div>
 
       <div class="note-box">
-        <div class="note-box-title" dir="ltr" style="text-align:right;">⚠️ Elastic Limit — Why Must the Element Be Elastic?</div>
+        <div class="note-box-title">⚠️ شرط المرونة الحرج (Elastic Limit):</div>
         <p style="margin: 0;">
-          لازم الـ <span class="mono">Element</span> يرجع تقريبًا لشكله الأصلي لما الـ <span class="mono">Pressure</span> يتشال، طالما اشتغل داخل حدود الـ <span class="mono">Design</span>. لو الـ <span class="mono">Pressure</span> سبب <span class="mono">Plastic Deformation</span>، العلاقة بين الـ <span class="mono">Pressure</span> والـ <span class="mono">Displacement</span> مش هترجع زي ما كانت، وده بيؤدي لـ <span class="mono">Error</span> في الـ <span class="mono">Reading</span> وقد يسبب تلف الـ <span class="mono">Element</span>. لذلك لازم نراعي الـ <span class="mono">Elastic Limit</span>، أي الحد اللي يقدر عنده الـ <span class="mono">Element</span> يتحمل الـ <span class="mono">Deformation</span> ويرجع لحالته الأصلية من غير <span class="mono">Permanent Deformation</span>.
+          يجب أن يعمل العنصر دائماً داخل <strong>حد المرونة (Elastic Limit)</strong> لمادته. إذا تعرض الجهاز لضغط زائد يتجاوز حد المرونة، سيحدث تشوه لدن دائم (<span class="mono">Plastic Deformation</span>)، مما يفقد المؤشر صفر التدريج ويولد خطأً منتظماً ثابتاً (<span class="mono">Systematic Error</span>) قد يؤدي إلى تلف الجهاز نهائياً.
         </p>
       </div>
 
       <!-- 5.1 Bourdon Tube -->
-      <h3 dir="ltr" style="text-align:right; color: var(--royal); margin-top: 32px; border-bottom: 2px solid var(--pearl); padding-bottom: 8px;">
-        5.1 Bourdon Tube
+      <h3 style="color: var(--royal); margin-top: 32px; border-bottom: 2px solid var(--pearl); padding-bottom: 8px;">
+        5.1 أنبوبة بوردون (Bourdon Tube)
       </h3>
 
       <div class="media-row" style="--col: 340px;">
@@ -1619,159 +1481,102 @@
       </div>
       </div>
       <figure class="fig-box" style="--w: 340px;">
-  <img src="images/Fig_11_Bourdon_Tube_Gauge_Linkage_Pinion_Sector_Pointer.png" alt="Bourdon Tube Mechanism" width="575" height="405" loading="lazy" decoding="async">
-  <figcaption><span class="fig-num">Figure 5.1:</span> التركيب الداخلي للـ <span class="mono">Bourdon Tube</span>: الـ <span class="mono">Elastic Tube</span>، والـ <span class="mono">Linkage</span>، والـ <span class="mono">Sector Gear</span> والـ <span class="mono">Pinion</span> اللي بيحرك الـ <span class="mono">Pointer</span>.</figcaption>
+  <img src="assast/Fig_11_Bourdon_Tube_Gauge_Linkage_Pinion_Sector_Pointer.png" alt="Bourdon Tube Mechanism" width="575" height="405" loading="lazy" decoding="async">
+  <figcaption><span class="fig-num">Figure 5.1:</span> التركيب الداخلي لأنبوبة بوردون: الأنبوبة المرنة، الوصلة الميكانيكية، الترس القطاعي والترس الصغير المحرك للمؤشر.</figcaption>
 </figure>
     </div>
 
-      <p>الـ <span class="mono">Bourdon Tube</span> من أشهر الـ <span class="mono">Mechanical Elements</span> لقياس الـ <span class="mono">Pressure</span>.</p>
       <p>
-        <strong>Construction:</strong> هو <span class="mono">Elastic Tube</span>، غالبًا بيكون منحني، والـ <span class="mono">Cross-Section</span> بتاعته مش دائرية تمامًا. أحد طرفيه متصل بالـ <span class="mono">Pressure</span> المراد قياسه، بينما الطرف التاني بيكون مغلق وحر الحركة. حركة الطرف المتحرك بتتوصل بـ <span class="mono">Mechanical Mechanism</span> زي الـ <span class="mono">Linkage</span> (و<span class="mono">Sector &amp; Pinion</span>) والـ <span class="mono">Pointer</span> لعرض الـ <span class="mono">Reading</span> على <span class="mono">Scale</span>.
-      </p>
-      <p>
-        <strong>Working Principle:</strong> لما الـ <span class="mono">Pressure</span> يدخل الـ <span class="mono">Tube</span>، الـ <span class="mono">Walls</span> بتاعتها بتتعرض لتأثير الـ <span class="mono">Internal Pressure</span>، فبيتغير شكل الـ <span class="mono">Tube</span> المنحنية شوية وينتج عن ده حركة الطرف الحر. الحركة بتنتقل للـ <span class="mono">Pointer</span> من خلال الـ <span class="mono">Linkage Mechanism</span>، فتظهر قراءة الـ <span class="mono">Pressure</span> على الـ <span class="mono">Scale</span>. يعني: \( \text{Pressure} \rightarrow \text{Tube Deformation} \rightarrow \text{Tip Displacement} \rightarrow \text{Pointer Movement} \). وفي النطاق التشغيلي المناسب ممكن نعمل <span class="mono">Calibration</span> للـ <span class="mono">Pointer</span> بحيث ترتبط حركته بقيمة الـ <span class="mono">Pressure</span>.
+        أنبوبة بوردون هي أنبوب معدني بيضاوي المقطع منحني على شكل حرف C (أو حلزوني/لولبي للنطاقات المختلفة). الطرف السفلي مثبت ومتصل بمدخل الضغط، بينما الطرف العلوي مغلق وحر الحركة. عند دخول الضغط، تحاول جدران الأنبوبة استعادة المقطع الدائري مما يؤدي إلى انفراج الانحناء وتحرك الطرف الحر للخارج. تنتقل هذه الإزاحة عبر رافعة ومسنن قطاعي (<span class="mono">Sector &amp; Pinion</span>) لتحريك المؤشر.
       </p>
 
       <figure class="fig-box" style="--w: 600px;">
-  <img src="images/Fig_15_Comparison_of_Diaphragm_Bellows_and_Bourdon_Tube_Elements.jpg" alt="Comparison of Diaphragm Bellows and Bourdon Tube" width="2400" height="1792" loading="lazy" decoding="async">
-  <figcaption><span class="fig-num">Figure 5.2:</span> أنواع الـ <span class="mono">Elastic Elements</span> اللي بتستجيب للـ <span class="mono">Pressure</span>: <span class="mono">Flat Diaphragm</span> و<span class="mono">Corrugated Diaphragm</span> و<span class="mono">Capsule</span> و<span class="mono">Bellows</span> و<span class="mono">Straight Tube</span> وأنواع الـ <span class="mono">Bourdon Tube</span> (<span class="mono">C-shaped</span> و<span class="mono">Twisted</span> و<span class="mono">Helical</span> و<span class="mono">Spiral</span>) — اختلاف النوع بيغيّر الـ <span class="mono">Displacement</span> (الـ <span class="mono">Sensitivity</span>) لنفس الـ <span class="mono">Pressure</span>.</figcaption>
+  <img src="assast/Fig_15_Comparison_of_Diaphragm_Bellows_and_Bourdon_Tube_Elements.jpg" alt="Comparison of Diaphragm Bellows and Bourdon Tube" width="2400" height="1792" loading="lazy" decoding="async">
+  <figcaption><span class="fig-num">Figure 5.2:</span> أنواع العناصر المرنة الحساسة للضغط: الغشاء المسطح والمموج والكبسولة والمنفاخ والأنبوب المستقيم وأنواع أنبوبة بوردون (<span class="mono">C-shaped, Twisted, Helical, Spiral</span>) — اختلاف النوع يغيّر الإزاحة (الحساسية) لنفس الضغط.</figcaption>
 </figure>
 
 
-      <div class="prof-explanation">
-        <div class="prof-title" dir="ltr" style="justify-content:flex-end;">🎙️ Professor's Explanation: Bourdon Tube — Static Characteristics, Advantages &amp; Limitations</div>
-        <p style="margin: 0;">
-          <strong>Static Characteristics:</strong> هي الخصائص المرتبطة بسلوك الجهاز لما الـ <span class="mono">Pressure</span> يكون ثابت أو بيتغير ببطء بما يسمح بالاستقرار. من المهم مراعاة العلاقة بين الـ <span class="mono">Pressure</span> والـ <span class="mono">Displacement</span>، ومدى تكرار الـ <span class="mono">Reading</span> عند نفس الـ <span class="mono">Pressure</span>، وحدود الـ <span class="mono">Elastic Deformation</span>. في النطاق المناسب ممكن نقرّب العلاقة بين الـ <span class="mono">Pressure</span> والـ <span class="mono">Displacement</span> بخط مستقيم لو ده مدعوم بـ <span class="mono">Calibration</span> للجهاز، لكن ما نفترضش <span class="mono">Linearity</span> تامة لكل <span class="mono">Bourdon Tube</span> وفي كل مدى.
-        </p>
-        <p style="margin: 8px 0 0 0;">
-          <strong>Why must the tube remain elastic?</strong> لو الـ <span class="mono">Pressure</span> زاد عن الحد المسموح، ممكن يحصل <span class="mono">Permanent Deformation</span> في الـ <span class="mono">Tube</span>، وعندها قد لا يرجع الـ <span class="mono">Pointer</span> لموضعه الأصلي بعد إزالة الـ <span class="mono">Pressure</span> وتبقى الـ <span class="mono">Reading</span> غير صحيحة. علشان كده بنختار الجهاز ضمن مدى الـ <span class="mono">Pressure</span> المصمم له ونتجنب تحميله بأكتر من حدوده.
-        </p>
-        <p style="margin: 8px 0 0 0;">
-          <strong>Advantages:</strong>
-        </p>
-        <ul style="margin: 4px 0 0 0; padding-right: 22px;">
-          <li><span class="mono">Mechanical Design</span> عملي وشائع.</li>
-          <li>بيقيس مدى <span class="mono">Pressure</span> مناسب لـ <span class="mono">Design</span> بتاعه.</li>
-          <li>مش محتاج بالضرورة <span class="mono">Electrical Circuit</span> لعرض الـ <span class="mono">Reading</span>؛ لأن الـ <span class="mono">Pressure</span> ممكن يتعرض مباشرةً بـ <span class="mono">Mechanical Pointer</span>.</li>
-        </ul>
-        <p style="margin: 8px 0 0 0;">
-          <strong>Limitations:</strong>
-        </p>
-        <ul style="margin: 4px 0 0 0; padding-right: 22px;">
-          <li>بيعتمد على الـ <span class="mono">Mechanical Deformation</span>، فله حدود مرتبطة بالـ <span class="mono">Elasticity</span> والـ <span class="mono">Mechanical Fatigue</span>.</li>
-          <li>ممكن يتأثر بـ <span class="mono">Mechanical Errors</span> أو بتغير خصائص الـ <span class="mono">Element</span> مع الاستخدام.</li>
-          <li>الاستجابة للتغيرات السريعة بتعتمد على الـ <span class="mono">Design</span> والـ <span class="mono">Mass</span> والـ <span class="mono">Mechanical Mechanism</span>، ولا ينبغي نفترض إنه مناسب لكل تغير <span class="mono">Dynamic</span> سريع.</li>
-        </ul>
-      </div>
-
       <!-- 5.2 Diaphragms -->
-      <h3 dir="ltr" style="text-align:right; color: var(--royal); margin-top: 32px; border-bottom: 2px solid var(--pearl); padding-bottom: 8px;">
-        5.2 Diaphragm Pressure Sensor
+      <h3 style="color: var(--royal); margin-top: 32px; border-bottom: 2px solid var(--pearl); padding-bottom: 8px;">
+        5.2 الأغشية المرنة (Diaphragms)
       </h3>
       <div class="media-row" style="--col: 360px;">
       <div class="media-text">
         <p>
-        الـ <span class="mono">Diaphragm</span> هو <span class="mono">Elastic Element</span> رفيع بيفصل بين منطقتين، وممكن ينحني لما يكون فيه <span class="mono">Pressure Difference</span> عبره. لما الـ <span class="mono">Pressure</span> بيأثر على أحد جانبيه ويتوفر <span class="mono">Reference Pressure</span> أو <span class="mono">Pressure</span> مختلف على الجانب التاني، بيتولد <span class="mono">Pressure Difference</span> يؤدي لانحناء الـ <span class="mono">Element</span>. مقدار الانحناء بيعتمد على الـ <span class="mono">Pressure Difference</span>، وخواص المادة، و<span class="mono">Thickness</span> الـ <span class="mono">Element</span>، وشكله، وطريقة تثبيته. والـ <span class="mono">Displacement</span> الناتج ممكن يحرك <span class="mono">Mechanical Pointer</span> أو يتربط بوسيلة تحويل مناسبة.
+        الـ <span class="mono">Diaphragm</span> هو قرص معدني أو بوليمري مرن ورقيق، يثبت عند حوافه ويفصل بين غرفتي ضغط. عندما ينشأ فرق ضغط عبر الغشاء، ينحني مركزه بمقدار يتناسب مع فرق الضغط.
       </p>
         <div class="def-box">
-        <div class="def-box-title">📌 Lecture Note:</div>
+        <div class="def-box-title">📌 ملاحظة المحاضرة:</div>
         <p style="margin: 0; font-weight: 600;">
           "All these types are suitable only for static pressure measurements."
         </p>
-        <p style="margin: 8px 0 0 0;"><strong>مهم:</strong> الاستجابة الأساسية للـ <span class="mono">Diaphragm</span> مرتبطة بالـ <span class="mono">Pressure Difference</span> عبره؛ فعند تحديد الـ <span class="mono">Pressure</span> اللي بيقيسه لازم نعرف إذا كان الجانب التاني معرّض للـ <span class="mono">Atmospheric Pressure</span> ولا لـ <span class="mono">Pressure</span> تاني. وشكل الـ <span class="mono">Element</span> وأبعاده وخواص مادته بتأثر على الـ <span class="mono">Flexibility</span> وعلى الـ <span class="mono">Displacement</span> الناتج، فتغيير الـ <span class="mono">Design</span> بيغيّر الـ <span class="mono">Sensitivity</span> ومدى القياس؛ ولا يكفي نقول إن كل <span class="mono">Diaphragm</span> له نفس الـ <span class="mono">Sensitivity</span> أو نفس الـ <span class="mono">Pressure Range</span>. وزي الـ <span class="mono">Bourdon Tube</span>، الـ <span class="mono">Element</span> لازم ما يتعدّاش حدود الـ <span class="mono">Elastic Deformation</span>.</p>
       </div>
       </div>
       <figure class="fig-box" style="--w: 360px;">
-  <img src="images/Fig_12_Diaphragm_Pressure_Gauge_and_Pointer_Mechanism.jpg" alt="Diaphragm Pressure Gauge" width="2328" height="1824" loading="lazy" decoding="async">
-  <figcaption><span class="fig-num">Figure 5.3:</span> الـ <span class="mono">Diaphragm Pressure Gauge</span> المتصل بآلية تحريك الـ <span class="mono">Pointer</span>.</figcaption>
+  <img src="assast/Fig_12_Diaphragm_Pressure_Gauge_and_Pointer_Mechanism.jpg" alt="Diaphragm Pressure Gauge" width="2328" height="1824" loading="lazy" decoding="async">
+  <figcaption><span class="fig-num">Figure 5.3:</span> مقياس الضغط ذو الغشاء المرن المتصل بآلية تحريك المؤشر.</figcaption>
 </figure>
     </div>
 
       
 
       <!-- 5.3 Bellows -->
-      <h3 dir="ltr" style="text-align:right; color: var(--royal); margin-top: 32px; border-bottom: 2px solid var(--pearl); padding-bottom: 8px;">
-        5.3 Bellows Pressure Sensor
+      <h3 style="color: var(--royal); margin-top: 32px; border-bottom: 2px solid var(--pearl); padding-bottom: 8px;">
+        5.3 المنفاخ المرن (Bellows)
       </h3>
       <div class="media-row" style="--col: 260px;">
       <div class="media-text">
         <p>
-        الـ <span class="mono">Bellows</span> <span class="mono">Elastic Element</span> بيشبه الـ <span class="mono">Tube</span> ذات الطيات أو التموجات المتتابعة. لما الـ <span class="mono">Pressure</span> بيأثر داخل الـ <span class="mono">Bellows</span> أو خارجه، بينتج <span class="mono">Pressure Difference</span> يغيّر طوله؛ يعني بيتمدد أو بينكمش حسب اتجاه الـ <span class="mono">Pressure</span> وترتيب الجهاز، فبيدي <span class="mono">Mechanical Displacement</span> أكبر نسبيًا من الـ <span class="mono">Diaphragm</span>. الـ <span class="mono">Linear Motion</span> ممكن تتربط بـ <span class="mono">Mechanical Mechanism</span> لتحريك <span class="mono">Pointer</span> أو لنقل الـ <span class="mono">Displacement</span> لـ <span class="mono">Element</span> تاني. الطيات بتسمح للـ <span class="mono">Element</span> يغيّر طوله تحت تأثير الـ <span class="mono">Pressure</span>، لكن شكل الطيات وعددها وأبعادها وخواص المادة كلها بتأثر في مقدار الحركة والاستجابة؛ فاختلاف الـ <span class="mono">Design</span> بيغيّر الـ <span class="mono">Sensitivity</span> ومدى الـ <span class="mono">Pressure</span>.
-      </p>
-      <p>
-        <strong>Limitations:</strong> الـ <span class="mono">Bellows</span> <span class="mono">Elastic Element</span>، فلازم نراعي الـ <span class="mono">Mechanical Limits</span> بتاعته وخصائصه الـ <span class="mono">Dynamic</span>؛ وما ينفعش نفترض إنه مناسب تلقائيًا للـ <span class="mono">Pressure</span> المتغير بسرعة لمجرد إنه متصل بـ <span class="mono">Pointer</span> أو بـ <span class="mono">Electrical Circuit</span>.
+        الـ <span class="mono">Bellows</span> هو عنصر أسطواني رقيق الجدران يحتوي على طيات وتموجات متتابعة تشبه الأكورديون. تمنحه هذه الطيات قابلية كبيرة للتمدد والانكماش الطولي عند تعرضه للضغط الداخلي أو الخارجي، مما ينتج إزاحة ميكانيكية أكبر بكثير من الغشاء الرقيق.
       </p>
       </div>
       <figure class="fig-box" style="--w: 260px;">
-  <img src="images/Fig_14_Bellows_Pressure_Element_and_Pointer.jpg" alt="Bellows Pressure Element" width="2080" height="2048" loading="lazy" decoding="async">
-  <figcaption><span class="fig-num">Figure 5.4:</span> الـ <span class="mono">Bellows Element</span> وتمدده لتحريك الـ <span class="mono">Pointer</span>.</figcaption>
+  <img src="assast/Fig_14_Bellows_Pressure_Element_and_Pointer.jpg" alt="Bellows Pressure Element" width="2080" height="2048" loading="lazy" decoding="async">
+  <figcaption><span class="fig-num">Figure 5.4:</span> عنصر المنفاخ المرن (<span class="mono">Bellows</span>) وتمدده لتحريك المؤشر.</figcaption>
 </figure>
     </div>
 
       <figure class="fig-box" style="--w: 420px;">
-  <img src="images/Fig_13_Diaphragm_Spring_Linkage_to_Wheatstone_Bridge.jpg" alt="Diaphragm Spring Linkage Wheatstone Bridge" width="2508" height="1664" loading="lazy" decoding="async">
-  <figcaption><span class="fig-num">Figure 5.5:</span> الـ <span class="mono">Bellows</span> المتصل بـ <span class="mono">Spring</span> و<span class="mono">Connecting Rod</span> إلى <span class="mono">Resistance Element</span> بيغذي <span class="mono">Wheatstone Bridge Circuit</span> عند تأثير الـ <span class="mono">Process Pressure</span>.</figcaption>
+  <img src="assast/Fig_13_Diaphragm_Spring_Linkage_to_Wheatstone_Bridge.jpg" alt="Diaphragm Spring Linkage Wheatstone Bridge" width="2508" height="1664" loading="lazy" decoding="async">
+  <figcaption><span class="fig-num">Figure 5.5:</span> المنفاخ (<span class="mono">Bellows</span>) المتصل بسوستة وقضيب واصل (<span class="mono">Connecting Rod</span>) إلى عنصر مقاومة يغذي دائرة قنطرة ويتستون عند تأثير ضغط العملية (<span class="mono">Process Pressure</span>).</figcaption>
 </figure>
 
       
 
-      <div class="prof-explanation">
-        <div class="prof-title" dir="ltr" style="justify-content:flex-end;">🎙️ Professor's Explanation: Mechanical Displacement, Electrical Measurement &amp; Static vs. Dynamic</div>
-        <p style="margin: 0;">
-          في بعض الأنظمة، حركة الـ <span class="mono">Bourdon Tube</span> أو الـ <span class="mono">Diaphragm</span> أو الـ <span class="mono">Bellows</span> مش بتُستخدم لتحريك <span class="mono">Pointer</span> بس، لكن ممكن الـ <span class="mono">Displacement</span> ينتقل لـ <span class="mono">Electrical Element</span>. مثلًا ممكن الـ <span class="mono">Mechanical Motion</span> تحرك جزء في <span class="mono">Resistive Sensor</span> فتتغير الـ <span class="mono">Electrical Resistance</span>، وبعد كده نقيس الـ <span class="mono">Electrical Change</span> ونربطه بالـ <span class="mono">Pressure</span> بعد الـ <span class="mono">Calibration</span>. والتسلسل هنا:
-        </p>
-        <div style="text-align: center; margin: 10px 0;">
-          \[ \text{Pressure} \rightarrow \text{Mechanical Displacement} \rightarrow \text{Electrical Change} \rightarrow \text{Pressure Indication} \]
-        </div>
-        <p style="margin: 0;">
-          لكن وجود <span class="mono">Electrical Output</span> لا يعني إن الجهاز بقى خالي من الـ <span class="mono">Mechanical Limitations</span>؛ لأن الـ <span class="mono">Sensing Element</span> لسه بيعتمد على الـ <span class="mono">Deformation</span> والحركة. ولهذا السبب لازم نميّز بين الـ <span class="mono">Sensing Element</span> (الـ <span class="mono">Element</span> اللي بيتأثر بالـ <span class="mono">Pressure</span>)، وعنصر تحويل الـ <span class="mono">Displacement</span> إلى <span class="mono">Electrical Signal</span>، وبين الـ <span class="mono">Signal Processing Circuit</span>.
-        </p>
-        <p style="margin: 8px 0 0 0;">
-          <strong>Static vs. Dynamic Pressure Measurement:</strong> أجهزة الـ <span class="mono">Mechanical Measurement</span> اللي بتعتمد على <span class="mono">Deformation</span> لـ <span class="mono">Elastic Element</span> بتكون مناسبة غالبًا للـ <span class="mono">Static Pressure</span> أو للـ <span class="mono">Pressure</span> المتغير ببطء، بحسب الـ <span class="mono">Design</span>. في الـ <span class="mono">Dynamic Measurement</span> الـ <span class="mono">Pressure</span> بيتغير مع الزمن، فمش كفاية نعرف العلاقة بين الـ <span class="mono">Pressure</span> والـ <span class="mono">Displacement</span> عند الـ <span class="mono">Equilibrium</span>؛ لازم كمان نعرف الـ <span class="mono">Response Speed</span> بتاعة الجهاز. ولو الـ <span class="mono">Pressure</span> اتغير بسرعة أكبر من قدرة الـ <span class="mono">Element</span> والـ <span class="mono">Mechanism</span> على الاستجابة، ممكن الـ <span class="mono">Reading</span> تتأخر عن القيمة الفعلية. وعند اختيار جهاز <span class="mono">Pressure</span> لازم نسأل:
-        </p>
-        <ul style="margin: 4px 0 0 0; padding-right: 22px;">
-          <li>هل المطلوب <span class="mono">Static Pressure</span> ولا <span class="mono">Pressure</span> متغير بسرعة؟</li>
-          <li>إيه الـ <span class="mono">Expected Pressure Range</span>؟</li>
-          <li>إيه مقدار الـ <span class="mono">Accuracy</span> المطلوب؟</li>
-          <li>هل نحتاج <span class="mono">Mechanical Reading</span>ة مباشرة ولا <span class="mono">Electrical Signal</span>؟</li>
-          <li>هل الجهاز مصمم لتحمل الـ <span class="mono">Pressure</span> المطلوب من غير تجاوز حدود الـ <span class="mono">Elastic Element</span>؟</li>
-        </ul>
-      </div>
-
       <!-- Comparison Table -->
-      <h3 dir="ltr" style="text-align:right; color: var(--royal); margin-top: 28px;">Comparison of the Three Mechanical Sensing Elements</h3>
+      <h3 style="color: var(--royal); margin-top: 28px;">مقارنة عناصر الاستشعار الميكانيكية الثلاثة</h3>
       <div class="table-container">
         <table class="custom-table">
           <thead>
             <tr>
-              <th>Elastic Element</th>
-              <th>Physical Working Principle</th>
-              <th>Typical Purpose</th>
-              <th>Displacement &amp; Sensitivity</th>
-              <th>Main Limitation</th>
+              <th>العنصر المرن</th>
+              <th>مبدأ العمل الفيزيائي</th>
+              <th>الاستخدام المعتاد</th>
+              <th>مقدار الإزاحة والحساسية</th>
+              <th>القيد الأساسي</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td><strong>Bourdon Tube</strong></td>
-              <td>Deformation of a curved elastic tube</td>
-              <td>قياس الـ <span class="mono">Pressure</span> وتحريك <span class="mono">Mechanical Pointer</span></td>
-              <td><span class="mono">Displacement</span> متوسط (<span class="mono">Sensitivity</span> متوسطة)</td>
-              <td>للـ <span class="mono">Static Pressure</span> فقط حسب السلايد؛ حدود الـ <span class="mono">Elastic Limit</span> والـ <span class="mono">Mechanical Errors</span>، ويتأثر بالـ <span class="mono">Plastic Deformation</span></td>
+              <td>انفراج انحناء أنبوب بيضاوي</td>
+              <td>قياس الضغوط المتوسطة والعالية بالعدادات</td>
+              <td>إزاحة متوسطة (حساسية متوسطة)</td>
+              <td>للضغط الساكن فقط، يتأثر بالتشوه اللدن</td>
             </tr>
             <tr>
               <td><strong>Diaphragm</strong></td>
-              <td>Deflection of a flexible membrane</td>
-              <td>قياس الـ <span class="mono">Pressure</span> أو الـ <span class="mono">Pressure Difference</span></td>
-              <td><span class="mono">Displacement</span> صغير جدًا (<span class="mono">Sensitivity</span> عالية للـ <span class="mono">Low Pressures</span>)</td>
-              <td>بيتأثر بالـ <span class="mono">Design</span> وحدود الـ <span class="mono">Elastic Limit</span>؛ وصعب يتحمل الـ <span class="mono">Overpressure</span></td>
+              <td>انحناء قرص غشائي رقيق</td>
+              <td>قياس فروق الضغط المنخفضة والغازات</td>
+              <td>إزاحة صغيرة جداً (حساسية عالية للضغوط المنخفضة)</td>
+              <td>محدودية حد المرونة وصعوبة تحمل الضغط الزائد</td>
             </tr>
             <tr>
               <td><strong>Bellows</strong></td>
-              <td>Expansion or contraction of a folded elastic element</td>
-              <td>تحويل الـ <span class="mono">Pressure</span> إلى <span class="mono">Mechanical Displacement</span></td>
-              <td><span class="mono">Linear Displacement</span> كبير نسبيًا</td>
-              <td>حدود الـ <span class="mono">Elastic Element</span> والـ <span class="mono">Dynamic Response</span> (فيه <span class="mono">Mechanical Inertia</span> واستجابة بطيئة)</td>
+              <td>تمدد وانكماش طيات أسطوانية</td>
+              <td>التحكم الصناعي وتشغيل المفاتيح والقواطع</td>
+              <td>إزاحة طولية كبيرة نسبياً</td>
+              <td>قصور ذاتي ميكانيكي واستجابة ديناميكية بطيئة</td>
             </tr>
           </tbody>
         </table>
@@ -1788,7 +1593,7 @@
       <div class="section-header">
         <div class="section-icon">⚡</div>
         <div class="section-title-wrap">
-          <h2 dir="ltr" style="text-align:right;">6. Electrical Pressure Sensors: Overview</h2>
+          <h2>6. أجهزة الاستشعار الكهربائية: نظرة عامة</h2>
           <span class="section-subtitle">Electrical Pressure Sensors: Molecular vs. Parametric Transducers</span>
         </div>
       </div>
@@ -1801,62 +1606,48 @@
       </div>
 
       <p>
-        الـ <span class="mono">Pressure Sensor</span> هو <span class="mono">Sensor</span> بيستجيب للـ <span class="mono">Pressure</span> الواقع عليه، وبيحوّل تأثير الـ <span class="mono">Pressure</span> إلى <span class="mono">Electrical Change</span> يمكن قياسه. لما الـ <span class="mono">Pressure</span> يتغير بيحصل تأثير على الـ <span class="mono">Sensing Element</span>، وهو الجزء الحساس الموجود داخل الـ <span class="mono">Sensor</span>، والتأثير ده بيؤدي إلى تغير في <span class="mono">Electrical Property</span>، فنقدر نلاحظ التغير من خلال الـ <span class="mono">Electrical Circuit</span> المتصل بيها الـ <span class="mono">Sensor</span>. بمعنى إن الـ <span class="mono">Pressure</span> بيأثر أولًا على الجزء الحساس نفسه، وبعد كده بيظهر تأثيره في الـ <span class="mono">Electrical Output</span> للـ <span class="mono">Sensor</span>.
-      </p>
-      <p>
-        الدكتور وضّح إن فيه نوعين أساسيين من الـ <span class="mono">Pressure Sensors</span> الفرق بينهم في طبيعة الـ <span class="mono">Electrical Change</span> الناتج عن الـ <span class="mono">Pressure</span>: <span class="mono">Piezoresistive Sensor</span> و<span class="mono">Piezoelectric Sensor</span> (وبنشرحهم في Section 7). وطبقًا للسلايدات، الـ <span class="mono">Electrical Pressure Sensors</span> بتتقسم لـ <span class="mono">Molecular Sensors</span> و<span class="mono">Parametric Sensors</span>:
+        أوضح أستاذ المادة أن هناك تصنيفاً جوهرياً يقسم الحساسات الكهربائية إلى عائلتين رئيسيتين بناءً على مكان وطبيعة التغير الكهربائي الناشئ:
       </p>
 
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 24px 0;">
         <div class="def-box" style="margin: 0;">
-          <div class="def-box-title">🔬 1. Molecular Sensors</div>
+          <div class="def-box-title">🔬 1. الحساسات الجزيئية (Molecular Sensors)</div>
           <p class="ltr" style="margin: 0; font-size: 0.95rem; font-weight: 600;">
             "The applied input pressure produces a change in a certain electric property of the sensor material itself."
           </p>
           <p style="margin: 8px 0 0 0; font-size: 0.92rem;">
-            الـ <span class="mono">Pressure</span> بيأثر مباشرةً على الـ <span class="mono">Crystal Structure</span> أو الـ <span class="mono">Molecular Structure</span> لمادة الـ <span class="mono">Sensor</span> نفسها (زي توليد <span class="mono">Charge</span> في الـ <span class="mono">Quartz</span>، أو تغير الـ <span class="mono">Resistivity</span> في الـ <span class="mono">Semiconductors</span>).
+            الضغط يؤثر مباشرة على التركيب البلوري أو البنية الجزيئية لمادة الحساس نفسها (مثل توليد شحنة في الكوارتز، أو تغير المقاومة النوعية في أشباه الموصلات).
           </p>
           <figure class="fig-box in-card" style="--w: 280px;">
-  <img src="images/Slide_23_Molecular_Sensor_Pressure_To_Electrical_Output_Concept.jpg" alt="Molecular Sensor Concept" width="1167" height="912" loading="lazy" decoding="async">
-  <figcaption><span class="fig-num">Figure 6.1:</span> المفهوم العام للـ <span class="mono">Molecular Sensor</span> والتحويل المباشر داخل الـ <span class="mono">Sensing Material</span>.</figcaption>
+  <img src="assast/Slide_23_Molecular_Sensor_Pressure_To_Electrical_Output_Concept.jpg" alt="Molecular Sensor Concept" width="1167" height="912" loading="lazy" decoding="async">
+  <figcaption><span class="fig-num">Figure 6.1:</span> المفهوم العام للحساس الجزيئي (<span class="mono">Molecular Sensor</span>) والتحويل المباشر داخل المادة.</figcaption>
 </figure>
         </div>
         <div class="def-box" style="margin: 0; border-right-color: var(--royal);">
-          <div class="def-box-title">🎛️ 2. Parametric Sensors</div>
+          <div class="def-box-title">🎛️ 2. الحساسات البارامترية (Parametric Sensors)</div>
           <p class="ltr" style="margin: 0; font-size: 0.95rem; font-weight: 600;">
             "The applied input pressure causes a change in a certain electric property of an electric circuit."
           </p>
           <p style="margin: 8px 0 0 0; font-size: 0.92rem;">
-            الـ <span class="mono">Pressure</span> بيحرك <span class="mono">Mechanical Element</span> وينتج <span class="mono">Displacement</span>، والـ <span class="mono">Displacement</span> ده بيغيّر أحد <span class="mono">Parameters</span> الـ <span class="mono">Electrical Circuit</span> الخارجية (الـ <span class="mono">Resistance</span> \( R \)، أو الـ <span class="mono">Inductance</span> \( L \)، أو الـ <span class="mono">Capacitance</span> \( C \)).
+            الضغط يحرك عنصراً ميكانيكياً ينتج إزاحة مادية، وهذه الإزاحة تغير أحد بارامترات الدائرة الكهربائية الخارجية (المقاومة \( R \)، الحث \( L \)، أو السعة \( C \)).
           </p>
           <figure class="fig-box in-card" style="--w: 300px;">
-  <img src="images/Slide_24_Parametric_Sensor_LVDT_With_Bellows.jpg" alt="Parametric Sensor LVDT with Bellows" width="1200" height="896" loading="lazy" decoding="async">
-  <figcaption><span class="fig-num">Figure 6.2:</span> المفهوم العام للـ <span class="mono">Parametric Sensor</span>: <span class="mono">Bellows</span> بيولّد <span class="mono">Displacement</span> بيحرك <span class="mono">LVDT</span>.</figcaption>
+  <img src="assast/Slide_24_Parametric_Sensor_LVDT_With_Bellows.jpg" alt="Parametric Sensor LVDT with Bellows" width="1200" height="896" loading="lazy" decoding="async">
+  <figcaption><span class="fig-num">Figure 6.2:</span> المفهوم العام للحساس البارامتري (<span class="mono">Parametric Sensor</span>): منفاخ يولد إزاحة تحرك محول LVDT.</figcaption>
 </figure>
         </div>
       </div>
 
       
 
-      <div class="prof-explanation">
-        <div class="prof-title" dir="ltr" style="justify-content:flex-end;">🎙️ Professor's Explanation: Pressure, Displacement &amp; Electrical Signal</div>
-        <p style="margin: 0;">
-          أثناء شرح الرسومات، الدكتور وضّح إن الـ <span class="mono">Pressure</span> ممكن يأثر على الجزء الحساس فيؤدي لحدوث حركة أو <span class="mono">Displacement</span>. يعني الـ <span class="mono">Pressure</span> ممكن يؤدي لتحرك الجزء الحساس، وبعد كده بنستفيد من الحركة دي في الحصول على <span class="mono">Electrical Change</span> أو <span class="mono">Electrical Signal</span>. إذن في بعض تصميمات الـ <span class="mono">Sensors</span> بيكون عندنا التسلسل ده:
-        </p>
-        <div style="text-align: center; margin: 10px 0;">
-          \[ \text{Pressure} \rightarrow \text{Displacement} \rightarrow \text{Electrical Signal} \]
-        </div>
-        <p style="margin: 0;">
-          أي إن الـ <span class="mono">Pressure</span> يؤدي إلى <span class="mono">Displacement</span>، والـ <span class="mono">Displacement</span> بيتحول إلى <span class="mono">Electrical Signal</span> يمكن قياسها.
-        </p>
-      </div>
-
       <div class="note-box">
-        <div class="note-box-title" dir="ltr" style="text-align:right;">💡 Dynamic Comparison Between the Two Types (Slide 25):</div>
+        <div class="note-box-title">💡 المقارنة الديناميكية بين النوعين (Slide 25):</div>
         <p class="ltr" style="margin: 0; font-weight: 600;">
           "Both molecular and parametric sensors produce an electric output which is proportional with the applied pressure. The molecular sensors are much more suitable in cases of dynamic pressure measurements."
         </p>
-        <p style="margin: 8px 0 0 0;">السبب: الـ <span class="mono">Molecular Sensors</span> مفيهاش <span class="mono">Mechanical Parts</span> ثقيلة بتتحرك مسافات كبيرة؛ فالـ <span class="mono">Inertia</span> بتاعها مهملة والـ <span class="mono">Natural Frequency</span> عالي جدًا، وده بيخليها مناسبة للـ <span class="mono">Pressure</span> المتغير بسرعة كبيرة والانفجارات والنبضات.</p>
+        <p style="margin: 8px 0 0 0;">
+          السبب الفيزيائي: الحساسات الجزيئية لا تحتوي على أجزاء ميكانيكية ثقيلة تتحرك مسافات كبيرة؛ لذا فإن قصورها الذاتي مهمل وترددها الطبيعي عالي جداً، مما يجعلها مثالية للضغوط المتغيرة بسرعة فائقة والانفجارات والنبضات.
+        </p>
       </div>
     </section>
 
@@ -1869,14 +1660,14 @@
       <div class="section-header">
         <div class="section-icon">💎</div>
         <div class="section-title-wrap">
-          <h2 dir="ltr" style="text-align:right;">7. Molecular Sensors: Piezoelectric &amp; Piezoresistive</h2>
+          <h2>7. الحساسات الجزيئية (Piezoelectric &amp; Piezoresistive)</h2>
           <span class="section-subtitle">Molecular Sensors: Charge Generation &amp; Bulk Resistivity Change</span>
         </div>
       </div>
 
       <!-- 7.1 Piezoelectric -->
-      <h3 dir="ltr" style="text-align:right; color: var(--royal); border-bottom: 2px solid var(--pearl); padding-bottom: 8px;">
-        7.1 Piezoelectric Sensor
+      <h3 style="color: var(--royal); border-bottom: 2px solid var(--pearl); padding-bottom: 8px;">
+        7.1 الحساس الكهروضغطي (Piezoelectric Sensor)
       </h3>
 
       <div class="def-box">
@@ -1891,45 +1682,33 @@
 
       <div class="fig-pair">
       <figure class="fig-box" style="--w: 340px;">
-  <img src="images/Slide_26_Piezoelectric_Transducer_Cross_Section_Electrodes.jpg" alt="Piezoelectric Transducer Cross Section" width="1200" height="896" loading="lazy" decoding="async">
-  <figcaption><span class="fig-num">Figure 7.1:</span> الـ <span class="mono">Cross-Section</span> للـ <span class="mono">Piezoelectric Sensor</span> والـ <span class="mono">Electrodes</span> اللي بتجمّع الـ <span class="mono">Charge</span>.</figcaption>
+  <img src="assast/Slide_26_Piezoelectric_Transducer_Cross_Section_Electrodes.jpg" alt="Piezoelectric Transducer Cross Section" width="1200" height="896" loading="lazy" decoding="async">
+  <figcaption><span class="fig-num">Figure 7.1:</span> المقطع العرضي للحساس الكهروضغطي والأقطاب الكهربائية المجمعة للشحنة.</figcaption>
 </figure>
       <figure class="fig-box" style="--w: 340px;">
-  <img src="images/Slide_26_Piezoelectric_Crystal_Cell_Variable_Pressure.jpg" alt="Piezoelectric Crystal Cell Variable Pressure" width="1200" height="896" loading="lazy" decoding="async">
-  <figcaption><span class="fig-num">Figure 7.2:</span> الـ <span class="mono">Crystal Cell</span> واستجابتها لتغيرات الـ <span class="mono">Pressure</span> المؤثر.</figcaption>
+  <img src="assast/Slide_26_Piezoelectric_Crystal_Cell_Variable_Pressure.jpg" alt="Piezoelectric Crystal Cell Variable Pressure" width="1200" height="896" loading="lazy" decoding="async">
+  <figcaption><span class="fig-num">Figure 7.2:</span> الخلية البلورية واستجابتها لتغيرات الضغط الميكانيكي المؤثر.</figcaption>
 </figure>
     </div>
 
     <div class="media-row" style="--col: 320px;">
       <div class="media-text">
         <div class="prof-explanation">
-        <div class="prof-title" dir="ltr" style="justify-content:flex-end;">🎙️ Professor's Explanation: Piezoelectric Sensor</div>
+        <div class="prof-title">🎙️ شرح الدكتور لظاهرة الـ Piezoelectric Effect:</div>
         <p style="margin: 0;">
-          النوع التاني هو الـ <span class="mono">Piezoelectric Sensor</span>، وبيختلف عن الـ <span class="mono">Piezoresistive Sensor</span>؛ لأن الفكرة هنا مش إن الـ <span class="mono">Pressure</span> يغيّر الـ <span class="mono">Resistance</span>، لكن إن الـ <span class="mono">Pressure</span> الواقع على مادة معينة يؤدي إلى توليد <span class="mono">Electric Charge</span>. الـ <span class="mono">Piezoelectric Effect</span> هو التأثير اللي بيحصل لما نضغط على مادة <span class="mono">Piezoelectric</span> فتتولد <span class="mono">Electric Charges</span> نتيجة الـ <span class="mono">Pressure</span> الواقع عليها. يعني:
+          الـ <span class="mono">Piezoelectric Effect</span> هو التأثير الذي يحدث عندما نضغط على مادة بلورية غير متماثلة الشحنات (مثل بلورة الكوارتز <span class="mono">Quartz Crystal</span>). يؤدي الضغط إلى إزاحة مراكز الشحنات الموجبة والسالبة داخل الشبكة البلورية، فتتولد شحنات كهربائية (<span class="mono">Electric Charge Q</span>) على أسطح الأقطاب:
         </p>
-        <ul style="margin: 6px 0; padding-right: 22px;">
-          <li>بنطبق <span class="mono">Pressure</span> على المادة.</li>
-          <li>المادة بتستجيب للـ <span class="mono">Pressure</span>.</li>
-          <li>نتيجة الـ <span class="mono">Pressure</span>، بيتولد <span class="mono">Electric Charge</span>.</li>
-          <li>الـ <span class="mono">Charge</span> الناتجة ممكن نستفيد منها في الحصول على <span class="mono">Electrical Signal</span>.</li>
-        </ul>
         <div style="text-align: center; margin: 10px 0;">
           \[ Q = d \cdot F = d \cdot A \cdot P \]
         </div>
         <p style="margin: 0;">
-          حيث \( d \) هو الـ <span class="mono">Piezoelectric Coefficient</span>.
-        </p>
-        <p style="margin: 8px 0 0 0;">
-          <strong>اتجاه الـ <span class="mono">Pressure</span> والـ <span class="mono">Charge</span> الناتجة:</strong> الدكتور أشار إن اتجاه الـ <span class="mono">Pressure</span> له تأثير على الـ <span class="mono">Charge</span> الناتجة، وإن تغيير اتجاه الـ <span class="mono">Force</span> أو الـ <span class="mono">Pressure</span> ممكن يؤدي لاختلاف اتجاه أو <span class="mono">Polarity</span> الـ <span class="mono">Charge</span> المتولدة. وكمان قيمة الـ <span class="mono">Charge</span> الناتجة مرتبطة بالـ <span class="mono">Pressure</span> المؤثر على المادة.
-        </p>
-        <p style="margin: 8px 0 0 0;">
-          <strong>المواد المستخدمة:</strong> اتذكر أثناء الشرح مثال الـ <span class="mono">Quartz Crystal</span>، وهو من المواد المرتبطة بخاصية الـ <span class="mono">Piezoelectric Effect</span>؛ والفكرة من المثال إن فيه مواد معينة بتستجيب للـ <span class="mono">Pressure</span> بتوليد <span class="mono">Electric Charge</span>.
+          حيث \( d \) هو معامل الكهروانضغاطية. ونظراً لأن الشحنة صغيرة جداً والمقاومة الداخلية للبلورة هائلة (<span class="mono">High Output Impedance</span>)، فإنه <strong>يلزم حتماً استخدام مكبر إشارة (Charge Amplifier)</strong> لتفادي تسرب الشحنة.
         </p>
       </div>
       </div>
       <figure class="fig-box" style="--w: 320px;">
-  <img src="images/Slide_27_Piezoelectric_Transducer_Dynamic_Pressure_Diagram.jpg" alt="Piezoelectric Dynamic Pressure Diagram" width="1200" height="896" loading="lazy" decoding="async">
-  <figcaption><span class="fig-num">Figure 7.3:</span> نفس الـ <span class="mono">Diagram</span> للـ <span class="mono">Piezoelectric Sensor</span> مستخدم في شرح توليد الـ <span class="mono">Charge</span> تحت الـ <span class="mono">Dynamic Pressure</span>: <span class="mono">Piezoelectric Element</span> و<span class="mono">Electrodes</span> و<span class="mono">Output Voltage</span>.</figcaption>
+  <img src="assast/Slide_27_Piezoelectric_Transducer_Dynamic_Pressure_Diagram.jpg" alt="Piezoelectric Dynamic Pressure Diagram" width="1200" height="896" loading="lazy" decoding="async">
+  <figcaption><span class="fig-num">Figure 7.3:</span> المخطط نفسه للحساس الكهروضغطي مستخدماً في شرح توليد الشحنة تحت الضغط الديناميكي: العنصر الكهروضغطي، الأقطاب، وجهد الخرج (<span class="mono">Output Voltage</span>).</figcaption>
 </figure>
     </div>
 
@@ -1937,17 +1716,15 @@
 
 
       <div class="note-box">
-        <div class="note-box-title" dir="ltr" style="text-align:right;">🛑 Why Is the Piezoelectric Sensor Not Suitable for Static Pressure Measurement?</div>
-        <p style="margin: 0 0 6px 0;">من أهم النقاط اللي أكد عليها الدكتور إن الـ <span class="mono">Piezoelectric Sensor</span> بيعتمد على تغير الـ <span class="mono">Pressure</span>، يعني مناسب للـ <span class="mono">Dynamic Pressure</span>: المقصود إن الـ <span class="mono">Pressure</span> يكون متغير، يزيد أو يقل، مش مجرد <span class="mono">Pressure</span> ثابت مستمر. أما في حالة الـ <span class="mono">Static Pressure</span> فالـ <span class="mono">Sensor</span> مش بيدي <span class="mono">Output</span> مستمر بنفس الصورة المطلوبة لقياس الـ <span class="mono">Static Pressure</span>؛ لأن مبدأ عمله مرتبط بتغير الـ <span class="mono">Pressure</span> وتوليد الـ <span class="mono">Charge</span> نتيجة التغير ده. إذن لازم نفرّق بين:</p>
-        <ul style="margin: 0; padding-right: 22px;">
-          <li><strong>Dynamic Pressure:</strong> <span class="mono">Pressure</span> متغير، وهو المناسب للـ <span class="mono">Working Principle</span> بتاع الـ <span class="mono">Piezoelectric Sensor</span>.</li>
-          <li><strong>Static Pressure:</strong> <span class="mono">Pressure</span> ثابت، ولا يناسب النوع ده لقياسه بصورة مستمرة.</li>
-        </ul>
+        <div class="note-box-title">🛑 لماذا لا يناسب الـ Piezoelectric قياس الضغط الثابت (Static Pressure)؟</div>
+        <p style="margin: 0;">
+          إذا كان الضغط ثابتاً ومستمراً، تتولد الشحنة في اللحظة الأولى فقط ثم تتسرب فوراً عبر مقاومة العزل ومقاومة جهاز القياس إلى الأرض، فيعود الخرج إلى الصفر رغم بقاء الضغط ثابتاً! لذلك يُستخدم حصرياً في <strong>القياسات الديناميكية (Dynamic Pressure Measurements)</strong> مثل قياس ضغط الانفجار داخل محركات الاحتراق وموجات الصدمة الهوائية.
+        </p>
       </div>
 
       <!-- 7.2 Piezoresistive -->
-      <h3 dir="ltr" style="text-align:right; color: var(--royal); margin-top: 32px; border-bottom: 2px solid var(--pearl); padding-bottom: 8px;">
-        7.2 Piezoresistive Sensor
+      <h3 style="color: var(--royal); margin-top: 32px; border-bottom: 2px solid var(--pearl); padding-bottom: 8px;">
+        7.2 الحساس المقاوم للضغط (Piezoresistive Sensor)
       </h3>
 
       <div class="media-row" style="--col: 330px;">
@@ -1959,82 +1736,64 @@
         </p>
       </div>
         <p>
-        الـ <span class="mono">Piezoresistive Sensor</span> هو <span class="mono">Sensor</span> بيعتمد على تغير الـ <span class="mono">Electrical Resistance</span> نتيجة تعرض المادة أو الـ <span class="mono">Sensing Element</span> للـ <span class="mono">Pressure</span>. يعني لما نطبق <span class="mono">Pressure</span> على الـ <span class="mono">Sensing Element</span>، بيحصل تغير في حالته أو شكله، وده بيؤدي لتغير قيمة الـ <span class="mono">Electrical Resistance</span>. إذن الفكرة الأساسية:
+        على عكس مقاييس الانفعال التقليدية (<span class="mono">Strain Gauges</span>) التي تعتمد على التغير الهندسي في الطول والمساحة، فإن المواد المقاومة للانضغاط (مثل السيليكون المطعّم) تتغير مقاومتها النوعية (<span class="mono">Bulk Resistivity</span>) نتيجة تغير طاقة حزم التوصيل عند تعرضها لإجهاد الضغط:
       </p>
-        <ul style="margin: 0; padding-right: 22px; line-height: 1.9;">
-          <li>بنطبق <span class="mono">Pressure</span> على الـ <span class="mono">Sensor</span>.</li>
-          <li>الـ <span class="mono">Pressure</span> بيأثر على الـ <span class="mono">Sensing Element</span>.</li>
-          <li>نتيجة التأثير ده، قيمة الـ <span class="mono">Resistance</span> بتتغير.</li>
-          <li>التغير في الـ <span class="mono">Resistance</span> بيظهر في الـ <span class="mono">Electrical Circuit</span>، ونقدر نستخدمه في قياس الـ <span class="mono">Pressure</span>.</li>
-        </ul>
-      <p>والدكتور وضّح إننا بنستفيد من الخاصية دي في تصميم الـ <span class="mono">Sensor</span>؛ لأننا نقدر نربط بين قيمة الـ <span class="mono">Pressure</span> الواقع على الـ <span class="mono">Sensor</span> والتغير اللي حصل في الـ <span class="mono">Resistance</span>.</p>
-      <p><strong>توضيح الرسم:</strong> الـ <span class="mono">Pressure</span> هو الـ <span class="mono">Input</span>، بيأثر على الـ <span class="mono">Sensor Element</span> وقد يحدث له تغير أو <span class="mono">Deformation</span>، ونتيجة ده قيمة الـ <span class="mono">Resistance</span> بتتغير. المهم نفهم العلاقة بين الـ <span class="mono">Input Pressure</span> والتغير في الـ <span class="mono">Resistance</span>؛ أما اتجاه التغير في الـ <span class="mono">Resistance</span> (زيادة ولا نقصان) فمش واضح بما يكفي علشان نعممه على كل الحالات.</p>
       </div>
       <figure class="fig-box" style="--w: 330px;">
-  <img src="images/Slide_28_Piezoresistive_Wheatstone_Bridge_Sensing_Resistor.jpg" alt="Piezoresistive Wheatstone Bridge Sensing Resistor" width="1200" height="896" loading="lazy" decoding="async">
-  <figcaption><span class="fig-num">Figure 7.4:</span> <span class="mono">Wheatstone Bridge Circuit</span> لدمج الـ <span class="mono">Piezoresistive Element</span> ومعالجة الـ <span class="mono">Signal</span>.</figcaption>
+  <img src="assast/Slide_28_Piezoresistive_Wheatstone_Bridge_Sensing_Resistor.jpg" alt="Piezoresistive Wheatstone Bridge Sensing Resistor" width="1200" height="896" loading="lazy" decoding="async">
+  <figcaption><span class="fig-num">Figure 7.4:</span> دائرة قنطرة ويتستون (<span class="mono">Wheatstone Bridge</span>) لدمج المقاومة الانضغاطية ومعالجة الإشارة.</figcaption>
 </figure>
     </div>
 
 
       <div class="prof-explanation">
-        <div class="prof-title" dir="ltr" style="justify-content:flex-end;">🎙️ Professor's Explanation: Piezoresistive vs. Piezoelectric</div>
+        <div class="prof-title">🎙️ ميزة الـ Piezoresistive في القياس الاستاتيكي:</div>
         <p style="margin: 0;">
-          في الـ <span class="mono">Piezoresistive Sensor</span> الـ <span class="mono">Pressure</span> بيؤدي إلى تغيير قيمة الـ <span class="mono">Resistance</span>، والتغير ده في الـ <span class="mono">Resistance</span> بنقدر نربطه بقيمة الـ <span class="mono">Pressure</span>. وعلشان كده، حسب <span class="mono">Design</span> الـ <span class="mono">Sensor</span>، ممكن نستخدمه لقياس الـ <span class="mono">Static Pressure</span> كمان؛ عكس الـ <span class="mono">Piezoelectric Sensor</span> اللي الـ <span class="mono">Pressure</span> فيه بيؤدي إلى توليد <span class="mono">Electric Charge</span> ومناسب للـ <span class="mono">Dynamic Pressure</span>. إذن الفرق الأساسي بين النوعين: في الـ <span class="mono">Piezoresistive</span> الـ <span class="mono">Pressure</span> بيغيّر الـ <span class="mono">Resistance</span>، وفي الـ <span class="mono">Piezoelectric</span> الـ <span class="mono">Pressure</span> بيؤدي إلى توليد <span class="mono">Electric Charge</span>.
+          بما أن التغير هنا هو تغير في قيمة المقاومة الكهربائية (\( \Delta R \)) وليس شحنة متسربة، فإن التغير في جهد خرج قنطرة ويتستون يظل ثابتاً ومستقراً طالما ظل الضغط المطبق ثابتاً؛ لذا يمكن استخدامه بكفاءة تامة في قياس <strong>الضغط الثابت (Static)</strong> والضغط البطيء والديناميكي أيضاً.
         </p>
       </div>
 
       <!-- Molecular Comparison Table -->
-      <h3 dir="ltr" style="text-align:right; color: var(--royal); margin-top: 28px;">Detailed Comparison: Piezoelectric vs. Piezoresistive</h3>
+      <h3 style="color: var(--royal); margin-top: 28px;">مقارنة تفصيلية بين Piezoelectric و Piezoresistive</h3>
       <div class="table-container">
         <table class="custom-table">
           <thead>
             <tr>
-              <th>Comparison Point</th>
+              <th>وجه المقارنة</th>
               <th>Piezoelectric Sensor</th>
               <th>Piezoresistive Sensor</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><strong>Working Principle</strong></td>
-              <td>توليد <span class="mono">Electric Charge</span> نتيجة الـ <span class="mono">Pressure</span></td>
-              <td>تغير قيمة الـ <span class="mono">Electrical Resistance</span> للـ <span class="mono">Sensing Element</span></td>
+              <td><strong>مبدأ العمل الأساسي</strong></td>
+              <td>توليد شحنة كهربائية نتيجة الضغط</td>
+              <td>تغير قيمة المقاومة الكهربائية لمادة الحساس</td>
             </tr>
             <tr>
-              <td><strong>Effect of Pressure</strong></td>
-              <td>بيؤدي إلى توليد <span class="mono">Electric Charge</span></td>
-              <td>بيغيّر قيمة الـ <span class="mono">Resistance</span></td>
-            </tr>
-            <tr>
-              <td><strong>Changing Property</strong></td>
+              <td><strong>الخاصية المتغيرة</strong></td>
               <td class="center-mono">Electric Charge (Q)</td>
               <td class="center-mono">Resistance (R)</td>
             </tr>
             <tr>
-              <td><strong>Nature of Measurement</strong></td>
-              <td>بيعتمد على تغير الـ <span class="mono">Pressure</span> وتوليد الـ <span class="mono">Charge</span></td>
-              <td>بيعتمد على تغير الـ <span class="mono">Resistance</span> مع الـ <span class="mono">Pressure</span></td>
+              <td><strong>المادة المستخدمة</strong></td>
+              <td>بلورات الكوارتز (Quartz) والسيراميك الكهروضغطي</td>
+              <td>أشباه الموصلات المطعمة والسيليكون</td>
             </tr>
             <tr>
-              <td><strong>Material</strong></td>
-              <td><span class="mono">Quartz Crystal</span> و<span class="mono">Piezoelectric Ceramics</span></td>
-              <td><span class="mono">Doped Semiconductors</span> و<span class="mono">Silicon</span></td>
+              <td><strong>الدائرة الكهربائية الملحقة</strong></td>
+              <td>مكبر شحنة ذو ممانعة دخل فائقة (Charge Amplifier)</td>
+              <td>قنطرة ويتستون (Wheatstone Bridge) + مكبر جهد</td>
             </tr>
             <tr>
-              <td><strong>Associated Circuit</strong></td>
-              <td><span class="mono">Charge Amplifier</span> بـ <span class="mono">Input Impedance</span> عالية</td>
-              <td><span class="mono">Wheatstone Bridge</span> + <span class="mono">Voltage Amplifier</span></td>
+              <td><strong>ملاءمة الضغط الثابت (Static)</strong></td>
+              <td>❌ غير مناسب إطلاقاً (تتسرب الشحنة بسرعة)</td>
+              <td>✅ مناسب جداً ومستقر في قياس الضغط الثابت</td>
             </tr>
             <tr>
-              <td><strong>Suitability for Static Pressure</strong></td>
-              <td>❌ ما يناسبش قياس الـ <span class="mono">Static Pressure</span> المستمر</td>
-              <td>✅ ممكن استخدامه لقياس الـ <span class="mono">Static Pressure</span> حسب <span class="mono">Design</span> الـ <span class="mono">Sensor</span></td>
-            </tr>
-            <tr>
-              <td><strong>Suitability for Dynamic Pressure</strong></td>
-              <td>✅ مناسب جدًا للـ <span class="mono">Dynamic Pressure</span></td>
-              <td>بيعتمد على استجابة الـ <span class="mono">Circuit</span> و<span class="mono">Design</span> الـ <span class="mono">Diaphragm</span></td>
+              <td><strong>ملاءمة الضغط الديناميكي (Dynamic)</strong></td>
+              <td>✅ ممتاز وفائق الحساسية للترددات العالية</td>
+              <td>يعتمد على استجابة الدائرة وتصميم الغشاء</td>
             </tr>
           </tbody>
         </table>
@@ -2051,7 +1810,7 @@
       <div class="section-header">
         <div class="section-icon">🎛️</div>
         <div class="section-title-wrap">
-          <h2 dir="ltr" style="text-align:right;">8. Parametric Sensors</h2>
+          <h2>8. الحساسات البارامترية (Parametric Sensors)</h2>
           <span class="section-subtitle">Parametric Sensors: Resistive, Inductive (LVDT) &amp; Capacitive Transducers</span>
         </div>
       </div>
@@ -2066,13 +1825,13 @@
       </div>
       </div>
       <figure class="fig-box" style="--w: 400px;">
-  <img src="images/Slide_29_Parametric_Pressure_Elements_Bellows_Diaphragm_Bourdon.jpg" alt="Parametric Pressure Elements Bellows Diaphragm Bourdon" width="1584" height="672" loading="lazy" decoding="async">
-  <figcaption><span class="fig-num">Figure 8.1:</span> الـ <span class="mono">Mechanical Elements</span> المستخدمة في الـ <span class="mono">Parametric Sensors</span> (<span class="mono">Bellows</span> و<span class="mono">Diaphragm</span> و<span class="mono">Bourdon Tube</span>) لتوليد الـ <span class="mono">Displacement</span>.</figcaption>
+  <img src="assast/Slide_29_Parametric_Pressure_Elements_Bellows_Diaphragm_Bourdon.jpg" alt="Parametric Pressure Elements Bellows Diaphragm Bourdon" width="1584" height="672" loading="lazy" decoding="async">
+  <figcaption><span class="fig-num">Figure 8.1:</span> العناصر الميكانيكية المستخدمة في الحساسات البارامترية (Bellows, Diaphragm, Bourdon Tube) لتوليد الإزاحة.</figcaption>
 </figure>
     </div>
 
       <p>
-        الـ <span class="mono">Parametric Sensors</span> بتعتمد على مرحلتين من التحويل:
+        تعتمد الحساسات البارامترية على مرحلتين من التحويل:
       </p>
       <div class="formula-box" style="padding: 14px;">
         \[ \text{Pressure } (P) \xrightarrow{\text{Elastic Element}} \text{Displacement } (x) \xrightarrow{\text{Transducer}} \text{Electrical Parameter } (R, L, \text{ or } C) \]
@@ -2080,58 +1839,48 @@
 
 
       <p>
-        بعد شرح أنواع الـ <span class="mono">Sensors</span>، انتقل الدكتور لتصنيف الـ <span class="mono">Transducers</span> حسب الـ <span class="mono">Electrical Property</span> اللي بتتغير داخل الـ <span class="mono">Circuit</span>. ذكر إن عندنا ثلاثة أنواع أساسية، والاختلاف بينهم بيكون في الـ <span class="mono">Electrical Parameter</span> اللي بيتغير: <span class="mono">Resistance Transducer</span> و<span class="mono">Inductance Transducer</span> و<span class="mono">Capacitance Transducer</span>. احفظ إن التصنيف ده قائم على السؤال التالي:
+        أوضح أستاذ المادة أن التصنيف الأساسي للحساسات البارامترية يجيب عن السؤال التالي:
         <span class="mono" style="font-weight: 700; color: var(--royal);">What is the electrical parameter that changes?</span>
-        يعني إيه الـ <span class="mono">Electrical Parameter</span> اللي بيتغير نتيجة المؤثر الخارجي؟ والإجابة بتكون واحدة من ثلاثة: <span class="mono">Resistance</span> أو <span class="mono">Inductance</span> أو <span class="mono">Capacitance</span>.
+        والإجابة تنقسم إلى ثلاثة أنواع رئيسية:
       </p>
 
       <!-- 8.1 Resistive Transducer -->
-      <h3 dir="ltr" style="text-align:right; color: var(--royal); margin-top: 28px;">8.1 Resistance Transducer</h3>
+      <h3 style="color: var(--royal); margin-top: 28px;">8.1 محول المقاومة الكهربائية (Resistive Transducer)</h3>
       <div class="media-row" style="--col: 300px;">
       <div class="media-text">
         <p>
-        الـ <span class="mono">Resistance Transducer</span> هو نوع من الـ <span class="mono">Transducers</span> بيعتمد على حدوث تغير في قيمة الـ <span class="mono">Electrical Resistance</span>. يعني لما المؤثر الخارجي يأثر على الـ <span class="mono">Sensor</span>، قيمة الـ <span class="mono">Resistance</span> بتتغير، وبنستفيد من التغير ده في الـ <span class="mono">Measurement</span>، وده نفس المبدأ اللي اتشرح قبل كده في الـ <span class="mono">Piezoresistive Sensor</span>. وفي الرسم، الـ <span class="mono">Displacement</span> الناتج عن الـ <span class="mono">Bellows</span> أو الـ <span class="mono">Bourdon Tube</span> بيتوصل بـ <span class="mono">Potentiometer</span> أو ذراع بيغيّر الـ <span class="mono">Resistance</span> في <span class="mono">Measuring Bridge</span>. <strong>الـ <span class="mono">Electrical Parameter</span> اللي بيتغير: <span class="mono">Resistance</span>.</strong>
+        تتصل الإزاحة الناتجة عن المنفاخ أو أنبوبة بوردون بزالق مقاومة متغيرة (<span class="mono">Potentiometer</span>) أو ذراع يغير المقاومة في قنطرة قياس:
       </p>
       </div>
       <figure class="fig-box" style="--w: 300px;">
-  <img src="images/Slide_30_Parametric_Resistive_Transducer_Spring_Linkage.jpg" alt="Parametric Resistive Transducer" width="1200" height="896" loading="lazy" decoding="async">
-  <figcaption><span class="fig-num">Figure 8.2:</span> الـ <span class="mono">Parametric Resistance Transducer</span>: <span class="mono">Mechanical Spring Linkage</span> بيغيّر قيمة الـ <span class="mono">Resistance</span> مع الـ <span class="mono">Displacement</span>.</figcaption>
+  <img src="assast/Slide_30_Parametric_Resistive_Transducer_Spring_Linkage.jpg" alt="Parametric Resistive Transducer" width="1200" height="896" loading="lazy" decoding="async">
+  <figcaption><span class="fig-num">Figure 8.2:</span> محول المقاومة البارامتري: وصلة سوستة ميكانيكية تغير قيمة المقاومة تزامناً مع الإزاحة.</figcaption>
 </figure>
     </div>
 
       <!-- 8.2 Inductive Transducer (LVDT) -->
-      <h3 dir="ltr" style="text-align:right; color: var(--royal); margin-top: 28px;">8.2 Inductance Transducer &amp; LVDT</h3>
+      <h3 style="color: var(--royal); margin-top: 28px;">8.2 محول الحث الكهربائي والـ LVDT (Inductive Transducer)</h3>
       <div class="media-row rev" style="--col: 310px;">
       <div class="media-text">
         <p>
-        الـ <span class="mono">Inductance Transducer</span> هو نوع بيعتمد على تغير قيمة الـ <span class="mono">Inductance</span> داخل الـ <span class="mono">Electrical Circuit</span>؛ يعني بدل ما الـ <span class="mono">Electrical Property</span> اللي بتتغير تكون الـ <span class="mono">Resistance</span>، هنا الخاصية اللي بتتغير هي الـ <span class="mono">Inductance</span>. والدكتور أشار إن الـ <span class="mono">Mechanical Displacement</span> ممكن يؤدي لتغير في الـ <span class="mono">Inductance</span>، وبالتالي يحصل <span class="mono">Electrical Change</span> نقدر نستفيد منه في الـ <span class="mono">Measurement</span>. <strong>الـ <span class="mono">Electrical Parameter</span> اللي بيتغير: <span class="mono">Inductance</span>.</strong>
-      </p>
-      <p>
-        <strong>LVDT:</strong> أثناء مراجعة الرسومات، الدكتور أشار لرسم خاص بالـ <span class="mono">LVDT</span> وذكر الاسم الكامل <span class="mono" style="color: var(--royal); font-weight: 700;">Linear Variable Differential Transformer</span>، وهو مرتبط بقياس الـ <span class="mono">Displacement</span> أو الـ <span class="mono">Position</span>. وأشار إن الرسومات الثلاثة اللي كان بيراجعها بتمثل أمثلة مختلفة: الأول <span class="mono">LVDT</span>، والتاني <span class="mono">Resistance Transducer</span>، والتالت <span class="mono">Capacitance Transducer</span>. أما تفاصيل تركيب الـ <span class="mono">LVDT</span> وطريقة عمله من جوه فما اتشرحتش بالتفصيل، فبنكتفي بما ذكره الدكتور عن اسمه وارتباطه بقياس الـ <span class="mono">Displacement</span> والـ <span class="mono">Position</span>.
-      </p>
-      <p>
-        <strong>من الرسم:</strong> الـ <span class="mono">LVDT</span> فيه <span class="mono">Primary Coil</span> و<span class="mono">Secondary Coils</span> و<span class="mono">Magnetic Core</span> متصل بالـ <span class="mono">Bellows</span>؛ وعند تغير الـ <span class="mono">Pressure</span> بيتحرك الـ <span class="mono">Core</span> فيغيّر الـ <span class="mono">Mutual Inductance</span> بين الـ <span class="mono">Coils</span>، وينتج <span class="mono">Differential AC Voltage</span> بيتناسب مع موضع الـ <span class="mono">Core</span>.
+        يعتمد على تغير الحث الكهرومغناطيسي. أشهر أشكاله هو الـ <strong>LVDT</strong> وهو اختصار لـ:
+        <span class="mono" style="color: var(--royal); font-weight: 700;">Linear Variable Differential Transformer</span>.
+        يحتوي المحول على ملف ابتدائي وملفين ثانويين وقلب حديدي متحرك (<span class="mono">Magnetic Core</span>). يتصل القلب بالمنفاخ أو الغشاء، وعند تغير الضغط يتحرك القلب ليغير الحث المتبادل بين الملفات، فينتج فرق جهد متناوب يتناسب مع موضع القلب:
       </p>
       </div>
       <figure class="fig-box" style="--w: 310px;">
-  <img src="images/Slide_30_Parametric_Inductive_Transducer_LVDT_Bellows.jpg" alt="Parametric Inductive Transducer LVDT Bellows" width="1200" height="896" loading="lazy" decoding="async">
-  <figcaption><span class="fig-num">Figure 8.3:</span> الـ <span class="mono">Inductance Transducer</span> (<span class="mono">LVDT</span>) المتصل بـ <span class="mono">Bellows</span> لتحويل الـ <span class="mono">Linear Displacement</span> إلى <span class="mono">Differential Voltage Signal</span>.</figcaption>
+  <img src="assast/Slide_30_Parametric_Inductive_Transducer_LVDT_Bellows.jpg" alt="Parametric Inductive Transducer LVDT Bellows" width="1200" height="896" loading="lazy" decoding="async">
+  <figcaption><span class="fig-num">Figure 8.3:</span> محول LVDT الحثي متصل بمنفاخ (<span class="mono">Bellows</span>) لتحويل الإزاحة الخطية إلى إشارة جهد تفاضلية.</figcaption>
 </figure>
     </div>
 
       <!-- 8.3 Capacitive Transducer -->
-      <h3 dir="ltr" style="text-align:right; color: var(--royal); margin-top: 28px;">8.3 Capacitance Transducer</h3>
+      <h3 style="color: var(--royal); margin-top: 28px;">8.3 محول السعة الكهربائية (Capacitive Transducer)</h3>
       <div class="media-row" style="--col: 320px;">
       <div class="media-text">
         <p>
-        الـ <span class="mono">Capacitance Transducer</span> بيعتمد على تغير قيمة الـ <span class="mono">Capacitance</span>. ولفهم النوع ده لازم نعرف الأول إن الـ <span class="mono">Capacitor</span> بيتكون من <span class="mono">Two Conducting Plates</span> يفصل بينهم <span class="mono">Dielectric Material</span>. قيمة الـ <span class="mono">Capacitance</span> بتعتمد على ثلاثة عوامل أساسية:
+        المكثف يتكون من لوحين موصلين تفصل بينهما مادة عازلة (<span class="mono">Dielectric Material</span>). تعتمد سعة المكثف على ثلاثة عوامل:
       </p>
-        <ul style="margin: 0; padding-right: 22px; line-height: 1.9;">
-          <li><strong>Area:</strong> الـ <span class="mono">Area</span> بتاعة الـ <span class="mono">Plates</span>.</li>
-          <li><strong>Distance:</strong> الـ <span class="mono">Distance</span> بين الـ <span class="mono">Plates</span>.</li>
-          <li><strong>Dielectric Material:</strong> نوع الـ <span class="mono">Dielectric Material</span> الموجود بين الـ <span class="mono">Plates</span>.</li>
-        </ul>
-      <p>وبالتالي لو حصل تغير في الـ <span class="mono">Distance</span> بين الـ <span class="mono">Plates</span>، قيمة الـ <span class="mono">Capacitance</span> هتتغير. <strong>الـ <span class="mono">Electrical Parameter</span> اللي بيتغير: <span class="mono">Capacitance</span>.</strong></p>
         <div class="formula-box">
         <span class="formula-box-title">Capacitance Governing Formula</span>
         \[ C = \frac{\varepsilon_0 \cdot \varepsilon_r \cdot A}{d} \]
@@ -2141,63 +1890,56 @@
       </div>
       </div>
       <figure class="fig-box" style="--w: 320px;">
-  <img src="images/Slide_30_Parametric_Capacitive_Pressure_Sensor_Diagram.jpg" alt="Parametric Capacitive Pressure Sensor Diagram" width="1200" height="896" loading="lazy" decoding="async">
-  <figcaption><span class="fig-num">Figure 8.4:</span> الـ <span class="mono">Capacitive Pressure Sensor</span>: <span class="mono">Fixed Plate</span> و<span class="mono">Movable Diaphragm</span> بيتغير الـ <span class="mono">Distance</span> بينهم \( d \).</figcaption>
+  <img src="assast/Slide_30_Parametric_Capacitive_Pressure_Sensor_Diagram.jpg" alt="Parametric Capacitive Pressure Sensor Diagram" width="1200" height="896" loading="lazy" decoding="async">
+  <figcaption><span class="fig-num">Figure 8.4:</span> حساس الضغط السعوي (<span class="mono">Capacitive Pressure Sensor</span>): لوح ثابت وغشاء متحرك يتغير البعد بينهما \( d \).</figcaption>
 </figure>
     </div>
 
 
       <div class="prof-explanation">
-        <div class="prof-title" dir="ltr" style="justify-content:flex-end;">🎙️ Professor's Explanation: Capacitive Pressure Sensor (Lecture 6)</div>
+        <div class="prof-title">🎙️ تفصيل شرح أستاذ المادة لرسم الحساس السعوي (Lecture 6):</div>
         <p style="margin: 0;">
-          في نهاية المحاضرة، رجع الدكتور لشرح رسم الـ <span class="mono">Capacitive Pressure Sensor</span> بالتفصيل. الرسم قائم على وجود <span class="mono">Two Plates</span> بينهم <span class="mono">Distance</span> معينة، وبالتالي بيكون بينهم <span class="mono">Capacitance</span>. أحد الـ <span class="mono">Plates</span> ثابت (<span class="mono">Fixed Plate</span>)، والـ <span class="mono">Plate</span> التاني ممكن يتحرك نتيجة تأثير الـ <span class="mono">Pressure</span>. <strong>خطوات عمل الـ <span class="mono">Sensor</span>:</strong>
+          في حساس الضغط السعوي العملي، يتكون الحساس من لوحين:
         </p>
-        <ol style="margin: 6px 0; padding-right: 22px; line-height: 1.9;">
-          <li>بيتطبق <span class="mono">Pressure</span> على الـ <span class="mono">Sensor</span>، وده هو الـ <span class="mono">Input Pressure</span>.</li>
-          <li>الـ <span class="mono">Pressure</span> بيأثر على الجزء المتحرك أو الـ <span class="mono">Diaphragm</span>.</li>
-          <li>نتيجة الـ <span class="mono">Pressure</span>، بيحصل انحراف أو حركة في الجزء المتحرك.</li>
-          <li>الحركة بتؤدي إلى تغير الـ <span class="mono">Distance</span> بين الـ <span class="mono">Plates</span>.</li>
-          <li>بما إن الـ <span class="mono">Capacitance</span> بتعتمد على الـ <span class="mono">Distance</span> بين الـ <span class="mono">Plates</span>، فقيمتها بتتغير.</li>
-          <li>بنستفيد من التغير في الـ <span class="mono">Capacitance</span> في قياس الـ <span class="mono">Pressure</span>.</li>
-        </ol>
-        <div style="text-align: center; margin: 10px 0;">
-          \[ \text{Pressure} \rightarrow \text{Diaphragm Movement} \rightarrow \text{Change in Distance} \rightarrow \text{Change in Capacitance} \]
-        </div>
+        <ul style="margin: 6px 0; padding-right: 22px;">
+          <li>لوح ثابت (<span class="mono">Fixed Plate</span>) مثبت في جسم الحساس ومعزول كهربائياً.</li>
+          <li>لوح مرن متحرك (<span class="mono">Movable Plate / Diaphragm</span>) معرض لضغط المائع.</li>
+        </ul>
         <p style="margin: 0;">
-          وفي الرسم اللي اتشرح، التركيز كان على تغير الـ <span class="mono">Distance</span> بين الـ <span class="mono">Plates</span> نتيجة الـ <span class="mono">Pressure</span>؛ وده هو الأساس اللي بيعتمد عليه الـ <span class="mono">Capacitive Pressure Sensor</span>.
+          عندما يؤثر الضغط، ينحني الغشاء مقترباً من اللوح الثابت، فتقل المسافة بين اللوحين (\( d \downarrow \)). ومن العلاقة العكسية \( C \propto \frac{1}{d} \)، ترتفع قيمة السعة الكهربائية (\( C \uparrow \)). يُدمج المكثف في دائرة مهتز (<span class="mono">LC Oscillator</span>) أو قنطرة ترددية لتحويل تغير السعة إلى تغير دقيق في التردد أو الجهد يتناسب طردياً مع الضغط.
         </p>
       </div>
 
       <!-- Summary Table 3 Transducers -->
-      <h3 dir="ltr" style="text-align:right; color: var(--royal); margin-top: 28px;">Comparison of the Three Parametric Transducer Types</h3>
+      <h3 style="color: var(--royal); margin-top: 28px;">مقارنة الأنواع الثلاثة للمحولات البارامترية</h3>
       <div class="table-container">
         <table class="custom-table">
           <thead>
             <tr>
-              <th>Transducer Type</th>
-              <th>Changing Property</th>
-              <th>Mechanism of the Displacement Effect</th>
-              <th>Notable Engineering Advantage</th>
+              <th>نوع المحول (Transducer Type)</th>
+              <th>الخاصية المتغيرة</th>
+              <th>آلية التأثير بالإزاحة</th>
+              <th>الميزة الهندسية البارزة</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td><strong>Resistance Transducer</strong></td>
               <td class="center-mono">Resistance (R)</td>
-              <td>حركة <span class="mono">Slider</span> على <span class="mono">Resistance Wire</span> أو <span class="mono">Strain</span> في شريحة</td>
-              <td>بساطة الـ <span class="mono">Circuits</span> وإمكانية التغذية بـ <span class="mono">DC Voltage</span></td>
+              <td>حركة زالق على سلك مقاومة أو انفعال شريحة</td>
+              <td>بساطة الدوائر وإمكانية التغذية بجهد مستمر (DC)</td>
             </tr>
             <tr>
               <td><strong>Inductance Transducer (LVDT)</strong></td>
               <td class="center-mono">Inductance (L)</td>
-              <td>حركة <span class="mono">Magnetic Core</span> بتغيّر الـ <span class="mono">Mutual Inductance</span></td>
-              <td><span class="mono">Mechanical Friction</span> منعدم تقريبًا وعمر تشغيلي طويل جدًا</td>
+              <td>حركة قلب مغناطيسي يغير الحث المتبادل</td>
+              <td>احتكاك ميكانيكي منعدم تقريباً وعمر تشغيلي طويل جداً</td>
             </tr>
             <tr>
               <td><strong>Capacitance Transducer</strong></td>
               <td class="center-mono">Capacitance (C)</td>
-              <td>تغير الـ <span class="mono">Distance</span> بين الـ <span class="mono">Plates</span> \( d \)</td>
-              <td><span class="mono">Sensitivity</span> فائقة واستجابة ممتازة للـ <span class="mono">Micro Displacements</span> الدقيقة</td>
+              <td>تغير المسافة الفاصلة بين اللوحين \( d \)</td>
+              <td>حساسية فائقة واستجابة ممتازة لإزاحات ميكروية دقيقة</td>
             </tr>
           </tbody>
         </table>
@@ -2214,7 +1956,7 @@
       <div class="section-header">
         <div class="section-icon">💨</div>
         <div class="section-title-wrap">
-          <h2 dir="ltr" style="text-align:right;">9. Pressure Measurement in Flow Fields</h2>
+          <h2>9. قياس الضغط في مجالات الجريان (Flow Fields)</h2>
           <span class="section-subtitle">Static Pressure, Dynamic Pressure &amp; Total (Stagnation) Pressure</span>
         </div>
       </div>
@@ -2231,8 +1973,8 @@
       </div>
       </div>
       <figure class="fig-box" style="--w: 420px;">
-  <img src="images/Slide_31_Flow_Field_Static_Total_Dynamic_Pressure_Diagrams.jpg" alt="Flow Field Static Total Dynamic Pressure Diagrams" width="1200" height="896" loading="lazy" decoding="async">
-  <figcaption><span class="fig-num">Figure 9.1:</span> <span class="mono">Probes</span> قياس الـ <span class="mono">Pressure</span> في الـ <span class="mono">Flow Fields</span>: <span class="mono">Wall Tap</span> للـ <span class="mono">Static Pressure</span>، و<span class="mono">Pitot Tube</span> للـ <span class="mono">Total Pressure</span>، و<span class="mono">Pitot-Static Tube</span> المركّبة.</figcaption>
+  <img src="assast/Slide_31_Flow_Field_Static_Total_Dynamic_Pressure_Diagrams.jpg" alt="Flow Field Static Total Dynamic Pressure Diagrams" width="1200" height="896" loading="lazy" decoding="async">
+  <figcaption><span class="fig-num">Figure 9.1:</span> مجسات قياس الضغط في مجالات الجريان: فتحة الجدار للضغط الساكن، أنبوبة بيتوت للضغط الكلي، وأنبوبة بيتوت-استاتيك المركبة.</figcaption>
 </figure>
     </div>
 
@@ -2245,20 +1987,17 @@
 
 
       <div class="prof-explanation">
-        <div class="prof-title" dir="ltr" style="justify-content:flex-end;">🎙️ Professor's Explanation: Total Pressure &amp; Bernoulli's Assumptions (Slide 33)</div>
+        <div class="prof-title">🎙️ شروط تطبيق معادلة برنولي (Bernoulli's Equation Assumptions - Slide 33):</div>
         <p style="margin: 0;">
-          الـ <span class="mono">Static Pressure</span> \( p \) هو الـ <span class="mono">Pressure</span> اللي بنربطه بحالة الـ <span class="mono">Fluid</span> عند النقطة، مش بمجرد الـ <span class="mono">Velocity</span> وحدها. والـ <span class="mono">Dynamic Pressure</span> في سياق الـ <span class="mono">Incompressible Flow</span> بيُعرّف عادةً بـ \( q = \frac{1}{2}\rho V^2 \)، حيث \( \rho \) هي الـ <span class="mono">Density</span> و\( V \) هي الـ <span class="mono">Velocity</span>. أما الـ <span class="mono">Total Pressure</span> \( p_0 \) ففي الحالة المثالية المناسبة لـ <span class="mono">Bernoulli\'s Equation</span>، ومع إهمال فروق الـ <span class="mono">Height</span> وفواقد الـ <span class="mono">Energy</span>، بيساوي \( p_0 = p + \frac{1}{2}\rho V^2 \)؛ أي إن الـ <span class="mono">Total Pressure</span> بيساوي الـ <span class="mono">Static Pressure</span> مضافًا إليه الـ <span class="mono">Dynamic Pressure</span>.
-        </p>
-        <p style="margin: 8px 0 0 0;">
-          <strong>مهم:</strong> العلاقة دي بتخص الشروط المذكورة، مش <span class="mono">Rule</span> نستخدمها من غير مراعاة فرق الـ <span class="mono">Height</span> وفواقد الـ <span class="mono">Energy</span>. ولصحة تطبيق \( P + \frac{1}{2}\rho V^2 = \text{constant} \) لازم تتوفر الشروط الستة الإلزامية:
+          لصحة تطبيق العلاقة \( P + \frac{1}{2}\rho V^2 = \text{constant} \)، يجب استيفاء الشروط الستة الإلزامية:
         </p>
         <ol style="margin: 8px 0 0 0; padding-right: 22px; line-height: 1.9;">
-          <li><strong>Inviscid Flow:</strong> الـ <span class="mono">Fluid</span> عديم الـ <span class="mono">Viscosity</span> (إهمال <span class="mono">Friction Forces</span> والـ <span class="mono">Internal Shear</span>).</li>
-          <li><strong>Steady Flow:</strong> الخواص ما بتتغيرش مع الزمن عند أي نقطة.</li>
-          <li><strong>Along a Streamline:</strong> التطبيق على طول <span class="mono">Streamline</span> واحد.</li>
-          <li><strong>Incompressible Flow:</strong> الـ <span class="mono">Density</span> \( \rho \) ثابتة.</li>
-          <li><strong>No Shaft Work:</strong> مفيش <span class="mono">Mechanical Work</span> مضاف أو مستخرج (مفيش <span class="mono">Pump</span> أو <span class="mono">Turbine</span> في مسار الـ <span class="mono">Measurement</span>).</li>
-          <li><strong>No Heat Transfer:</strong> مفيش <span class="mono">Heat Transfer</span> عبر حدود الـ <span class="mono">Flow</span>.</li>
+          <li><strong>Inviscid Flow:</strong> مائع عديم اللزوجة (إهمال قوى الاحتكاك والقص الداخلي).</li>
+          <li><strong>Steady Flow:</strong> سريان مستقر (الخواص لا تتغير مع الزمن عند أي نقطة).</li>
+          <li><strong>Along a Streamline:</strong> التطبيق على طول خط انسياب واحد.</li>
+          <li><strong>Incompressible Flow:</strong> مائع غير قابل للانضغاط (كثافة المائع \( \rho \) ثابتة).</li>
+          <li><strong>No Shaft Work:</strong> لا يوجد شغل ميكانيكي مضاف أو مستخرج (لا توجد مضخة أو توربينة في مسار القياس).</li>
+          <li><strong>No Heat Transfer:</strong> انعدام التبادل الحراري عبر حدود سريان المائع.</li>
         </ol>
       </div>
 
@@ -2290,76 +2029,76 @@
       <div class="section-header">
         <div class="section-icon">🏆</div>
         <div class="section-title-wrap">
-          <h2 dir="ltr" style="text-align:right;">10. Comprehensive Comparison Table &amp; Question Bank</h2>
+          <h2>10. جدول المقارنة الشامل وبنك الأسئلة</h2>
           <span class="section-subtitle">Comprehensive Transducer Comparison &amp; Interactive Question Bank</span>
         </div>
       </div>
 
-      <h3 dir="ltr" style="text-align:right; color: var(--royal); margin-bottom: 14px;">Comprehensive Comparison of All Pressure Measurement Devices</h3>
+      <h3 style="color: var(--royal); margin-bottom: 14px;">جدول المقارنة الشامل لجميع أجهزة قياس الضغط</h3>
       <div class="table-container">
         <table class="custom-table">
           <thead>
             <tr>
-              <th>Device</th>
-              <th>Physical Principle</th>
-              <th>Main Use</th>
-              <th>Main Limitation</th>
+              <th>الجهاز (Device)</th>
+              <th>المبدأ الفيزيائي</th>
+              <th>الاستخدام الرئيسي</th>
+              <th>القيد الأساسي (Limitation)</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td><strong>Barometer</strong></td>
-              <td><span class="mono">Equilibrium</span> بين <span class="mono">Liquid Column</span> والـ <span class="mono">Atmospheric Pressure</span></td>
-              <td>قياس الـ <span class="mono">Atmospheric Pressure</span> والتنبؤ بالطقس</td>
-              <td>قياس مرجعي <span class="mono">Static</span> للـ <span class="mono">Atmospheric Pressure</span> فقط</td>
+              <td>اتزان عمود سائل مع الضغط الجوي</td>
+              <td>قياس الضغط الجوي المطلق والتنبؤ بالطقس</td>
+              <td>قياس مرجعي استاتيكي للضغط الجوي فقط</td>
             </tr>
             <tr>
               <td><strong>Manometer</strong></td>
-              <td>Hydrostatic liquid column</td>
-              <td>قياس الـ <span class="mono">Pressure</span> أو الـ <span class="mono">Pressure Difference</span> من فرق الـ <span class="mono">Height</span></td>
-              <td>استجابة بطيئة نسبيًا وحجم عملي كبير عند الـ <span class="mono">High Pressures</span>؛ مدى عملي لا يتجاوز عادةً 7 bar</td>
+              <td>فرق ارتفاع عمود سائل هيدروستاتيكي</td>
+              <td>قياس الضغط وفرق الضغط في المعامل والأنابيب</td>
+              <td>استجابة ديناميكية بطيئة، مدى محدود (أقل من 7 bar)</td>
             </tr>
             <tr>
               <td><strong>Dead Weight Tester</strong></td>
-              <td>Known force divided by effective area</td>
-              <td>الـ <span class="mono">Calibration</span> لأجهزة الـ <span class="mono">Pressure</span> كـ <span class="mono">Primary Standard</span></td>
-              <td>مناسب أساسًا للـ <span class="mono">Static Calibration</span>، ويتأثر بـ <span class="mono">Piston Friction</span></td>
+              <td>كتلة معلومة فوق مكبس ذي مساحة دقيقة</td>
+              <td>معايرة أجهزة وعدادات الضغط كمعيار أولي</td>
+              <td>للمعايرة الاستاتيكية فقط، يتأثر باحتكاك المكبس</td>
             </tr>
             <tr>
               <td><strong>Bourdon Tube</strong></td>
-              <td>Deformation of a curved elastic tube</td>
-              <td>قياس الـ <span class="mono">Pressure</span> وتحريك <span class="mono">Mechanical Pointer</span></td>
-              <td>حدود الـ <span class="mono">Elastic Limit</span> والـ <span class="mono">Mechanical Errors</span>؛ للـ <span class="mono">Static Pressure</span> فقط</td>
+              <td>انفراج تشوه أنبوب مرن بيضاوي</td>
+              <td>عدادات قياس الضغط الصناعية المباشرة</td>
+              <td>للضغط الساكن فقط، يتأثر بالتشوه اللدن فوق حد المرونة</td>
             </tr>
             <tr>
               <td><strong>Diaphragm</strong></td>
-              <td>Deflection of a flexible membrane</td>
-              <td>قياس الـ <span class="mono">Pressure</span> أو الـ <span class="mono">Pressure Difference</span></td>
-              <td>بيتأثر بالـ <span class="mono">Design</span> وحدود الـ <span class="mono">Elastic Limit</span>؛ <span class="mono">Displacement</span> صغير جدًا</td>
+              <td>انحناء غشاء مرن رقيق</td>
+              <td>قياس فروق الضغوط المنخفضة والغازات</td>
+              <td>إزاحة ميكانيكية صغيرة جداً، حدود مرونة دقيقة</td>
             </tr>
             <tr>
               <td><strong>Bellows</strong></td>
-              <td>Expansion or contraction of a folded elastic element</td>
-              <td>تحويل الـ <span class="mono">Pressure</span> إلى <span class="mono">Mechanical Displacement</span></td>
-              <td>حدود الـ <span class="mono">Elastic Element</span> والـ <span class="mono">Dynamic Response</span></td>
+              <td>تمدد وانكماش طيات أسطوانية مرنة</td>
+              <td>تحويل الضغط إلى إزاحة ميكانيكية كبيرة</td>
+              <td>قصور ذاتي واستجابة بطيئة، حدود إجهاد ميكانيكي</td>
             </tr>
             <tr>
               <td><strong>Piezoelectric</strong></td>
-              <td>توليد <span class="mono">Electric Charge</span></td>
-              <td>الـ <span class="mono">Dynamic Pressure</span> المتغير</td>
-              <td>ما يناسبش الـ <span class="mono">Static Pressure</span> المستمر، ومحتاج <span class="mono">Amplifier</span></td>
+              <td>توليد شحنة كهربائية في البلورة</td>
+              <td>الضغوط الديناميكية المتغيرة والصدمات والانفجارات</td>
+              <td>لا يناسب الضغط الثابت (تسرب الشحنة)، يحتاج مكبر</td>
             </tr>
             <tr>
               <td><strong>Piezoresistive</strong></td>
-              <td>تغير الـ <span class="mono">Electrical Resistance</span></td>
-              <td>الـ <span class="mono">Static</span> والـ <span class="mono">Dynamic Pressure</span> حسب <span class="mono">Design</span> الـ <span class="mono">Sensor</span></td>
-              <td>محتاج <span class="mono">Wheatstone Bridge</span> و<span class="mono">Temperature Compensation</span></td>
+              <td>تغير المقاومة النوعية لأشباه الموصلات</td>
+              <td>قياس الضغط الثابت والديناميكي بدقة عالية</td>
+              <td>يحتاج لقنطرة ويتستون وتعويض للتغيرات الحرارية</td>
             </tr>
             <tr>
               <td><strong>Parametric (R, L, C)</strong></td>
-              <td><span class="mono">Mechanical Displacement</span> بيغيّر <span class="mono">Parameter</span> الـ <span class="mono">Circuit</span></td>
-              <td>أنظمة المراقبة والـ <span class="mono">Electronic Control</span> عن بُعد</td>
-              <td>بيعتمد على <span class="mono">Mechanical Element</span> وسيط (زي الـ <span class="mono">Bellows</span> أو الـ <span class="mono">Diaphragm</span>)</td>
+              <td>إزاحة ميكانيكية تغير بارامتر الدائرة</td>
+              <td>أنظمة المراقبة والتحكم الإلكتروني عن بعد</td>
+              <td>يعتمد على عنصر ميكانيكي وسيط (مثل المنفاخ أو الغشاء)</td>
             </tr>
           </tbody>
         </table>
@@ -2369,78 +2108,93 @@
       <!-- Interactive Question Bank (.q-section) -->
       <div class="q-section">
         <div class="q-section-title">
-          <span>🧠 Interactive Revision Questions</span>
+          <span>🧠 بنك الأسئلة التدريبية الامتحانية (Interactive Revision Questions)</span>
         </div>
 
         <!-- Question 1 -->
         <div class="q-item">
           <div class="q-question">
-            <span>Q1: إيه الفرق الجوهري بين الـ <span class="mono">Molecular Sensors</span> والـ <span class="mono">Parametric Sensors</span> في الـ <span class="mono">Pressure Measurement</span>؟</span>
+            <span>س1: ما هو الفرق الجوهري بين الحساسات الجزيئية (Molecular) والحساسات البارامترية (Parametric) في قياس الضغط؟</span>
             <button type="button" class="q-toggle-btn" onclick="toggleAnswer(this)">عرض الحل الكامل ▼</button>
           </div>
           <div class="q-answer">
             <strong>الإجابة النموذجية:</strong><br>
-            • في <strong>Molecular Sensors:</strong> الـ <span class="mono">Pressure</span> المطبق بيؤدي مباشرةً إلى تغير <span class="mono">Electrical Property</span> داخل مادة الـ <span class="mono">Sensor</span> نفسها على الـ <span class="mono">Molecular Level</span> أو الـ <span class="mono">Crystal Level</span> (زي توليد الـ <span class="mono">Charge</span> في الـ <span class="mono">Piezoelectric</span> أو تغير الـ <span class="mono">Resistivity</span> في الـ <span class="mono">Piezoresistive</span>)، وبتتميز باستجابة <span class="mono">Dynamic</span> سريعة جدًا لانعدام الـ <span class="mono">Moving Mechanical Parts</span> الكبيرة.<br>• في <strong>Parametric Sensors:</strong> الـ <span class="mono">Pressure</span> بيأثر أولًا على <span class="mono">Elastic Element</span> (زي الـ <span class="mono">Diaphragm</span> أو الـ <span class="mono">Bellows</span>) فيولّد <span class="mono">Displacement</span>، والـ <span class="mono">Displacement</span> ده بيحرك أجزاء داخل <span class="mono">Electrical Circuit</span> لتغيير <span class="mono">Electrical Parameter</span> زي الـ <span class="mono">Resistance</span> \( R \) أو الـ <span class="mono">Inductance</span> \( L \) (في الـ <span class="mono">LVDT</span>) أو الـ <span class="mono">Capacitance</span> \( C \).
+            • في <strong>الحساسات الجزيئية (Molecular Sensors):</strong> الضغط المطبق يؤدي مباشرة إلى تغير خاصية كهربائية داخل مادة الحساس نفسها على المستوى الجزيئي أو البلوري (مثل توليد الشحنة في Piezoelectric أو تغير المقاومة النوعية في Piezoresistive)، وتتميز باستجابة ديناميكية فائقة السرعة لانعدام الأجزاء الميكانيكية المتحركة الكبيرة.<br>
+            • في <strong>الحساسات البارامترية (Parametric Sensors):</strong> يؤثر الضغط أولاً على عنصر ميكانيكي مرن (مثل Diaphragm أو Bellows) ليولد إزاحة مادية (<span class="mono">Displacement</span>)، وهذه الإزاحة تحرك أجزاء داخل دائرة كهربائية لتغيير بارامتر كهربائي خارجي مثل المقاومة (\( R \)) أو الحث (\( L \)) في محول LVDT أو السعة (\( C \)).
           </div>
         </div>
 
         <!-- Question 2 -->
         <div class="q-item">
           <div class="q-question">
-            <span>Q2: علّل: ليه الـ <span class="mono">Piezoelectric Sensor</span> ما يصلحش لقياس الـ <span class="mono">Static Pressure</span>؟</span>
+            <span>س2: علل: لماذا لا يصلح الحساس الكهروضغطي (Piezoelectric Sensor) لقياس الضغط الثابت (Static Pressure)؟</span>
             <button type="button" class="q-toggle-btn" onclick="toggleAnswer(this)">عرض الحل الكامل ▼</button>
           </div>
           <div class="q-answer">
             <strong>الإجابة النموذجية:</strong><br>
-            لأن الـ <span class="mono">Piezoelectric Sensor</span> بيعتمد على تغير الـ <span class="mono">Pressure</span>، يعني مناسب للـ <span class="mono">Dynamic Pressure</span> بس؛ فمبدأ عمله مرتبط بتغير الـ <span class="mono">Pressure</span> وتوليد الـ <span class="mono">Charge</span> نتيجة التغير ده. في حالة الـ <span class="mono">Static Pressure</span> الثابت المستمر الـ <span class="mono">Sensor</span> مش بيدي <span class="mono">Output</span> مستمر بنفس الصورة المطلوبة لقياس الـ <span class="mono">Static Pressure</span>. علشان كده هو مخصص لـ <span class="mono">Dynamic Pressure Only</span>.
+            لأن مبدأ عمل الحساس الكهروضغطي يعتمد على توليد شحنة كهربائية لحظية نتيجة الإجهاد الديناميكي المتغير. عند تطبيق ضغط ثابت مستمر، تتولد الشحنة في اللحظة الأولى فقط، ثم تتسرب الشحنات الكهربائية فوراً عبر المقاومة الداخلية العالية للبلورة وأسلاك الدائرة ومكبر الشحنة إلى الأرضي؛ مما يجعل جهد الخرج يهبط إلى الصفر رغم بقاء الضغط ثابتاً. لذلك فهو مخصص حصرياً للضغوط الديناميكية المتغيرة مع الزمن (<span class="mono">Dynamic Pressure Only</span>).
           </div>
         </div>
 
         <!-- Question 3 -->
         <div class="q-item">
           <div class="q-question">
-            <span>Q3: إيه الغرض الأساسي من استخدام كل من: (أ) الـ <span class="mono">Inclined Manometer</span>، (ب) الـ <span class="mono">Well-Type Manometer</span>؟</span>
+            <span>س3: ما الغرض الهندسي الأساسي من استخدام كل من: (أ) المانومتر المائل (Inclined Manometer)، (ب) مانومتر الخزان (Well-Type)؟</span>
             <button type="button" class="q-toggle-btn" onclick="toggleAnswer(this)">عرض الحل الكامل ▼</button>
           </div>
           <div class="q-answer">
             <strong>الإجابة النموذجية:</strong><br>
-            (أ) <strong>Inclined Manometer:</strong> الغرض منه <strong>To increase sensitivity</strong> عند قياس <span class="mono">Small Pressure Differences</span>؛ لأن الـ <span class="mono">Vertical Height</span> \( h \) الصغير بيتحول إلى <span class="mono">Reading</span> أطول \( L \) على امتداد الـ <span class="mono">Tube</span> المائلة حسب \( L = h / \sin\theta \).<br>(ب) <strong>Well-Type Manometer:</strong> الغرض منه تقليل تأثير تغير مستوى الـ <span class="mono">Reservoir</span> على الـ <span class="mono">Reading</span>، أو تعويضه في الـ <span class="mono">Scale</span>؛ فبفضل <span class="mono">Area</span> الـ <span class="mono">Well</span> الكبيرة بيبقى تغير المستوى فيه <span class="mono">Negligible</span> وبنقدر ناخد الـ <span class="mono">Reading</span> من <span class="mono">Tube</span> واحدة، وده بيقلل الاعتماد على قراءة مستويين.
+            (أ) <strong>المانومتر المائل (Inclined Manometer):</strong> الغرض منه <strong>زيادة الحساسية (To increase sensitivity)</strong> عند قياس فروق الضغط الصغيرة جداً؛ حيث تتحول القيمة الرأسية الصغيرة \( h \) إلى إزاحة مقروءة طويلة \( L \) على طول الأنبوبة المائلة وفق العلاقة \( L = h / \sin\theta \).<br>
+            (ب) <strong>مانومتر الخزان (Well-Type Manometer):</strong> الغرض منه <strong>إلغاء الحاجة لقراءة مستويين</strong> في ساقي المانومتر؛ بفضل مساحة الخزان العريضة جداً يصبح هبوط السائل فيه مهملاً أو يُعوض في تدريج الأنبوبة، مما يمكن الراصد من أخذ قراءة فرق الارتفاع مباشرة من ساق واحدة وتقليل أخطاء القياس.
           </div>
         </div>
 
         <!-- Question 4 -->
         <div class="q-item">
           <div class="q-question">
-            <span>Q4: إيه العوامل الثلاثة اللي بتحدد الـ <span class="mono">Capacitance</span> في الـ <span class="mono">Capacitive Pressure Sensor</span>؟ وإزاي الـ <span class="mono">Pressure</span> بيتحول لتغير في الـ <span class="mono">Capacitance</span>؟</span>
+            <span>س4: ما هي العوامل الفيزيائية الثلاثة التي تحدد سعة المكثف في حساس الضغط السعوي؟ وكيف يترجم الضغط إلى تغير في السعة؟</span>
             <button type="button" class="q-toggle-btn" onclick="toggleAnswer(this)">عرض الحل الكامل ▼</button>
           </div>
           <div class="q-answer">
             <strong>الإجابة النموذجية:</strong><br>
-            العوامل الثلاثة حسب \( C = \frac{\varepsilon A}{d} \):<br>1. <strong>Area:</strong> الـ <span class="mono">Area</span> بتاعة الـ <span class="mono">Plates</span> (\( A \)).<br>2. <strong>Distance:</strong> الـ <span class="mono">Distance</span> بين الـ <span class="mono">Plates</span> (\( d \)).<br>3. <strong>Dielectric Material:</strong> نوع الـ <span class="mono">Dielectric Material</span> بين الـ <span class="mono">Plates</span> (\( \varepsilon \)).<br><strong>Working Principle:</strong> فيه <span class="mono">Fixed Plate</span> و<span class="mono">Plate</span> تاني متحرك: \( \text{Pressure} \rightarrow \text{Diaphragm Movement} \rightarrow \text{Change in Distance} \rightarrow \text{Change in Capacitance} \)؛ يعني الـ <span class="mono">Pressure</span> بيحرك الـ <span class="mono">Diaphragm</span>، فبتتغير الـ <span class="mono">Distance</span> بين الـ <span class="mono">Plates</span>، وبما إن الـ <span class="mono">Capacitance</span> بتعتمد على الـ <span class="mono">Distance</span> فقيمتها بتتغير ونستفيد منها في قياس الـ <span class="mono">Pressure</span>.
+            العوامل الثلاثة طبقاً للمعادلة \( C = \frac{\varepsilon A}{d} \) هي:<br>
+            1. مساحة تراكب اللوحين (\( A \)).<br>
+            2. المسافة الفاصلة بين اللوحين (\( d \)).<br>
+            3. نوع وثابت العزل للمادة العازلة بينهما (\( \varepsilon \)).<br>
+            <strong>آلية العمل:</strong> يمثل الغشاء المرن أحد لوحي المكثف بينما اللوح الآخر ثابت. عند تطبيق الضغط، ينحني الغشاء مقترباً من اللوح الثابت مما يقلل المسافة الفاصلة \( d \)، وبسبب العلاقة العكسية (\( C \propto 1/d \)) تزداد السعة الكهربائية \( C \)، ويتم قياس هذا التغير بدقة بواسطة دائرة قنطرة ترددية.
           </div>
         </div>
 
         <!-- Question 5 -->
         <div class="q-item">
           <div class="q-question">
-            <span>Q5: اذكر ثلاثة قيود رئيسية للـ <span class="mono">Dead Weight Tester</span> رغم الـ <span class="mono">Accuracy</span> العالية بتاعته كـ <span class="mono">Calibration Standard</span>.</span>
+            <span>س5: اذكر ثلاثة قيود رئيسية لجهاز اختبار الأوزان الميتة (Dead Weight Tester) على الرغم من دقته الفائقة كمعيار للمعايرة.</span>
             <button type="button" class="q-toggle-btn" onclick="toggleAnswer(this)">عرض الحل الكامل ▼</button>
           </div>
           <div class="q-answer">
             <strong>الإجابة النموذجية:</strong><br>
-            1. <strong>Friction between piston and cylinder:</strong> الـ <span class="mono">Friction</span> بين الـ <span class="mono">Piston</span> والـ <span class="mono">Cylinder</span> بتقلل <span class="mono">Accuracy</span> الـ <span class="mono">Force</span> المؤثرة، وبيتطلب تدوير الـ <span class="mono">Piston</span> لتخفيفها.<br>2. <strong>Poor dynamic response:</strong> جهاز لـ <span class="mono">Static calibrations only</span>، ومش بيقيس تغيرات الـ <span class="mono">Pressure</span> مع الزمن.<br>3. <strong>Uncertainty in gravitational constant ( g ):</strong> بيتأثر باختلاف الـ <span class="mono">Local Gravity</span> من مكان لمكان ويحتاج <span class="mono">Correction</span> حسب الموقع.
+            طبقاً لسلايدات المحاضرة (Slide 17)، القيود هي:<br>
+            1. <strong>Friction between piston and cylinder:</strong> احتكاك المكبس بالأسطوانة يقلل من دقة القوة المؤثرة، ويتطلب تدوير المكبس لتخفيف الاحتكاك.<br>
+            2. <strong>Poor dynamic response:</strong> جهاز مخصص للمعايرة الاستاتيكية فقط (<span class="mono">Static calibrations only</span>) ولا يمكنه قياس التغيرات الزمنية للضغط.<br>
+            3. <strong>Uncertainty in gravitational constant (\( g \)):</strong> يتأثر باختلاف قيمة عجلة الجاذبية المحلية من مكان لآخر على سطح الأرض ويحتاج إلى تصحيح موقعي.
           </div>
         </div>
 
         <!-- Question 6 -->
         <div class="q-item">
           <div class="q-question">
-            <span>Q6: إيه الشروط الستة اللازمة لتطبيق <span class="mono">Bernoulli's Equation</span> لحساب الـ <span class="mono">Velocity</span> من قراءات الـ <span class="mono">Total Pressure</span> والـ <span class="mono">Static Pressure</span>؟</span>
+            <span>س6: ما هي الشروط الستة الواجب توافرها لتطبيق معادلة برنولي لحساب سرعة المائع من قراءات الضغط الكلي والساكن؟</span>
             <button type="button" class="q-toggle-btn" onclick="toggleAnswer(this)">عرض الحل الكامل ▼</button>
           </div>
           <div class="q-answer">
             <strong>الإجابة النموذجية:</strong><br>
-            (Slide 33):<br>1. <strong>Inviscid flow:</strong> الـ <span class="mono">Fluid</span> عديم الـ <span class="mono">Viscosity</span> وخالي من الـ <span class="mono">Internal Friction</span>.<br>2. <strong>Steady flow:</strong> الخواص ما بتتغيرش مع الزمن.<br>3. <strong>Along a streamline:</strong> التطبيق على امتداد <span class="mono">Streamline</span> واحد.<br>4. <strong>Incompressible flow:</strong> الـ <span class="mono">Density</span> ثابتة.<br>5. <strong>No shaft work:</strong> مفيش <span class="mono">Pump</span> أو <span class="mono">Turbine</span> في مسار الـ <span class="mono">Measurement</span>.<br>6. <strong>No heat transfer:</strong> مفيش <span class="mono">Heat Transfer</span> من أو إلى مجرى الـ <span class="mono">Flow</span>.
+            الشروط الستة الإلزامية لمعادلة برنولي (Slide 33) هي:<br>
+            1. <strong>Inviscid flow:</strong> مائع عديم اللزوجة وخالٍ من الاحتكاك الداخلي.<br>
+            2. <strong>Steady flow:</strong> سريان مستقر لا يتغير مع الزمن.<br>
+            3. <strong>Along a streamline:</strong> التطبيق على امتداد خط انسياب واحد.<br>
+            4. <strong>Incompressible flow:</strong> مائع غير قابل للانضغاط (كثافة ثابتة).<br>
+            5. <strong>No shaft work:</strong> عدم وجود شغل شافت (مضخات أو توربينات).<br>
+            6. <strong>No heat transfer:</strong> انعدام انتقال الحرارة من أو إلى مجرى السريان.
           </div>
         </div>
 
